@@ -21,55 +21,67 @@ export const GoldenRibbonsBackground: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // Ribbon wave parameters for golden flowing ribbons
-    const ribbons = [
+    // Solutionreach signature clean teal, cyan, and ocean blue waves
+    const ribbonWaves = [
       {
-        yOffset: 0.22,
-        amplitude: 65,
-        wavelength: 0.0018,
-        speed: 0.0008,
-        thickness: 45,
-        opacity: 0.45,
-        goldShade: ['rgba(255, 215, 0, 0.4)', 'rgba(218, 165, 32, 0.25)', 'rgba(255, 248, 220, 0.5)']
-      },
-      {
-        yOffset: 0.38,
-        amplitude: 85,
+        yRatio: 0.18,
+        amplitude: 36,
         wavelength: 0.0014,
-        speed: -0.0006,
-        thickness: 60,
-        opacity: 0.35,
-        goldShade: ['rgba(234, 179, 8, 0.35)', 'rgba(202, 138, 4, 0.2)', 'rgba(254, 240, 138, 0.4)']
+        speed: 0.0005,
+        thickness: 28,
+        colorStart: 'rgba(0, 163, 173, 0.08)',
+        colorMid: 'rgba(0, 194, 203, 0.16)',
+        colorEnd: 'rgba(15, 76, 129, 0.05)',
+        strokeColor: 'rgba(0, 163, 173, 0.22)',
+        lineWidth: 1.2
       },
       {
-        yOffset: 0.58,
-        amplitude: 95,
+        yRatio: 0.45,
+        amplitude: 48,
         wavelength: 0.0011,
-        speed: 0.0007,
-        thickness: 75,
-        opacity: 0.4,
-        goldShade: ['rgba(251, 191, 36, 0.35)', 'rgba(180, 83, 9, 0.25)', 'rgba(253, 230, 138, 0.5)']
+        speed: -0.0004,
+        thickness: 40,
+        colorStart: 'rgba(0, 181, 184, 0.09)',
+        colorMid: 'rgba(208, 242, 243, 0.22)',
+        colorEnd: 'rgba(0, 140, 149, 0.06)',
+        strokeColor: 'rgba(0, 163, 173, 0.20)',
+        lineWidth: 1.4
       },
       {
-        yOffset: 0.78,
-        amplitude: 70,
+        yRatio: 0.72,
+        amplitude: 42,
+        wavelength: 0.0013,
+        speed: 0.0006,
+        thickness: 30,
+        colorStart: 'rgba(15, 76, 129, 0.07)',
+        colorMid: 'rgba(0, 163, 173, 0.14)',
+        colorEnd: 'rgba(0, 194, 203, 0.05)',
+        strokeColor: 'rgba(15, 76, 129, 0.18)',
+        lineWidth: 1.0
+      },
+      {
+        yRatio: 0.88,
+        amplitude: 30,
         wavelength: 0.0016,
-        speed: -0.0009,
-        thickness: 50,
-        opacity: 0.3,
-        goldShade: ['rgba(245, 158, 11, 0.3)', 'rgba(146, 64, 14, 0.15)', 'rgba(254, 243, 199, 0.4)']
+        speed: -0.0003,
+        thickness: 22,
+        colorStart: 'rgba(0, 163, 173, 0.06)',
+        colorMid: 'rgba(230, 248, 249, 0.20)',
+        colorEnd: 'rgba(0, 181, 184, 0.04)',
+        strokeColor: 'rgba(0, 163, 173, 0.15)',
+        lineWidth: 1.0
       }
     ];
 
-    // Floating golden particle sparkles
-    const sparkles = Array.from({ length: 42 }, () => ({
+    // Minimal floating ambient particles
+    const particles = Array.from({ length: 24 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 2.2 + 0.6,
-      alpha: Math.random() * 0.7 + 0.2,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: -Math.random() * 0.4 - 0.1,
-      twinkleSpeed: Math.random() * 0.03 + 0.01,
+      radius: Math.random() * 1.6 + 0.6,
+      alpha: Math.random() * 0.35 + 0.1,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: -Math.random() * 0.3 - 0.05,
+      twinkleSpeed: Math.random() * 0.02 + 0.005,
       twinklePhase: Math.random() * Math.PI * 2
     }));
 
@@ -79,71 +91,83 @@ export const GoldenRibbonsBackground: React.FC = () => {
       time += 1;
       ctx.clearRect(0, 0, width, height);
 
-      // Draw subtle background ambient gold & deep slate gradient
-      const bgGrad = ctx.createRadialGradient(
-        width * 0.5,
-        height * 0.35,
-        50,
-        width * 0.5,
-        height * 0.5,
-        width * 0.85
-      );
-      bgGrad.addColorStop(0, 'rgba(15, 23, 42, 0.98)');
-      bgGrad.addColorStop(0.5, 'rgba(10, 15, 30, 0.99)');
-      bgGrad.addColorStop(1, 'rgba(3, 7, 18, 1)');
+      // 1. Solutionreach crisp bright background with soft cool gradient
+      const bgGrad = ctx.createLinearGradient(0, 0, width, height);
+      bgGrad.addColorStop(0, '#FFFFFF');
+      bgGrad.addColorStop(0.35, '#F8FCFD');
+      bgGrad.addColorStop(0.7, '#F2F8FA');
+      bgGrad.addColorStop(1, '#EDF5F8');
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, width, height);
 
-      // Render each flowing golden ribbon
-      ribbons.forEach((ribbon, idx) => {
-        const baseY = height * ribbon.yOffset;
-        const currentPhase = time * ribbon.speed;
+      // 2. Soft cyan/teal ambient glow orbs
+      const glow1 = ctx.createRadialGradient(
+        width * 0.15, height * 0.22, 20,
+        width * 0.15, height * 0.22, width * 0.42
+      );
+      glow1.addColorStop(0, 'rgba(0, 163, 173, 0.12)');
+      glow1.addColorStop(0.6, 'rgba(208, 242, 243, 0.05)');
+      glow1.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      ctx.fillStyle = glow1;
+      ctx.fillRect(0, 0, width, height);
+
+      const glow2 = ctx.createRadialGradient(
+        width * 0.85, height * 0.65, 30,
+        width * 0.85, height * 0.65, width * 0.48
+      );
+      glow2.addColorStop(0, 'rgba(15, 76, 129, 0.08)');
+      glow2.addColorStop(0.55, 'rgba(0, 194, 203, 0.04)');
+      glow2.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      ctx.fillStyle = glow2;
+      ctx.fillRect(0, 0, width, height);
+
+      // 3. Render clean fluid Solutionreach wave ribbons
+      ribbonWaves.forEach((wave) => {
+        const baseY = height * wave.yRatio;
+        const currentPhase = time * wave.speed;
 
         ctx.save();
         ctx.beginPath();
 
-        // Top curve
-        ctx.moveTo(0, baseY + Math.sin(currentPhase) * ribbon.amplitude);
+        // Top edge
+        const step = 25;
+        ctx.moveTo(0, baseY + Math.sin(currentPhase) * wave.amplitude);
 
-        const step = 20;
         for (let x = 0; x <= width + step; x += step) {
-          const wave1 = Math.sin(x * ribbon.wavelength + currentPhase) * ribbon.amplitude;
-          const wave2 = Math.cos(x * ribbon.wavelength * 0.5 - currentPhase * 0.8) * (ribbon.amplitude * 0.35);
-          const y = baseY + wave1 + wave2;
+          const w1 = Math.sin(x * wave.wavelength + currentPhase) * wave.amplitude;
+          const w2 = Math.cos(x * wave.wavelength * 0.6 - currentPhase * 0.7) * (wave.amplitude * 0.25);
+          const y = baseY + w1 + w2;
           ctx.lineTo(x, y);
         }
 
-        // Bottom curve (create thickness)
+        // Bottom edge
         for (let x = width + step; x >= 0; x -= step) {
-          const wave1 = Math.sin(x * ribbon.wavelength + currentPhase + 0.4) * ribbon.amplitude;
-          const wave2 = Math.cos(x * ribbon.wavelength * 0.5 - currentPhase * 0.8) * (ribbon.amplitude * 0.35);
-          const y = baseY + wave1 + wave2 + ribbon.thickness + Math.sin(x * 0.002 + currentPhase) * 15;
+          const w1 = Math.sin(x * wave.wavelength + currentPhase + 0.3) * wave.amplitude;
+          const w2 = Math.cos(x * wave.wavelength * 0.6 - currentPhase * 0.7) * (wave.amplitude * 0.25);
+          const y = baseY + w1 + w2 + wave.thickness + Math.sin(x * 0.0015 + currentPhase) * 6;
           ctx.lineTo(x, y);
         }
 
         ctx.closePath();
 
-        // Create metallic golden linear gradient along the ribbon
-        const ribbonGrad = ctx.createLinearGradient(0, baseY - ribbon.amplitude, width, baseY + ribbon.amplitude + ribbon.thickness);
-        ribbonGrad.addColorStop(0, ribbon.goldShade[0]);
-        ribbonGrad.addColorStop(0.25, ribbon.goldShade[1]);
-        ribbonGrad.addColorStop(0.5, ribbon.goldShade[2]);
-        ribbonGrad.addColorStop(0.75, ribbon.goldShade[0]);
-        ribbonGrad.addColorStop(1, ribbon.goldShade[1]);
-
+        // Fill fluid cyan gradient
+        const ribbonGrad = ctx.createLinearGradient(0, baseY - wave.amplitude, width, baseY + wave.amplitude + wave.thickness);
+        ribbonGrad.addColorStop(0, wave.colorStart);
+        ribbonGrad.addColorStop(0.45, wave.colorMid);
+        ribbonGrad.addColorStop(1, wave.colorEnd);
         ctx.fillStyle = ribbonGrad;
         ctx.fill();
 
-        // Golden glowing edge highlight line
-        ctx.lineWidth = 1.5;
-        ctx.strokeStyle = 'rgba(255, 243, 199, 0.45)';
+        // Fine crisp stroke
+        ctx.lineWidth = wave.lineWidth;
+        ctx.strokeStyle = wave.strokeColor;
         ctx.stroke();
 
         ctx.restore();
       });
 
-      // Render floating golden sparkle motes
-      sparkles.forEach((s) => {
+      // 4. Render subtle cyan light motes
+      particles.forEach((s) => {
         s.x += s.vx;
         s.y += s.vy;
         s.twinklePhase += s.twinkleSpeed;
@@ -152,14 +176,14 @@ export const GoldenRibbonsBackground: React.FC = () => {
         if (s.x < -10) s.x = width + 10;
         if (s.x > width + 10) s.x = -10;
 
-        const currentAlpha = Math.max(0.1, (Math.sin(s.twinklePhase) * 0.5 + 0.5) * s.alpha);
+        const currentAlpha = Math.max(0.06, (Math.sin(s.twinklePhase) * 0.5 + 0.5) * s.alpha);
 
         ctx.save();
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(253, 224, 71, ${currentAlpha})`;
-        ctx.shadowColor = 'rgba(234, 179, 8, 0.8)';
-        ctx.shadowBlur = 8;
+        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 163, 173, ${currentAlpha})`;
+        ctx.shadowColor = 'rgba(0, 194, 203, 0.4)';
+        ctx.shadowBlur = 3;
         ctx.fill();
         ctx.restore();
       });
@@ -180,12 +204,10 @@ export const GoldenRibbonsBackground: React.FC = () => {
       <canvas
         ref={canvasRef}
         className="w-full h-full block"
-        style={{ filter: 'contrast(105%)' }}
       />
-      {/* Subtle fine geometric grid overlay for high-polish enterprise aesthetic */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fbbf24_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none" />
-      {/* Soft vignette */}
-      <div className="absolute inset-0 bg-radial-vignette opacity-40 pointer-events-none" />
+      {/* Solutionreach delicate micro-grid */}
+      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#00A3AD_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/70 pointer-events-none" />
     </div>
   );
 };

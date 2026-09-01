@@ -35,7 +35,7 @@ export const PdfSuitePage: React.FC = () => {
   const { isPro, openUpgradeModal } = useSubscription();
 
   const [files, setFiles] = useState<PdfFileItem[]>([]);
-  const [activeTab, setActiveTab] = useState<'organize' | 'watermark' | 'metadata' | 'split'>('organize');
+  const [activeTab, setActiveTab] = useState<'watermark' | 'metadata' | 'split'>('watermark');
   const [isProcessing, setIsProcessing] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
@@ -43,7 +43,6 @@ export const PdfSuitePage: React.FC = () => {
   const [watermarkText, setWatermarkText] = useState('CONFIDENTIAL / OMNICRAFT');
   const [watermarkOpacity, setWatermarkOpacity] = useState(0.3);
   const [watermarkSize, setWatermarkSize] = useState(36);
-  const [watermarkColor, setWatermarkColor] = useState('#06b6d4');
 
   // Metadata parameters
   const [metaTitle, setMetaTitle] = useState('OmniCraft Processed Document');
@@ -65,19 +64,19 @@ export const PdfSuitePage: React.FC = () => {
         x: 50,
         y: 320,
         size: 20,
-        color: rgb(0.02, 0.71, 0.83)
+        color: rgb(0, 0.64, 0.68)
       });
       page1.drawText('Page 1 — 100% Client-Side In-Memory Document Execution', {
         x: 50,
         y: 280,
         size: 12,
-        color: rgb(0.2, 0.2, 0.3)
+        color: rgb(0.04, 0.15, 0.25)
       });
       page1.drawText('You can merge, rotate, split, and watermark this page with zero server uploads.', {
         x: 50,
         y: 250,
         size: 10,
-        color: rgb(0.4, 0.4, 0.5)
+        color: rgb(0.4, 0.45, 0.55)
       });
 
       const page2 = pdfDoc.addPage([600, 400]);
@@ -85,13 +84,13 @@ export const PdfSuitePage: React.FC = () => {
         x: 50,
         y: 320,
         size: 18,
-        color: rgb(0.5, 0.2, 0.8)
+        color: rgb(0.06, 0.3, 0.5)
       });
       page2.drawText('Zero bytes of this file were transmitted over any network.', {
         x: 50,
         y: 280,
         size: 11,
-        color: rgb(0.2, 0.2, 0.3)
+        color: rgb(0.04, 0.15, 0.25)
       });
 
       const pdfBytes = await pdfDoc.save();
@@ -105,10 +104,10 @@ export const PdfSuitePage: React.FC = () => {
       };
 
       setFiles([demoItem]);
-      setStatusMessage('Demo document loaded successfully!');
+      setStatusMessage('Demo document loaded into memory successfully!');
     } catch (e) {
       console.error(e);
-      setStatusMessage('Error creating demo PDF.');
+      setStatusMessage('Error loading demo PDF.');
     } finally {
       setIsProcessing(false);
     }
@@ -230,7 +229,7 @@ export const PdfSuitePage: React.FC = () => {
               y: height / 2,
               size: watermarkSize,
               font: helveticaFont,
-              color: rgb(0.02, 0.71, 0.83),
+              color: rgb(0, 0.64, 0.68),
               opacity: watermarkOpacity,
               rotate: degrees(45)
             });
@@ -255,20 +254,20 @@ export const PdfSuitePage: React.FC = () => {
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Breadcrumb & Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-1">
-            <Link to="/" className="text-slate-400 hover:text-cyan-300 flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] mb-1 font-bold">
+            <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
             <span>Document & AI</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
-            <Layers className="w-7 h-7 text-violet-400" />
+          <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
+            <Layers className="w-7 h-7 text-[#00A3AD]" />
             Advanced PDF Studio
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Visual organizer to merge, rotate, watermark, split, and edit metadata 100% in browser memory.
           </p>
         </div>
@@ -276,7 +275,7 @@ export const PdfSuitePage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={loadDemoPdf}
-            className="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-slate-300 transition-colors"
+            className="px-4 py-2 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 transition-colors shadow-xs cursor-pointer"
           >
             Load Sample PDF
           </button>
@@ -285,7 +284,7 @@ export const PdfSuitePage: React.FC = () => {
             id="export-pro-pdf-btn"
             onClick={handleExportAnnotatedPdf}
             disabled={files.length === 0 || isProcessing}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white text-xs font-bold shadow-lg shadow-violet-500/20 transition-all cursor-pointer disabled:opacity-50"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] hover:from-[#00B5B8] hover:to-[#00A3AD] text-white text-xs font-black shadow-lg shadow-teal-500/20 transition-all cursor-pointer disabled:opacity-50"
           >
             <Download className="w-4 h-4" />
             <span>Export Annotated PDF {!isPro && '($7 Pro)'}</span>
@@ -294,9 +293,9 @@ export const PdfSuitePage: React.FC = () => {
       </div>
 
       {statusMessage && (
-        <div className="my-4 p-3 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-xs text-cyan-300 flex items-center justify-between">
+        <div className="my-4 p-3.5 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] text-xs text-[#007A82] font-bold flex items-center justify-between shadow-xs">
           <span>{statusMessage}</span>
-          <button onClick={() => setStatusMessage(null)} className="text-slate-400 hover:text-white">✕</button>
+          <button onClick={() => setStatusMessage(null)} className="text-slate-400 hover:text-slate-700 cursor-pointer">✕</button>
         </div>
       )}
 
@@ -305,7 +304,7 @@ export const PdfSuitePage: React.FC = () => {
         {/* Left Side: Upload & Files Organizer */}
         <div className="lg:col-span-8 space-y-6">
           {/* Dropzone */}
-          <div className="relative rounded-3xl border-2 border-dashed border-slate-800 hover:border-violet-500/50 bg-slate-900/40 p-8 text-center backdrop-blur-xl transition-all">
+          <div className="relative rounded-3xl border-2 border-dashed border-[#B3EAEF] hover:border-[#00A3AD] bg-white p-8 sm:p-10 text-center shadow-[0_4px_20px_rgba(10,37,64,0.03)] transition-all">
             <input
               type="file"
               accept=".pdf,application/pdf"
@@ -313,13 +312,13 @@ export const PdfSuitePage: React.FC = () => {
               onChange={handleFileUpload}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
-            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-tr from-violet-600/20 to-cyan-500/20 border border-violet-500/30 flex items-center justify-center">
-              <Upload className="w-7 h-7 text-violet-400" />
+            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] flex items-center justify-center">
+              <Upload className="w-7 h-7 text-[#00A3AD]" />
             </div>
-            <h3 className="text-base font-bold text-white mb-1">
+            <h3 className="text-base font-black text-[#0A2540] mb-1">
               Drop PDF documents here or click to browse
             </h3>
-            <p className="text-xs text-slate-400 max-w-md mx-auto">
+            <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">
               Multi-file merge supported. Processing is 100% private in client memory via WebAssembly.
             </p>
           </div>
@@ -328,9 +327,9 @@ export const PdfSuitePage: React.FC = () => {
           {files.length > 0 && (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                <h3 className="text-xs font-black text-[#007A82] uppercase tracking-wider flex items-center gap-2">
                   <span>Loaded Documents ({files.length})</span>
-                  <span className="text-xs font-normal text-slate-400 font-mono">
+                  <span className="text-xs font-normal text-slate-500 font-mono">
                     Total: {files.reduce((acc, f) => acc + f.pageCount, 0)} pages
                   </span>
                 </h3>
@@ -339,14 +338,14 @@ export const PdfSuitePage: React.FC = () => {
                   <button
                     onClick={handleMergeOnly}
                     disabled={files.length === 0}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-700/60 text-xs font-bold text-emerald-300 transition-colors cursor-pointer"
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-xs font-black text-emerald-800 transition-colors cursor-pointer"
                   >
                     <Merge className="w-3.5 h-3.5" />
                     <span>Free Basic Merge</span>
                   </button>
                   <button
                     onClick={() => setFiles([])}
-                    className="text-xs text-slate-500 hover:text-rose-400 p-1"
+                    className="text-xs text-slate-500 hover:text-rose-600 p-1 font-bold cursor-pointer"
                   >
                     Clear All
                   </button>
@@ -357,19 +356,19 @@ export const PdfSuitePage: React.FC = () => {
                 {files.map((file, idx) => (
                   <div
                     key={file.id}
-                    className="rounded-2xl bg-slate-900/80 border border-slate-800 p-4 flex flex-col justify-between hover:border-slate-700 transition-all"
+                    className="rounded-3xl bg-white border border-slate-200/90 p-5 flex flex-col justify-between hover:border-[#00A3AD] shadow-[0_4px_20px_rgba(10,37,64,0.03)] transition-all"
                   >
                     <div>
                       <div className="flex items-start justify-between gap-2 mb-3">
                         <div className="flex items-center gap-2.5">
-                          <div className="p-2 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400 shrink-0">
+                          <div className="p-2 rounded-xl bg-[#E6F8F9] border border-[#B3EAEF] text-[#007A82] shrink-0">
                             <FileText className="w-5 h-5" />
                           </div>
                           <div>
-                            <h4 className="text-xs font-bold text-white truncate max-w-[170px]" title={file.name}>
+                            <h4 className="text-xs font-black text-[#0A2540] truncate max-w-[170px]" title={file.name}>
                               {file.name}
                             </h4>
-                            <p className="text-[10px] text-slate-400 font-mono">
+                            <p className="text-[10px] text-slate-500 font-mono font-medium">
                               {file.pageCount} page(s) • {(file.size / 1024).toFixed(1)} KB
                             </p>
                           </div>
@@ -377,7 +376,7 @@ export const PdfSuitePage: React.FC = () => {
 
                         <button
                           onClick={() => removeFile(file.id)}
-                          className="text-slate-500 hover:text-rose-400 p-1"
+                          className="text-slate-400 hover:text-rose-600 p-1 cursor-pointer"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
@@ -386,23 +385,23 @@ export const PdfSuitePage: React.FC = () => {
                       {/* Visual Mini Mock Preview */}
                       <div 
                         style={{ transform: `rotate(${file.rotation}deg)` }}
-                        className="w-full h-28 rounded-xl bg-slate-950 border border-slate-800 flex flex-col items-center justify-center p-3 text-center transition-transform duration-300"
+                        className="w-full h-28 rounded-2xl bg-[#F4F8FA] border border-slate-200 flex flex-col items-center justify-center p-3 text-center transition-transform duration-300"
                       >
-                        <div className="w-12 h-16 rounded bg-slate-900 border border-slate-700 flex flex-col items-center justify-center text-[9px] text-slate-400 font-mono">
+                        <div className="w-12 h-16 rounded-lg bg-white border border-slate-200 shadow-2xs flex flex-col items-center justify-center text-[9px] text-slate-500 font-mono font-bold">
                           <span>DOC</span>
-                          <span className="text-[8px] text-cyan-400">p.1-{file.pageCount}</span>
+                          <span className="text-[8px] text-[#007A82]">p.1-{file.pageCount}</span>
                         </div>
-                        <span className="text-[10px] text-slate-500 mt-2 font-mono">
+                        <span className="text-[10px] text-slate-500 mt-2 font-mono font-bold">
                           Rotation: {file.rotation}°
                         </span>
                       </div>
                     </div>
 
-                    <div className="pt-3 mt-3 border-t border-slate-800/80 flex items-center justify-between">
-                      <span className="text-[10px] text-slate-500 font-mono">Order #{idx + 1}</span>
+                    <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between">
+                      <span className="text-[10px] text-slate-400 font-mono font-bold">Order #{idx + 1}</span>
                       <button
                         onClick={() => rotateFile(file.id)}
-                        className="flex items-center gap-1 text-xs font-medium text-cyan-400 hover:text-cyan-300 px-2 py-1 rounded-lg bg-cyan-950/40 border border-cyan-800/50"
+                        className="flex items-center gap-1 text-xs font-bold text-[#007A82] hover:text-[#00A3AD] px-2.5 py-1 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] cursor-pointer"
                       >
                         <RotateCw className="w-3.5 h-3.5" />
                         <span>Rotate +90°</span>
@@ -417,39 +416,39 @@ export const PdfSuitePage: React.FC = () => {
 
         {/* Right Side: Pro Suite Control Panel */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="rounded-3xl bg-slate-900/60 border border-slate-800 p-6 backdrop-blur-xl space-y-5">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                <Stamp className="w-4 h-4 text-cyan-400" />
+          <div className="rounded-3xl bg-white border border-slate-200/90 p-6 shadow-[0_4px_20px_rgba(10,37,64,0.03)] space-y-5">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h3 className="text-xs font-black text-[#0A2540] uppercase tracking-wider flex items-center gap-2">
+                <Stamp className="w-4 h-4 text-[#00A3AD]" />
                 <span>PDF Pro Annotator</span>
               </h3>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-violet-950 text-violet-300 font-mono border border-violet-800/60">
+              <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#E6F8F9] text-[#007A82] font-mono font-bold border border-[#B3EAEF]">
                 PRO ENGINE
               </span>
             </div>
 
             {/* Tab selection */}
-            <div className="grid grid-cols-3 gap-1 p-1 rounded-xl bg-slate-950 border border-slate-800 text-center text-xs">
+            <div className="grid grid-cols-3 gap-1 p-1 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-center text-xs">
               <button
                 onClick={() => setActiveTab('watermark')}
-                className={`py-1.5 rounded-lg font-semibold transition-all ${
-                  activeTab === 'watermark' ? 'bg-slate-800 text-cyan-300' : 'text-slate-400'
+                className={`py-1.5 rounded-xl font-bold transition-all cursor-pointer ${
+                  activeTab === 'watermark' ? 'bg-white text-[#007A82] shadow-xs' : 'text-slate-500'
                 }`}
               >
                 Watermark
               </button>
               <button
                 onClick={() => setActiveTab('metadata')}
-                className={`py-1.5 rounded-lg font-semibold transition-all ${
-                  activeTab === 'metadata' ? 'bg-slate-800 text-cyan-300' : 'text-slate-400'
+                className={`py-1.5 rounded-xl font-bold transition-all cursor-pointer ${
+                  activeTab === 'metadata' ? 'bg-white text-[#007A82] shadow-xs' : 'text-slate-500'
                 }`}
               >
                 Metadata
               </button>
               <button
                 onClick={() => setActiveTab('split')}
-                className={`py-1.5 rounded-lg font-semibold transition-all ${
-                  activeTab === 'split' ? 'bg-slate-800 text-cyan-300' : 'text-slate-400'
+                className={`py-1.5 rounded-xl font-bold transition-all cursor-pointer ${
+                  activeTab === 'split' ? 'bg-white text-[#007A82] shadow-xs' : 'text-slate-500'
                 }`}
               >
                 Split / Range
@@ -460,19 +459,19 @@ export const PdfSuitePage: React.FC = () => {
             {activeTab === 'watermark' && (
               <div className="space-y-4 text-xs">
                 <div>
-                  <label className="block text-slate-400 mb-1">Watermark Diagonal Text</label>
+                  <label className="block text-slate-700 font-bold mb-1">Watermark Diagonal Text</label>
                   <input
                     type="text"
                     value={watermarkText}
                     onChange={(e) => setWatermarkText(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 focus:outline-none focus:border-cyan-500"
+                    className="w-full px-3.5 py-2.5 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white"
                   />
                 </div>
 
                 <div>
-                  <div className="flex justify-between text-slate-400 mb-1">
+                  <div className="flex justify-between text-slate-700 font-bold mb-1">
                     <span>Opacity</span>
-                    <span className="font-mono">{Math.round(watermarkOpacity * 100)}%</span>
+                    <span className="font-mono text-[#007A82]">{Math.round(watermarkOpacity * 100)}%</span>
                   </div>
                   <input
                     type="range"
@@ -481,14 +480,14 @@ export const PdfSuitePage: React.FC = () => {
                     step="0.05"
                     value={watermarkOpacity}
                     onChange={(e) => setWatermarkOpacity(parseFloat(e.target.value))}
-                    className="w-full accent-cyan-400"
+                    className="w-full accent-[#00A3AD]"
                   />
                 </div>
 
                 <div>
-                  <div className="flex justify-between text-slate-400 mb-1">
+                  <div className="flex justify-between text-slate-700 font-bold mb-1">
                     <span>Font Size</span>
-                    <span className="font-mono">{watermarkSize} pt</span>
+                    <span className="font-mono text-[#007A82]">{watermarkSize} pt</span>
                   </div>
                   <input
                     type="range"
@@ -497,7 +496,7 @@ export const PdfSuitePage: React.FC = () => {
                     step="2"
                     value={watermarkSize}
                     onChange={(e) => setWatermarkSize(parseInt(e.target.value))}
-                    className="w-full accent-cyan-400"
+                    className="w-full accent-[#00A3AD]"
                   />
                 </div>
               </div>
@@ -507,39 +506,39 @@ export const PdfSuitePage: React.FC = () => {
             {activeTab === 'metadata' && (
               <div className="space-y-3 text-xs">
                 <div>
-                  <label className="block text-slate-400 mb-1">Document Title</label>
+                  <label className="block text-slate-700 font-bold mb-1">Document Title</label>
                   <input
                     type="text"
                     value={metaTitle}
                     onChange={(e) => setMetaTitle(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-200"
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Author</label>
+                  <label className="block text-slate-700 font-bold mb-1">Author</label>
                   <input
                     type="text"
                     value={metaAuthor}
                     onChange={(e) => setMetaAuthor(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-200"
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Subject</label>
+                  <label className="block text-slate-700 font-bold mb-1">Subject</label>
                   <input
                     type="text"
                     value={metaSubject}
                     onChange={(e) => setMetaSubject(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-200"
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Keywords</label>
+                  <label className="block text-slate-700 font-bold mb-1">Keywords</label>
                   <input
                     type="text"
                     value={metaKeywords}
                     onChange={(e) => setMetaKeywords(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-200"
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white"
                   />
                 </div>
               </div>
@@ -548,23 +547,23 @@ export const PdfSuitePage: React.FC = () => {
             {/* Split Tab */}
             {activeTab === 'split' && (
               <div className="space-y-3 text-xs">
-                <label className="block text-slate-400">Page Range Selection</label>
+                <label className="block text-slate-700 font-bold">Page Range Selection</label>
                 <input
                   type="text"
                   value={splitRange}
                   onChange={(e) => setSplitRange(e.target.value)}
                   placeholder="e.g. 1-3, 5"
-                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200"
+                  className="w-full px-3.5 py-2.5 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white"
                 />
-                <p className="text-[11px] text-slate-500">
+                <p className="text-[11px] text-slate-500 font-medium">
                   Specify individual pages or dash-separated ranges to extract or export.
                 </p>
               </div>
             )}
 
             {/* Trust note */}
-            <div className="p-3 rounded-xl bg-slate-950 border border-slate-800/80 text-[11px] text-slate-400 flex items-start gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+            <div className="p-3.5 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-[11px] text-slate-600 flex items-start gap-2.5 font-medium">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
               <span>
                 All page manipulations and metadata modifications occur directly in JavaScript buffer objects with zero network telemetry.
               </span>

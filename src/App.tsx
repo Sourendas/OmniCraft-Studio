@@ -41,7 +41,7 @@ export default function App() {
   return (
     <SubscriptionProvider>
       <BrowserRouter>
-        <div className="relative min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden font-sans flex flex-col justify-between">
+        <div className="relative min-h-screen bg-[#F6FAFC]/80 text-[#0A2540] selection:bg-[#00A3AD]/25 selection:text-[#006066] overflow-x-hidden font-sans flex flex-col justify-between">
           <AmbientBackground />
           <ScrollToTop />
           

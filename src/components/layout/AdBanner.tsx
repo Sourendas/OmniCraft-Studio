@@ -14,13 +14,13 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
     return (
       <div
         id={`ad-pro-pill-${type}`}
-        className={`flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-slate-900/40 border border-slate-800 text-xs text-slate-400 my-4 ${className}`}
+        className={`flex items-center justify-center gap-2 py-2 px-4 rounded-full bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 my-4 shadow-2xs ${className}`}
       >
-        <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-        <span className="font-medium text-slate-300">OmniCraft Pro Member</span>
-        <span className="text-slate-500">•</span>
-        <span className="text-cyan-400 font-medium">All Ads Removed</span>
-        <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+        <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+        <span className="font-black">OmniCraft Pro Active ($7/mo)</span>
+        <span className="text-emerald-300">•</span>
+        <span className="font-bold">100% Ad-Free Experience</span>
+        <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
       </div>
     );
   }
@@ -29,22 +29,22 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
     return (
       <div
         id="ad-banner-leaderboard"
-        className={`w-full max-w-[728px] mx-auto rounded-2xl bg-slate-900/30 border border-slate-800 p-4 my-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition-all hover:border-slate-700/80 ${className}`}
+        className={`w-full max-w-[728px] mx-auto rounded-3xl bg-white border border-slate-200/90 p-4 my-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition-all shadow-[0_4px_20px_rgba(10,37,64,0.03)] hover:border-[#00A3AD] ${className}`}
       >
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center shrink-0">
-            <Zap className="w-4 h-4 text-cyan-400" />
+        <div className="flex items-center gap-3.5">
+          <div className="w-10 h-10 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] flex items-center justify-center shrink-0">
+            <Zap className="w-5 h-5 text-[#00A3AD]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[9px] font-mono font-bold tracking-wider px-1.5 py-0.5 rounded bg-slate-950 text-slate-500 uppercase border border-slate-800">
+              <span className="text-[9px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 uppercase border border-slate-200">
                 SPONSORED
               </span>
-              <span className="text-xs font-semibold text-slate-200">
+              <span className="text-xs font-black text-[#0A2540]">
                 Cloud-Native Workflows for Modern Teams
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 mt-0.5">
+            <p className="text-[11px] text-slate-600 mt-0.5 font-medium">
               Accelerate developer velocity with zero-config preview environments.
             </p>
           </div>
@@ -53,13 +53,13 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => openUpgradeModal('Ad-Free Experience')}
-            className="text-[10px] text-slate-400 hover:text-cyan-300 px-2 py-1 transition-colors font-mono"
+            className="text-[11px] text-slate-500 hover:text-[#00A3AD] px-2 py-1 transition-colors font-bold cursor-pointer"
           >
-            Hide ($7)
+            Remove ($7/mo)
           </button>
           <a
             href="#pricing"
-            className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+            className="text-xs font-black px-4 py-2 rounded-full bg-[#F4F8FA] hover:bg-[#E6F8F9] text-[#0A2540] hover:text-[#007A82] border border-slate-200 transition-colors"
           >
             Learn More
           </a>
@@ -72,29 +72,29 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
     return (
       <div
         id="ad-banner-sidebar"
-        className={`w-full max-w-[300px] rounded-2xl bg-slate-900/30 border border-slate-800 p-4 flex flex-col justify-between text-center my-4 ${className}`}
+        className={`w-full max-w-[300px] rounded-3xl bg-white border border-slate-200/90 p-5 flex flex-col justify-between text-center my-4 shadow-[0_4px_20px_rgba(10,37,64,0.03)] ${className}`}
       >
         <div>
-          <span className="text-[9px] font-mono font-bold tracking-wider px-2 py-0.5 rounded bg-slate-950 text-slate-500 uppercase border border-slate-800">
+          <span className="text-[9px] font-mono font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-500 uppercase border border-slate-200">
             SPONSOR SPOTLIGHT
           </span>
-          <div className="w-12 h-12 mx-auto my-3 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center">
-            <Sparkles className="w-6 h-6 text-violet-400" />
+          <div className="w-12 h-12 mx-auto my-3.5 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] flex items-center justify-center">
+            <Sparkles className="w-6 h-6 text-[#00A3AD]" />
           </div>
-          <h4 className="text-xs font-bold text-slate-200 mb-1">Scale Without Server Limits</h4>
-          <p className="text-[11px] text-slate-400 leading-relaxed">
+          <h4 className="text-xs font-black text-[#0A2540] mb-1">Scale Without Server Limits</h4>
+          <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
             Deploy ultra-fast edge workers and client-side utilities with instantaneous global distribution.
           </p>
         </div>
 
-        <div className="pt-3 border-t border-slate-800 mt-4">
+        <div className="pt-3.5 border-t border-slate-100 mt-4">
           <button
             onClick={() => openUpgradeModal('Ad-Free Experience')}
-            className="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-amber-300 transition-all mb-2"
+            className="w-full py-2.5 px-3 rounded-full bg-[#E6F8F9] hover:bg-[#D0F2F3] border border-[#B3EAEF] text-xs font-black text-[#007A82] transition-all mb-2 cursor-pointer"
           >
-            Remove Ads for $7 / Month
+            Remove Ads ($7 / Month)
           </button>
-          <span className="text-[9px] text-slate-500 font-mono">Google AdSense Verified</span>
+          <span className="text-[10px] text-slate-400 font-mono">Verified Ad Partner</span>
         </div>
       </div>
     );
@@ -104,26 +104,25 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
   return (
     <div
       id="ad-banner-incontent"
-      className={`w-full max-w-[320px] sm:max-w-[400px] mx-auto rounded-2xl bg-slate-900/30 border border-slate-800 p-4 my-6 flex flex-col justify-between text-center ${className}`}
+      className={`w-full max-w-[320px] sm:max-w-[400px] mx-auto rounded-3xl bg-white border border-slate-200/90 p-4 my-6 flex flex-col justify-between text-center shadow-[0_4px_20px_rgba(10,37,64,0.03)] ${className}`}
     >
       <div className="flex items-center justify-between mb-2">
-        <span className="text-[9px] font-mono font-bold tracking-wider px-1.5 py-0.5 rounded bg-slate-950 text-slate-500 uppercase border border-slate-800">
+        <span className="text-[9px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 uppercase border border-slate-200">
           ADVERTISEMENT
         </span>
         <button
           onClick={() => openUpgradeModal('Ad-Free Experience')}
-          className="text-[10px] text-slate-500 hover:text-cyan-400 transition-colors font-mono"
+          className="text-[11px] text-slate-400 hover:text-[#00A3AD] transition-colors font-bold cursor-pointer"
         >
           Remove ads
         </button>
       </div>
-      <p className="text-xs text-slate-300 font-medium">
+      <p className="text-xs text-slate-700 font-medium">
         ⚡ Need high-speed file storage? Try our recommended zero-knowledge encryption partner.
       </p>
       <div className="mt-3 flex justify-center">
-        <span className="text-[9px] text-cyan-400/80 font-mono">300x250 In-Content Placement</span>
+        <span className="text-[10px] text-[#008C95] font-mono font-bold">Client Verified Ad Placement</span>
       </div>
     </div>
   );
 };
-

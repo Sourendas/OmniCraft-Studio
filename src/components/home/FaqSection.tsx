@@ -1,91 +1,67 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, ShieldCheck, Lock } from 'lucide-react';
 import { FAQ_DATA } from '../../data/toolsData';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 
 export const FaqSection: React.FC = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
-  const toggleAccordion = (idx: number) => {
+  const toggleFaq = (idx: number) => {
     setOpenIdx(openIdx === idx ? null : idx);
   };
 
   return (
-    <section id="faq" className="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-3">
-          <HelpCircle className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Frequently Asked Questions</span>
+    <section id="faq" className="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto relative z-10">
+      <div className="text-center mb-10">
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-xs font-black text-[#007A82] mb-3">
+          <HelpCircle className="w-3.5 h-3.5 text-[#00A3AD]" />
+          <span className="uppercase tracking-wider">Frequently Asked Questions</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-black text-[#0A2540] tracking-tight">
           Everything You Need to Know
         </h2>
-        <p className="text-sm text-slate-400 mt-2">
-          Transparency regarding our client-side architecture, lifetime pass, and security model.
+        <p className="text-xs sm:text-sm text-slate-600 mt-2 font-medium">
+          Straight answers regarding zero-cloud privacy, client-side memory execution, and the $7/mo subscription.
         </p>
       </div>
 
-      <div className="space-y-3">
-        {FAQ_DATA.map((item, idx) => {
+      <div className="space-y-3.5">
+        {FAQ_DATA.map((faq, idx) => {
           const isOpen = openIdx === idx;
           return (
             <div
               key={idx}
-              className={`rounded-2xl border transition-all overflow-hidden ${
-                isOpen
-                  ? 'bg-slate-900/80 border-cyan-500/40 shadow-lg shadow-cyan-500/5'
-                  : 'bg-slate-900/40 border-slate-800 hover:border-slate-700/80'
+              className={`rounded-3xl border transition-all overflow-hidden ${
+                isOpen 
+                  ? 'bg-white border-[#00A3AD] shadow-[0_8px_30px_rgba(0,163,173,0.12)]' 
+                  : 'bg-white/90 border-slate-200/90 hover:border-slate-300'
               }`}
             >
               <button
-                onClick={() => toggleAccordion(idx)}
-                className="w-full p-5 text-left flex items-center justify-between gap-4 cursor-pointer"
+                type="button"
+                onClick={() => toggleFaq(idx)}
+                className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-400">
-                    {item.category}
+                  <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF]">
+                    {faq.category}
                   </span>
-                  <h4 className="text-sm sm:text-base font-bold text-slate-100">
-                    {item.question}
-                  </h4>
+                  <h3 className="text-sm sm:text-base font-black text-[#0A2540]">
+                    {faq.question}
+                  </h3>
                 </div>
-                <div
-                  className={`p-1.5 rounded-full bg-slate-800/80 text-slate-300 transition-transform ${
-                    isOpen ? 'rotate-180 text-cyan-400 bg-cyan-950/60' : ''
-                  }`}
-                >
+                <div className={`p-2 rounded-full transition-transform ${isOpen ? 'bg-[#E6F8F9] text-[#007A82] rotate-180' : 'text-slate-400'}`}>
                   <ChevronDown className="w-4 h-4" />
                 </div>
               </button>
 
               {isOpen && (
-                <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 mt-1">
-                  {item.answer}
+                <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 font-medium">
+                  {faq.answer}
                 </div>
               )}
             </div>
           );
         })}
-      </div>
-
-      {/* Security Seal Bottom Note */}
-      <div className="mt-8 p-4 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-violet-950/40 border border-cyan-500/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-cyan-500/20 text-cyan-300 shrink-0">
-            <Lock className="w-5 h-5" />
-          </div>
-          <div>
-            <h5 className="text-xs font-bold text-white">Have a technical compliance question?</h5>
-            <p className="text-[11px] text-slate-400">
-              Read our zero-log architecture whitepaper in the legal section.
-            </p>
-          </div>
-        </div>
-        <a
-          href="/privacy-policy"
-          className="text-xs font-semibold text-cyan-300 hover:text-cyan-200 underline underline-offset-4"
-        >
-          View Privacy Architecture →
-        </a>
       </div>
     </section>
   );

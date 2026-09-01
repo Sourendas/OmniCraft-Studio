@@ -12,9 +12,6 @@ import {
   Image as ImageIcon, 
   Music, 
   ArrowLeft, 
-  Check, 
-  CheckCircle2, 
-  AlertCircle,
   FileCode
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -98,72 +95,93 @@ export const FileConverterPage: React.FC = () => {
 
       if (type === 'image') {
         // Image conversion via HTML Canvas & Blob API
-        convertedBlob = await new Promise((resolve, reject) => {
+        convertedBlob = await new Promise<Blob>((resolve, reject) => {
           const img = new Image();
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            img.src = e.target?.result as string;
-          };
+          const url = URL.createObjectURL(file);
           img.onload = () => {
             const canvas = document.createElement('canvas');
-            canvas.width = img.width;
-            canvas.height = img.height;
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
             const ctx = canvas.getContext('2d');
-            if (!ctx) return reject('No canvas context');
+            if (!ctx) return reject(new Error('Canvas context unavailable'));
+
+            // Fill white background for jpg conversions from transparent pngs
+            if (targetFormat === 'jpg' || targetFormat === 'jpeg') {
+              ctx.fillStyle = '#FFFFFF';
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
             ctx.drawImage(img, 0, 0);
+            URL.revokeObjectURL(url);
 
-            const mime =
-              targetFormat === 'png'
-                ? 'image/png'
-                : targetFormat === 'jpg' || targetFormat === 'jpeg'
-                ? 'image/jpeg'
-                : targetFormat === 'webp'
-                ? 'image/webp'
-                : 'image/png';
+            const mimeMap: Record<string, string> = {
+              webp: 'image/webp',
+              png: 'image/png',
+              jpg: 'image/jpeg',
+              jpeg: 'image/jpeg'
+            };
 
-            canvas.toBlob((blob) => {
-              if (blob) resolve(blob);
-              else reject('Failed to convert image');
-            }, mime, 0.92);
+            canvas.toBlob(
+              (blob) => {
+                if (blob) resolve(blob);
+                else reject(new Error('Blob creation failed'));
+              },
+              mimeMap[targetFormat] || 'image/png',
+              0.92
+            );
           };
-          img.onerror = () => reject('Failed to load image');
-          reader.readAsDataURL(file);
+          img.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error('Image failed to decode'));
+          };
+          img.src = url;
         });
-      } else if (type === 'document') {
-        // Document conversion (DOCX -> PDF or TXT -> PDF)
+      } else if (type === 'document' && file.name.endsWith('.docx') && targetFormat === 'pdf') {
+        // DOCX -> Text Extract -> Clean PDF Render via mammoth + jsPDF
+        const arrayBuffer = await file.arrayBuffer();
+        const { value: rawText } = await mammoth.extractRawText({ arrayBuffer });
+
+        const doc = new jsPDF({ unit: 'pt', format: 'letter' });
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10);
+        doc.setTextColor(30, 35, 45);
+
+        const splitText = doc.splitTextToSize(rawText || 'Empty document extracted.', 530);
+        let cursorY = 40;
+        const pageHeight = 750;
+
+        splitText.forEach((line: string) => {
+          if (cursorY > pageHeight) {
+            doc.addPage();
+            cursorY = 40;
+          }
+          doc.text(line, 40, cursorY);
+          cursorY += 12;
+        });
+
+        const pdfOutput = doc.output('blob');
+        convertedBlob = pdfOutput;
+      } else if (type === 'document' && targetFormat === 'txt') {
         if (file.name.endsWith('.docx')) {
           const arrayBuffer = await file.arrayBuffer();
-          const result = await mammoth.extractRawText({ arrayBuffer });
-          const text = result.value || 'Extracted Document Content';
-
-          const doc = new jsPDF();
-          doc.setFontSize(11);
-          const splitText = doc.splitTextToSize(text, 180);
-          doc.text(splitText, 15, 20);
-          const pdfBytes = doc.output('arraybuffer');
-          convertedBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+          const { value: rawText } = await mammoth.extractRawText({ arrayBuffer });
+          convertedBlob = new Blob([rawText], { type: 'text/plain;charset=utf-8' });
         } else {
-          // Plain text / html to PDF
           const text = await file.text();
-          const doc = new jsPDF();
-          doc.setFontSize(11);
-          const splitText = doc.splitTextToSize(text, 180);
-          doc.text(splitText, 15, 20);
-          const pdfBytes = doc.output('arraybuffer');
-          convertedBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+          convertedBlob = new Blob([text], { type: 'text/plain;charset=utf-8' });
         }
       } else if (type === 'audio') {
-        // Audio conversion via Web Audio API AudioBuffer -> WAV encoder
+        // Audio conversion via AudioContext Web Audio decoding & WAV encoder
+        const audioCtx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
         const arrayBuffer = await file.arrayBuffer();
-        const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
-        const decoded = await audioCtx.decodeAudioData(arrayBuffer.slice(0));
+        const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
 
-        // Encode AudioBuffer to standard WAV Blob
-        const wavBuffer = encodeWav(decoded);
+        const wavBuffer = encodeWAV(audioBuffer);
         convertedBlob = new Blob([wavBuffer], { type: 'audio/wav' });
+        await audioCtx.close();
       } else {
-        const text = await file.text();
-        convertedBlob = new Blob([text], { type: 'text/plain' });
+        // Fallback pass-through
+        convertedBlob = file;
       }
 
       setFiles(prev =>
@@ -188,7 +206,7 @@ export const FileConverterPage: React.FC = () => {
   };
 
   // WAV Encoder helper for AudioBuffer
-  const encodeWav = (audioBuffer: AudioBuffer): ArrayBuffer => {
+  const encodeWAV = (audioBuffer: AudioBuffer): ArrayBuffer => {
     const numChannels = audioBuffer.numberOfChannels;
     const sampleRate = audioBuffer.sampleRate;
     const format = 1; // PCM
@@ -254,20 +272,20 @@ export const FileConverterPage: React.FC = () => {
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-1">
-            <Link to="/" className="text-slate-400 hover:text-cyan-300 flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] mb-1 font-bold">
+            <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
             <span>Productivity & Utility</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
-            <RefreshCw className="w-7 h-7 text-emerald-400" />
+          <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
+            <RefreshCw className="w-7 h-7 text-[#00A3AD]" />
             Universal In-Browser Converter
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Convert Images (PNG, JPG, WebP), Audio (MP3, WAV), and Documents (DOCX to PDF) 100% locally.
           </p>
         </div>
@@ -277,7 +295,7 @@ export const FileConverterPage: React.FC = () => {
             <button
               onClick={handleConvertAll}
               disabled={isConvertingAll}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-cyan-500 hover:from-emerald-500 hover:to-cyan-400 text-white text-xs font-bold shadow-lg shadow-emerald-500/20 transition-all cursor-pointer disabled:opacity-50"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] hover:from-[#00B5B8] hover:to-[#00A3AD] text-white text-xs font-black shadow-lg shadow-teal-500/20 transition-all cursor-pointer disabled:opacity-50"
             >
               <RefreshCw className={`w-4 h-4 ${isConvertingAll ? 'animate-spin' : ''}`} />
               <span>Convert All ({files.length})</span>
@@ -288,20 +306,20 @@ export const FileConverterPage: React.FC = () => {
 
       <div className="my-8 space-y-6">
         {/* Dropzone */}
-        <div className="relative rounded-3xl border-2 border-dashed border-slate-800 hover:border-emerald-500/50 bg-slate-900/40 p-8 text-center backdrop-blur-xl transition-all">
+        <div className="relative rounded-3xl border-2 border-dashed border-[#B3EAEF] hover:border-[#00A3AD] bg-white p-8 sm:p-10 text-center shadow-[0_4px_20px_rgba(10,37,64,0.03)] transition-all">
           <input
             type="file"
             multiple
             onChange={handleFileUpload}
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
           />
-          <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-tr from-emerald-600/20 to-cyan-500/20 border border-emerald-500/30 flex items-center justify-center">
-            <Upload className="w-7 h-7 text-emerald-400" />
+          <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] flex items-center justify-center">
+            <Upload className="w-7 h-7 text-[#00A3AD]" />
           </div>
-          <h3 className="text-base font-bold text-white mb-1">
+          <h3 className="text-base font-black text-[#0A2540] mb-1">
             Drop your Images, Audio, or Documents here
           </h3>
-          <p className="text-xs text-slate-400 max-w-md mx-auto">
+          <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">
             PNG, JPG, WebP, AVIF, MP3, WAV, DOCX, TXT, HTML. Multi-file batch support.
           </p>
         </div>
@@ -309,11 +327,11 @@ export const FileConverterPage: React.FC = () => {
         {/* Files Conversion Queue */}
         {files.length > 0 && (
           <div className="space-y-3">
-            <div className="flex items-center justify-between text-xs text-slate-400">
+            <div className="flex items-center justify-between text-xs text-slate-500 font-bold">
               <span>Conversion Queue ({files.length})</span>
               <button
                 onClick={() => setFiles([])}
-                className="hover:text-rose-400 transition-colors"
+                className="hover:text-rose-600 transition-colors cursor-pointer"
               >
                 Clear Queue
               </button>
@@ -323,20 +341,20 @@ export const FileConverterPage: React.FC = () => {
               {files.map((item) => (
                 <div
                   key={item.id}
-                  className="rounded-2xl bg-slate-900/80 border border-slate-800 p-4 flex flex-col sm:flex-row items-center justify-between gap-4 backdrop-blur-xl"
+                  className="rounded-3xl bg-white border border-slate-200/90 p-4.5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_4px_20px_rgba(10,37,64,0.03)]"
                 >
-                  <div className="flex items-center gap-3 w-full sm:w-auto">
-                    <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 shrink-0">
-                      {item.type === 'image' && <ImageIcon className="w-5 h-5 text-cyan-400" />}
-                      {item.type === 'audio' && <Music className="w-5 h-5 text-purple-400" />}
-                      {item.type === 'document' && <FileText className="w-5 h-5 text-emerald-400" />}
-                      {item.type === 'other' && <FileCode className="w-5 h-5 text-slate-400" />}
+                  <div className="flex items-center gap-3.5 w-full sm:w-auto">
+                    <div className="p-2.5 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] shrink-0">
+                      {item.type === 'image' && <ImageIcon className="w-5 h-5 text-[#007A82]" />}
+                      {item.type === 'audio' && <Music className="w-5 h-5 text-[#0F4C81]" />}
+                      {item.type === 'document' && <FileText className="w-5 h-5 text-emerald-600" />}
+                      {item.type === 'other' && <FileCode className="w-5 h-5 text-slate-600" />}
                     </div>
                     <div className="min-w-0">
-                      <h4 className="text-xs font-bold text-white truncate max-w-[200px] sm:max-w-[260px]">
+                      <h4 className="text-xs font-black text-[#0A2540] truncate max-w-[200px] sm:max-w-[260px]">
                         {item.name}
                       </h4>
-                      <p className="text-[10px] text-slate-400 font-mono">
+                      <p className="text-[10px] text-slate-500 font-mono font-medium">
                         {formatBytes(item.size)} • {item.type.toUpperCase()}
                       </p>
                     </div>
@@ -345,7 +363,7 @@ export const FileConverterPage: React.FC = () => {
                   {/* Target format picker */}
                   <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
                     <div className="flex items-center gap-1.5 text-xs">
-                      <span className="text-slate-500">Convert to:</span>
+                      <span className="text-slate-500 font-bold">Convert to:</span>
                       <select
                         value={item.targetFormat}
                         onChange={(e) => {
@@ -354,7 +372,7 @@ export const FileConverterPage: React.FC = () => {
                             prev.map(f => (f.id === item.id ? { ...f, targetFormat: val, status: 'idle' } : f))
                           );
                         }}
-                        className="px-2.5 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-500"
+                        className="px-3 py-1.5 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs font-mono font-bold text-[#007A82] focus:outline-none focus:border-[#00A3AD]"
                       >
                         {item.type === 'image' && (
                           <>
@@ -389,7 +407,7 @@ export const FileConverterPage: React.FC = () => {
                     {item.status === 'completed' && item.resultBlob && item.resultName ? (
                       <button
                         onClick={() => downloadBlob(item.resultBlob!, item.resultName!)}
-                        className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition-all"
+                        className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-black transition-all cursor-pointer shadow-xs"
                       >
                         <Download className="w-3.5 h-3.5" />
                         <span>Download</span>
@@ -398,9 +416,9 @@ export const FileConverterPage: React.FC = () => {
                       <button
                         onClick={() => convertFile(item)}
                         disabled={item.status === 'converting'}
-                        className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold transition-all disabled:opacity-50"
+                        className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#00A3AD] hover:bg-[#00B5B8] text-white text-xs font-black transition-all disabled:opacity-50 cursor-pointer shadow-xs"
                       >
-                        <RefreshCw className={`w-3.5 h-3.5 ${item.status === 'converting' ? 'animate-spin text-cyan-400' : ''}`} />
+                        <RefreshCw className={`w-3.5 h-3.5 ${item.status === 'converting' ? 'animate-spin' : ''}`} />
                         <span>{item.status === 'converting' ? 'Converting...' : 'Convert'}</span>
                       </button>
                     )}

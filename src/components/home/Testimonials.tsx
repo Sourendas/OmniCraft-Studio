@@ -1,82 +1,73 @@
 import React from 'react';
-import { Star, CheckCircle2, MessageSquare } from 'lucide-react';
 import { TESTIMONIALS_DATA } from '../../data/toolsData';
+import { ShieldCheck, Star, Sparkles } from 'lucide-react';
 
 export const Testimonials: React.FC = () => {
   return (
-    <section id="reviews" className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+    <section id="reviews" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-[11px] font-semibold text-cyan-400 mb-2">
-            <MessageSquare className="w-3 h-3 text-cyan-400" />
-            <span className="uppercase tracking-wider font-bold">Verified Feedback</span>
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-xs font-black text-[#007A82] mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#00A3AD]" />
+            <span className="uppercase tracking-wider">Verified User Stories</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Trusted by 14,000+ Engineers & Creators
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0A2540] tracking-tight">
+            Trusted by 84,000+ Creators & Engineers
           </h2>
         </div>
-        <div className="text-xs text-slate-400 font-mono">
-          Average Rating: <span className="text-yellow-400 font-bold">★ 4.92 / 5.0</span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-bold text-slate-700 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-2xs">
+            Overall Rating: <span className="text-[#FA6400]">4.92 / 5.0</span> (1,420+ Reviews)
+          </span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {TESTIMONIALS_DATA.map((item) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {TESTIMONIALS_DATA.map((t) => (
           <div
-            key={item.id}
-            id={`testimonial-card-${item.id}`}
-            className="rounded-2xl bg-slate-900/30 border border-slate-800 p-5 flex flex-col justify-between hover:border-slate-700/90 transition-all shadow-sm group"
+            key={t.id}
+            className="rounded-3xl bg-white border border-slate-200/90 p-6 flex flex-col justify-between shadow-[0_4px_20px_rgba(10,37,64,0.04)] hover:shadow-[0_12px_35px_rgba(0,163,173,0.10)] hover:border-[#00A3AD] transition-all"
           >
             <div>
-              {/* Top: Stars & Verified Badge */}
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex text-yellow-400 gap-0.5">
-                  {[...Array(item.stars)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+              {/* Star Rating & Verified Pill */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-1 text-[#FA6400]">
+                  {Array.from({ length: t.stars }).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-                {item.verified && (
-                  <div className="flex items-center gap-1 text-[10px] font-mono text-cyan-400 bg-cyan-950/40 px-2 py-0.5 rounded-full border border-cyan-800/40">
-                    <CheckCircle2 className="w-2.5 h-2.5" />
-                    <span>Verified</span>
-                  </div>
+                {t.verified && (
+                  <span className="flex items-center gap-1 text-[10px] font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                    <span>Verified User</span>
+                  </span>
                 )}
               </div>
 
               {/* Quote */}
-              <p className="text-xs text-slate-300 leading-relaxed mb-4 italic">
-                "{item.quote}"
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic font-medium">
+                "{t.quote}"
               </p>
             </div>
 
-            {/* User Details */}
-            <div className="pt-3 border-t border-slate-800/70 flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div
-                  className={`w-7 h-7 rounded-lg border flex items-center justify-center font-bold text-[11px] ${item.avatarBg}`}
-                >
-                  {item.avatarText}
+            {/* Author details */}
+            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-2xl bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] font-bold text-xs flex items-center justify-center font-mono">
+                  {t.avatarText}
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">{item.name}</h4>
-                  <p className="text-[10px] text-slate-400">
-                    {item.role} {item.company ? `• ${item.company}` : ''}
-                  </p>
+                  <h4 className="text-xs font-black text-[#0A2540]">{t.name}</h4>
+                  <p className="text-[11px] text-slate-500 font-medium">{t.role} • {t.company}</p>
                 </div>
               </div>
-
-              <span className="text-[9px] font-mono text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">
-                {item.toolUsed}
+              <span className="text-[10px] font-mono font-bold text-[#008C95] bg-[#F4F8FA] px-2.5 py-1 rounded-full border border-slate-200">
+                {t.toolUsed}
               </span>
             </div>
           </div>
         ))}
       </div>
-
-      <div className="mt-4 p-3 bg-violet-500/10 border border-violet-500/20 rounded-xl text-center">
-        <p className="text-xs text-violet-300 font-medium">Join 14,000+ professionals using client-side utilities today</p>
-      </div>
     </section>
   );
 };
-
