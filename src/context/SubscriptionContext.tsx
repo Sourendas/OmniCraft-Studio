@@ -3,11 +3,13 @@ import confetti from 'canvas-confetti';
 
 interface SubscriptionContextType {
   isPro: boolean;
+  selectedPlan: 'monthly' | 'yearly';
+  setSelectedPlan: (plan: 'monthly' | 'yearly') => void;
   isUpgradeModalOpen: boolean;
   upgradeFeatureName: string;
-  openUpgradeModal: (featureName?: string) => void;
+  openUpgradeModal: (featureName?: string, defaultPlan?: 'monthly' | 'yearly') => void;
   closeUpgradeModal: () => void;
-  activatePro: () => void;
+  activatePro: (plan?: 'monthly' | 'yearly') => void;
   deactivatePro: () => void;
   toggleProTestMode: () => void;
 }
@@ -15,6 +17,7 @@ interface SubscriptionContextType {
 const SubscriptionContext = createContext<SubscriptionContextType | undefined>(undefined);
 
 const PRO_STORAGE_KEY = 'omnicraft_pro_member_v1';
+const PRO_PLAN_KEY = 'omnicraft_pro_plan_v1';
 
 export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isPro, setIsPro] = useState<boolean>(() => {
@@ -26,16 +29,26 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
     }
   });
 
+  const [selectedPlan, setSelectedPlan] = useState<'monthly' | 'yearly'>(() => {
+    try {
+      const stored = localStorage.getItem(PRO_PLAN_KEY);
+      return stored === 'yearly' ? 'yearly' : 'monthly';
+    } catch {
+      return 'yearly'; // Default to best-value yearly
+    }
+  });
+
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState<boolean>(false);
   const [upgradeFeatureName, setUpgradeFeatureName] = useState<string>('Pro Suite');
 
   useEffect(() => {
     try {
       localStorage.setItem(PRO_STORAGE_KEY, String(isPro));
+      localStorage.setItem(PRO_PLAN_KEY, selectedPlan);
     } catch (e) {
       console.warn('LocalStorage not available', e);
     }
-  }, [isPro]);
+  }, [isPro, selectedPlan]);
 
   const fireConfetti = () => {
     try {
@@ -43,15 +56,18 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
         particleCount: 80,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#06b6d4', '#8b5cf6', '#3b82f6', '#ec4899', '#10b981']
+        colors: ['#00A3AD', '#0FB5BA', '#0F4C81', '#FA6400', '#10b981']
       });
     } catch (e) {
       console.warn('Confetti error', e);
     }
   };
 
-  const openUpgradeModal = (featureName = 'Pro Utility') => {
+  const openUpgradeModal = (featureName = 'Pro Utility', defaultPlan?: 'monthly' | 'yearly') => {
     setUpgradeFeatureName(featureName);
+    if (defaultPlan) {
+      setSelectedPlan(defaultPlan);
+    }
     setIsUpgradeModalOpen(true);
   };
 
@@ -59,7 +75,8 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
     setIsUpgradeModalOpen(false);
   };
 
-  const activatePro = () => {
+  const activatePro = (plan?: 'monthly' | 'yearly') => {
+    if (plan) setSelectedPlan(plan);
     setIsPro(true);
     setIsUpgradeModalOpen(false);
     fireConfetti();
@@ -81,6 +98,8 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
     <SubscriptionContext.Provider
       value={{
         isPro,
+        selectedPlan,
+        setSelectedPlan,
         isUpgradeModalOpen,
         upgradeFeatureName,
         openUpgradeModal,

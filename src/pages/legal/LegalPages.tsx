@@ -50,7 +50,7 @@ export const PrivacyPolicyPage: React.FC = () => {
         <section className="space-y-3">
           <h2 className="text-lg font-black text-[#0A2540]">4. Third-Party Integrations</h2>
           <p className="font-medium">
-            When utilizing optional AI prompt rendering, queries are securely routed to public inference endpoints without any personal account tracking. Payment processing for the $7 / Month Subscription is securely handled by Stripe / Lemon Squeezy with standard PCI-DSS Level 1 compliance.
+            When utilizing optional AI prompt rendering, queries are securely routed to public inference endpoints without any personal account tracking. Payment processing for the $6.99 / Month or $69.99 / Year Subscription is securely handled by Stripe / Lemon Squeezy with standard PCI-DSS Level 1 compliance.
           </p>
         </section>
       </div>
@@ -84,16 +84,16 @@ export const TermsPage: React.FC = () => {
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-[#0A2540]">2. $7 / Month Subscription & Commercial License</h2>
+          <h2 className="text-lg font-black text-[#0A2540]">2. Subscription Plans ($6.99/mo & $69.99/yr) & Commercial License</h2>
           <p className="font-medium">
-            The $7 Monthly Subscription grants full, uncapped personal and commercial access to all 10 utility engines, AI resume exports, PDF watermark suites, batch conversion accelerators, and newly released modules. Subscriptions renew automatically every 30 days and can be canceled at any time with zero penalty. All deliverables generated (resumes, optimized graphics, QR codes) are 100% royalty-free for commercial use.
+            OmniCraft Studio offers two Pro plans: Monthly ($6.99 / month) and Yearly ($69.99 / year, saving 16%). Both plans grant full, uncapped personal and commercial access to all 12 utility engines, ATS AI resume exports, PDF watermark suites, batch conversion accelerators, and newly released modules. Subscriptions renew automatically at the end of each billing cycle (monthly or yearly) and can be canceled at any time with zero penalty. All deliverables generated (resumes, optimized graphics, QR codes, SVGs) are 100% royalty-free for commercial use.
           </p>
         </section>
 
         <section className="space-y-3">
           <h2 className="text-lg font-black text-[#0A2540]">3. 30-Day Money-Back Guarantee & Cancellation</h2>
           <p className="font-medium">
-            We offer an unconditional 30-day money-back guarantee on your initial $7 Monthly Subscription charge. You can cancel your subscription anytime in one click from your account dashboard or via our support portal.
+            We offer an unconditional 30-day money-back guarantee on your initial Pro Subscription charge (both monthly and yearly plans). You can cancel your subscription anytime in one click from your account dashboard or via our support portal.
           </p>
         </section>
       </div>

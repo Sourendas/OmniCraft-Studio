@@ -17,7 +17,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
         className={`flex items-center justify-center gap-2 py-2 px-4 rounded-full bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 my-4 shadow-2xs ${className}`}
       >
         <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-        <span className="font-black">OmniCraft Pro Active ($7/mo)</span>
+        <span className="font-black">OmniCraft Pro Active</span>
         <span className="text-emerald-300">•</span>
         <span className="font-bold">100% Ad-Free Experience</span>
         <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
@@ -55,7 +55,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
             onClick={() => openUpgradeModal('Ad-Free Experience')}
             className="text-[11px] text-slate-500 hover:text-[#00A3AD] px-2 py-1 transition-colors font-bold cursor-pointer"
           >
-            Remove ($7/mo)
+            Remove ($6.99/mo)
           </button>
           <a
             href="#pricing"
@@ -92,7 +92,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
             onClick={() => openUpgradeModal('Ad-Free Experience')}
             className="w-full py-2.5 px-3 rounded-full bg-[#E6F8F9] hover:bg-[#D0F2F3] border border-[#B3EAEF] text-xs font-black text-[#007A82] transition-all mb-2 cursor-pointer"
           >
-            Remove Ads ($7 / Month)
+            Remove Ads ($6.99 / Month)
           </button>
           <span className="text-[10px] text-slate-400 font-mono">Verified Ad Partner</span>
         </div>

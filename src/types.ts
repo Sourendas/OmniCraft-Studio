@@ -6,7 +6,7 @@ export interface ToolItem {
   detailedDescription?: string;
   route: string;
   iconName: string;
-  badge: 'Free' | 'Pro $7/mo' | 'AI Powered' | string;
+  badge: 'Free' | 'Pro $6.99/mo' | 'Pro $69.99/yr' | 'AI Powered' | string;
   gradient: string;
   highlights: string[];
   image: string;
@@ -22,6 +22,7 @@ export interface FaqItem {
 
 export interface SubscriptionState {
   isPro: boolean;
+  selectedPlan?: 'monthly' | 'yearly';
   proActivatedAt?: string;
   isUpgradeModalOpen: boolean;
   upgradeFeatureName: string;

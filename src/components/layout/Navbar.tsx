@@ -112,7 +112,7 @@ export const Navbar: React.FC = () => {
             href={isHome ? "#pricing" : "/#pricing"}
             className="hover:text-[#00A3AD] transition-colors font-bold text-slate-700"
           >
-            Pricing ($7/mo)
+            Pricing ($6.99/mo)
           </a>
           <a 
             href={isHome ? "#faq" : "/#faq"}
@@ -146,7 +146,7 @@ export const Navbar: React.FC = () => {
               className="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-black shadow-xs hover:bg-emerald-100 transition-all"
             >
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span className="hidden sm:inline">PRO ACTIVE ($7/MO)</span>
+              <span className="hidden sm:inline">PRO ACTIVE</span>
               <span className="sm:hidden">PRO</span>
             </div>
           ) : (
@@ -156,8 +156,8 @@ export const Navbar: React.FC = () => {
               className="relative px-4 sm:px-5 py-2.5 bg-gradient-to-r from-[#00A3AD] to-[#008C95] hover:from-[#00B5B8] hover:to-[#00A3AD] text-white rounded-full font-black text-xs shadow-md shadow-teal-500/20 transition-all overflow-hidden group cursor-pointer active:scale-95 flex items-center gap-1.5 tracking-tight"
             >
               <Sparkles className="w-3.5 h-3.5 text-white animate-pulse" />
-              <span className="hidden sm:inline">UPGRADE TO PRO ($7/MO)</span>
-              <span className="sm:hidden">PRO ($7)</span>
+              <span className="hidden sm:inline">UPGRADE TO PRO ($6.99/MO)</span>
+              <span className="sm:hidden">PRO ($6.99)</span>
             </button>
           )}
 
@@ -212,7 +212,7 @@ export const Navbar: React.FC = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="text-xs text-slate-800 font-bold py-2.5 px-3 hover:bg-[#E6F8F9] rounded-xl"
             >
-              Pricing ($7 / Month)
+              Pricing ($6.99/mo & $69.99/yr)
             </a>
             <a
               href="#faq"

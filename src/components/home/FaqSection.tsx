@@ -20,7 +20,7 @@ export const FaqSection: React.FC = () => {
           Everything You Need to Know
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 mt-2 font-medium">
-          Straight answers regarding zero-cloud privacy, client-side memory execution, and the $7/mo subscription.
+          Straight answers regarding zero-cloud privacy, client-side memory execution, and the $6.99/mo & $69.99/yr subscription plans.
         </p>
       </div>
 

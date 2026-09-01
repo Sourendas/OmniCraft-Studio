@@ -79,23 +79,16 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
   return (
     <section id="tools-grid" className="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
       {/* Header bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 pb-4 border-b border-slate-200/80">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#00A3AD] animate-pulse" />
-            <h2 className="text-base font-black uppercase tracking-wider text-[#0A2540]">
-              12 In-Browser Sovereign Power Engines
-            </h2>
-          </div>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
-            Click any feature image or card for instant visual overview, workflow steps, and architectural details.
-          </p>
-        </div>
+      <div className="mb-8 pb-4 border-b border-slate-200/80">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-mono font-bold px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-[#007A82]">
-            {filteredTools.length} of 12 Ready
-          </span>
+          <span className="w-2.5 h-2.5 rounded-full bg-[#00A3AD] animate-pulse" />
+          <h2 className="text-base font-black uppercase tracking-wider text-[#0A2540]">
+            12 In-Browser Sovereign Power Engines
+          </h2>
         </div>
+        <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
+          Click any feature image or card for instant visual overview, workflow steps, and architectural details.
+        </p>
       </div>
 
       {filteredTools.length === 0 ? (
@@ -121,6 +114,13 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
                     src={tool.image}
                     alt={tool.screenshotAlt || tool.name}
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      // Fallback if image fails to load
+                      const target = e.currentTarget;
+                      if (!target.src.includes('photo-1607604276583-eef5d076aa5f')) {
+                        target.src = 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80';
+                      }
+                    }}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A2540]/60 via-transparent to-black/10" />
@@ -255,6 +255,12 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
                   src={activePreviewTool.image}
                   alt={activePreviewTool.screenshotAlt || activePreviewTool.name}
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.src.includes('photo-1607604276583-eef5d076aa5f')) {
+                      target.src = 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80';
+                    }
+                  }}
                   className="w-full h-60 object-cover object-center"
                 />
               </div>

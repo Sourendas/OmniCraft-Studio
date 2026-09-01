@@ -9,7 +9,7 @@ export const TOOLS_DATA: ToolItem[] = [
     detailedDescription: 'Build high-impact, ATS-optimized resumes tailored for modern applicant tracking systems. Analyze keyword match density against target job descriptions, enhance bullet points with action verbs, and export publication-ready PDF documents without data ever leaving your browser.',
     route: '/resume-builder',
     iconName: 'FileText',
-    badge: 'Pro $7/mo',
+    badge: 'Pro $6.99/mo',
     gradient: 'from-amber-500/20 via-orange-500/10 to-yellow-500/20',
     highlights: ['ATS Keyword Scanner', 'AI Bullet Enhancer', 'Custom Layouts', 'Instant PDF Export'],
     image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80',
@@ -28,7 +28,7 @@ export const TOOLS_DATA: ToolItem[] = [
     detailedDescription: 'Comprehensive client-side PDF workstation. Drag, reorder, rotate, split, and merge multiple documents seamlessly. Embed custom text or image watermarks, redact sensitive fields, and update document metadata privately in browser memory.',
     route: '/pdf-suite',
     iconName: 'Layers',
-    badge: 'Pro $7/mo',
+    badge: 'Pro $6.99/mo',
     gradient: 'from-violet-500/20 via-purple-500/10 to-fuchsia-500/20',
     highlights: ['Visual Page Reordering', 'Batch Merge & Split', 'Custom Watermarking', 'Metadata Editor'],
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
@@ -126,7 +126,7 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-indigo-500/20 via-purple-500/10 to-pink-500/20',
     highlights: ['URL, Wi-Fi & vCard', 'Gradient & Color Styling', 'Custom Corner Modules', 'PNG & SVG Export'],
-    image: 'https://images.unsplash.com/photo-1595079672139-62309736857b?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'Branded QR Code Designer and Vector SVG Exporter',
     howItWorks: [
       'Select data type (URL, Wi-Fi, vCard contact, plain text)',
@@ -238,9 +238,9 @@ export const FAQ_DATA: FaqItem[] = [
     answer: 'Absolutely not. OmniCraft Studio operates on a 100% client-side architecture. All file conversions, PDF operations, image compressions, SVG editing, and cryptography calculations execute strictly within your browser memory (WebAssembly, Web Audio API, Canvas, and Web Crypto API). Zero bytes leave your device.'
   },
   {
-    category: 'Billing & Subscription',
-    question: 'What is included in the $7/month Pro Subscription?',
-    answer: 'The $7/month Pro Subscription gives you unlimited, uncapped access to Pro features: Full PDF Studio export/watermarking, ATS-Optimized Resume PDF downloads, high-res vector and image exports, removal of all advertisements across the app, and continuous priority feature updates. You can cancel your subscription at any time with one click.'
+    category: 'Billing & Plans',
+    question: 'What is included in the Pro Subscription ($6.99/mo or $69.99/yr)?',
+    answer: 'The OmniCraft Pro Subscription gives you unlimited, uncapped access to Pro features: Full PDF Studio export/watermarking, ATS-Optimized Resume PDF downloads, high-res vector and image exports, complete removal of all advertisements across the app, and continuous priority feature updates. Choose between flexible monthly billing at $6.99/month or the yearly plan at $69.99/year (save 16%, only $5.83/mo equivalent).'
   },
   {
     category: 'Commercial Use',
@@ -250,11 +250,11 @@ export const FAQ_DATA: FaqItem[] = [
   {
     category: 'Cancellation & Billing',
     question: 'Can I cancel my subscription anytime?',
-    answer: 'Yes, you can cancel your $7/month subscription at any time without any penalties or hidden fees. Your Pro benefits remain active until the end of your current monthly billing period.'
+    answer: 'Yes, you can cancel your subscription ($6.99/mo or $69.99/yr) at any time without any penalties or hidden fees. Your Pro benefits remain active until the end of your paid billing period.'
   },
   {
     category: 'Refund Policy',
     question: 'Is there a money-back guarantee for the Pro Subscription?',
-    answer: 'Yes. We provide an unconditional 30-day money-back guarantee if you are not completely satisfied with your OmniCraft Studio Pro subscription.'
+    answer: 'Yes. We provide an unconditional 30-day money-back guarantee on both monthly and yearly plans if you are not completely satisfied with your OmniCraft Studio Pro subscription.'
   }
 ];

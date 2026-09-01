@@ -161,7 +161,7 @@ export const HealthCalcPage: React.FC = () => {
           className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-400 hover:to-amber-400 text-white text-xs font-bold shadow-lg shadow-rose-500/20 transition-all cursor-pointer"
         >
           <Download className="w-4 h-4" />
-          <span>Export Blueprint PDF {!isPro && '($7 Pro)'}</span>
+          <span>Export Blueprint PDF {!isPro && '(Pro Plan)'}</span>
         </button>
       </div>
 

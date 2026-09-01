@@ -73,7 +73,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
   const quickShortcuts = [
     { label: 'Security Architecture Audit', path: '/#architecture', icon: ShieldCheck },
     { label: 'Curated Workflows', path: '/#workflows', icon: Zap },
-    { label: 'Pricing & Pro Plan ($7/mo)', path: '/#pricing', icon: Command }
+    { label: 'Pricing & Pro Plans ($6.99/mo & $69.99/yr)', path: '/#pricing', icon: Command }
   ];
 
   const handleSelect = (path: string) => {

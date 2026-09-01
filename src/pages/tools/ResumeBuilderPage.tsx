@@ -396,7 +396,7 @@ export const ResumeBuilderPage: React.FC = () => {
             className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] hover:from-[#00B5B8] hover:to-[#00A3AD] text-white text-xs font-black shadow-lg shadow-teal-500/20 transition-all cursor-pointer active:scale-95"
           >
             <Download className="w-4 h-4" />
-            <span>Download ATS PDF {!isPro && '($7 Pro)'}</span>
+            <span>Download ATS PDF {!isPro && '(Pro Plan)'}</span>
           </button>
         </div>
       </div>

@@ -168,7 +168,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/terms-of-service" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Terms of Service ($7/mo)
+                  Terms of Service ($6.99/mo)
                 </Link>
               </li>
               <li>
