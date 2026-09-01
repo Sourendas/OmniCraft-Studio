@@ -50,7 +50,7 @@ export const PrivacyPolicyPage: React.FC = () => {
         <section className="space-y-3">
           <h2 className="text-lg font-bold text-white">4. Third-Party Integrations</h2>
           <p>
-            When utilizing optional AI prompt rendering, queries are securely routed to public inference endpoints (Pollinations.ai) without any personal account tracking. Payment processing for the $7 Lifetime Pass is securely handled by Stripe / Lemon Squeezy with standard PCI-DSS Level 1 compliance.
+            When utilizing optional AI prompt rendering, queries are securely routed to public inference endpoints (Pollinations.ai) without any personal account tracking. Payment processing for the $7 / Month Subscription is securely handled by Stripe / Lemon Squeezy with standard PCI-DSS Level 1 compliance.
           </p>
         </section>
       </div>
@@ -61,13 +61,13 @@ export const PrivacyPolicyPage: React.FC = () => {
 export const TermsPage: React.FC = () => {
   return (
     <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <Link to="/" className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 hover:text-cyan-300 mb-6">
+      <Link to="/" className="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300 mb-6">
         <ArrowLeft className="w-3.5 h-3.5" /> Back to Studio
       </Link>
 
       <div className="rounded-3xl bg-slate-900/60 border border-slate-800 p-8 sm:p-12 backdrop-blur-xl space-y-6 text-slate-300 leading-relaxed text-sm">
         <div className="flex items-center gap-3 pb-6 border-b border-slate-800">
-          <div className="p-3 rounded-2xl bg-violet-500/10 border border-violet-500/20 text-violet-400">
+          <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400">
             <FileText className="w-8 h-8" />
           </div>
           <div>
@@ -84,16 +84,16 @@ export const TermsPage: React.FC = () => {
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-bold text-white">2. $7 Lifetime Pass & Commercial License</h2>
+          <h2 className="text-lg font-bold text-white">2. $7 / Month Subscription & Commercial License</h2>
           <p>
-            The $7 Lifetime Pass grants perpetual, uncapped personal and commercial access to all 10 utility engines, AI resume exports, PDF watermark suites, and future modules. All deliverables generated (resumes, optimized graphics, QR codes) are 100% royalty-free for commercial use.
+            The $7 Monthly Subscription grants full, uncapped personal and commercial access to all 10 utility engines, AI resume exports, PDF watermark suites, batch conversion accelerators, and newly released modules. Subscriptions renew automatically every 30 days and can be canceled at any time with zero penalty. All deliverables generated (resumes, optimized graphics, QR codes) are 100% royalty-free for commercial use.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-bold text-white">3. 30-Day Money-Back Guarantee</h2>
+          <h2 className="text-lg font-bold text-white">3. 30-Day Money-Back Guarantee & Cancellation</h2>
           <p>
-            We offer an unconditional 30-day money-back guarantee on all $7 Lifetime Pass purchases. If you are unsatisfied for any reason, reach out via our contact portal for an immediate full refund.
+            We offer an unconditional 30-day money-back guarantee on your initial $7 Monthly Subscription charge. You can cancel your subscription anytime in one click from your account dashboard or via our support portal.
           </p>
         </section>
       </div>

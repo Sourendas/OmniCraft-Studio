@@ -63,15 +63,15 @@ export const UpgradeModal: React.FC = () => {
 
           {/* Header */}
           <div className="text-center sm:text-left mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500/10 to-violet-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-              <span>OmniCraft Pro Lifetime Pass</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border border-amber-500/30 text-xs font-semibold text-amber-300 mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>OmniCraft Pro Monthly Subscription</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Unlock Pro Power — Only <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400">$7 Deal</span>
+              Unlock All 10 Pro Engines — Just <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">$7 / Month</span>
             </h2>
             <p className="text-sm text-slate-400 mt-1">
-              You selected <span className="text-cyan-300 font-medium font-mono">[{upgradeFeatureName}]</span>. Upgrade once to unlock all pro capabilities forever.
+              You selected <span className="text-amber-300 font-medium font-mono">[{upgradeFeatureName}]</span>. Subscribe for full uncapped capabilities across all tools. Cancel anytime.
             </p>
           </div>
 
@@ -85,7 +85,7 @@ export const UpgradeModal: React.FC = () => {
               { title: '100% Client-Side Privacy Guarantee', desc: 'No files or documents ever touch remote servers' }
             ].map((item, idx) => (
               <div key={idx} className="flex items-start gap-3">
-                <div className="mt-0.5 rounded-full p-1 bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 shrink-0">
+                <div className="mt-0.5 rounded-full p-1 bg-amber-500/20 text-amber-400 border border-amber-500/30 shrink-0">
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -97,19 +97,19 @@ export const UpgradeModal: React.FC = () => {
           </div>
 
           {/* Test Mode Quick Activator */}
-          <div className="mb-6 p-3.5 rounded-xl bg-gradient-to-r from-amber-500/10 via-cyan-500/10 to-violet-500/10 border border-amber-500/30 flex items-center justify-between gap-3">
+          <div className="mb-6 p-3.5 rounded-xl bg-gradient-to-r from-amber-500/10 via-yellow-500/10 to-amber-600/10 border border-amber-500/30 flex items-center justify-between gap-3">
             <div>
               <div className="flex items-center gap-1.5">
                 <Zap className="w-4 h-4 text-amber-400" />
                 <span className="text-xs font-bold text-amber-300">Live Client Review Mode</span>
               </div>
-              <p className="text-[11px] text-slate-400">Instantly test all Pro export and download gateways.</p>
+              <p className="text-[11px] text-slate-400">Instantly activate Pro subscription to test all export gateways.</p>
             </div>
             <button
               id="instant-activate-pro-btn"
               type="button"
               onClick={activatePro}
-              className="px-3 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold transition-all shrink-0 active:scale-95"
+              className="px-3 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold transition-all shrink-0 active:scale-95 cursor-pointer"
             >
               ⚡ Instant 1-Click Pro
             </button>
@@ -122,7 +122,7 @@ export const UpgradeModal: React.FC = () => {
                 <Lock className="w-3.5 h-3.5 text-emerald-400" />
                 256-Bit Encrypted Stripe & LemonSqueezy Checkout
               </span>
-              <span className="text-cyan-400 font-bold">$7.00 USD</span>
+              <span className="text-amber-400 font-bold">$7.00 USD / month</span>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
@@ -131,7 +131,7 @@ export const UpgradeModal: React.FC = () => {
                 onClick={() => setPaymentMethod('card')}
                 className={`py-2 px-3 rounded-xl border text-xs font-medium flex items-center justify-center gap-2 transition-all ${
                   paymentMethod === 'card'
-                    ? 'bg-slate-800 border-cyan-500/60 text-cyan-300'
+                    ? 'bg-slate-800 border-amber-500/60 text-amber-300'
                     : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
                 }`}
               >
@@ -143,7 +143,7 @@ export const UpgradeModal: React.FC = () => {
                 onClick={() => setPaymentMethod('apple_pay')}
                 className={`py-2 px-3 rounded-xl border text-xs font-medium flex items-center justify-center gap-2 transition-all ${
                   paymentMethod === 'apple_pay'
-                    ? 'bg-slate-800 border-cyan-500/60 text-cyan-300'
+                    ? 'bg-slate-800 border-amber-500/60 text-amber-300'
                     : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
                 }`}
               >
@@ -159,7 +159,7 @@ export const UpgradeModal: React.FC = () => {
                     type="text"
                     value={cardName}
                     onChange={(e) => setCardName(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 focus:outline-none focus:border-cyan-500/60"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 focus:outline-none focus:border-amber-500/60"
                     placeholder="Jane Doe"
                   />
                 </div>
@@ -169,7 +169,7 @@ export const UpgradeModal: React.FC = () => {
                     type="text"
                     value={cardNumber}
                     onChange={(e) => setCardNumber(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 font-mono focus:outline-none focus:border-cyan-500/60"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 font-mono focus:outline-none focus:border-amber-500/60"
                     placeholder="4242 4242 4242 4242"
                   />
                 </div>
@@ -180,7 +180,7 @@ export const UpgradeModal: React.FC = () => {
                       type="text"
                       value={expiry}
                       onChange={(e) => setExpiry(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 font-mono focus:outline-none focus:border-cyan-500/60"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 font-mono focus:outline-none focus:border-amber-500/60"
                       placeholder="12/28"
                     />
                   </div>
@@ -190,7 +190,7 @@ export const UpgradeModal: React.FC = () => {
                       type="text"
                       value={cvc}
                       onChange={(e) => setCvc(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 font-mono focus:outline-none focus:border-cyan-500/60"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 font-mono focus:outline-none focus:border-amber-500/60"
                       placeholder="123"
                     />
                   </div>
@@ -198,7 +198,7 @@ export const UpgradeModal: React.FC = () => {
               </div>
             ) : (
               <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-center text-xs text-slate-400">
-                Express 1-touch checkout with Apple Pay, Google Pay, or Link.
+                Express 1-touch subscription with Apple Pay, Google Pay, or Link.
               </div>
             )}
 
@@ -206,27 +206,27 @@ export const UpgradeModal: React.FC = () => {
               id="pay-and-unlock-btn"
               type="submit"
               disabled={isProcessing}
-              className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 hover:from-cyan-400 hover:via-blue-500 hover:to-violet-500 text-white font-bold text-sm shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 cursor-pointer"
+              className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-400 hover:via-amber-500 hover:to-yellow-500 text-slate-950 font-black text-sm shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 cursor-pointer"
             >
               {isProcessing ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  <span>Authorizing $7 Lifetime Access...</span>
+                  <div className="w-4 h-4 border-2 border-slate-950/30 border-t-slate-950 rounded-full animate-spin" />
+                  <span>Authorizing $7/mo Subscription...</span>
                 </>
               ) : (
                 <>
                   <ShieldCheck className="w-4 h-4" />
-                  <span>Pay $7 & Unlock Pro Lifetime</span>
+                  <span>Start $7 / Month Subscription</span>
                 </>
               )}
             </button>
 
             <div className="flex items-center justify-center gap-4 text-[11px] text-slate-500 pt-1">
-              <span>30-Day Refund Policy</span>
-              <span>•</span>
               <span>Cancel Anytime</span>
               <span>•</span>
-              <span>Zero Automatic Renewals</span>
+              <span>30-Day Money-Back Guarantee</span>
+              <span>•</span>
+              <span>Encrypted Billing</span>
             </div>
           </form>
         </motion.div>

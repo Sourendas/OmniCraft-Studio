@@ -22,21 +22,21 @@ export const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/70 backdrop-blur-md transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-4">
-        {/* Brand Logo */}
-        <Link 
-          to="/" 
-          id="navbar-brand-logo"
-          className="flex items-center gap-2.5 group shrink-0"
-        >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-cyan-400 flex items-center justify-center shadow-[0_0_15px_rgba(139,92,246,0.5)] transition-transform group-hover:scale-105">
-            <Zap className="w-4.5 h-4.5 text-white" />
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="text-lg font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-400">
-              OmniCraft Studio
-            </span>
-          </div>
-        </Link>
+          {/* Brand Logo */}
+          <Link 
+            to="/" 
+            id="navbar-brand-logo"
+            className="flex items-center gap-2.5 group shrink-0"
+          >
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-transform group-hover:scale-105">
+              <Zap className="w-4.5 h-4.5 text-slate-950" />
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-lg font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-amber-100 to-amber-300">
+                OmniCraft Studio
+              </span>
+            </div>
+          </Link>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-400">
@@ -119,12 +119,12 @@ export const Navbar: React.FC = () => {
           ) : (
             <button
               id="upgrade-nav-cta-btn"
-              onClick={() => openUpgradeModal('Global Pro Upgrade')}
-              className="relative px-4 py-1.5 bg-slate-100 text-slate-950 rounded-full font-bold hover:bg-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] overflow-hidden group cursor-pointer"
+              onClick={() => openUpgradeModal('Global Pro Subscription')}
+              className="relative px-4 py-1.5 bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-950 rounded-full font-extrabold hover:brightness-110 transition-all shadow-[0_0_20px_rgba(245,158,11,0.3)] overflow-hidden group cursor-pointer"
             >
               <span className="relative z-10 text-xs tracking-tight flex items-center gap-1.5">
-                <Sparkles className="w-3 h-3 text-violet-600" />
-                <span>UPGRADE TO PRO ($7)</span>
+                <Sparkles className="w-3 h-3 text-slate-950" />
+                <span>UPGRADE TO PRO ($7/MO)</span>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
             </button>
@@ -156,7 +156,7 @@ export const Navbar: React.FC = () => {
                 className="flex items-center justify-between p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80 text-xs text-slate-200"
               >
                 <span>{t.name}</span>
-                <span className="text-[10px] text-cyan-400 font-mono">{t.badge}</span>
+                <span className="text-[10px] text-amber-400 font-mono">{t.badge}</span>
               </Link>
             ))}
           </div>
@@ -167,7 +167,7 @@ export const Navbar: React.FC = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="text-xs text-slate-300 py-2 px-3 hover:bg-slate-900 rounded-lg"
             >
-              Pricing ($7 Lifetime)
+              Pricing ($7 / Month)
             </a>
             <a
               href="#reviews"

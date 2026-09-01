@@ -3,11 +3,15 @@ export interface ToolItem {
   name: string;
   category: 'Document & AI' | 'Media & Graphics' | 'Developer & Data' | 'Productivity & Utility';
   description: string;
+  detailedDescription?: string;
   route: string;
   iconName: string;
-  badge: 'Free' | 'Pro $7' | 'AI Powered';
+  badge: 'Free' | 'Pro $7/mo' | 'AI Powered' | string;
   gradient: string;
   highlights: string[];
+  image: string;
+  howItWorks?: string[];
+  screenshotAlt?: string;
 }
 
 export interface Testimonial {

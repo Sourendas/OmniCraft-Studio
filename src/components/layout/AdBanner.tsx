@@ -90,9 +90,9 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
         <div className="pt-3 border-t border-slate-800 mt-4">
           <button
             onClick={() => openUpgradeModal('Ad-Free Experience')}
-            className="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-cyan-300 transition-all mb-2"
+            className="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-amber-300 transition-all mb-2"
           >
-            Remove Ads for $7 (Lifetime)
+            Remove Ads for $7 / Month
           </button>
           <span className="text-[9px] text-slate-500 font-mono">Google AdSense Verified</span>
         </div>

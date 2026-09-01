@@ -90,17 +90,17 @@ export const Hero: React.FC<HeroProps> = ({
         >
           {!isPro ? (
             <button
-              onClick={() => openUpgradeModal('Hero Lifetime Pass')}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 hover:from-cyan-400 hover:via-blue-500 hover:to-violet-500 text-white font-extrabold text-xs shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2 group cursor-pointer"
+              onClick={() => openUpgradeModal('Hero Pro Subscription')}
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-400 hover:via-amber-500 hover:to-yellow-500 text-slate-950 font-black text-xs shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-2 group cursor-pointer"
             >
-              <Sparkles className="w-3.5 h-3.5 text-cyan-200" />
-              <span>UPGRADE TO PRO ($7 LIFETIME)</span>
+              <Sparkles className="w-3.5 h-3.5 text-slate-950" />
+              <span>SUBSCRIBE TO PRO ($7/MO)</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </button>
           ) : (
             <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-950/80 border border-emerald-600/60 text-emerald-300 font-bold text-xs">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Pro Lifetime Unlocked</span>
+              <span>Pro Subscription Active ($7/mo)</span>
             </div>
           )}
 
@@ -108,8 +108,8 @@ export const Hero: React.FC<HeroProps> = ({
             href="#tools-grid"
             className="px-4 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white font-semibold text-xs border border-slate-800 transition-all flex items-center justify-center gap-1.5"
           >
-            <Layers className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Explore Bento Grid</span>
+            <Layers className="w-3.5 h-3.5 text-amber-400" />
+            <span>Explore 10 Power Tools</span>
           </a>
         </motion.div>
       </div>
