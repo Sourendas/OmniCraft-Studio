@@ -27,7 +27,7 @@ export const LiveSystemDiagnostics: React.FC = () => {
     if (mem && mem.usedJSHeapSize) {
       setHeapSizeMb(Math.round(mem.usedJSHeapSize / (1024 * 1024)));
     } else {
-      setHeapSizeMb(Math.floor(28 + Math.random() * 12));
+      setHeapSizeMb(-1);
     }
   }, []);
 
@@ -88,7 +88,7 @@ export const LiveSystemDiagnostics: React.FC = () => {
               ) : (
                 <>
                   <Gauge className="w-4 h-4" />
-                  <span>Test Client Compute Speed</span>
+                  <span>Test JavaScript compute sample</span>
                 </>
               )}
             </button>
@@ -98,12 +98,12 @@ export const LiveSystemDiagnostics: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-8">
             <div className="p-4.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-xs font-bold">WASM Runtime</span>
+                <span className="text-xs font-bold">JS runtime</span>
                 <Cpu className="w-4 h-4 text-cyan-400" />
               </div>
               <div className="text-xl font-black text-white font-mono flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>ONLINE</span>
+                <span>READY</span>
               </div>
               <p className="text-[11px] text-slate-400 mt-1 font-mono">
                 {browserHardwareConcurrency} CPU Threads Available
@@ -112,14 +112,14 @@ export const LiveSystemDiagnostics: React.FC = () => {
 
             <div className="p-4.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-xs font-bold">Compute Benchmark</span>
+                <span className="text-xs font-bold">JS compute sample</span>
                 <Zap className="w-4 h-4 text-amber-400" />
               </div>
               <div className="text-xl font-black text-white font-mono">
-                {wasmOpsPerSec ? `${(wasmOpsPerSec / 1000).toFixed(0)}k ops/sec` : 'Ultra Fast'}
+                {wasmOpsPerSec ? `${(wasmOpsPerSec / 1000).toFixed(0)}k loops/sec` : 'Not run yet'}
               </div>
               <p className="text-[11px] text-slate-400 mt-1 font-mono">
-                {wasmOpsPerSec ? 'Measured Client Throughput' : 'Sub-millisecond latency'}
+                {wasmOpsPerSec ? 'JS loop + SHA-256 sample' : 'Click the button to sample'}
               </p>
             </div>
 
@@ -129,24 +129,24 @@ export const LiveSystemDiagnostics: React.FC = () => {
                 <HardDrive className="w-4 h-4 text-cyan-400" />
               </div>
               <div className="text-xl font-black text-white font-mono">
-                {heapSizeMb} MB Active
+                {heapSizeMb >= 0 ? `${heapSizeMb} MB` : 'Not exposed'}
               </div>
               <p className="text-[11px] text-slate-400 mt-1 font-mono">
-                Auto-Disposal Garbage Collection
+                {heapSizeMb >= 0 ? 'performance.memory (Chromium)' : 'Not exposed in this browser'}
               </p>
             </div>
 
             <div className="p-4.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-xs font-bold">Air-Gapped Telemetry</span>
+                <span className="text-xs font-bold">File tools</span>
                 <WifiOff className="w-4 h-4 text-emerald-400" />
               </div>
               <div className="text-xl font-black text-emerald-400 font-mono flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-emerald-400" />
-                <span>0 KB Sent</span>
+                <span>Local tab</span>
               </div>
               <p className="text-[11px] text-slate-400 mt-1 font-mono">
-                Pure Local Execution
+                File tools run locally in this tab
               </p>
             </div>
           </div>

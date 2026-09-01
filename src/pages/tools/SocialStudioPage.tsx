@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react';
-import { useSubscription } from '../../context/SubscriptionContext';
 import { AdBanner } from '../../components/layout/AdBanner';
 import { 
   Type, 
@@ -106,13 +105,13 @@ const UNICODE_STYLES = [
 const PLATFORMS = [
   { name: 'X / Twitter', max: 280, color: 'text-sky-400', border: 'border-sky-500/40' },
   { name: 'Instagram Bio', max: 150, color: 'text-pink-400', border: 'border-pink-500/40' },
-  { name: 'TikTok Bio', max: 80, color: 'text-cyan-400', border: 'border-cyan-500/40' },
+  { name: 'TikTok Bio', max: 80, color: 'text-[#00A3AD]', border: 'border-cyan-500/40' },
   { name: 'LinkedIn Post', max: 3000, color: 'text-blue-400', border: 'border-blue-500/40' },
   { name: 'Threads', max: 500, color: 'text-violet-400', border: 'border-violet-500/40' }
 ];
 
 export const SocialStudioPage: React.FC = () => {
-  const [inputText, setInputText] = useState('Building the sovereign future with OmniCraft Studio ✨');
+  const [inputText, setInputText] = useState('Building in the browser with OmniCraft Studio');
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   const handleCopy = (text: string, index: number) => {
@@ -130,21 +129,21 @@ export const SocialStudioPage: React.FC = () => {
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-1">
-            <Link to="/" className="text-slate-400 hover:text-cyan-300 flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] font-bold mb-1">
+            <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
             <span>Media & Graphics</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
+          <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
             <Type className="w-7 h-7 text-pink-400" />
             Social Typography & Bio Studio
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Convert bios and captions to 20+ Unicode font styles with live platform character meters.
+            Convert bios and captions to Unicode font styles. Starter hooks are static lists.
           </p>
         </div>
       </div>
@@ -152,12 +151,12 @@ export const SocialStudioPage: React.FC = () => {
       <div className="my-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left: Input & Platform Character Limits */}
         <div className="lg:col-span-6 space-y-6">
-          <div className="rounded-3xl bg-slate-900/60 border border-slate-800 p-6 backdrop-blur-xl space-y-4">
+          <div className="rounded-3xl bg-white border border-slate-200 p-6 space-y-4">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+              <label className="text-xs font-bold text-[#0A2540] uppercase tracking-wider">
                 Raw Bio / Caption Input
               </label>
-              <span className="text-xs font-mono text-cyan-400">
+              <span className="text-xs font-mono text-[#007A82] font-bold">
                 {inputText.length} characters • {inputText.trim().split(/\s+/).filter(Boolean).length} words
               </span>
             </div>
@@ -167,21 +166,21 @@ export const SocialStudioPage: React.FC = () => {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Type your caption, tweet, or bio..."
-              className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-800 text-sm text-slate-100 focus:outline-none focus:border-cyan-500 leading-relaxed font-sans"
+              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-sm text-[#0A2540] focus:outline-none focus:border-[#00A3AD] leading-relaxed font-sans"
             />
 
             {/* Quick Hooks Injection */}
             <div className="space-y-2 pt-2">
               <span className="text-[11px] text-slate-400 flex items-center gap-1 font-bold">
                 <Flame className="w-3.5 h-3.5 text-amber-400" />
-                <span>Viral Hook Starters</span>
+                <span>Starter hooks (static lists)</span>
               </span>
               <div className="flex flex-wrap gap-2">
                 {viralHooks.map((h, i) => (
                   <button
                     key={i}
                     onClick={() => setInputText(h)}
-                    className="text-left text-[11px] px-3 py-1.5 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-300 truncate max-w-full transition-colors"
+                    className="text-left text-[11px] px-3 py-1.5 rounded-xl bg-[#F4F8FA] hover:bg-slate-100 border border-slate-200 text-slate-700 truncate max-w-full transition-colors"
                   >
                     "{h.slice(0, 45)}..."
                   </button>
@@ -191,9 +190,9 @@ export const SocialStudioPage: React.FC = () => {
           </div>
 
           {/* Platform Meter Cards */}
-          <div className="rounded-3xl bg-slate-900/60 border border-slate-800 p-6 backdrop-blur-xl space-y-4">
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider">
-              Platform Limits Live Gauge
+          <div className="rounded-3xl bg-white border border-slate-200 p-6 space-y-4">
+            <h3 className="text-xs font-bold text-[#0A2540] uppercase tracking-wider">
+              Character limits by platform
             </h3>
 
             <div className="space-y-3">
@@ -204,12 +203,12 @@ export const SocialStudioPage: React.FC = () => {
                 return (
                   <div key={p.name} className="space-y-1.5">
                     <div className="flex justify-between text-xs">
-                      <span className="font-semibold text-slate-300">{p.name}</span>
-                      <span className={`font-mono ${isOver ? 'text-rose-400 font-bold' : 'text-slate-400'}`}>
+                      <span className="font-semibold text-slate-700">{p.name}</span>
+                      <span className={`font-mono ${isOver ? 'text-rose-600 font-bold' : 'text-slate-400'}`}>
                         {inputText.length} / {p.max} {isOver && `(+${inputText.length - p.max})`}
                       </span>
                     </div>
-                    <div className="w-full h-2 rounded-full bg-slate-950 overflow-hidden">
+                    <div className="w-full h-2 rounded-full bg-[#F4F8FA] overflow-hidden">
                       <div
                         style={{ width: `${percent}%` }}
                         className={`h-full transition-all duration-300 ${
@@ -227,7 +226,7 @@ export const SocialStudioPage: React.FC = () => {
         {/* Right: Unicode Typography Grid */}
         <div className="lg:col-span-6 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-[#0A2540] uppercase tracking-wider">
               Generated Unicode Styles ({UNICODE_STYLES.length})
             </h3>
           </div>
@@ -238,23 +237,23 @@ export const SocialStudioPage: React.FC = () => {
               return (
                 <div
                   key={style.name}
-                  className="rounded-2xl bg-slate-900/80 border border-slate-800 p-4 flex items-center justify-between gap-4 hover:border-slate-700 transition-all backdrop-blur-xl group"
+                  className="rounded-2xl bg-white border border-slate-200 p-4 flex items-center justify-between gap-4 hover:border-slate-200 transition-all group"
                 >
                   <div className="min-w-0 flex-1">
                     <span className="text-[10px] text-slate-500 uppercase font-mono block mb-1">
                       {style.name}
                     </span>
-                    <p className="text-sm text-slate-100 break-words leading-relaxed select-all">
+                    <p className="text-sm text-[#0A2540] break-words leading-relaxed select-all">
                       {transformed}
                     </p>
                   </div>
 
                   <button
                     onClick={() => handleCopy(transformed, idx)}
-                    className="p-2.5 rounded-xl bg-slate-950 hover:bg-slate-800 text-slate-400 hover:text-cyan-300 border border-slate-800 shrink-0 transition-all"
+                    className="p-2.5 rounded-xl bg-[#F4F8FA] hover:bg-slate-100 text-slate-400 hover:text-[#00A3AD] border border-slate-200 shrink-0 transition-all"
                   >
                     {copiedIndex === idx ? (
-                      <Check className="w-4 h-4 text-emerald-400" />
+                      <Check className="w-4 h-4 text-emerald-700" />
                     ) : (
                       <Copy className="w-4 h-4" />
                     )}

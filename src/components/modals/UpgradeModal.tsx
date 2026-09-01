@@ -64,7 +64,7 @@ export const UpgradeModal: React.FC = () => {
               <span>OmniCraft Pro Access</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-[#0A2540] tracking-tight">
-              Unlock All 12 Sovereign Engines — <span className="text-[#008C95]">{getPlanPriceDisplay()}</span>
+              Unlock all 12 tools — <span className="text-[#008C95]">{getPlanPriceDisplay()}</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
               You selected <span className="text-[#007A82] font-bold font-mono">[{upgradeFeatureName}]</span>. Select your plan below to unlock unlimited in-browser processing.
@@ -152,10 +152,10 @@ export const UpgradeModal: React.FC = () => {
           {/* Value Checklist */}
           <div className="rounded-3xl bg-[#F4F8FA] border border-slate-200/80 p-4 sm:p-5 mb-5 space-y-2">
             {[
-              { title: 'Full PDF Editor & Annotation Suite', desc: 'Unlimited split, merge, rotate, watermark & PDF export' },
-              { title: 'ATS Resume Direct PDF Exports', desc: 'Tailored ATS keyword density analysis & executive PDF downloads' },
-              { title: 'Unlimited High-Throughput Conversions', desc: 'High-res image compression, SVG exports, and audio transcoding' },
-              { title: '100% Client-Side Privacy Guarantee', desc: 'No files or documents ever leave your browser memory' }
+              { title: 'PDF watermark & metadata export', desc: 'Text watermark plus title/author metadata on Pro export' },
+              { title: 'Resume PDF downloads', desc: 'Keyword overlap score, heuristic rewriter, letter PDF' },
+              { title: 'Free converters stay free', desc: 'Image compress and PNG/JPG/WebP convert are already unlimited' },
+              { title: 'Browser-local file processing', desc: 'No OmniCraft server receives your documents' }
             ].map((item, idx) => (
               <div key={idx} className="flex items-start gap-3">
                 <div className="mt-0.5 rounded-full p-1 bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] shrink-0">

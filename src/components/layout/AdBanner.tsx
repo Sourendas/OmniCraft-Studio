@@ -41,11 +41,11 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
                 PRO SPOTLIGHT
               </span>
               <span className="text-xs font-black text-[#0A2540]">
-                OmniCraft Pro Spotlight: Batch Processing & PDF Encryption
+                OmniCraft Pro Spotlight: Resume PDF & PDF watermark export
               </span>
             </div>
             <p className="text-[11px] text-slate-600 mt-0.5 font-medium">
-              Accelerate developer velocity with zero-config in-browser exports and AES-256 PDF encryption.
+              Accelerate in-browser exports: resume PDF download and text watermark plus metadata.
             </p>
           </div>
         </div>
@@ -76,9 +76,9 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
           <div className="w-12 h-12 mx-auto my-3.5 rounded-2xl bg-white border border-[#B3EAEF] flex items-center justify-center shadow-xs">
             <Lock className="w-6 h-6 text-[#00A3AD]" />
           </div>
-          <h4 className="text-xs font-black text-[#0A2540] mb-1">AES-256 PDF Encryption</h4>
+          <h4 className="text-xs font-black text-[#0A2540] mb-1">Text watermark & resume PDF</h4>
           <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-            Lock confidential documents, generate high-impact ATS resumes, and batch convert assets locally.
+            Merge and split PDFs for free. Pro preview unlocks text watermark, metadata, and resume PDF download.
           </p>
         </div>
 
@@ -113,7 +113,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
         </button>
       </div>
       <p className="text-xs text-slate-700 font-medium">
-        ⚡ Unlock batch file conversions, custom PDF watermarking, and ATS resume direct exports.
+        ⚡ Unlock text PDF watermarking, metadata export, and resume PDF download.
       </p>
       <div className="mt-3 flex justify-center">
         <span className="text-[10px] text-[#008C95] font-mono font-bold">100% Client-Side Engine Guarantee</span>

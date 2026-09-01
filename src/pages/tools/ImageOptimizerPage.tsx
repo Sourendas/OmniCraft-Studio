@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSubscription } from '../../context/SubscriptionContext';
 import { AdBanner } from '../../components/layout/AdBanner';
 import { downloadBlob, formatBytes } from '../../lib/utils';
 import { 
@@ -31,23 +30,26 @@ interface OptimizedImageItem {
 }
 
 export const ImageOptimizerPage: React.FC = () => {
-  const { isPro } = useSubscription();
-
   const [images, setImages] = useState<OptimizedImageItem[]>([]);
   const [quality, setQuality] = useState<number>(0.75);
   const [scalePercent, setScalePercent] = useState<number>(100);
   const [format, setFormat] = useState<'image/webp' | 'image/jpeg' | 'image/png'>('image/webp');
   const [isCompressing, setIsCompressing] = useState<boolean>(false);
 
-  const processFile = (file: File): Promise<OptimizedImageItem> => {
+  const processFile = (
+    file: File,
+    q = quality,
+    scale = scalePercent,
+    fmt = format
+  ): Promise<OptimizedImageItem> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         const dataUrl = e.target?.result as string;
         const img = new Image();
         img.onload = () => {
-          const targetW = Math.round((img.width * scalePercent) / 100);
-          const targetH = Math.round((img.height * scalePercent) / 100);
+          const targetW = Math.round((img.width * scale) / 100);
+          const targetH = Math.round((img.height * scale) / 100);
 
           const canvas = document.createElement('canvas');
           canvas.width = targetW;
@@ -77,8 +79,8 @@ export const ImageOptimizerPage: React.FC = () => {
                 height: targetH
               });
             },
-            format,
-            quality
+            fmt,
+            q
           );
         };
         img.onerror = () => reject('Image load failed');
@@ -115,7 +117,7 @@ export const ImageOptimizerPage: React.FC = () => {
     try {
       const reprocessed: OptimizedImageItem[] = [];
       for (const item of images) {
-        const res = await processFile(item.originalFile);
+        const res = await processFile(item.originalFile, newQuality, newScale, newFormat);
         reprocessed.push(res);
       }
       setImages(reprocessed);
@@ -155,7 +157,7 @@ export const ImageOptimizerPage: React.FC = () => {
             Smart Bulk Image Compressor
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
-            Reduce image payloads up to 90% in browser canvas without sacrificing visual fidelity.
+            Compress and resize in the canvas. Before/after file sizes shown per image — savings vary.
           </p>
         </div>
 
@@ -304,7 +306,7 @@ export const ImageOptimizerPage: React.FC = () => {
               Select or Drop Images to Compress
             </h3>
             <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">
-              PNG, JPG, WebP, AVIF up to 50MB. Instant canvas batch optimization.
+              PNG, JPG, WebP. Quality and scale sliders; download each file.
             </p>
           </div>
 

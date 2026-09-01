@@ -30,36 +30,36 @@ export const SecurityArchitecture: React.FC = () => {
 
   const [auditChecks, setAuditChecks] = useState<AuditCheck[]>([
     {
-      id: 'wasm-sandbox',
-      name: 'WASM Memory Isolation',
-      category: 'Memory Security',
+      id: 'js-buffers',
+      name: 'TypedArray buffer demo',
+      category: 'Memory',
       status: 'idle',
       latency: '--',
-      detail: 'Isolated 32-bit linear address space per module. Zero host system memory access.'
+      detail: 'Allocates a 1 MB ArrayBuffer in this tab as a browser-memory demo — not a sandbox certification.'
     },
     {
       id: 'subtle-crypto',
-      name: 'Web Crypto API (SubtleCrypto)',
+      name: 'Web Crypto SHA-256 demo',
       category: 'Cryptography',
       status: 'idle',
       latency: '--',
-      detail: 'Native browser cryptographic hardware engine for SHA-256 and AES calculations.'
+      detail: 'Runs window.crypto.subtle.digest(SHA-256) on a short test string. This is a browser API demo, not a security audit.'
     },
     {
       id: 'zero-telemetry',
-      name: 'Zero-Outbound Payload Audit',
-      category: 'Network Protocol',
+      name: 'No OmniCraft file upload in this demo',
+      category: 'Network',
       status: 'idle',
       latency: '--',
-      detail: 'Zero bytes of user document payloads or images transmitted to any remote servers.'
+      detail: 'This button does not send your documents. It does not measure all network traffic (the page itself still loads from the site host).'
     },
     {
       id: 'memory-dealloc',
-      name: 'Ephemeral ArrayBuffer Disposal',
+      name: 'Temporary buffer demo',
       category: 'Lifecycle',
       status: 'idle',
       latency: '--',
-      detail: 'Automatic garbage collection and zero persistent disk retention of raw file buffers.'
+      detail: 'File tools keep buffers in this tab. Closing the tab lets the browser garbage-collect them. Not a certified wipe.'
     }
   ]);
 
@@ -73,7 +73,7 @@ export const SecurityArchitecture: React.FC = () => {
 
     // Step 1: Real browser Web Crypto SHA-256 benchmark
     const t0 = performance.now();
-    const testData = new TextEncoder().encode('OmniCraft-Sovereign-Security-Audit-' + Date.now());
+    const testData = new TextEncoder().encode('OmniCraft-browser-crypto-demo-' + Date.now());
     await crypto.subtle.digest('SHA-256', testData);
     const cryptoTime = (performance.now() - t0).toFixed(2);
 
@@ -88,11 +88,11 @@ export const SecurityArchitecture: React.FC = () => {
     const wasmTime = (performance.now() - t1).toFixed(2);
 
     await new Promise(r => setTimeout(r, 200));
-    setAuditChecks(prev => prev.map(c => c.id === 'wasm-sandbox' ? { ...c, status: 'passed', latency: `${wasmTime} ms` } : c));
+    setAuditChecks(prev => prev.map(c => c.id === 'js-buffers' ? { ...c, status: 'passed', latency: `${wasmTime} ms` } : c));
 
     // Step 3: Zero-telemetry audit check
     await new Promise(r => setTimeout(r, 250));
-    setAuditChecks(prev => prev.map(c => c.id === 'zero-telemetry' ? { ...c, status: 'passed', latency: '0.00 ms (0 remote calls)' } : c));
+    setAuditChecks(prev => prev.map(c => c.id === 'zero-telemetry' ? { ...c, status: 'passed', latency: 'local demo' } : c));
 
     // Step 4: Ephemeral ArrayBuffer cleanup check
     await new Promise(r => setTimeout(r, 200));
@@ -110,24 +110,24 @@ export const SecurityArchitecture: React.FC = () => {
       title: '100% Client-Side Privacy',
       subtitle: 'Files never leave the user’s browser',
       icon: EyeOff,
-      badge: 'Air-Gapped Privacy',
-      description: 'Your PDFs, images, resumes, and code snippets are parsed and processed locally in your machine’s RAM. No backend servers ever receive or inspect your confidential payloads.'
+      badge: 'In this tab',
+      description: 'PDFs, images, resumes, and snippets are parsed in this browser tab. OmniCraft does not operate a backend that receives those files. The site host still serves the app JavaScript.'
     },
     {
       id: 'retention',
       title: 'Zero File Retention',
       subtitle: 'No server database or cloud uploads',
       icon: ServerOff,
-      badge: 'Zero Cloud Storage',
-      description: 'We do not run backend databases, cloud buckets, or persistent server caches. When you finish your edits or close the browser tab, workspace memory is immediately garbage-collected.'
+      badge: 'No file database',
+      description: 'We do not store your documents in an OmniCraft database. When you close the tab, in-memory buffers are eligible for garbage collection. Downloads you save stay on your device.'
     },
     {
       id: 'speed',
       title: 'Lightning Fast Processing',
       subtitle: 'Local WebAssembly & Canvas rendering',
       icon: Zap,
-      badge: 'WASM & GPU Canvas',
-      description: 'By eliminating slow upload queues and round-trip server latency, tools compile directly via WebAssembly binary threads, hardware-accelerated Canvas, and SubtleCrypto.'
+      badge: 'Canvas & Web APIs',
+      description: 'Image and PDF work uses Canvas, pdf-lib, and similar libraries in JavaScript. There is no upload queue to an OmniCraft converter server.'
     },
     {
       id: 'open-utils',
@@ -159,7 +159,7 @@ export const SecurityArchitecture: React.FC = () => {
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-slate-700 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-2xs flex items-center gap-2">
             <ShieldCheck className="w-3.5 h-3.5 text-[#00A3AD]" />
-            <span>GDPR Art. 25 & HIPAA Aligned</span>
+            <span>Browser-local file tools</span>
           </span>
         </div>
       </div>
@@ -195,7 +195,7 @@ export const SecurityArchitecture: React.FC = () => {
 
               <div className="mt-5 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-emerald-700 font-bold">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                <span>Verified Client Architecture</span>
+                <span>Runs in the browser</span>
               </div>
             </div>
           );
@@ -210,8 +210,8 @@ export const SecurityArchitecture: React.FC = () => {
               <Terminal className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-black text-[#0A2540]">Live Client Sandbox Integrity Inspector</h3>
-              <p className="text-xs text-slate-500 font-medium">Audit your active browser session's local cryptography, memory isolation, and network air-gap</p>
+              <h3 className="text-base font-black text-[#0A2540]">Browser crypto demo</h3>
+              <p className="text-xs text-slate-500 font-medium">SHA-256 and a 1 MB buffer in this tab — not a certification or air-gap proof</p>
             </div>
           </div>
 
@@ -229,7 +229,7 @@ export const SecurityArchitecture: React.FC = () => {
             ) : (
               <>
                 <Play className="w-3.5 h-3.5 fill-current" />
-                <span>{auditCompleted ? 'Re-run Integrity Audit' : 'Run Live Security Audit'}</span>
+                <span>{auditCompleted ? 'Re-run browser crypto demo' : 'Run browser crypto demo'}</span>
               </>
             )}
           </button>
@@ -280,10 +280,10 @@ export const SecurityArchitecture: React.FC = () => {
           <div className="mt-5 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 font-bold flex flex-col sm:flex-row items-center justify-between gap-2">
             <span className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              All 4 Client Sandbox Verifications Passed locally in {auditBenchmarkMs}ms
+              Browser crypto demo finished in {auditBenchmarkMs}ms. This is not a security certification.
             </span>
             <span className="text-[10px] font-mono bg-white px-2.5 py-1 rounded-md border border-emerald-200 text-emerald-800">
-              100% AIR-GAPPED VERIFIED
+              LOCAL DEMO ONLY
             </span>
           </div>
         )}

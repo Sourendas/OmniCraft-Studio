@@ -83,7 +83,7 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#00A3AD] animate-pulse" />
           <h2 className="text-base font-black uppercase tracking-wider text-[#0A2540]">
-            12 In-Browser Sovereign Power Engines
+            12 in-browser tools
           </h2>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">

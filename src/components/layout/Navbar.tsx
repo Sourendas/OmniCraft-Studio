@@ -176,7 +176,7 @@ export const Navbar: React.FC = () => {
       {mobileMenuOpen && (
         <div className="lg:hidden border-b border-slate-200 bg-white/98 p-4 space-y-3 backdrop-blur-xl max-h-[80vh] overflow-y-auto shadow-xl">
           <div className="font-black text-xs text-[#008C95] uppercase tracking-wider px-2">
-            12 Sovereign Tools
+            12 Tools
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
             {TOOLS_DATA.map((t) => (

@@ -14,7 +14,7 @@ export const NotFoundPage: React.FC = () => {
         Page Not Found
       </h1>
       <p className="text-sm sm:text-base text-slate-600 max-w-md mx-auto mb-8 font-medium">
-        The requested URL does not exist. Explore our 12 sovereign client-side utility engines below.
+        The requested URL does not exist. Try one of the 12 in-browser tools below.
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
@@ -29,7 +29,7 @@ export const NotFoundPage: React.FC = () => {
 
       <div className="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-[0_8px_30px_rgba(10,37,64,0.04)] text-left">
         <h3 className="text-xs font-black text-[#0A2540] uppercase tracking-wider mb-4">
-          Popular Sovereign Tools
+          Popular tools
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <Link

@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react';
-import { useSubscription } from '../../context/SubscriptionContext';
 import { AdBanner } from '../../components/layout/AdBanner';
 import { 
   Terminal, 
@@ -98,7 +97,7 @@ export const DevToolsPage: React.FC = () => {
   const [regexPattern, setRegexPattern] = useState('([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})');
   const [regexFlags, setRegexFlags] = useState('g');
   const [regexTestString, setRegexTestString] = useState(
-    'Contact our team at support@omnicraft.io or enterprise.sales@omnicraft.studio for enterprise quotes!'
+    'Contact our team at support@omnicraft.studio for questions about OmniCraft Studio.'
   );
 
   const regexMatches = useMemo(() => {
@@ -122,7 +121,7 @@ export const DevToolsPage: React.FC = () => {
   }, [regexPattern, regexFlags, regexTestString]);
 
   // --- Base64 / URL Encoder ---
-  const [base64Text, setBase64Text] = useState('OmniCraft Sovereign Browser Suite');
+  const [base64Text, setBase64Text] = useState('OmniCraft browser suite');
   const [base64Encoded, setBase64Encoded] = useState('');
 
   const handleBase64Encode = () => {
@@ -171,30 +170,30 @@ export const DevToolsPage: React.FC = () => {
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-1">
-            <Link to="/" className="text-slate-400 hover:text-cyan-300 flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] font-bold mb-1">
+            <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
             <span>Developer & Data</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
-            <Terminal className="w-7 h-7 text-teal-400" />
+          <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
+            <Terminal className="w-7 h-7 text-[#007A82]" />
             Developer Powerstation
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            JSON/CSV parser, SQL beautifier, live RegEx tester, Base64 encoder, and SHA cryptographic hashes.
+            JSON/CSV (flat objects), SQL keyword line-breaks, regex tester, Base64, SHA hashes.
           </p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="my-6 flex items-center gap-2 border-b border-slate-800 pb-3 overflow-x-auto scrollbar-none">
+      <div className="my-6 flex items-center gap-2 border-b border-slate-200 pb-3 overflow-x-auto scrollbar-none">
         {[
           { id: 'json-csv' as const, label: 'JSON ↔ CSV', icon: FileJson },
-          { id: 'sql' as const, label: 'SQL Beautifier', icon: Database },
+          { id: 'sql' as const, label: 'SQL line-breaks', icon: Database },
           { id: 'regex' as const, label: 'RegEx Live Tester', icon: Code },
           { id: 'base64' as const, label: 'Base64 & URL', icon: Lock },
           { id: 'hashes' as const, label: 'Hash Generator', icon: Hash }
@@ -206,8 +205,8 @@ export const DevToolsPage: React.FC = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                 activeTab === tab.id
-                  ? 'bg-teal-500/20 text-teal-300 border border-teal-500/40 shadow-sm'
-                  : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  ? 'bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] shadow-sm'
+                  : 'bg-white text-slate-400 hover:text-[#0A2540] border border-slate-200'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -232,7 +231,7 @@ export const DevToolsPage: React.FC = () => {
                 <span className="font-bold">JSON Input / Output</span>
                 <button
                   onClick={convertJsonToCsv}
-                  className="px-3 py-1 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs"
+                  className="px-3 py-1 rounded-lg bg-[#00A3AD] hover:bg-[#00B5B8] text-white font-bold text-xs"
                 >
                   Convert JSON → CSV
                 </button>
@@ -241,7 +240,7 @@ export const DevToolsPage: React.FC = () => {
                 rows={12}
                 value={jsonInput}
                 onChange={(e) => setJsonInput(e.target.value)}
-                className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs text-slate-200 font-mono focus:border-teal-500 focus:outline-none"
+                className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#00A3AD] focus:outline-none"
               />
             </div>
 
@@ -250,7 +249,7 @@ export const DevToolsPage: React.FC = () => {
                 <span className="font-bold">CSV Input / Output</span>
                 <button
                   onClick={convertCsvToJson}
-                  className="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-slate-700"
+                  className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200"
                 >
                   Convert CSV → JSON
                 </button>
@@ -260,7 +259,7 @@ export const DevToolsPage: React.FC = () => {
                 value={csvOutput}
                 onChange={(e) => setCsvOutput(e.target.value)}
                 placeholder="Click Convert JSON → CSV or paste CSV here..."
-                className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs text-slate-200 font-mono focus:border-teal-500 focus:outline-none"
+                className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#00A3AD] focus:outline-none"
               />
             </div>
           </div>
@@ -275,16 +274,16 @@ export const DevToolsPage: React.FC = () => {
               <span className="font-bold">Raw SQL Query</span>
               <button
                 onClick={formatSql}
-                className="px-3 py-1 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs"
+                className="px-3 py-1 rounded-lg bg-[#00A3AD] hover:bg-[#00B5B8] text-white font-bold text-xs"
               >
-                Format / Beautify SQL
+                Insert line breaks
               </button>
             </div>
             <textarea
               rows={12}
               value={sqlInput}
               onChange={(e) => setSqlInput(e.target.value)}
-              className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs text-slate-200 font-mono focus:border-teal-500 focus:outline-none"
+              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#00A3AD] focus:outline-none"
             />
           </div>
 
@@ -293,7 +292,7 @@ export const DevToolsPage: React.FC = () => {
               <span className="font-bold">Beautified SQL Result</span>
               <button
                 onClick={() => copyToClipboard(sqlOutput, 'sql')}
-                className="text-xs text-teal-400 hover:text-teal-300 flex items-center gap-1"
+                className="text-xs text-[#007A82] hover:text-[#00A3AD] flex items-center gap-1"
               >
                 {copiedKey === 'sql' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>Copy</span>
@@ -304,7 +303,7 @@ export const DevToolsPage: React.FC = () => {
               readOnly
               value={sqlOutput}
               placeholder="Formatted output appears here..."
-              className="w-full p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs text-teal-300 font-mono"
+              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#007A82] font-mono"
             />
           </div>
         </div>
@@ -320,7 +319,7 @@ export const DevToolsPage: React.FC = () => {
                 type="text"
                 value={regexPattern}
                 onChange={(e) => setRegexPattern(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-cyan-300 focus:outline-none focus:border-teal-500"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs font-mono text-[#007A82] focus:outline-none focus:border-[#00A3AD]"
               />
             </div>
             <div className="sm:col-span-3">
@@ -329,7 +328,7 @@ export const DevToolsPage: React.FC = () => {
                 type="text"
                 value={regexFlags}
                 onChange={(e) => setRegexFlags(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-200"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs font-mono text-[#0A2540]"
               />
             </div>
           </div>
@@ -340,20 +339,20 @@ export const DevToolsPage: React.FC = () => {
               rows={5}
               value={regexTestString}
               onChange={(e) => setRegexTestString(e.target.value)}
-              className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs text-slate-200 font-mono focus:border-teal-500"
+              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#00A3AD]"
             />
           </div>
 
-          <div className="rounded-2xl bg-slate-900/70 border border-slate-800 p-4 space-y-3">
+          <div className="rounded-2xl bg-white border border-slate-200 p-4 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-white">
+              <span className="text-xs font-bold text-[#0A2540]">
                 Detected Matches ({regexMatches.length})
               </span>
             </div>
             <div className="space-y-2 max-h-60 overflow-y-auto">
               {regexMatches.map((m, idx) => (
-                <div key={idx} className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono">
-                  <div className="text-teal-300 font-bold">Match #{idx + 1}: "{m.full}" (Index: {m.index})</div>
+                <div key={idx} className="p-3 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs font-mono">
+                  <div className="text-[#007A82] font-bold">Match #{idx + 1}: "{m.full}" (Index: {m.index})</div>
                   {m.groups.length > 0 && (
                     <div className="text-slate-400 text-[11px] mt-1">
                       Groups: {m.groups.map((g, gi) => `$${gi + 1}: "${g}"`).join('  |  ')}
@@ -374,7 +373,7 @@ export const DevToolsPage: React.FC = () => {
               <span className="font-bold">Decoded Plain Text</span>
               <button
                 onClick={handleBase64Encode}
-                className="px-3 py-1 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs"
+                className="px-3 py-1 rounded-lg bg-[#00A3AD] hover:bg-[#00B5B8] text-white font-bold text-xs"
               >
                 Encode to Base64 →
               </button>
@@ -383,7 +382,7 @@ export const DevToolsPage: React.FC = () => {
               rows={8}
               value={base64Text}
               onChange={(e) => setBase64Text(e.target.value)}
-              className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs text-slate-200 font-mono"
+              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono"
             />
           </div>
 
@@ -392,7 +391,7 @@ export const DevToolsPage: React.FC = () => {
               <span className="font-bold">Base64 Encoded Output</span>
               <button
                 onClick={handleBase64Decode}
-                className="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-slate-700"
+                className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200"
               >
                 ← Decode from Base64
               </button>
@@ -402,7 +401,7 @@ export const DevToolsPage: React.FC = () => {
               value={base64Encoded}
               onChange={(e) => setBase64Encoded(e.target.value)}
               placeholder="Base64 output..."
-              className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs text-teal-300 font-mono"
+              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#007A82] font-mono"
             />
           </div>
         </div>
@@ -418,31 +417,31 @@ export const DevToolsPage: React.FC = () => {
                 type="text"
                 value={hashInput}
                 onChange={(e) => setHashInput(e.target.value)}
-                className="flex-1 px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 font-mono"
+                className="flex-1 px-4 py-2.5 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono"
               />
               <button
                 onClick={computeHashes}
-                className="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs shrink-0"
+                className="px-5 py-2.5 rounded-xl bg-[#00A3AD] hover:bg-[#00B5B8] text-white font-bold text-xs shrink-0"
               >
-                Generate Hashes (WASM)
+              Generate hashes
               </button>
             </div>
           </div>
 
           <div className="space-y-3">
             {Object.entries(hashes).map(([algo, hashVal]) => (
-              <div key={algo} className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center justify-between gap-4">
+              <div key={algo} className="p-4 rounded-2xl bg-white border border-slate-200 flex items-center justify-between gap-4">
                 <div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-800/40 uppercase">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] uppercase">
                     {algo}
                   </span>
                   <p className="text-xs font-mono text-slate-300 break-all mt-1.5">{String(hashVal)}</p>
                 </div>
                 <button
                   onClick={() => copyToClipboard(String(hashVal), algo)}
-                  className="text-slate-400 hover:text-teal-300 p-2 shrink-0"
+                  className="text-slate-400 hover:text-[#007A82] p-2 shrink-0"
                 >
-                  {copiedKey === algo ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                  {copiedKey === algo ? <Check className="w-4 h-4 text-emerald-700" /> : <Copy className="w-4 h-4" />}
                 </button>
               </div>
             ))}

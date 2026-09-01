@@ -42,7 +42,7 @@ const SAMPLE_ORIGINAL = `{
 }`;
 
 const SAMPLE_MODIFIED = `{
-  "name": "OmniCraft Sovereign Studio",
+  "name": "OmniCraft Studio",
   "version": "2.1.0",
   "privacy": "100%-client-side-wasm",
   "features": [

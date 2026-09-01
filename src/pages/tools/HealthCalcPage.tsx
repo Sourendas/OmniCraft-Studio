@@ -106,7 +106,7 @@ export const HealthCalcPage: React.FC = () => {
     const doc = new jsPDF();
     doc.setFont('Helvetica', 'bold');
     doc.setFontSize(20);
-    doc.text('OmniCraft Sovereign Fitness & Nutrition Blueprint', 15, 20);
+    doc.text('OmniCraft Fitness & Nutrition Blueprint', 15, 20);
 
     doc.setFont('Helvetica', 'normal');
     doc.setFontSize(10);
@@ -138,21 +138,21 @@ export const HealthCalcPage: React.FC = () => {
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-1">
-            <Link to="/" className="text-slate-400 hover:text-cyan-300 flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] font-bold mb-1">
+            <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
             <span>Productivity & Utility</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
-            <HeartPulse className="w-7 h-7 text-rose-400" />
+          <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
+            <HeartPulse className="w-7 h-7 text-rose-600" />
             Fitness, TDEE, BMR & Macro Blueprint
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Scientific Mifflin-St Jeor metabolic engine with target calories and custom macro splits.
+            Scientific Mifflin-St Jeor estimates with calorie and macro splits. Not medical advice.
           </p>
         </div>
 
@@ -168,12 +168,12 @@ export const HealthCalcPage: React.FC = () => {
       <div className="my-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Side: Biometric Inputs */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="rounded-3xl bg-slate-900/60 border border-slate-800 p-6 backdrop-blur-xl space-y-5">
+          <div className="rounded-3xl bg-white border border-slate-200 p-6 space-y-5">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+              <h3 className="text-xs font-bold text-[#0A2540] uppercase tracking-wider">
                 Biometric Inputs
               </h3>
-              <div className="flex rounded-xl bg-slate-950 p-1 border border-slate-800 text-xs">
+              <div className="flex rounded-xl bg-[#F4F8FA] p-1 border border-slate-200 text-xs">
                 <button
                   onClick={() => setUnitSystem('metric')}
                   className={`px-3 py-1 rounded-lg font-semibold transition-all ${
@@ -199,8 +199,8 @@ export const HealthCalcPage: React.FC = () => {
                 onClick={() => setGender('male')}
                 className={`py-2 rounded-xl font-bold border transition-all ${
                   gender === 'male'
-                    ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50'
-                    : 'bg-slate-950 border-slate-800 text-slate-400'
+                    ? 'bg-cyan-500/20 text-[#007A82] border-cyan-500/50'
+                    : 'bg-[#F4F8FA] border-slate-200 text-slate-400'
                 }`}
               >
                 Male
@@ -210,7 +210,7 @@ export const HealthCalcPage: React.FC = () => {
                 className={`py-2 rounded-xl font-bold border transition-all ${
                   gender === 'female'
                     ? 'bg-pink-500/20 text-pink-300 border-pink-500/50'
-                    : 'bg-slate-950 border-slate-800 text-slate-400'
+                    : 'bg-[#F4F8FA] border-slate-200 text-slate-400'
                 }`}
               >
                 Female
@@ -225,7 +225,7 @@ export const HealthCalcPage: React.FC = () => {
                   type="number"
                   value={age}
                   onChange={(e) => setAge(parseInt(e.target.value) || 0)}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200"
+                  className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
                 />
               </div>
 
@@ -237,7 +237,7 @@ export const HealthCalcPage: React.FC = () => {
                       type="number"
                       value={weightKg}
                       onChange={(e) => setWeightKg(parseFloat(e.target.value) || 0)}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200"
+                      className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
                     />
                   </div>
                   <div>
@@ -246,7 +246,7 @@ export const HealthCalcPage: React.FC = () => {
                       type="number"
                       value={heightCm}
                       onChange={(e) => setHeightCm(parseFloat(e.target.value) || 0)}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200"
+                      className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
                     />
                   </div>
                 </>
@@ -258,7 +258,7 @@ export const HealthCalcPage: React.FC = () => {
                       type="number"
                       value={weightLbs}
                       onChange={(e) => setWeightLbs(parseFloat(e.target.value) || 0)}
-                      className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200"
+                      className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
                     />
                   </div>
                   <div>
@@ -268,13 +268,13 @@ export const HealthCalcPage: React.FC = () => {
                         type="number"
                         value={heightFt}
                         onChange={(e) => setHeightFt(parseInt(e.target.value) || 0)}
-                        className="w-1/2 px-2 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200"
+                        className="w-1/2 px-2 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
                       />
                       <input
                         type="number"
                         value={heightIn}
                         onChange={(e) => setHeightIn(parseInt(e.target.value) || 0)}
-                        className="w-1/2 px-2 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-200"
+                        className="w-1/2 px-2 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
                       />
                     </div>
                   </div>
@@ -288,7 +288,7 @@ export const HealthCalcPage: React.FC = () => {
               <select
                 value={activityLevel}
                 onChange={(e) => setActivityLevel(parseFloat(e.target.value))}
-                className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none"
+                className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] focus:outline-none"
               >
                 <option value={1.2}>Sedentary (Desk job, little exercise)</option>
                 <option value={1.375}>Lightly Active (Workouts 1-3 days/week)</option>
@@ -313,7 +313,7 @@ export const HealthCalcPage: React.FC = () => {
                     className={`py-2 px-1 rounded-xl font-bold border transition-all ${
                       goal === g.id
                         ? 'bg-rose-500/20 text-rose-300 border-rose-500/50'
-                        : 'bg-slate-950 border-slate-800 text-slate-400'
+                        : 'bg-[#F4F8FA] border-slate-200 text-slate-400'
                     }`}
                   >
                     {g.label}
@@ -328,7 +328,7 @@ export const HealthCalcPage: React.FC = () => {
               <select
                 value={dietPlan}
                 onChange={(e) => setDietPlan(e.target.value as any)}
-                className="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200"
+                className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540]"
               >
                 <option value="high-protein">High Protein (35% P / 35% C / 30% F)</option>
                 <option value="balanced">Balanced Zone (30% P / 40% C / 30% F)</option>
@@ -342,63 +342,63 @@ export const HealthCalcPage: React.FC = () => {
         <div className="lg:col-span-7 space-y-6">
           {/* Main Caloric Headline Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="p-5 rounded-3xl bg-slate-900/70 border border-slate-800 backdrop-blur-xl">
+            <div className="p-5 rounded-3xl bg-white border border-slate-200 backdrop-blur-xl">
               <span className="text-[10px] text-slate-400 uppercase font-mono">Basal Metabolic Rate</span>
-              <div className="text-xl font-extrabold text-white mt-1">{bmr} <span className="text-xs text-slate-400 font-normal">kcal/d</span></div>
+              <div className="text-xl font-black text-[#0A2540] mt-1">{bmr} <span className="text-xs text-slate-400 font-normal">kcal/d</span></div>
               <p className="text-[10px] text-slate-500 mt-1">Calories burned at resting baseline</p>
             </div>
 
-            <div className="p-5 rounded-3xl bg-slate-900/70 border border-slate-800 backdrop-blur-xl">
+            <div className="p-5 rounded-3xl bg-white border border-slate-200 backdrop-blur-xl">
               <span className="text-[10px] text-slate-400 uppercase font-mono">Maintenance TDEE</span>
-              <div className="text-xl font-extrabold text-cyan-400 mt-1">{tdee} <span className="text-xs text-slate-400 font-normal">kcal/d</span></div>
+              <div className="text-xl font-extrabold text-[#00A3AD] mt-1">{tdee} <span className="text-xs text-slate-400 font-normal">kcal/d</span></div>
               <p className="text-[10px] text-slate-500 mt-1">Daily energy with activity factored</p>
             </div>
 
             <div className="p-5 rounded-3xl bg-gradient-to-br from-rose-950/40 to-amber-950/40 border border-rose-500/30 backdrop-blur-xl">
               <span className="text-[10px] text-rose-300 uppercase font-mono font-bold">Target Daily Intake</span>
-              <div className="text-2xl font-black text-rose-400 mt-1">{targetCalories} <span className="text-xs text-rose-200 font-normal">kcal/d</span></div>
+              <div className="text-2xl font-black text-rose-600 mt-1">{targetCalories} <span className="text-xs text-rose-200 font-normal">kcal/d</span></div>
               <p className="text-[10px] text-rose-200/70 mt-1">Optimized for {goal.toUpperCase()}</p>
             </div>
           </div>
 
           {/* Macronutrient Breakdown Cards */}
-          <div className="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 backdrop-blur-xl space-y-4">
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-              <PieChart className="w-4 h-4 text-cyan-400" />
+          <div className="p-6 rounded-3xl bg-white border border-slate-200 space-y-4">
+            <h3 className="text-xs font-bold text-[#0A2540] uppercase tracking-wider flex items-center gap-2">
+              <PieChart className="w-4 h-4 text-[#00A3AD]" />
               <span>Target Daily Macronutrient Allocation</span>
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 rounded-2xl bg-slate-950 border border-cyan-500/20">
+              <div className="p-4 rounded-2xl bg-[#F4F8FA] border border-cyan-500/20">
                 <div className="flex justify-between items-center text-xs mb-1">
-                  <span className="text-cyan-400 font-bold">Protein</span>
+                  <span className="text-[#00A3AD] font-bold">Protein</span>
                   <span className="text-[10px] text-slate-400 font-mono">{macros.proteinPercent}%</span>
                 </div>
-                <div className="text-2xl font-black text-white">{macros.proteinGrams}g</div>
+                <div className="text-2xl font-black text-[#0A2540]">{macros.proteinGrams}g</div>
                 <span className="text-[10px] text-slate-500">{macros.proteinGrams * 4} kcal</span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-slate-950 border border-amber-500/20">
+              <div className="p-4 rounded-2xl bg-[#F4F8FA] border border-amber-500/20">
                 <div className="flex justify-between items-center text-xs mb-1">
                   <span className="text-amber-400 font-bold">Carbs</span>
                   <span className="text-[10px] text-slate-400 font-mono">{macros.carbPercent}%</span>
                 </div>
-                <div className="text-2xl font-black text-white">{macros.carbGrams}g</div>
+                <div className="text-2xl font-black text-[#0A2540]">{macros.carbGrams}g</div>
                 <span className="text-[10px] text-slate-500">{macros.carbGrams * 4} kcal</span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-slate-950 border border-rose-500/20">
+              <div className="p-4 rounded-2xl bg-[#F4F8FA] border border-rose-500/20">
                 <div className="flex justify-between items-center text-xs mb-1">
-                  <span className="text-rose-400 font-bold">Fats</span>
+                  <span className="text-rose-600 font-bold">Fats</span>
                   <span className="text-[10px] text-slate-400 font-mono">{macros.fatPercent}%</span>
                 </div>
-                <div className="text-2xl font-black text-white">{macros.fatGrams}g</div>
+                <div className="text-2xl font-black text-[#0A2540]">{macros.fatGrams}g</div>
                 <span className="text-[10px] text-slate-500">{macros.fatGrams * 9} kcal</span>
               </div>
             </div>
 
             {/* Visual Macro Bar */}
-            <div className="w-full h-3 rounded-full bg-slate-950 flex overflow-hidden border border-slate-800">
+            <div className="w-full h-3 rounded-full bg-[#F4F8FA] flex overflow-hidden border border-slate-200">
               <div style={{ width: `${macros.proteinPercent}%` }} className="bg-cyan-500 h-full" title="Protein" />
               <div style={{ width: `${macros.carbPercent}%` }} className="bg-amber-500 h-full" title="Carbs" />
               <div style={{ width: `${macros.fatPercent}%` }} className="bg-rose-500 h-full" title="Fats" />

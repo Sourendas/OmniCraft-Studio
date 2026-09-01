@@ -41,9 +41,9 @@ export const Hero: React.FC<HeroProps> = ({
           >
             <span className="flex h-2 w-2 rounded-full bg-[#00A3AD] animate-pulse" />
             <Zap className="w-3.5 h-3.5 text-[#00A3AD]" />
-            <span>Sovereign In-Browser Studio</span>
+            <span>In-browser studio</span>
             <span className="text-[#84D8DF]">•</span>
-            <span className="text-[#0A2540] font-mono text-[10px] font-bold">100% Client-Side Privacy</span>
+            <span className="text-[#0A2540] font-mono text-[10px] font-bold">Files stay on this device</span>
           </motion.div>
 
           <motion.h1
@@ -52,7 +52,7 @@ export const Hero: React.FC<HeroProps> = ({
             transition={{ duration: 0.4, delay: 0.05 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight leading-[1.12]"
           >
-            12 Sovereign Browser Power Utilities
+            12 browser utilities, no file uploads
           </motion.h1>
 
           <motion.p
@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({
             transition={{ duration: 0.4, delay: 0.1 }}
             className="mt-3.5 text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed font-medium"
           >
-            Convert, design, compress, and compute in milliseconds. Zero server uploads, zero telemetry — hardware-accelerated processing directly in your browser.
+            Convert, design, compress, and compute in this tab. No OmniCraft server processes your files. Pro preview is a local demo until payments launch.
           </motion.p>
 
           {/* Micro Trust Indicators */}
@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({
             className="flex flex-wrap items-center gap-5 mt-5"
           >
             <span className="text-xs uppercase tracking-wider text-slate-700 font-bold flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" /> 100% PRIVATE IN-MEMORY
+              <ShieldCheck className="w-4 h-4 text-emerald-600" /> RUNS IN YOUR BROWSER
             </span>
           </motion.div>
         </div>
@@ -90,7 +90,7 @@ export const Hero: React.FC<HeroProps> = ({
               className="px-7 py-3.5 rounded-full bg-gradient-to-r from-[#00A3AD] via-[#0FB5BA] to-[#0F4C81] hover:from-[#00B5B8] hover:via-[#00A3AD] hover:to-[#0F4C81] text-white font-black text-xs sm:text-sm shadow-lg shadow-teal-500/25 transition-all flex items-center justify-center gap-2.5 group cursor-pointer active:scale-95 tracking-tight"
             >
               <Sparkles className="w-4 h-4 text-white animate-pulse" />
-              <span>UPGRADE TO PRO ($7/MO)</span>
+              <span>TRY PRO PREVIEW ($7/MO PLANS)</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           ) : (

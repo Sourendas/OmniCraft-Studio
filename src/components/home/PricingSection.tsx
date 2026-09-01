@@ -10,13 +10,13 @@ export const PricingSection: React.FC = () => {
       <div className="text-center max-w-3xl mx-auto mb-12">
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-xs font-black text-[#007A82] mb-3">
           <Sparkles className="w-3.5 h-3.5 text-[#00A3AD]" />
-          <span className="uppercase tracking-wider">Transparent Sovereign Pricing</span>
+          <span className="uppercase tracking-wider">Plans (preview until checkout)</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-black text-[#0A2540] tracking-tight">
           Simple, Honest Plans for Every Workflow
         </h2>
         <p className="text-sm text-slate-600 mt-2 font-medium">
-          100% sovereign client-side workstation. No telemetry, no remote storage, 30-day money-back guarantee.
+          File tools run in your browser. Checkout is not live — Pro preview is a local demo flag. 30-day refund language applies when paid billing launches.
         </p>
       </div>
 
@@ -44,12 +44,10 @@ export const PricingSection: React.FC = () => {
 
             <ul className="space-y-2.5 text-xs text-slate-700 mb-6 font-medium">
               {[
-                'Standard Image & Audio Conversions',
-                'Basic PDF Merging & Splitting',
-                'Dev Workbench & Hash Tools',
-                'Branded QR Code Studio',
-                'Live SVG Vector Studio',
-                'Text & Code Diff Inspector'
+                'Standard image & WAV conversions',
+                'PDF merge, rotate, and page-range split',
+                'Dev workbench & SHA hashes',
+                'QR, SVG, markdown, and text diff'
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -90,10 +88,9 @@ export const PricingSection: React.FC = () => {
             <ul className="space-y-2.5 text-xs text-slate-700 mb-6 font-medium">
               {[
                 'Everything in Free Community',
-                'Full PDF Suite & Encryption',
-                'ATS Resume PDF Downloads',
-                'Uncapped Batch Conversions',
-                'Priority Feature Upgrades'
+                'PDF text watermark & metadata export',
+                'Resume PDF downloads',
+                'Pro preview until payments launch'
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-2">
                   <div className="p-0.5 rounded-full bg-[#E6F8F9] text-[#007A82] shrink-0">
@@ -134,7 +131,7 @@ export const PricingSection: React.FC = () => {
                   <span>Pro Yearly</span>
                   <Sparkles className="w-3.5 h-3.5 text-[#00A3AD]" />
                 </h3>
-                <p className="text-xs text-[#007A82] font-bold">Annual Sovereign License</p>
+                <p className="text-xs text-[#007A82] font-bold">Annual plan</p>
               </div>
             </div>
 
@@ -153,10 +150,9 @@ export const PricingSection: React.FC = () => {
             <ul className="space-y-2.5 text-xs text-slate-700 mb-6 font-medium">
               {[
                 'Everything in Pro Monthly',
-                '1 Full Year of Uncapped Power',
-                '16% Savings vs Monthly',
-                'Commercial Royalty-Free Rights',
-                'Priority Feature Upgrades'
+                'One year of Pro when billing launches',
+                'About 16% savings vs monthly',
+                'Outputs you generate are yours'
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-2">
                   <div className="p-0.5 rounded-full bg-[#E6F8F9] text-[#007A82] shrink-0">
@@ -211,11 +207,10 @@ export const PricingSection: React.FC = () => {
 
             <ul className="space-y-2.5 text-xs text-slate-200 mb-6 font-medium">
               {[
-                'Permanent Lifetime Access',
-                'Zero Recurring Subscription Fees',
-                'All 12 Superpower Tools Unlocked',
-                'All Future Tool Releases Included',
-                'VIP Founder Priority Support'
+                'Permanent access when billing launches',
+                'No recurring fee after purchase',
+                'Same Pro tools as yearly',
+                '30-day refund window from purchase date'
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-2">
                   <div className="p-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">

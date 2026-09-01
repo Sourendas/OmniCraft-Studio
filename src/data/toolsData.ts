@@ -3,230 +3,230 @@ import { ToolItem, FaqItem } from '../types';
 export const TOOLS_DATA: ToolItem[] = [
   {
     id: 'resume-builder',
-    name: 'ATS AI Resume Builder',
+    name: 'ATS Resume Builder',
     category: 'Document & Career',
-    description: 'Multi-step wizard with real-time ATS keyword match scoring, bullet enhancer, and executive PDF generation.',
-    detailedDescription: 'Build high-impact, ATS-optimized resumes tailored for modern applicant tracking systems. Analyze keyword match density against target job descriptions, enhance bullet points with action verbs, and export publication-ready PDF documents without data ever leaving your browser.',
+    description: 'Multi-step wizard with local keyword-overlap scoring, heuristic bullet rewriter, and Pro PDF export.',
+    detailedDescription: 'Build a resume in the browser. Compare a pasted job description against a keyword list (overlap score, not an employer ATS), rewrite bullets with local action-verb templates, and export a PDF. Files stay in this tab. PDF download is a Pro-preview feature.',
     route: '/resume-builder',
     iconName: 'FileText',
     badge: 'Pro $7/mo',
     gradient: 'from-amber-500/20 via-orange-500/10 to-yellow-500/20',
-    highlights: ['ATS Keyword Scanner', 'Heuristic Bullet Enhancer', 'Custom Layouts', 'Instant PDF Export'],
+    highlights: ['Keyword overlap score', 'Heuristic bullet rewriter', 'Live preview', 'Pro PDF export'],
     image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'ATS Resume Builder and Keyword Scoring Interface',
+    screenshotAlt: 'ATS Resume Builder and keyword overlap interface',
     howItWorks: [
-      'Enter your career history or paste an existing resume',
-      'Input target job description to calculate live ATS match %',
-      'One-click client-side bullet enhancer to maximize impact and download PDF'
+      'Enter career history in the form',
+      'Paste a job description to see keyword overlap %',
+      'Rewrite bullets locally and download PDF (Pro preview)'
     ]
   },
   {
     id: 'pdf-suite',
     name: 'PDF Power Suite',
     category: 'Document & Career',
-    description: 'Visual drag-and-drop page organizer: Merge, split, rotate, watermark, and modify document metadata 100% locally.',
-    detailedDescription: 'Comprehensive client-side PDF workstation. Drag, reorder, rotate, split, and merge multiple documents seamlessly. Embed custom text or image watermarks, redact sensitive fields, and update document metadata privately in browser memory.',
+    description: 'Merge, rotate, split by page range, add a text watermark, and edit metadata — in the browser.',
+    detailedDescription: 'Load PDFs in this tab with pdf-lib. Free: merge and rotate. Free split exports a new file for pages you list (e.g. 1-3,5). Pro preview: text watermark plus document metadata on export. Preview tiles are placeholders, not rendered PDF pages. No encryption or redaction.',
     route: '/pdf-suite',
     iconName: 'Layers',
     badge: 'Pro $7/mo',
     gradient: 'from-violet-500/20 via-purple-500/10 to-fuchsia-500/20',
-    highlights: ['Visual Page Reordering', 'Batch Merge & Split', 'Custom Watermarking', 'Metadata Editor'],
+    highlights: ['Merge & rotate', 'Page-range split', 'Text watermark', 'Metadata editor'],
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Visual PDF Page Organizer and Reordering Workspace',
+    screenshotAlt: 'PDF merge, split, and watermark workspace',
     howItWorks: [
-      'Select or drop PDF files directly into the browser canvas',
-      'Drag and drop pages visually to reorder, delete, or rotate',
-      'Apply watermarks and export unified document in milliseconds'
+      'Drop PDF files into the page',
+      'Merge or rotate for free; enter a page range to split',
+      'Pro preview: text watermark and metadata, then export'
     ]
   },
   {
     id: 'file-converter',
     name: 'Universal File Converter',
     category: 'Productivity & Utility',
-    description: 'Convert Images (PNG, JPG, WebP, AVIF), Audio (MP3, WAV, OGG), and Documents (DOCX to PDF, TXT) without server uploads.',
-    detailedDescription: 'Universal media and document transcoder running on WebAssembly. Convert images between WebP, PNG, JPG, and AVIF, audio between MP3, WAV, and OGG, and transform DOCX into clean PDF or TXT without third-party cloud transfers.',
+    description: 'Images PNG/JPG/WebP via canvas, audio decode to WAV, DOCX to text PDF or TXT — in the browser.',
+    detailedDescription: 'Convert images between WebP, PNG, and JPEG with the Canvas API. Decode browser-supported audio to WAV. Extract DOCX text with mammoth and write PDF or TXT. Unsupported types are rejected rather than renamed. No AVIF/MP3/OGG encoding.',
     route: '/file-converter',
     iconName: 'RefreshCw',
     badge: 'Free',
     gradient: 'from-emerald-500/20 via-teal-500/10 to-cyan-500/20',
-    highlights: ['Image & Audio Engine', 'DOCX to PDF Converter', 'Zero Cloud Uploads', 'Batch Processing'],
+    highlights: ['PNG / JPG / WebP', 'Audio → WAV', 'DOCX to PDF or TXT', 'Runs in the browser'],
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Universal In-Browser File Converter Matrix',
+    screenshotAlt: 'In-browser file converter queue',
     howItWorks: [
-      'Drop your images, audio files, or Word DOCX documents',
-      'Choose your destination format with quality preferences',
-      'Transcode instantly in-browser and save to your local drive'
+      'Drop images, audio, or Word DOCX files',
+      'Pick a format this tool actually encodes',
+      'Convert in the tab and download the result'
     ]
   },
   {
     id: 'image-optimizer',
     name: 'Smart Image Optimizer & WebP Compressor',
     category: 'Media & Graphics',
-    description: 'Compress images up to 90% with live side-by-side visual quality comparison, dimension resizing, and one-click bulk export.',
-    detailedDescription: 'High-efficiency lossless and lossy visual optimizer. Compress raw PNG, JPEG, and WebP assets by up to 90% with an interactive dual-pane comparison slider, custom dimension scaling, and instant batch ZIP packaging.',
+    description: 'Compress and resize images in canvas; download WebP, JPEG, or PNG with before/after file sizes.',
+    detailedDescription: 'Uses the browser canvas to scale and re-encode images. Adjust quality and dimensions, then download each file. Savings vary by source; there is no ZIP pack and no comparison slider.',
     route: '/image-optimizer',
     iconName: 'Minimize2',
     badge: 'Free',
     gradient: 'from-amber-500/20 via-orange-500/10 to-yellow-500/20',
-    highlights: ['Up to 90% Size Reduction', 'Side-by-Side Quality Preview', 'Custom Resize & Formats', 'Bulk Download'],
+    highlights: ['Quality & scale sliders', 'WebP / JPEG / PNG', 'Before/after sizes', 'Multi-file download'],
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Smart Image Compression and Quality Comparison Tool',
+    screenshotAlt: 'Image compression with size comparison',
     howItWorks: [
-      'Upload single or multiple image assets',
-      'Adjust compression ratio slider while viewing side-by-side comparison',
-      'Download individual optimized assets or batch ZIP archive'
+      'Upload one or more images',
+      'Tune quality and scale; sizes update in the list',
+      'Download each optimized file'
     ]
   },
   {
     id: 'currency-crypto',
-    name: 'Live Currency & Crypto FX Matrix',
+    name: 'Reference FX Worksheet',
     category: 'Productivity & Utility',
-    description: 'Real-time multi-currency fiat & crypto conversion paired with cross-border remittance fee comparison (Bank vs. Wise vs. Crypto).',
-    detailedDescription: 'Real-time financial exchange rate station. Track live prices for USD, EUR, GBP, JPY and top cryptos (BTC, ETH, SOL). Includes an interactive remittance cost calculator revealing hidden bank transfer spreads and fee comparisons.',
+    description: 'Example FX worksheet with fixed reference rates (not live) and hypothetical remittance fee examples.',
+    detailedDescription: 'Multiply amounts using a hardcoded rate table last authored September 2026. The chart is an illustration, not historical market data. Remittance cards are hypothetical fee examples, not quotes from banks or apps.',
     route: '/currency-crypto',
     iconName: 'Coins',
     badge: 'Free',
     gradient: 'from-blue-500/20 via-indigo-500/10 to-cyan-500/20',
-    highlights: ['Top 20 Cryptos & Fiats', 'Remittance Fee Estimator', 'Interactive SVG Trends', 'Real-Time Spreads'],
+    highlights: ['Fixed example rates', 'Fiat & a few cryptos', 'Hypothetical fees', 'Not a live feed'],
     image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Live Currency Exchange and Remittance Comparison Station',
+    screenshotAlt: 'Reference currency conversion worksheet',
     howItWorks: [
-      'Select source fiat or cryptocurrency and destination target',
-      'Enter amount to get instant spot rates and historical 30-day chart',
-      'Compare remittance cost breakdown across banks and modern providers'
+      'Pick source and destination from the example list',
+      'Enter an amount to apply the fixed rate',
+      'Read the illustration chart and hypothetical fee cards'
     ]
   },
   {
     id: 'dev-tools',
     name: 'Dev Utility Workbench',
     category: 'Developer & Data',
-    description: 'JSON <-> CSV bidirectional converter, SQL Formatter, RegEx Live Tester, Base64/URL encoders, and cryptographic hashes.',
-    detailedDescription: 'The definitive offline developer utility box. Convert JSON trees to tabular CSV, beautify complex SQL queries, test regular expressions in real-time with capture group breakdowns, and generate SHA-256 / MD5 cryptographic hashes.',
+    description: 'JSON ↔ CSV for flat objects, keyword SQL line-breaks, regex tester, Base64, SHA-1/256/384/512.',
+    detailedDescription: 'Offline helpers in the browser. JSON/CSV handles arrays of flat objects. SQL helper inserts line breaks before common keywords (not a full formatter). Regex tester uses the JS engine. Hashes use Web Crypto (SHA family; no MD5).',
     route: '/dev-tools',
     iconName: 'Terminal',
     badge: 'Free',
     gradient: 'from-teal-500/20 via-emerald-500/10 to-green-500/20',
-    highlights: ['JSON / CSV Parser', 'SQL Beautifier', 'RegEx Live Tester', 'SHA-256 / Hash Generator'],
+    highlights: ['JSON / CSV (flat)', 'SQL keyword line-breaks', 'RegEx tester', 'SHA hashes'],
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Developer Code Formatter, JSON/CSV Converter, and Hash Station',
+    screenshotAlt: 'Developer converters and hash tools',
     howItWorks: [
-      'Paste raw JSON, CSV, SQL, or RegEx patterns into the editor',
-      'Choose format, minification, or extraction parameters',
-      'Copy transformed syntax or download structured schema files'
+      'Paste JSON, CSV, SQL, or a regex',
+      'Run the transform in this tab',
+      'Copy the result'
     ]
   },
   {
     id: 'qr-generator',
     name: 'Custom Branded QR Code Studio',
     category: 'Media & Graphics',
-    description: 'Create branded QR codes for URLs, Wi-Fi networks, and vCards with custom color gradients, corner styles, and vector SVG exports.',
-    detailedDescription: 'Design bespoke vector QR codes for websites, Wi-Fi credentials, business vCards, and social handles. Personalize color gradients, eye shapes, corner radii, and embedded center icons, and export in razor-sharp SVG or high-res PNG.',
+    description: 'Create QR codes for URLs, Wi-Fi, and vCards with colors and PNG/SVG export.',
+    detailedDescription: 'Encode URL, Wi-Fi, vCard, or text into a QR image in the browser. Adjust colors and export PNG or SVG.',
     route: '/qr-generator',
     iconName: 'QrCode',
     badge: 'Free',
     gradient: 'from-indigo-500/20 via-purple-500/10 to-pink-500/20',
-    highlights: ['URL, Wi-Fi & vCard', 'Gradient & Color Styling', 'Custom Corner Modules', 'PNG & SVG Export'],
+    highlights: ['URL, Wi-Fi & vCard', 'Color styling', 'PNG & SVG export'],
     image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Branded QR Code Designer and Vector SVG Exporter',
+    screenshotAlt: 'QR code designer and exporter',
     howItWorks: [
-      'Select data type (URL, Wi-Fi, vCard contact, plain text)',
-      'Customize foreground colors, gradient angles, and corner shapes',
-      'Export high-resolution PNG or infinitely scalable vector SVG'
+      'Choose data type and enter content',
+      'Adjust colors',
+      'Export PNG or SVG'
     ]
   },
   {
     id: 'social-studio',
     name: 'Social Studio & Unicode Typography',
     category: 'Productivity & Utility',
-    description: 'Unicode stylish font generator (Gothic, Script, Bubble) paired with Instagram/TikTok caption line breakers and hashtag curators.',
-    detailedDescription: 'Enhance your digital presence across Instagram, TikTok, LinkedIn, and X. Generate 12+ aesthetic Unicode font styles (Fraktur, Cursive, Double-Struck, Bold Serif), format clean spacing with invisible line breakers, and explore curated hashtag clusters.',
+    description: 'Unicode font styles plus caption length meters and starter hashtag lists.',
+    detailedDescription: 'Map your text into Unicode letter styles and copy them. Hashtag chips are static starter lists, not research or trending data.',
     route: '/social-studio',
     iconName: 'Type',
     badge: 'Free',
     gradient: 'from-fuchsia-500/20 via-pink-500/10 to-rose-500/20',
-    highlights: ['12+ Unicode Font Styles', 'Clean Line-Break Formatter', 'Curated Hashtags Vault', 'One-Click Quick Copy'],
+    highlights: ['Unicode font styles', 'Caption length meters', 'Starter hashtag lists', 'One-click copy'],
     image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Social Media Typography and Clean Caption Formatter',
+    screenshotAlt: 'Unicode typography and caption formatter',
     howItWorks: [
-      'Type your caption, headline, or bio copy in the input box',
-      'Preview real-time styled transformations in 12+ Unicode fonts',
-      'One-click copy with perfect spacing for social posting'
+      'Type a caption or bio',
+      'Copy a Unicode style',
+      'Optionally copy a starter hashtag list'
     ]
   },
   {
     id: 'health-calc',
     name: 'Health & Macro Nutrition Engine',
     category: 'Productivity & Utility',
-    description: 'Scientific BMR (Mifflin-St Jeor) and TDEE calorie calculator with interactive macro split sliders and visual doughnut chart.',
-    detailedDescription: 'Evidence-based body composition and nutritional calculator. Calculates Basal Metabolic Rate via the validated Mifflin-St Jeor equation and Total Daily Energy Expenditure (TDEE). Customize protein/carb/fat macro ratios with interactive sliders and visual pie charts.',
+    description: 'Mifflin-St Jeor BMR and TDEE estimates with macro sliders. Not medical advice.',
+    detailedDescription: 'Estimates BMR with Mifflin-St Jeor and TDEE from an activity multiplier. Macro grams follow simple ratio sliders. Educational only — not medical advice.',
     route: '/health-calc',
     iconName: 'Flame',
     badge: 'Free',
     gradient: 'from-rose-500/20 via-red-500/10 to-orange-500/20',
-    highlights: ['Mifflin-St Jeor BMR', 'TDEE Activity Multipliers', 'Interactive Macro Sliders', 'Visual Calorie Doughnut'],
+    highlights: ['Mifflin-St Jeor BMR', 'TDEE multipliers', 'Macro sliders', 'Not medical advice'],
     image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Scientific Fitness BMR and Macro Nutrition Targeter',
+    screenshotAlt: 'BMR and macro estimate calculator',
     howItWorks: [
-      'Input age, gender, height, weight, and weekly activity multiplier',
-      'Select primary fitness objective (Cut, Maintain, Lean Bulk)',
-      'Adjust macro ratio sliders and review visual daily gram targets'
+      'Enter age, sex, height, weight, and activity',
+      'Pick cut / maintain / bulk',
+      'Read calorie and gram estimates (not medical advice)'
     ]
   },
   {
     id: 'markdown-editor',
     name: 'Markdown & Rich Doc Editor',
     category: 'Developer & Data',
-    description: 'Live side-by-side Markdown writing workstation with instant formatting tools, word count metrics, and export to MD or HTML.',
-    detailedDescription: 'Distraction-free, full-featured client-side markdown workspace. Format headings, lists, tables, and code snippets with live rendering, calculate word count and estimated reading time, and export to formatted HTML or clean markdown files.',
+    description: 'Side-by-side Markdown writing with live preview, word count, and export to MD or HTML.',
+    detailedDescription: 'Write Markdown in the browser with a live HTML preview, word count and reading-time estimate, and download as Markdown or HTML.',
     route: '/markdown-editor',
     iconName: 'FileEdit',
     badge: 'Free',
     gradient: 'from-sky-500/20 via-cyan-500/10 to-blue-500/20',
-    highlights: ['Side-by-Side Live Preview', 'One-Click Syntax Injector', 'Word & Read Time Stats', 'HTML & MD Export'],
+    highlights: ['Side-by-side preview', 'Formatting toolbar', 'Word & read time', 'HTML & MD export'],
     image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Live Markdown Document Editor and Live HTML Preview',
+    screenshotAlt: 'Markdown editor and HTML preview',
     howItWorks: [
-      'Type or paste Markdown notes in the editor pane',
-      'Use the quick formatting toolbar for headings, tables, and quotes',
-      'Export as formatted HTML, Markdown, or copy to clipboard'
+      'Type or paste Markdown',
+      'Use the toolbar for headings and lists',
+      'Export HTML or Markdown'
     ]
   },
   {
     id: 'svg-editor',
     name: 'SVG & Vector Icon Studio',
     category: 'Media & Graphics',
-    description: 'Live SVG & Vector Icon Studio: Customize stroke/fill colors, scale canvas, add gradients, and export minified SVG, React JSX, or PNG.',
-    detailedDescription: 'Vector graphic editing and code generation powerhouse. Paste raw SVG markup or pick from curated icon templates, adjust stroke colors and line widths, configure background gradients, and export clean minified SVG, React TSX components, or 4x Retina PNGs.',
+    description: 'Edit SVG stroke/fill, scale the canvas, and export SVG, React JSX, or PNG.',
+    detailedDescription: 'Paste SVG markup or pick a preset, adjust stroke and fill, then download minified SVG, copy React JSX, or export a PNG.',
     route: '/svg-editor',
     iconName: 'Sparkles',
     badge: 'Free',
     gradient: 'from-teal-500/20 via-cyan-500/10 to-emerald-500/20',
-    highlights: ['Live Color & Stroke Editor', 'Minified Clean SVG Output', 'React JSX Exporter', '4x Retina Canvas PNG'],
+    highlights: ['Color & stroke editor', 'Minified SVG', 'React JSX export', 'PNG export'],
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Live SVG Vector Icon Studio and React JSX Exporter',
+    screenshotAlt: 'SVG vector studio',
     howItWorks: [
-      'Paste SVG code, upload a file, or pick a vector icon preset',
-      'Adjust stroke, fill, padding, rotation, and canvas backdrop',
-      'Download clean minified SVG, copy React JSX, or export Retina PNG'
+      'Paste SVG, upload, or pick a preset',
+      'Adjust stroke, fill, and canvas',
+      'Download SVG, JSX, or PNG'
     ]
   },
   {
     id: 'text-diff',
     name: 'Text Diff & Code Comparator',
     category: 'Developer & Data',
-    description: 'Side-by-side text/code comparator with line-by-line and character-level difference highlighting, stats, and unified patch export.',
-    detailedDescription: 'Client-side Myers diff algorithm engine for developers, technical writers, and analysts. Compare text and code snippets side-by-side or in unified git-diff format, inspect char/word deltas, and export standard unified .patch files.',
+    description: 'Side-by-side text/code comparator with line highlights, stats, and unified patch export.',
+    detailedDescription: 'Compare two texts in the browser, inspect line differences, and export a unified .patch file.',
     route: '/text-diff',
     iconName: 'Code2',
     badge: 'Free',
     gradient: 'from-indigo-500/20 via-blue-500/10 to-cyan-500/20',
-    highlights: ['Split & Unified Views', 'Line & Char Highlights', 'Diff Metrics & Deltas', 'Git .patch Export'],
+    highlights: ['Split & unified views', 'Line highlights', 'Diff stats', 'Git .patch export'],
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Side-by-Side Text Diff and Code Comparator Tool',
+    screenshotAlt: 'Text diff comparator',
     howItWorks: [
-      'Paste original text in left pane and modified text in right pane',
-      'Toggle split or unified view with optional whitespace/case ignore',
-      'Review addition/deletion statistics and copy git-formatted patch'
+      'Paste original text on the left and changed text on the right',
+      'Toggle split or unified view',
+      'Copy or download a unified patch'
     ]
   }
 ];
@@ -235,26 +235,26 @@ export const FAQ_DATA: FaqItem[] = [
   {
     category: 'Privacy & Security',
     question: 'Are my files and documents uploaded to any remote server?',
-    answer: 'Absolutely not. OmniCraft Studio operates on a 100% client-side architecture. All file conversions, PDF operations, image compressions, SVG editing, and cryptography calculations execute strictly within your browser memory (WebAssembly, Web Audio API, Canvas, and Web Crypto API). Zero bytes leave your device.'
+    answer: 'OmniCraft does not run a server that receives your documents. Conversions, PDF edits, image compression, SVG work, and hashes run in this browser tab. The website host still serves the app’s HTML, CSS, and JavaScript (and tool-card images may load from Unsplash).'
   },
   {
     category: 'Billing & Plans',
     question: 'What is included in the Pro Membership ($7/mo, $70/yr, or $130 Lifetime)?',
-    answer: 'The OmniCraft Pro Membership grants unlimited, uncapped access to Pro utilities: Full PDF Studio export & AES-256 encryption, ATS-Optimized Resume PDF downloads, high-res vector and batch image exports, and continuous priority feature upgrades. Choose between flexible monthly billing at $7/month, the yearly plan at $70/year (save 16%), or the lifetime license at $130 one-time.'
+    answer: 'When paid billing launches, Pro is intended to unlock annotated PDF export (text watermark + metadata) and ATS resume PDF download. Image conversion and compression are already unlimited on the free tier. Checkout is not live: “Activate Free Pro Preview” only sets a localStorage flag in this browser. Prices: $7/month, $70/year (save about 16%), or $130 lifetime.'
   },
   {
     category: 'Commercial Use',
     question: 'Can I use generated assets (SVGs, resumes, QR codes, images) for commercial purposes?',
-    answer: 'Yes. All outputs generated through OmniCraft Studio belong 100% to you. There are zero licensing restrictions or royalty requirements for commercial or personal use.'
+    answer: 'Outputs you generate belong to you, subject to third-party rights in any content you paste in. OmniCraft does not claim a license fee on those files.'
   },
   {
     category: 'Cancellation & Billing',
     question: 'Can I cancel my subscription anytime?',
-    answer: 'Yes, you can cancel your subscription ($7/mo or $70/yr) at any time without any penalties or hidden fees. Your Pro benefits remain active until the end of your paid billing period. Lifetime licenses have no recurring fees.'
+    answer: 'No subscription is billed today. When paid monthly or yearly billing launches, we intend cancellation at period end with no extra penalty. Lifetime would be a one-time fee with no recurring charge.'
   },
   {
     category: 'Refund Policy',
     question: 'Is there a money-back guarantee for the Pro Membership?',
-    answer: 'Yes. We provide an unconditional 30-day money-back guarantee on all plans (monthly, yearly, and lifetime) if you are not completely satisfied with your OmniCraft Studio Pro experience.'
+    answer: 'No payment is taken now. When paid billing launches, we intend a 30-day refund from the purchase date on monthly, yearly, and lifetime plans. Email support@omnicraft.studio.'
   }
 ];

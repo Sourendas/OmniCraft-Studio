@@ -19,9 +19,9 @@ export const Footer: React.FC = () => {
               <Lock className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="font-black text-[#0A2540] text-xs mb-0.5">100% Zero-Server Uploads</h4>
+              <h4 className="font-black text-[#0A2540] text-xs mb-0.5">Files processed in the browser</h4>
               <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-                Files and media process purely in private browser memory.
+                No OmniCraft server receives your documents or images.
               </p>
             </div>
           </div>
@@ -31,9 +31,9 @@ export const Footer: React.FC = () => {
               <ShieldCheck className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="font-black text-[#0A2540] text-xs mb-0.5">GDPR & CCPA Sovereign</h4>
+              <h4 className="font-black text-[#0A2540] text-xs mb-0.5">Browser-local processing</h4>
               <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-                Zero telemetry logs, zero trackers, absolute confidentiality.
+                No file uploads to OmniCraft servers. No ad or analytics scripts today.
               </p>
             </div>
           </div>
@@ -43,9 +43,9 @@ export const Footer: React.FC = () => {
               <Cpu className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="font-black text-[#0A2540] text-xs mb-0.5">WASM & Canvas Engine</h4>
+              <h4 className="font-black text-[#0A2540] text-xs mb-0.5">Canvas & Web APIs</h4>
               <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-                Hardware-accelerated processing inside modern browsers.
+                Processing happens in this tab using standard browser APIs.
               </p>
             </div>
           </div>
@@ -78,7 +78,7 @@ export const Footer: React.FC = () => {
               </span>
             </Link>
             <p className="text-xs text-slate-600 leading-relaxed max-w-sm font-medium">
-              The premier sovereign web utility workstation. 12 superpower tools engineered for creators, marketers, and developers demanding instant speed without data compromise.
+              The in-browser utility workstation. 12 tools for creators and developers. File processing stays in this tab.
             </p>
             <div className="flex items-center gap-2 text-[11px] text-slate-500 font-mono pt-1">
               <span className="text-emerald-600 font-bold">● 100% Operational</span>
@@ -111,6 +111,11 @@ export const Footer: React.FC = () => {
               <li>
                 <Link to="/social-studio" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
                   Social Typography Studio
+                </Link>
+              </li>
+              <li>
+                <Link to="/health-calc" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
+                  Health & Macro Calculator
                 </Link>
               </li>
             </ul>
@@ -152,6 +157,11 @@ export const Footer: React.FC = () => {
                   Branded QR Code Studio
                 </Link>
               </li>
+              <li>
+                <Link to="/currency-crypto" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
+                  Reference FX Worksheet
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -163,7 +173,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/privacy-policy" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Privacy Policy (Zero-Server)
+                  Privacy Policy
                 </Link>
               </li>
               <li>
@@ -192,7 +202,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom copyright */}
         <div className="mt-10 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-          <div>© {new Date().getFullYear()} OmniCraft Studio. 100% Client-side sovereign architecture.</div>
+          <div>© {new Date().getFullYear()} OmniCraft Studio. File tools run in your browser.</div>
           <div className="flex gap-4 font-bold text-slate-600">
             <Link to="/privacy-policy" className="hover:text-[#00A3AD] transition-colors">Privacy</Link>
             <Link to="/terms-of-service" className="hover:text-[#00A3AD] transition-colors">Terms</Link>

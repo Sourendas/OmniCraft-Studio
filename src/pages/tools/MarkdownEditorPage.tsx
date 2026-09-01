@@ -27,48 +27,27 @@ import {
 } from 'lucide-react';
 import { useSubscription } from '../../context/SubscriptionContext';
 
-const SAMPLE_MARKDOWN = `# OmniCraft Sovereign Studio — Architecture & Technical Spec
+const SAMPLE_MARKDOWN = `# OmniCraft Studio — Markdown notes
 
-> **100% In-Browser Computation & Zero Server Payload Retention**
+> File tools run in your browser. This sample is just Markdown.
 
-Welcome to **OmniCraft Studio**, a privacy-first web utility suite compiling native operations to **WebAssembly**, **Web Crypto API**, and **HTML5 Canvas**.
-
----
-
-## ⚡ Core Client-Side Features
-
-- **Document Processing**: Drag-and-drop PDF page manipulation and DOCX transcompilation.
-- **Visual Optimization**: Lossless & lossy image compression up to 90% in WebP & AVIF.
-- **Developer Workbench**: Bidirectional JSON / CSV parsing, RegEx validator, and SHA-256 hash engine.
-- **Vector Graphics**: Live SVG styling, stroke/fill recoloring, and 4x Retina PNG rendering.
-
-### 🛡️ Privacy & Compliance Matrix
-
-| Standard | Status | Implementation Mechanism |
-| :--- | :---: | :--- |
-| **GDPR Art. 25** | ✅ Full Pass | Zero external data processing; memory garbage-collected |
-| **HIPAA Safe Harbor** | ✅ Full Pass | No electronic Protected Health Information (ePHI) transmitted |
-| **Air-Gapped Ready** | ✅ Full Pass | Functions offline with cached service worker assets |
+Welcome to **OmniCraft Studio**. Use this editor to draft notes with a live preview.
 
 ---
 
-### Code Implementation Example
+## Features on this page
+
+- Headings, lists, tables, and code fences
+- Word count and estimated reading time
+- Export Markdown or HTML
+
+### Quick checklist
+- [x] Preview pane
+- [ ] Your next note
 
 \`\`\`typescript
-import { crypto } from 'node:crypto';
-
-export async function verifyIntegrity(data: Uint8Array): Promise<string> {
-  const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
-  return Array.from(new Uint8Array(hashBuffer))
-    .map(b => b.toString(16).padStart(2, '0'))
-    .join('');
-}
+const greeting = 'Hello from OmniCraft';
 \`\`\`
-
-### Quick Checklist
-- [x] WebAssembly linear memory sandbox active
-- [x] Web Crypto API hardware acceleration verified
-- [ ] Next feature update scheduled
 `;
 
 export const MarkdownEditorPage: React.FC = () => {

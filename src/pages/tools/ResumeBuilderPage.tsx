@@ -82,6 +82,7 @@ export const ResumeBuilderPage: React.FC = () => {
       'Node.js', 'GraphQL', 'REST APIs', 'PostgreSQL', 'Docker', 'CI/CD Pipelines', 
       'Jest', 'Vitest', 'Performance Optimization', 'ATS Optimization'
     ],
+    certifications: [],
     targetJobDescription: 'Looking for a Senior Software Engineer with strong experience in TypeScript, React, WebAssembly, performance profiling, and modern frontend architecture to build zero-latency browser applications.'
   });
 
@@ -96,7 +97,7 @@ export const ResumeBuilderPage: React.FC = () => {
   // ATS Keyword analysis
   const atsAnalysis = useMemo(() => {
     if (!resumeData.targetJobDescription.trim()) {
-      return { score: 78, matched: [], missing: [], density: 'Good' };
+      return { score: 0, matched: [], missing: [], density: 'No JD' };
     }
 
     const jobText = resumeData.targetJobDescription.toLowerCase();
@@ -123,8 +124,8 @@ export const ResumeBuilderPage: React.FC = () => {
     const missing = targetKeywords.filter(kw => !fullResumeText.includes(kw));
 
     const score = targetKeywords.length > 0
-      ? Math.min(100, Math.round((matched.length / targetKeywords.length) * 100) + 15)
-      : 82;
+      ? Math.round((matched.length / targetKeywords.length) * 100)
+      : 0;
 
     return { score, matched, missing, density: score > 80 ? 'Optimal' : score > 60 ? 'Moderate' : 'Low' };
   }, [resumeData]);
@@ -377,14 +378,14 @@ export const ResumeBuilderPage: React.FC = () => {
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
-            <span>Document & AI</span>
+            <span>Documents</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
             <FileText className="w-7 h-7 text-[#00A3AD]" />
-            AI Resume & ATS Optimizer
+            ATS Resume Builder
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
-            Build ATS-compliant resumes with real-time keyword scoring and free AI bullet enhancement.
+            Build a resume with local keyword-overlap scoring and a heuristic bullet rewriter. PDF export is Pro preview.
           </p>
         </div>
 
@@ -433,11 +434,11 @@ export const ResumeBuilderPage: React.FC = () => {
             <span className="text-lg font-black text-[#007A82]">
               {atsAnalysis.score}%
             </span>
-            <span className="text-[9px] text-[#008C95] uppercase font-mono font-bold">ATS Match</span>
+            <span className="text-[9px] text-[#008C95] uppercase font-mono font-bold">Overlap</span>
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h4 className="text-xs sm:text-sm font-black text-[#0A2540]">ATS Keyword Alignment</h4>
+              <h4 className="text-xs sm:text-sm font-black text-[#0A2540]">Keyword overlap</h4>
               <span className="text-[10px] px-2.5 py-0.5 rounded-full font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                 {atsAnalysis.density}
               </span>
@@ -625,10 +626,10 @@ export const ResumeBuilderPage: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-slate-700 font-bold mb-1">Dates</label>
+                      <label className="block text-slate-700 font-bold mb-1">Start</label>
                       <input
                         type="text"
-                        value={`${exp.startDate} - ${exp.current ? 'Present' : exp.endDate}`}
+                        value={exp.startDate}
                         onChange={(e) => {
                           const val = e.target.value;
                           setResumeData(prev => ({
@@ -638,6 +639,36 @@ export const ResumeBuilderPage: React.FC = () => {
                         }}
                         className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-[#0A2540] font-medium"
                       />
+                    </div>
+                    <div>
+                      <label className="block text-slate-700 font-bold mb-1">End</label>
+                      <input
+                        type="text"
+                        value={exp.current ? 'Present' : exp.endDate}
+                        disabled={exp.current}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setResumeData(prev => ({
+                            ...prev,
+                            experience: prev.experience.map(x => x.id === exp.id ? { ...x, endDate: val, current: false } : x)
+                          }));
+                        }}
+                        className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 text-[#0A2540] font-medium disabled:bg-slate-100"
+                      />
+                      <label className="mt-1.5 flex items-center gap-1.5 text-[11px] text-slate-600 font-bold">
+                        <input
+                          type="checkbox"
+                          checked={exp.current}
+                          onChange={(e) => {
+                            const checked = e.target.checked;
+                            setResumeData(prev => ({
+                              ...prev,
+                              experience: prev.experience.map(x => x.id === exp.id ? { ...x, current: checked } : x)
+                            }));
+                          }}
+                        />
+                        Current role
+                      </label>
                     </div>
                     <div>
                       <label className="block text-slate-700 font-bold mb-1">Location</label>
@@ -672,13 +703,13 @@ export const ResumeBuilderPage: React.FC = () => {
                             className="flex-1 p-2.5 rounded-xl bg-white border border-slate-200 text-xs text-[#0A2540] font-medium focus:border-[#00A3AD] focus:outline-none"
                           />
                           <button
-                            title="AI Bullet Enhancer (Action-oriented & ATS metrics)"
+                            title="Local heuristic rewriter (action verbs + stock metrics)"
                             disabled={isEnhancing}
                             onClick={() => enhanceBullet(exp.id, bIdx, b)}
                             className="p-2.5 rounded-xl bg-[#E6F8F9] hover:bg-[#D0F2F3] text-[#007A82] border border-[#B3EAEF] shrink-0 text-xs flex items-center gap-1 cursor-pointer disabled:opacity-50 font-bold"
                           >
                             <Wand2 className={`w-3.5 h-3.5 ${isEnhancing ? 'animate-spin text-[#00A3AD]' : ''}`} />
-                            <span className="hidden sm:inline">AI Polish</span>
+                            <span className="hidden sm:inline">Rewrite bullet</span>
                           </button>
                           <button
                             onClick={() => removeBullet(exp.id, bIdx)}
@@ -773,7 +804,7 @@ export const ResumeBuilderPage: React.FC = () => {
                 </h3>
               </div>
               <p className="text-xs text-slate-600 font-medium">
-                Paste the job description of the role you are applying for. The scanner will compare keywords in real time and guide you to a 90%+ match score.
+                The scanner compares a small keyword list to your resume text. It is overlap %, not an employer ATS.
               </p>
               <textarea
                 rows={6}

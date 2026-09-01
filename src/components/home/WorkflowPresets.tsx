@@ -100,7 +100,7 @@ export const WorkflowPresets: React.FC = () => {
       title: 'Vector Design & Brand Asset Pipeline',
       badge: 'Design & Visual',
       icon: Palette,
-      description: 'Live vector icon design, high-efficiency WebP compression, and bespoke branded QR creation.',
+      description: 'SVG editing, canvas image compression, and branded QR export.',
       steps: [
         {
           name: 'SVG & Vector Icon Studio',
@@ -111,7 +111,7 @@ export const WorkflowPresets: React.FC = () => {
         {
           name: 'Smart Image Optimizer',
           route: '/image-optimizer',
-          action: 'Compress marketing assets by up to 90% in WebP',
+          action: 'Compress marketing assets in WebP / JPEG / PNG',
           tag: 'Step 2'
         },
         {
@@ -131,12 +131,12 @@ export const WorkflowPresets: React.FC = () => {
       title: 'Global Commerce & Operations Stack',
       badge: 'Fintech & Productivity',
       icon: Globe2,
-      description: 'Live multi-currency exchange benchmarking, crypto tracking, and health habit modeling.',
+      description: 'Example FX worksheet, Unicode captions, and BMR estimates (not medical advice).',
       steps: [
         {
-          name: 'Live Currency & Crypto Matrix',
+          name: 'Reference FX Worksheet',
           route: '/currency-crypto',
-          action: 'Benchmark live rates with simulated remittance spread',
+          action: 'Apply example rates and hypothetical remittance fees',
           tag: 'Step 1'
         },
         {

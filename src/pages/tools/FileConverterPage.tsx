@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSubscription } from '../../context/SubscriptionContext';
 import { AdBanner } from '../../components/layout/AdBanner';
 import { downloadBlob, formatBytes } from '../../lib/utils';
 import mammoth from 'mammoth';
@@ -30,8 +29,6 @@ interface ConvertFileItem {
 }
 
 export const FileConverterPage: React.FC = () => {
-  const { isPro } = useSubscription();
-
   const [files, setFiles] = useState<ConvertFileItem[]>([]);
   const [isConvertingAll, setIsConvertingAll] = useState(false);
 
@@ -180,8 +177,7 @@ export const FileConverterPage: React.FC = () => {
         convertedBlob = new Blob([wavBuffer], { type: 'audio/wav' });
         await audioCtx.close();
       } else {
-        // Fallback pass-through
-        convertedBlob = file;
+        throw new Error('Unsupported file type');
       }
 
       setFiles(prev =>
@@ -286,7 +282,7 @@ export const FileConverterPage: React.FC = () => {
             Universal In-Browser Converter
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
-            Convert Images (PNG, JPG, WebP), Audio (MP3, WAV), and Documents (DOCX to PDF) 100% locally.
+            Convert Images (PNG, JPG, WebP), Audio → WAV, and DOCX to PDF/TXT in this browser.
           </p>
         </div>
 
@@ -320,7 +316,7 @@ export const FileConverterPage: React.FC = () => {
             Drop your Images, Audio, or Documents here
           </h3>
           <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">
-            PNG, JPG, WebP, AVIF, MP3, WAV, DOCX, TXT, HTML. Multi-file batch support.
+            PNG, JPG, WebP, MP3/WAV (decode → WAV), DOCX, TXT. Unsupported types are rejected.
           </p>
         </div>
 
@@ -384,8 +380,6 @@ export const FileConverterPage: React.FC = () => {
                         {item.type === 'audio' && (
                           <>
                             <option value="wav">WAV</option>
-                            <option value="mp3">MP3</option>
-                            <option value="ogg">OGG</option>
                           </>
                         )}
                         {item.type === 'document' && (
@@ -396,8 +390,7 @@ export const FileConverterPage: React.FC = () => {
                         )}
                         {item.type === 'other' && (
                           <>
-                            <option value="txt">TXT</option>
-                            <option value="pdf">PDF</option>
+                            <option value="">Unsupported</option>
                           </>
                         )}
                       </select>
@@ -415,11 +408,11 @@ export const FileConverterPage: React.FC = () => {
                     ) : (
                       <button
                         onClick={() => convertFile(item)}
-                        disabled={item.status === 'converting'}
+                        disabled={item.status === 'converting' || item.type === 'other'}
                         className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#00A3AD] hover:bg-[#00B5B8] text-white text-xs font-black transition-all disabled:opacity-50 cursor-pointer shadow-xs"
                       >
                         <RefreshCw className={`w-3.5 h-3.5 ${item.status === 'converting' ? 'animate-spin' : ''}`} />
-                        <span>{item.status === 'converting' ? 'Converting...' : 'Convert'}</span>
+                        <span>{item.type === 'other' ? 'Unsupported' : item.status === 'converting' ? 'Converting...' : 'Convert'}</span>
                       </button>
                     )}
                   </div>

@@ -118,7 +118,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           {/* Tools List */}
           <div>
             <div className="text-[11px] font-black text-[#007A82] uppercase tracking-wider px-3 mb-2">
-              Sovereign Tools ({filteredTools.length})
+              Tools ({filteredTools.length})
             </div>
             <div className="space-y-1">
               {filteredTools.map((tool) => {

@@ -46,7 +46,7 @@ export const PdfSuitePage: React.FC = () => {
 
   // Metadata parameters
   const [metaTitle, setMetaTitle] = useState('OmniCraft Processed Document');
-  const [metaAuthor, setMetaAuthor] = useState('OmniCraft Sovereign Studio');
+  const [metaAuthor, setMetaAuthor] = useState('OmniCraft Studio');
   const [metaSubject, setMetaSubject] = useState('Private Client-Side PDF');
   const [metaKeywords, setMetaKeywords] = useState('pdf, wasm, omnicraft, private, secure');
 
@@ -60,7 +60,7 @@ export const PdfSuitePage: React.FC = () => {
     try {
       const pdfDoc = await PDFDocument.create();
       const page1 = pdfDoc.addPage([600, 400]);
-      page1.drawText('OmniCraft Sovereign PDF Studio', {
+      page1.drawText('OmniCraft PDF Studio', {
         x: 50,
         y: 320,
         size: 20,
@@ -178,12 +178,60 @@ export const PdfSuitePage: React.FC = () => {
       }
 
       const mergedBytes = await mergedPdf.save();
-      const blob = new Blob([mergedBytes], { type: 'application/pdf' });
+      const blob = new Blob([mergedBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
       downloadBlob(blob, 'OmniCraft_Merged_Document.pdf');
       setStatusMessage('Merged PDF downloaded successfully!');
     } catch (e) {
       console.error(e);
       setStatusMessage('Error during merge.');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const parsePageRange = (input: string, pageCount: number): number[] => {
+    const pages = new Set<number>();
+    const parts = input.split(',').map((s) => s.trim()).filter(Boolean);
+    for (const part of parts) {
+      if (part.includes('-')) {
+        const [rawA, rawB] = part.split('-');
+        const a = parseInt(rawA.trim(), 10);
+        const b = parseInt(rawB.trim(), 10);
+        if (!Number.isFinite(a) || !Number.isFinite(b)) continue;
+        const start = Math.min(a, b);
+        const end = Math.max(a, b);
+        for (let p = start; p <= end; p++) {
+          if (p >= 1 && p <= pageCount) pages.add(p);
+        }
+      } else {
+        const p = parseInt(part, 10);
+        if (p >= 1 && p <= pageCount) pages.add(p);
+      }
+    }
+    return Array.from(pages).sort((x, y) => x - y);
+  };
+
+  const handleSplit = async () => {
+    if (files.length === 0) return;
+    setIsProcessing(true);
+    setStatusMessage('Extracting selected pages in this browser...');
+    try {
+      const source = files[0];
+      const pageNumbers = parsePageRange(splitRange, source.pageCount);
+      if (pageNumbers.length === 0) {
+        setStatusMessage('No valid pages in that range. Use e.g. 1-3,5 (first loaded file).');
+        return;
+      }
+      const doc = await PDFDocument.load(source.arrayBuffer);
+      const outputPdf = await PDFDocument.create();
+      const copied = await outputPdf.copyPages(doc, pageNumbers.map((n) => n - 1));
+      copied.forEach((page) => outputPdf.addPage(page));
+      const bytes = await outputPdf.save();
+      downloadBlob(new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' }), 'OmniCraft_Split_Pages.pdf');
+      setStatusMessage(`Split complete: ${pageNumbers.length} page(s) from ${source.name}.`);
+    } catch (e) {
+      console.error(e);
+      setStatusMessage('Split failed. Check the page range and that the PDF is unencrypted.');
     } finally {
       setIsProcessing(false);
     }
@@ -210,7 +258,7 @@ export const PdfSuitePage: React.FC = () => {
       outputPdf.setAuthor(metaAuthor);
       outputPdf.setSubject(metaSubject);
       outputPdf.setKeywords(metaKeywords.split(',').map(k => k.trim()));
-      outputPdf.setProducer('OmniCraft Sovereign Studio Pro');
+      outputPdf.setProducer('OmniCraft Studio Pro');
 
       for (const item of files) {
         const doc = await PDFDocument.load(item.arrayBuffer);
@@ -240,7 +288,7 @@ export const PdfSuitePage: React.FC = () => {
       }
 
       const finalBytes = await outputPdf.save();
-      const blob = new Blob([finalBytes], { type: 'application/pdf' });
+      const blob = new Blob([finalBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
       downloadBlob(blob, 'OmniCraft_Pro_Annotated.pdf');
       setStatusMessage('Pro PDF Export completed and downloaded!');
     } catch (e) {
@@ -261,14 +309,14 @@ export const PdfSuitePage: React.FC = () => {
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
-            <span>Document & AI</span>
+            <span>Documents</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
             <Layers className="w-7 h-7 text-[#00A3AD]" />
             Advanced PDF Studio
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
-            Visual organizer to merge, rotate, watermark, split, and edit metadata 100% in browser memory.
+            Visual organizer to merge, rotate, split by page range, and (Pro) add a text watermark. Preview tiles are placeholders, not rendered PDF pages.
           </p>
         </div>
 
@@ -392,7 +440,7 @@ export const PdfSuitePage: React.FC = () => {
                           <span className="text-[8px] text-[#007A82]">p.1-{file.pageCount}</span>
                         </div>
                         <span className="text-[10px] text-slate-500 mt-2 font-mono font-bold">
-                          Rotation: {file.rotation}°
+                          Rotation: {file.rotation}° · placeholder tile
                         </span>
                       </div>
                     </div>
@@ -547,7 +595,7 @@ export const PdfSuitePage: React.FC = () => {
             {/* Split Tab */}
             {activeTab === 'split' && (
               <div className="space-y-3 text-xs">
-                <label className="block text-slate-700 font-bold">Page Range Selection</label>
+                <label className="block text-slate-700 font-bold">Page range (first loaded file)</label>
                 <input
                   type="text"
                   value={splitRange}
@@ -556,8 +604,17 @@ export const PdfSuitePage: React.FC = () => {
                   className="w-full px-3.5 py-2.5 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white"
                 />
                 <p className="text-[11px] text-slate-500 font-medium">
-                  Specify individual pages or dash-separated ranges to extract or export.
+                  1-based pages, comma-separated. Example: 1-3,5. Free — no Pro required.
                 </p>
+                <button
+                  type="button"
+                  onClick={handleSplit}
+                  disabled={files.length === 0 || isProcessing}
+                  className="w-full flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-xs font-black text-emerald-800 transition-colors cursor-pointer disabled:opacity-50"
+                >
+                  <Split className="w-3.5 h-3.5" />
+                  <span>Export split PDF (free)</span>
+                </button>
               </div>
             )}
 
@@ -565,7 +622,7 @@ export const PdfSuitePage: React.FC = () => {
             <div className="p-3.5 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-[11px] text-slate-600 flex items-start gap-2.5 font-medium">
               <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
               <span>
-                All page manipulations and metadata modifications occur directly in JavaScript buffer objects with zero network telemetry.
+                All page work runs in this tab with pdf-lib. Split uses the first file in the list.
               </span>
             </div>
           </div>
