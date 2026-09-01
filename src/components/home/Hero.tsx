@@ -72,9 +72,6 @@ export const Hero: React.FC<HeroProps> = ({
             className="flex flex-wrap items-center gap-5 mt-5"
           >
             <span className="text-xs uppercase tracking-wider text-slate-700 font-bold flex items-center gap-1.5">
-              <span className="text-[#FA6400]">★★★★★</span> 4.92 / 5.0 TRUST SCORE
-            </span>
-            <span className="text-xs uppercase tracking-wider text-slate-700 font-bold flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-600" /> 100% PRIVATE IN-MEMORY
             </span>
           </motion.div>
