@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSubscription } from '../../context/SubscriptionContext';
 import { 
   X, 
@@ -6,8 +6,6 @@ import {
   Sparkles, 
   ShieldCheck, 
   Zap, 
-  CreditCard, 
-  Lock,
   Tag
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -22,25 +20,12 @@ export const UpgradeModal: React.FC = () => {
     setSelectedPlan 
   } = useSubscription();
 
-  const [paymentMethod, setPaymentMethod] = useState<'card' | 'apple_pay'>('card');
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [cardNumber, setCardNumber] = useState('4242 •••• •••• 4242');
-  const [expiry, setExpiry] = useState('12/28');
-  const [cvc, setCvc] = useState('888');
-  const [cardName, setCardName] = useState('Alex Developer');
-
   if (!isUpgradeModalOpen) return null;
 
-  const currentPriceText = selectedPlan === 'yearly' ? '$69.99 USD / year' : '$6.99 USD / month';
-  const monthlyEquivalent = selectedPlan === 'yearly' ? '($5.83 / month • Billed Annually)' : 'Billed Monthly • Cancel Anytime';
-
-  const handleSimulatedCheckout = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsProcessing(true);
-    setTimeout(() => {
-      setIsProcessing(false);
-      activatePro(selectedPlan);
-    }, 900);
+  const getPlanPriceDisplay = () => {
+    if (selectedPlan === 'yearly') return '$70 / Year';
+    if (selectedPlan === 'lifetime') return '$130 Lifetime';
+    return '$7 / Month';
   };
 
   return (
@@ -58,7 +43,7 @@ export const UpgradeModal: React.FC = () => {
           className="relative w-full max-w-xl my-8 rounded-3xl bg-white border border-slate-200 shadow-2xl p-6 sm:p-8 overflow-hidden text-[#0A2540]"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Solutionreach subtle cyan glow aura */}
+          {/* Subtle cyan glow aura */}
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-60 h-60 bg-[#00A3AD]/10 blur-3xl pointer-events-none rounded-full" />
           <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-60 h-60 bg-[#0F4C81]/10 blur-3xl pointer-events-none rounded-full" />
 
@@ -67,6 +52,7 @@ export const UpgradeModal: React.FC = () => {
             id="close-upgrade-modal-btn"
             onClick={closeUpgradeModal}
             className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
+            aria-label="Close upgrade modal"
           >
             <X className="w-5 h-5" />
           </button>
@@ -75,18 +61,18 @@ export const UpgradeModal: React.FC = () => {
           <div className="text-center sm:text-left mb-5">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-xs font-black text-[#007A82] mb-2.5">
               <Sparkles className="w-3.5 h-3.5 text-[#00A3AD]" />
-              <span>OmniCraft Pro Subscription</span>
+              <span>OmniCraft Pro Access</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-[#0A2540] tracking-tight">
-              Unlock All 12 Pro Engines — Just <span className="text-[#008C95]">{selectedPlan === 'yearly' ? '$69.99 / Year' : '$6.99 / Month'}</span>
+              Unlock All 12 Sovereign Engines — <span className="text-[#008C95]">{getPlanPriceDisplay()}</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
-              You selected <span className="text-[#007A82] font-bold font-mono">[{upgradeFeatureName}]</span>. Choose your flexible subscription plan below. Cancel anytime.
+              You selected <span className="text-[#007A82] font-bold font-mono">[{upgradeFeatureName}]</span>. Select your plan below to unlock unlimited in-browser processing.
             </p>
           </div>
 
-          {/* Plan Selection Cards */}
-          <div className="grid grid-cols-2 gap-3 mb-5">
+          {/* 3-Tier Plan Selection Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
             {/* Monthly Plan */}
             <button
               type="button"
@@ -106,11 +92,11 @@ export const UpgradeModal: React.FC = () => {
                   {selectedPlan === 'monthly' && <Check className="w-3 h-3" />}
                 </span>
               </div>
-              <div className="text-lg font-black text-[#008C95]">$6.99 <span className="text-xs font-bold text-slate-500">/ mo</span></div>
+              <div className="text-lg font-black text-[#008C95]">$7 <span className="text-xs font-bold text-slate-500">/ mo</span></div>
               <div className="text-[10px] text-slate-500 font-medium mt-0.5">Flexible monthly billing</div>
             </button>
 
-            {/* Yearly Plan (Best Value) */}
+            {/* Yearly Plan (Save 16%) */}
             <button
               type="button"
               id="select-yearly-plan-btn"
@@ -125,26 +111,51 @@ export const UpgradeModal: React.FC = () => {
                 <Tag className="w-2.5 h-2.5" /> Save 16%
               </div>
               <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-black text-[#0A2540]">Yearly Plan</span>
+                <span className="text-xs font-black text-[#0A2540]">Yearly</span>
                 <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                   selectedPlan === 'yearly' ? 'border-[#00A3AD] bg-[#00A3AD] text-white' : 'border-slate-300'
                 }`}>
                   {selectedPlan === 'yearly' && <Check className="w-3 h-3" />}
                 </span>
               </div>
-              <div className="text-lg font-black text-[#008C95]">$69.99 <span className="text-xs font-bold text-slate-500">/ yr</span></div>
-              <div className="text-[10px] text-[#007A82] font-bold mt-0.5">$5.83 / month equivalent</div>
+              <div className="text-lg font-black text-[#008C95]">$70 <span className="text-xs font-bold text-slate-500">/ yr</span></div>
+              <div className="text-[10px] text-[#007A82] font-bold mt-0.5">$5.83 / mo equivalent</div>
+            </button>
+
+            {/* Lifetime Plan (Best Value) */}
+            <button
+              type="button"
+              id="select-lifetime-plan-btn"
+              onClick={() => setSelectedPlan('lifetime')}
+              className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative overflow-hidden ${
+                selectedPlan === 'lifetime'
+                  ? 'bg-[#E6F8F9]/90 border-[#00A3AD] shadow-sm ring-1 ring-[#00A3AD]'
+                  : 'bg-[#F8FBFC] border-slate-200 hover:bg-white'
+              }`}
+            >
+              <div className="absolute top-0 right-0 bg-[#00A3AD] text-white text-[9px] font-black px-2 py-0.5 rounded-bl-lg uppercase tracking-tight flex items-center gap-0.5">
+                <Sparkles className="w-2.5 h-2.5" /> Best Value
+              </div>
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-black text-[#0A2540]">Lifetime</span>
+                <span className={`w-4 h-4 rounded-full border flex items-center justify-center ${
+                  selectedPlan === 'lifetime' ? 'border-[#00A3AD] bg-[#00A3AD] text-white' : 'border-slate-300'
+                }`}>
+                  {selectedPlan === 'lifetime' && <Check className="w-3 h-3" />}
+                </span>
+              </div>
+              <div className="text-lg font-black text-[#008C95]">$130 <span className="text-xs font-bold text-slate-500">once</span></div>
+              <div className="text-[10px] text-[#007A82] font-bold mt-0.5">Pay once, own forever</div>
             </button>
           </div>
 
           {/* Value Checklist */}
           <div className="rounded-3xl bg-[#F4F8FA] border border-slate-200/80 p-4 sm:p-5 mb-5 space-y-2">
             {[
-              { title: 'Uncapped High-Res AI Downloads', desc: 'Uncompressed Flux generation with zero watermark' },
               { title: 'Full PDF Editor & Annotation Suite', desc: 'Unlimited split, merge, rotate, watermark & PDF export' },
-              { title: 'ATS Resume PDF Direct Exports', desc: 'Tailored ATS keyword optimization & executive templates' },
-              { title: '100% Zero Advertisements', desc: 'Clean, distraction-free environment across all 12 tools' },
-              { title: '100% Client-Side Privacy Guarantee', desc: 'No files or documents ever touch remote servers' }
+              { title: 'ATS Resume Direct PDF Exports', desc: 'Tailored ATS keyword density analysis & executive PDF downloads' },
+              { title: 'Unlimited High-Throughput Conversions', desc: 'High-res image compression, SVG exports, and audio transcoding' },
+              { title: '100% Client-Side Privacy Guarantee', desc: 'No files or documents ever leave your browser memory' }
             ].map((item, idx) => (
               <div key={idx} className="flex items-start gap-3">
                 <div className="mt-0.5 rounded-full p-1 bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] shrink-0">
@@ -158,142 +169,23 @@ export const UpgradeModal: React.FC = () => {
             ))}
           </div>
 
-          {/* Test Mode Quick Activator */}
-          <div className="mb-5 p-3.5 rounded-3xl bg-[#E6F8F9]/70 border border-[#B3EAEF] flex items-center justify-between gap-3">
-            <div>
-              <div className="flex items-center gap-1.5">
-                <Zap className="w-4 h-4 text-[#00A3AD]" />
-                <span className="text-xs font-black text-[#007A82]">Instant Review Mode</span>
-              </div>
-              <p className="text-[11px] text-slate-600 font-medium">Instantly activate Pro to test all export gateways.</p>
-            </div>
+          {/* Action Activation Button (Demo / Preview Mode) */}
+          <div className="space-y-3">
             <button
               id="instant-activate-pro-btn"
               type="button"
               onClick={() => activatePro(selectedPlan)}
-              className="px-4 py-2 rounded-full bg-[#00A3AD] hover:bg-[#00B5B8] text-white text-xs font-black transition-all shrink-0 active:scale-95 cursor-pointer shadow-sm shadow-teal-500/20"
+              className="w-full py-4 px-5 rounded-full bg-gradient-to-r from-[#00A3AD] via-[#0FB5BA] to-[#0F4C81] hover:from-[#00B5B8] hover:via-[#00A3AD] hover:to-[#0F4C81] text-white font-black text-sm shadow-lg shadow-teal-500/25 transition-all flex items-center justify-center gap-2 active:scale-[0.99] cursor-pointer tracking-tight"
             >
-              ⚡ 1-Click Pro ({selectedPlan === 'yearly' ? '$69.99/yr' : '$6.99/mo'})
+              <Zap className="w-4 h-4 text-amber-300" />
+              <span>⚡ Activate Free Pro Preview (Demo Mode)</span>
             </button>
+
+            <div className="flex items-center justify-center gap-2 text-xs text-slate-500 text-center font-medium pt-1">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Payment processing will be securely handled by Stripe / Lemon Squeezy upon public launch.</span>
+            </div>
           </div>
-
-          {/* Simulated Checkout Form */}
-          <form onSubmit={handleSimulatedCheckout} className="space-y-3.5">
-            <div className="flex items-center justify-between text-xs text-slate-600 pb-2 border-b border-slate-100 font-medium">
-              <span className="flex items-center gap-1.5 font-bold">
-                <Lock className="w-3.5 h-3.5 text-emerald-600" />
-                256-Bit Encrypted Secure Checkout
-              </span>
-              <div className="text-right">
-                <span className="text-[#008C95] font-black font-mono">{currentPriceText}</span>
-                <div className="text-[10px] text-slate-400 font-medium">{monthlyEquivalent}</div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={() => setPaymentMethod('card')}
-                className={`py-2.5 px-3 rounded-full border text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                  paymentMethod === 'card'
-                    ? 'bg-[#E6F8F9] border-[#00A3AD] text-[#007A82] shadow-xs'
-                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
-                }`}
-              >
-                <CreditCard className="w-4 h-4" />
-                Credit Card
-              </button>
-              <button
-                type="button"
-                onClick={() => setPaymentMethod('apple_pay')}
-                className={`py-2.5 px-3 rounded-full border text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                  paymentMethod === 'apple_pay'
-                    ? 'bg-[#E6F8F9] border-[#00A3AD] text-[#007A82] shadow-xs'
-                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
-                }`}
-              >
-                <span> Pay / G Pay</span>
-              </button>
-            </div>
-
-            {paymentMethod === 'card' ? (
-              <div className="space-y-2.5 text-xs">
-                <div>
-                  <label className="block text-slate-700 font-bold mb-1">Cardholder Name</label>
-                  <input
-                    type="text"
-                    value={cardName}
-                    onChange={(e) => setCardName(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white transition-all"
-                    placeholder="Jane Doe"
-                  />
-                </div>
-                <div>
-                  <label className="block text-slate-700 font-bold mb-1">Card Information</label>
-                  <input
-                    type="text"
-                    value={cardNumber}
-                    onChange={(e) => setCardNumber(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-mono font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white transition-all"
-                    placeholder="4242 4242 4242 4242"
-                  />
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-slate-700 font-bold mb-1">Expires (MM/YY)</label>
-                    <input
-                      type="text"
-                      value={expiry}
-                      onChange={(e) => setExpiry(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-mono font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white transition-all"
-                      placeholder="12/28"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-slate-700 font-bold mb-1">CVC</label>
-                    <input
-                      type="text"
-                      value={cvc}
-                      onChange={(e) => setCvc(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-mono font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white transition-all"
-                      placeholder="123"
-                    />
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-center text-xs text-slate-600 font-medium">
-                Express 1-touch subscription with Apple Pay, Google Pay, or Link.
-              </div>
-            )}
-
-            <button
-              id="pay-and-unlock-btn"
-              type="submit"
-              disabled={isProcessing}
-              className="w-full py-3.5 px-4 rounded-full bg-gradient-to-r from-[#00A3AD] via-[#0FB5BA] to-[#0F4C81] hover:from-[#00B5B8] hover:via-[#00A3AD] hover:to-[#0F4C81] text-white font-black text-sm shadow-lg shadow-teal-500/25 transition-all flex items-center justify-center gap-2 active:scale-[0.99] disabled:opacity-70 cursor-pointer"
-            >
-              {isProcessing ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  <span>Authorizing {selectedPlan === 'yearly' ? '$69.99/yr' : '$6.99/mo'} Subscription...</span>
-                </>
-              ) : (
-                <>
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>Start {selectedPlan === 'yearly' ? '$69.99 / Year Subscription (Save 16%)' : '$6.99 / Month Subscription'}</span>
-                </>
-              )}
-            </button>
-
-            <div className="flex items-center justify-center gap-4 text-[11px] text-slate-500 pt-1 font-medium">
-              <span>Cancel Anytime</span>
-              <span>•</span>
-              <span>30-Day Money-Back Guarantee</span>
-              <span>•</span>
-              <span>Encrypted Billing</span>
-            </div>
-          </form>
         </motion.div>
       </div>
     </AnimatePresence>

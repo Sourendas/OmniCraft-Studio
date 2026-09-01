@@ -90,7 +90,7 @@ export const Hero: React.FC<HeroProps> = ({
               className="px-7 py-3.5 rounded-full bg-gradient-to-r from-[#00A3AD] via-[#0FB5BA] to-[#0F4C81] hover:from-[#00B5B8] hover:via-[#00A3AD] hover:to-[#0F4C81] text-white font-black text-xs sm:text-sm shadow-lg shadow-teal-500/25 transition-all flex items-center justify-center gap-2.5 group cursor-pointer active:scale-95 tracking-tight"
             >
               <Sparkles className="w-4 h-4 text-white animate-pulse" />
-              <span>UPGRADE TO PRO ($6.99/MO)</span>
+              <span>UPGRADE TO PRO ($7/MO)</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           ) : (

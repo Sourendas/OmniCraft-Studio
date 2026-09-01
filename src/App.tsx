@@ -21,7 +21,7 @@ import { MarkdownEditorPage } from './pages/tools/MarkdownEditorPage';
 import { SvgStudioPage } from './pages/tools/SvgStudioPage';
 import { TextDiffPage } from './pages/tools/TextDiffPage';
 
-// Legal Pages
+// Legal & Utility Pages
 import { 
   PrivacyPolicyPage, 
   TermsPage, 
@@ -29,6 +29,7 @@ import {
   DisclaimerPage, 
   ContactPage 
 } from './pages/legal/LegalPages';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -73,7 +74,7 @@ export default function App() {
               <Route path="/contact" element={<ContactPage />} />
 
               {/* Catch-all fallback */}
-              <Route path="*" element={<HomePage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
 

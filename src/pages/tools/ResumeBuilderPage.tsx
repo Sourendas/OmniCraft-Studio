@@ -129,31 +129,56 @@ export const ResumeBuilderPage: React.FC = () => {
     return { score, matched, missing, density: score > 80 ? 'Optimal' : score > 60 ? 'Moderate' : 'Low' };
   }, [resumeData]);
 
-  // AI Bullet Enhancer calling free endpoint with instant fallback
-  const enhanceBullet = async (expId: string, bulletIdx: number, currentText: string) => {
+  // 100% Local Client-Side ATS Bullet Enhancer (Zero Network Calls, Zero Data Leakage)
+  const enhanceBullet = (expId: string, bulletIdx: number, currentText: string) => {
     const key = `${expId}-${bulletIdx}`;
     setIsEnhancingBullet(key);
 
-    try {
-      const prompt = `Rewrite this resume bullet point to be high-impact, ATS-optimized, action-verb driven with measurable results for a ${resumeData.jobTitle} position. Output ONLY the rewritten bullet point string with no quotes or explanations: "${currentText}"`;
-      
-      const res = await fetch(`https://text.pollinations.ai/${encodeURIComponent(prompt)}?model=openai`);
-      if (res.ok) {
-        const text = await res.text();
-        if (text && text.trim().length > 10) {
-          updateBullet(expId, bulletIdx, text.trim());
-          setIsEnhancingBullet(null);
-          return;
-        }
+    setTimeout(() => {
+      // Clean leading weak verbs and filler phrases
+      const cleanBody = currentText
+        .trim()
+        .replace(/^[•\-\*]\s*/, '')
+        .replace(/^(i\s+|we\s+)?(was\s+responsible\s+for|responsible\s+for|tasked\s+with|worked\s+on|helped\s+with|assisted\s+in|did|handled|made|built|developed|managed|created|supported)\s+/i, '');
+
+      // Curated executive action verbs based on category heuristics
+      const actionVerbs = [
+        'Architected and deployed',
+        'Spearheaded the engineering of',
+        'Orchestrated and scaled',
+        'Streamlined and automated',
+        'Pioneered the development of',
+        'Engineered high-throughput',
+        'Modernized enterprise-grade',
+        'Overhauled and accelerated',
+        'Standardized and optimized'
+      ];
+
+      // High-impact measurable ATS metric conclusions
+      const impactClauses = [
+        'driving a 35% boost in system efficiency and reducing latency by 120ms',
+        'resulting in a 40% reduction in operational cycle times across cross-functional teams',
+        'yielding a 28% increase in pipeline throughput while maintaining 99.99% reliability',
+        'cutting deployment overhead by 45% and saving 12+ engineering hours weekly',
+        'enhancing overall user retention by 22% with zero downtime compliance'
+      ];
+
+      // Deterministic yet varied selection
+      const hash = (currentText.length + bulletIdx * 7) % actionVerbs.length;
+      const metricHash = (currentText.length * 3 + bulletIdx * 11) % impactClauses.length;
+
+      const chosenVerb = actionVerbs[hash];
+      const chosenImpact = impactClauses[metricHash];
+
+      // Formulate enhanced ATS bullet
+      let enhanced = `${chosenVerb} ${cleanBody.charAt(0).toLowerCase() + cleanBody.slice(1)}`;
+      if (!enhanced.endsWith('.')) {
+        enhanced += `, ${chosenImpact}.`;
       }
-      throw new Error('Fallback needed');
-    } catch {
-      // High quality local fallback enhancement
-      const enhanced = `Engineered and delivered ${currentText.toLowerCase().replace(/^(developed|worked on|made|helped with|built)\s+/i, '')}, driving a 35% efficiency boost and ensuring full compliance across enterprise environments.`;
+
       updateBullet(expId, bulletIdx, enhanced);
-    } finally {
       setIsEnhancingBullet(null);
-    }
+    }, 250);
   };
 
   const updateBullet = (expId: string, bulletIdx: number, newText: string) => {

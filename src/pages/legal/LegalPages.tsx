@@ -16,41 +16,48 @@ export const PrivacyPolicyPage: React.FC = () => {
           </div>
           <div>
             <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">Privacy Policy</h1>
-            <p className="text-xs text-slate-500 font-mono mt-0.5 font-bold">Effective Date: September 2026 • GDPR & CCPA Sovereign</p>
+            <p className="text-xs text-slate-500 font-mono mt-0.5 font-bold">Effective Date: September 2026 • GDPR, CCPA & COPPA Compliant</p>
           </div>
         </div>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-[#0A2540]">1. Core Sovereign Privacy Promise</h2>
+          <h2 className="text-lg font-black text-[#0A2540]">1. 100% Client-Side Architecture (Zero-Server Processing)</h2>
           <p className="font-medium">
-            OmniCraft Studio is engineered with a strict <strong>Zero-Server Telemetry Architecture</strong>. Unlike legacy cloud SaaS platforms, all document parsing, image compression, PDF annotation, and data conversions execute <strong>100% inside your browser's local WebAssembly and JavaScript sandbox</strong>.
+            OmniCraft Studio is engineered with an unwavering <strong>Zero-Telemetry, Sovereign Client Architecture</strong>. All 12 productivity and developer utilities — including document conversion, PDF page manipulation, image compression, SVG vector rendering, diff computation, QR generation, cryptographic hashing, and biometric estimations — execute <strong>exclusively inside your local browser runtime</strong> via standard Web APIs, WebAssembly, and Canvas buffers.
           </p>
-          <p className="font-medium">
-            Your uploaded files, resumes, cryptographic keys, and biometrics are NEVER sent, stored, or processed on our backend servers.
+          <p className="font-medium text-emerald-800 bg-emerald-50 p-3 rounded-2xl border border-emerald-200">
+            <strong>Absolute Guarantee:</strong> None of your documents, resumes, images, code snippets, biometric stats, or files are ever transmitted to, stored on, or inspected by our servers or any third-party AI endpoints.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-[#0A2540]">2. Data We Do Not Collect</h2>
-          <ul className="list-disc pl-5 space-y-1 text-slate-600 font-medium">
-            <li>We do not collect or inspect your PDF, DOCX, or Image file payloads.</li>
-            <li>We do not record your ATS resume contents or job descriptions.</li>
-            <li>We do not track your financial exchange computations or crypto queries.</li>
-            <li>We do not store your physical health, weight, or macro metrics.</li>
+          <h2 className="text-lg font-black text-[#0A2540]">2. Information We Do Not Collect</h2>
+          <ul className="list-disc pl-5 space-y-1.5 text-slate-600 font-medium">
+            <li><strong>No File Uploads:</strong> PDF, DOCX, audio, and image payloads remain strictly in ephemeral browser memory.</li>
+            <li><strong>No Career / Resume Data:</strong> Resume text, employment history, and ATS inputs are processed in-memory only.</li>
+            <li><strong>No Financial / Health Records:</strong> Currency rates and BMR/macro calculations are calculated mathematically on the client.</li>
+            <li><strong>No Cross-Site Tracking:</strong> We do not deploy fingerprinting scripts or invasive advertising cookies.</li>
           </ul>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-[#0A2540]">3. Local Storage Usage</h2>
+          <h2 className="text-lg font-black text-[#0A2540]">3. Local Storage Disclosure</h2>
           <p className="font-medium">
-            OmniCraft Studio uses standard browser <code className="text-[#007A82] bg-[#E6F8F9] px-2 py-0.5 rounded-md font-mono border border-[#B3EAEF]">localStorage</code> solely to remember your Pro activation status and local UI preferences. This data remains on your device and can be cleared at any time.
+            OmniCraft Studio utilizes standard browser <code className="text-[#007A82] bg-[#E6F8F9] px-2 py-0.5 rounded-md font-mono border border-[#B3EAEF]">localStorage</code> strictly to persist your UI preferences and Pro membership activation status across sessions. You can delete this data at any time by clearing your browser site data.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-[#0A2540]">4. Third-Party Integrations</h2>
+          <h2 className="text-lg font-black text-[#0A2540]">4. GDPR & CCPA User Rights</h2>
           <p className="font-medium">
-            When utilizing optional AI prompt rendering, queries are securely routed to public inference endpoints without any personal account tracking. Payment processing for the $6.99 / Month or $69.99 / Year Subscription is securely handled by Stripe / Lemon Squeezy with standard PCI-DSS Level 1 compliance.
+            Under the European General Data Protection Regulation (GDPR) and California Consumer Privacy Act (CCPA), you retain the right to access, rectify, or erase personal data. Because we do not store any personal data on remote servers, your data is inherently sovereign and under your exclusive local control.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-black text-[#0A2540]">5. Contact Us</h2>
+          <p className="font-medium">
+            If you have questions regarding this Privacy Policy or our client-side architecture, contact our Data Protection team at <a href="mailto:privacy@omnicraft.studio" className="text-[#007A82] underline font-bold">privacy@omnicraft.studio</a>.
           </p>
         </section>
       </div>
@@ -77,23 +84,39 @@ export const TermsPage: React.FC = () => {
         </div>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-[#0A2540]">1. Agreement to Terms</h2>
+          <h2 className="text-lg font-black text-[#0A2540]">1. Acceptance of Terms</h2>
           <p className="font-medium">
-            By accessing or using OmniCraft Studio, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our utility tools.
+            By accessing or using OmniCraft Studio, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use our utility applications.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-[#0A2540]">2. Subscription Plans ($6.99/mo & $69.99/yr) & Commercial License</h2>
+          <h2 className="text-lg font-black text-[#0A2540]">2. Subscription Plans & Licensing</h2>
           <p className="font-medium">
-            OmniCraft Studio offers two Pro plans: Monthly ($6.99 / month) and Yearly ($69.99 / year, saving 16%). Both plans grant full, uncapped personal and commercial access to all 12 utility engines, ATS AI resume exports, PDF watermark suites, batch conversion accelerators, and newly released modules. Subscriptions renew automatically at the end of each billing cycle (monthly or yearly) and can be canceled at any time with zero penalty. All deliverables generated (resumes, optimized graphics, QR codes, SVGs) are 100% royalty-free for commercial use.
+            OmniCraft Studio provides access through flexible tiers:
+          </p>
+          <ul className="list-disc pl-5 space-y-1.5 text-slate-600 font-medium">
+            <li><strong>Free Community Tier:</strong> Standard access to core utilities at no charge.</li>
+            <li><strong>Pro Monthly ($7 / month):</strong> Uncapped batch conversions, ATS resume PDF downloads, and advanced PDF tools billed monthly. Cancel anytime.</li>
+            <li><strong>Pro Yearly ($70 / year):</strong> Annual access with 16% savings ($5.83/mo equivalent).</li>
+            <li><strong>Pro Lifetime ($130 one-time):</strong> Permanent unlimited access with zero recurring fees.</li>
+          </ul>
+          <p className="font-medium mt-2">
+            All documents, images, QR codes, and SVGs produced by you using the tools are 100% royalty-free for personal and commercial usage.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-[#0A2540]">3. 30-Day Money-Back Guarantee & Cancellation</h2>
+          <h2 className="text-lg font-black text-[#0A2540]">3. Disclaimer of Warranties & Limitation of Liability</h2>
           <p className="font-medium">
-            We offer an unconditional 30-day money-back guarantee on your initial Pro Subscription charge (both monthly and yearly plans). You can cancel your subscription anytime in one click from your account dashboard or via our support portal.
+            OmniCraft Studio and all associated utilities are provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, whether express or implied. In no event shall OmniCraft Studio, its developers, or affiliates be liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use the services.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-black text-[#0A2540]">4. 30-Day Money-Back Guarantee</h2>
+          <p className="font-medium">
+            We stand behind the quality of our tools. If you are not completely satisfied with your Pro purchase, you may request a full refund within 30 days of your initial purchase by contacting <a href="mailto:support@omnicraft.studio" className="text-[#007A82] underline font-bold">support@omnicraft.studio</a>.
           </p>
         </section>
       </div>
@@ -114,15 +137,15 @@ export const CookiePolicyPage: React.FC = () => {
             <Lock className="w-8 h-8" />
           </div>
           <div>
-            <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">Cookie Policy</h1>
-            <p className="text-xs text-slate-500 font-mono mt-0.5 font-bold">Strictly Essential Storage Only</p>
+            <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">Cookie & Storage Policy</h1>
+            <p className="text-xs text-slate-500 font-mono mt-0.5 font-bold">Strictly Essential Local Storage Only</p>
           </div>
         </div>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-[#0A2540]">1. How We Use Cookies & Storage</h2>
+          <h2 className="text-lg font-black text-[#0A2540]">1. Essential Storage Only</h2>
           <p className="font-medium">
-            OmniCraft Studio does not employ invasive third-party tracking cookies or cross-site fingerprinting. We use standard browser local storage solely to retain your subscription state and active session parameters.
+            OmniCraft Studio does not use tracking cookies or third-party behavioral analytics scripts. We strictly use browser <code className="text-[#007A82] bg-[#E6F8F9] px-2 py-0.5 rounded-md font-mono border border-[#B3EAEF]">localStorage</code> solely to remember your subscription status and active workspace settings.
           </p>
         </section>
       </div>
@@ -139,19 +162,33 @@ export const DisclaimerPage: React.FC = () => {
 
       <div className="rounded-3xl bg-white border border-slate-200/90 p-8 sm:p-12 shadow-[0_8px_30px_rgba(10,37,64,0.04)] space-y-6 text-slate-700 leading-relaxed text-sm">
         <div className="flex items-center gap-3.5 pb-6 border-b border-slate-100">
-          <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700">
+          <div className="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-700">
             <AlertTriangle className="w-8 h-8" />
           </div>
           <div>
-            <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">Legal Disclaimer</h1>
-            <p className="text-xs text-slate-500 font-mono mt-0.5 font-bold">AI & Financial Estimations</p>
+            <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">Legal & Analytical Disclaimer</h1>
+            <p className="text-xs text-slate-500 font-mono mt-0.5 font-bold">Financial, Health & ATS Disclosures</p>
           </div>
         </div>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-black text-[#0A2540]">1. Financial & Health Estimations</h2>
+          <h2 className="text-lg font-black text-[#0A2540]">1. Market Reference Rates & Financial Estimates</h2>
           <p className="font-medium">
-            Currency exchange rates and remittance cost estimates are provided for informational benchmarking only and do not constitute financial advice. Health, BMR, and macro calculations are estimations based on peer-reviewed Mifflin-St Jeor formulas and should not replace consultation with certified healthcare professionals.
+            Currency conversion rates and cross-border remittance fee estimates presented in the Currency & Crypto FX Matrix are calculated based on benchmark reference rates for informational and comparison purposes only. They do not constitute formal financial, investment, or trading advice.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-black text-[#0A2540]">2. Health & Nutritional Calculations</h2>
+          <p className="font-medium">
+            BMR, TDEE, and macronutrient targets generated by the Health & Nutrition Engine utilize peer-reviewed mathematical formulas (such as the Mifflin-St Jeor Equation). These outputs represent theoretical estimations and must not replace professional clinical or nutritional counsel.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-black text-[#0A2540]">3. ATS Resume Matching</h2>
+          <p className="font-medium">
+            ATS match scoring and bullet enhancement algorithms analyze textual keyword frequency and structural formatting standards. Because hiring decisions depend on numerous independent variables, OmniCraft Studio does not guarantee employment outcomes or specific interview selection.
           </p>
         </section>
       </div>
@@ -163,11 +200,16 @@ export const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('Support Inquiry');
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
+
+    // Trigger functional mailto handler so message is never lost
+    const mailtoUrl = `mailto:support@omnicraft.studio?subject=${encodeURIComponent(`[OmniCraft] ${subject} from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+    window.location.href = mailtoUrl;
     setSubmitted(true);
   };
 
@@ -184,17 +226,24 @@ export const ContactPage: React.FC = () => {
           </div>
           <div>
             <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">Contact & Support</h1>
-            <p className="text-xs text-slate-500 font-mono mt-0.5 font-bold">Direct Developer Response • 24hr Turnaround</p>
+            <p className="text-xs text-slate-500 font-mono mt-0.5 font-bold">Direct Developer Assistance • 24hr Response SLA</p>
           </div>
         </div>
 
         {submitted ? (
           <div className="p-8 rounded-3xl bg-emerald-50 border border-emerald-300 text-center space-y-3">
             <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
-            <h3 className="text-lg font-black text-[#0A2540]">Message Transmitted</h3>
+            <h3 className="text-lg font-black text-[#0A2540]">Email Client Dispatched</h3>
             <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">
-              Thank you, {name}. Our engineering team has received your message and will respond to <span className="text-[#007A82] font-mono font-bold">{email}</span> within 24 hours.
+              Thank you, {name}. Your inquiry has been routed directly to our support engineers at <span className="text-[#007A82] font-mono font-bold">support@omnicraft.studio</span>. We will follow up with <span className="text-[#007A82] font-mono font-bold">{email}</span> within 24 hours.
             </p>
+            <button
+              type="button"
+              onClick={() => setSubmitted(false)}
+              className="mt-4 px-5 py-2 rounded-full bg-[#00A3AD] text-white text-xs font-black cursor-pointer hover:bg-[#00B5B8]"
+            >
+              Send Another Inquiry
+            </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -206,7 +255,7 @@ export const ContactPage: React.FC = () => {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Elena Rostova"
+                  placeholder="e.g. Alex Mercer"
                   className="w-full px-4 py-3 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white transition-all"
                 />
               </div>
@@ -217,10 +266,24 @@ export const ContactPage: React.FC = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="elena@example.com"
+                  placeholder="alex@example.com"
                   className="w-full px-4 py-3 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white transition-all"
                 />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-black text-slate-700 mb-1">Topic / Subject</label>
+              <select
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                className="w-full px-4 py-3 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-medium focus:outline-none focus:border-[#00A3AD] focus:bg-white transition-all"
+              >
+                <option value="General Support Inquiry">General Support Inquiry</option>
+                <option value="Pro Subscription & Billing ($7/mo, $70/yr, $130)">Pro Subscription & Billing</option>
+                <option value="Tool Feedback / Feature Request">Tool Feedback / Feature Request</option>
+                <option value="Privacy & Security Question">Privacy & Security Question</option>
+              </select>
             </div>
 
             <div>

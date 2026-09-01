@@ -112,7 +112,7 @@ export const Navbar: React.FC = () => {
             href={isHome ? "#pricing" : "/#pricing"}
             className="hover:text-[#00A3AD] transition-colors font-bold text-slate-700"
           >
-            Pricing ($6.99/mo)
+            Pricing ($7/mo)
           </a>
           <a 
             href={isHome ? "#faq" : "/#faq"}
@@ -156,8 +156,8 @@ export const Navbar: React.FC = () => {
               className="relative px-4 sm:px-5 py-2.5 bg-gradient-to-r from-[#00A3AD] to-[#008C95] hover:from-[#00B5B8] hover:to-[#00A3AD] text-white rounded-full font-black text-xs shadow-md shadow-teal-500/20 transition-all overflow-hidden group cursor-pointer active:scale-95 flex items-center gap-1.5 tracking-tight"
             >
               <Sparkles className="w-3.5 h-3.5 text-white animate-pulse" />
-              <span className="hidden sm:inline">UPGRADE TO PRO ($6.99/MO)</span>
-              <span className="sm:hidden">PRO ($6.99)</span>
+              <span className="hidden sm:inline">UPGRADE TO PRO ($7/MO)</span>
+              <span className="sm:hidden">PRO ($7)</span>
             </button>
           )}
 
@@ -212,7 +212,7 @@ export const Navbar: React.FC = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="text-xs text-slate-800 font-bold py-2.5 px-3 hover:bg-[#E6F8F9] rounded-xl"
             >
-              Pricing ($6.99/mo & $69.99/yr)
+              Pricing ($7/mo, $70/yr, $130)
             </a>
             <a
               href="#faq"

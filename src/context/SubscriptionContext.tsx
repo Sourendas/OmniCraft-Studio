@@ -3,13 +3,13 @@ import confetti from 'canvas-confetti';
 
 interface SubscriptionContextType {
   isPro: boolean;
-  selectedPlan: 'monthly' | 'yearly';
-  setSelectedPlan: (plan: 'monthly' | 'yearly') => void;
+  selectedPlan: 'monthly' | 'yearly' | 'lifetime';
+  setSelectedPlan: (plan: 'monthly' | 'yearly' | 'lifetime') => void;
   isUpgradeModalOpen: boolean;
   upgradeFeatureName: string;
-  openUpgradeModal: (featureName?: string, defaultPlan?: 'monthly' | 'yearly') => void;
+  openUpgradeModal: (featureName?: string, defaultPlan?: 'monthly' | 'yearly' | 'lifetime') => void;
   closeUpgradeModal: () => void;
-  activatePro: (plan?: 'monthly' | 'yearly') => void;
+  activatePro: (plan?: 'monthly' | 'yearly' | 'lifetime') => void;
   deactivatePro: () => void;
   toggleProTestMode: () => void;
 }
@@ -29,12 +29,15 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
     }
   });
 
-  const [selectedPlan, setSelectedPlan] = useState<'monthly' | 'yearly'>(() => {
+  const [selectedPlan, setSelectedPlan] = useState<'monthly' | 'yearly' | 'lifetime'>(() => {
     try {
       const stored = localStorage.getItem(PRO_PLAN_KEY);
-      return stored === 'yearly' ? 'yearly' : 'monthly';
-    } catch {
+      if (stored === 'monthly' || stored === 'yearly' || stored === 'lifetime') {
+        return stored;
+      }
       return 'yearly'; // Default to best-value yearly
+    } catch {
+      return 'yearly';
     }
   });
 
@@ -63,7 +66,7 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
     }
   };
 
-  const openUpgradeModal = (featureName = 'Pro Utility', defaultPlan?: 'monthly' | 'yearly') => {
+  const openUpgradeModal = (featureName = 'Pro Utility', defaultPlan?: 'monthly' | 'yearly' | 'lifetime') => {
     setUpgradeFeatureName(featureName);
     if (defaultPlan) {
       setSelectedPlan(defaultPlan);
@@ -75,7 +78,7 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
     setIsUpgradeModalOpen(false);
   };
 
-  const activatePro = (plan?: 'monthly' | 'yearly') => {
+  const activatePro = (plan?: 'monthly' | 'yearly' | 'lifetime') => {
     if (plan) setSelectedPlan(plan);
     setIsPro(true);
     setIsUpgradeModalOpen(false);

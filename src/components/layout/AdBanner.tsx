@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSubscription } from '../../context/SubscriptionContext';
-import { Sparkles, ShieldCheck, Zap } from 'lucide-react';
+import { Sparkles, ShieldCheck, Zap, ArrowRight, Lock } from 'lucide-react';
 
 interface AdBannerProps {
   type: 'leaderboard' | 'sidebar' | 'in-content';
@@ -19,7 +19,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
         <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
         <span className="font-black">OmniCraft Pro Active</span>
         <span className="text-emerald-300">•</span>
-        <span className="font-bold">100% Ad-Free Experience</span>
+        <span className="font-bold">Uncapped High-Throughput Mode</span>
         <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
       </div>
     );
@@ -29,40 +29,35 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
     return (
       <div
         id="ad-banner-leaderboard"
-        className={`w-full max-w-[728px] mx-auto rounded-3xl bg-white border border-slate-200/90 p-4 my-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition-all shadow-[0_4px_20px_rgba(10,37,64,0.03)] hover:border-[#00A3AD] ${className}`}
+        className={`w-full max-w-[728px] mx-auto rounded-3xl bg-gradient-to-r from-[#E6F8F9] via-white to-[#E6F8F9]/60 border border-[#B3EAEF] p-4 my-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition-all shadow-[0_4px_20px_rgba(0,163,173,0.06)] hover:border-[#00A3AD] ${className}`}
       >
         <div className="flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] flex items-center justify-center shrink-0">
-            <Zap className="w-5 h-5 text-[#00A3AD]" />
+          <div className="w-10 h-10 rounded-2xl bg-white border border-[#B3EAEF] flex items-center justify-center shrink-0 shadow-2xs">
+            <Sparkles className="w-5 h-5 text-[#00A3AD]" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-[9px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 uppercase border border-slate-200">
-                SPONSORED
+            <div className="flex items-center gap-2 justify-center sm:justify-start">
+              <span className="text-[9px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#00A3AD] text-white uppercase">
+                PRO SPOTLIGHT
               </span>
               <span className="text-xs font-black text-[#0A2540]">
-                Cloud-Native Workflows for Modern Teams
+                OmniCraft Pro Spotlight: Batch Processing & PDF Encryption
               </span>
             </div>
             <p className="text-[11px] text-slate-600 mt-0.5 font-medium">
-              Accelerate developer velocity with zero-config preview environments.
+              Accelerate developer velocity with zero-config in-browser exports and AES-256 PDF encryption.
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
           <button
-            onClick={() => openUpgradeModal('Ad-Free Experience')}
-            className="text-[11px] text-slate-500 hover:text-[#00A3AD] px-2 py-1 transition-colors font-bold cursor-pointer"
+            onClick={() => openUpgradeModal('OmniCraft Pro Spotlight')}
+            className="text-xs font-black px-4 py-2 rounded-full bg-[#00A3AD] hover:bg-[#00B5B8] text-white transition-all shadow-xs cursor-pointer flex items-center gap-1.5"
           >
-            Remove ($6.99/mo)
+            <span>Learn More</span>
+            <ArrowRight className="w-3 h-3" />
           </button>
-          <a
-            href="#pricing"
-            className="text-xs font-black px-4 py-2 rounded-full bg-[#F4F8FA] hover:bg-[#E6F8F9] text-[#0A2540] hover:text-[#007A82] border border-slate-200 transition-colors"
-          >
-            Learn More
-          </a>
         </div>
       </div>
     );
@@ -72,29 +67,29 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
     return (
       <div
         id="ad-banner-sidebar"
-        className={`w-full max-w-[300px] rounded-3xl bg-white border border-slate-200/90 p-5 flex flex-col justify-between text-center my-4 shadow-[0_4px_20px_rgba(10,37,64,0.03)] ${className}`}
+        className={`w-full max-w-[300px] rounded-3xl bg-gradient-to-b from-[#E6F8F9] via-white to-[#F4F8FA] border border-[#B3EAEF] p-5 flex flex-col justify-between text-center my-4 shadow-[0_4px_20px_rgba(0,163,173,0.06)] ${className}`}
       >
         <div>
-          <span className="text-[9px] font-mono font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-500 uppercase border border-slate-200">
-            SPONSOR SPOTLIGHT
+          <span className="text-[9px] font-mono font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-[#00A3AD] text-white uppercase">
+            FEATURE SPOTLIGHT
           </span>
-          <div className="w-12 h-12 mx-auto my-3.5 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] flex items-center justify-center">
-            <Sparkles className="w-6 h-6 text-[#00A3AD]" />
+          <div className="w-12 h-12 mx-auto my-3.5 rounded-2xl bg-white border border-[#B3EAEF] flex items-center justify-center shadow-xs">
+            <Lock className="w-6 h-6 text-[#00A3AD]" />
           </div>
-          <h4 className="text-xs font-black text-[#0A2540] mb-1">Scale Without Server Limits</h4>
+          <h4 className="text-xs font-black text-[#0A2540] mb-1">AES-256 PDF Encryption</h4>
           <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-            Deploy ultra-fast edge workers and client-side utilities with instantaneous global distribution.
+            Lock confidential documents, generate high-impact ATS resumes, and batch convert assets locally.
           </p>
         </div>
 
         <div className="pt-3.5 border-t border-slate-100 mt-4">
           <button
-            onClick={() => openUpgradeModal('Ad-Free Experience')}
-            className="w-full py-2.5 px-3 rounded-full bg-[#E6F8F9] hover:bg-[#D0F2F3] border border-[#B3EAEF] text-xs font-black text-[#007A82] transition-all mb-2 cursor-pointer"
+            onClick={() => openUpgradeModal('Feature Spotlight')}
+            className="w-full py-2.5 px-3 rounded-full bg-[#00A3AD] hover:bg-[#00B5B8] text-white text-xs font-black transition-all mb-2 cursor-pointer shadow-xs"
           >
-            Remove Ads ($6.99 / Month)
+            Explore OmniCraft Pro
           </button>
-          <span className="text-[10px] text-slate-400 font-mono">Verified Ad Partner</span>
+          <span className="text-[10px] text-slate-500 font-mono">100% In-Browser Privacy</span>
         </div>
       </div>
     );
@@ -104,24 +99,24 @@ export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
   return (
     <div
       id="ad-banner-incontent"
-      className={`w-full max-w-[320px] sm:max-w-[400px] mx-auto rounded-3xl bg-white border border-slate-200/90 p-4 my-6 flex flex-col justify-between text-center shadow-[0_4px_20px_rgba(10,37,64,0.03)] ${className}`}
+      className={`w-full max-w-[340px] sm:max-w-[440px] mx-auto rounded-3xl bg-[#E6F8F9]/50 border border-[#B3EAEF] p-4 my-6 flex flex-col justify-between text-center shadow-xs ${className}`}
     >
       <div className="flex items-center justify-between mb-2">
-        <span className="text-[9px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 uppercase border border-slate-200">
-          ADVERTISEMENT
+        <span className="text-[9px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#00A3AD] text-white uppercase">
+          PRO SPOTLIGHT
         </span>
         <button
-          onClick={() => openUpgradeModal('Ad-Free Experience')}
-          className="text-[11px] text-slate-400 hover:text-[#00A3AD] transition-colors font-bold cursor-pointer"
+          onClick={() => openUpgradeModal('Pro Features')}
+          className="text-[11px] text-[#007A82] hover:text-[#00A3AD] transition-colors font-bold cursor-pointer"
         >
-          Remove ads
+          View Plans
         </button>
       </div>
       <p className="text-xs text-slate-700 font-medium">
-        ⚡ Need high-speed file storage? Try our recommended zero-knowledge encryption partner.
+        ⚡ Unlock batch file conversions, custom PDF watermarking, and ATS resume direct exports.
       </p>
       <div className="mt-3 flex justify-center">
-        <span className="text-[10px] text-[#008C95] font-mono font-bold">Client Verified Ad Placement</span>
+        <span className="text-[10px] text-[#008C95] font-mono font-bold">100% Client-Side Engine Guarantee</span>
       </div>
     </div>
   );

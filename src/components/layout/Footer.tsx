@@ -78,7 +78,7 @@ export const Footer: React.FC = () => {
               </span>
             </Link>
             <p className="text-xs text-slate-600 leading-relaxed max-w-sm font-medium">
-              The premier sovereign web utility workstation. 10 superpower tools engineered for creators, marketers, and developers demanding instant speed without data compromise.
+              The premier sovereign web utility workstation. 12 superpower tools engineered for creators, marketers, and developers demanding instant speed without data compromise.
             </p>
             <div className="flex items-center gap-2 text-[11px] text-slate-500 font-mono pt-1">
               <span className="text-emerald-600 font-bold">● 100% Operational</span>
@@ -87,25 +87,25 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Col 2: Document & AI */}
+          {/* Col 2: Document & Productivity */}
           <div className="space-y-2.5">
             <h4 className="font-black text-[#0A2540] text-xs uppercase tracking-wider">
-              Document & AI
+              Document & Career
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/resume-builder" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  AI Resume & ATS Optimizer
+                  ATS Resume Builder
                 </Link>
               </li>
               <li>
                 <Link to="/pdf-suite" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Advanced PDF Studio
+                  Advanced PDF Suite
                 </Link>
               </li>
               <li>
-                <Link to="/ai-studio" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  AI Image Gen & Remix
+                <Link to="/markdown-editor" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
+                  Markdown Editor & Preview
                 </Link>
               </li>
               <li>
@@ -133,23 +133,23 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/svg-editor" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
+                  SVG & Vector Icon Studio
+                </Link>
+              </li>
+              <li>
                 <Link to="/dev-tools" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Developer Powerstation
+                  Developer Workbench
+                </Link>
+              </li>
+              <li>
+                <Link to="/text-diff" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
+                  Text & Code Diff Checker
                 </Link>
               </li>
               <li>
                 <Link to="/qr-generator" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
                   Branded QR Code Studio
-                </Link>
-              </li>
-              <li>
-                <Link to="/currency-crypto" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Currency & Crypto Tracker
-                </Link>
-              </li>
-              <li>
-                <Link to="/health-calc" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Fitness & Macro Targeter
                 </Link>
               </li>
             </ul>
@@ -163,22 +163,22 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/privacy-policy" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Privacy Policy (0-Log)
+                  Privacy Policy (Zero-Server)
                 </Link>
               </li>
               <li>
                 <Link to="/terms-of-service" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Terms of Service ($6.99/mo)
+                  Terms of Service
                 </Link>
               </li>
               <li>
                 <Link to="/cookie-policy" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Cookie Policy
+                  Cookie & Storage Policy
                 </Link>
               </li>
               <li>
                 <Link to="/disclaimer" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Disclaimer
+                  Analytical Disclaimer
                 </Link>
               </li>
               <li>
