@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Hero } from '../components/home/Hero';
 import { ToolGrid } from '../components/home/ToolGrid';
-import { Testimonials } from '../components/home/Testimonials';
+import { WorkflowPresets } from '../components/home/WorkflowPresets';
+import { SecurityArchitecture } from '../components/home/SecurityArchitecture';
+import { LiveSystemDiagnostics } from '../components/home/LiveSystemDiagnostics';
 import { PricingSection } from '../components/home/PricingSection';
 import { FaqSection } from '../components/home/FaqSection';
 import { AdBanner } from '../components/layout/AdBanner';
@@ -19,20 +21,20 @@ export const HomePage: React.FC = () => {
         setSelectedCategory={setSelectedCategory}
       />
 
-      <div className="px-4">
-        <AdBanner type="leaderboard" />
-      </div>
-
       <ToolGrid
         searchQuery={searchQuery}
         selectedCategory={selectedCategory}
       />
 
-      <div className="px-4">
+      <WorkflowPresets />
+
+      <SecurityArchitecture />
+
+      <LiveSystemDiagnostics />
+
+      <div className="px-4 max-w-7xl mx-auto w-full">
         <AdBanner type="in-content" />
       </div>
-
-      <Testimonials />
 
       <PricingSection />
 

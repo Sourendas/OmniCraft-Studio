@@ -16,7 +16,9 @@ import {
   CheckCircle2,
   X,
   ExternalLink,
-  ShieldCheck
+  ShieldCheck,
+  FileEdit,
+  Code2
 } from 'lucide-react';
 import { TOOLS_DATA } from '../../data/toolsData';
 import { ToolItem } from '../../types';
@@ -65,6 +67,10 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
         return <Type {...iconProps} className="w-4 h-4 text-purple-600" />;
       case 'Flame':
         return <Flame {...iconProps} className="w-4 h-4 text-[#FA6400]" />;
+      case 'FileEdit':
+        return <FileEdit {...iconProps} className="w-4 h-4 text-[#00A3AD]" />;
+      case 'Code2':
+        return <Code2 {...iconProps} className="w-4 h-4 text-indigo-600" />;
       default:
         return <Sparkles {...iconProps} className="w-4 h-4 text-[#00A3AD]" />;
     }
@@ -78,7 +84,7 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#00A3AD] animate-pulse" />
             <h2 className="text-base font-black uppercase tracking-wider text-[#0A2540]">
-              10 In-Browser Sovereign Power Engines
+              12 In-Browser Sovereign Power Engines
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
@@ -87,7 +93,7 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
         </div>
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono font-bold px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-[#007A82]">
-            {filteredTools.length} of 10 Ready
+            {filteredTools.length} of 12 Ready
           </span>
         </div>
       </div>
@@ -97,8 +103,8 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
           <p className="text-slate-600 text-sm font-medium">No tools matching your search criteria.</p>
         </div>
       ) : (
-        /* Responsive Grid with High-Quality Feature Images */
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        /* Responsive Grid: 12-tool 4x3 Grid (3 columns on lg, 4 on xl, 2 on md) */
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
           {filteredTools.map((tool) => {
             return (
               <div

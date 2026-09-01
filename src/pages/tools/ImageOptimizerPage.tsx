@@ -139,22 +139,22 @@ export const ImageOptimizerPage: React.FC = () => {
   const totalSavings = totalOriginal > 0 ? Math.round(((totalOriginal - totalCompressed) / totalOriginal) * 100) : 0;
 
   return (
-    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-screen">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-1">
-            <Link to="/" className="text-slate-400 hover:text-cyan-300 flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] mb-1 font-bold">
+            <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
             <span>Media & Graphics</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
-            <Minimize2 className="w-7 h-7 text-amber-400" />
+          <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
+            <Minimize2 className="w-7 h-7 text-[#00A3AD]" />
             Smart Bulk Image Compressor
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Reduce image payloads up to 90% in browser canvas without sacrificing visual fidelity.
           </p>
         </div>
@@ -162,7 +162,7 @@ export const ImageOptimizerPage: React.FC = () => {
         {images.length > 0 && (
           <button
             onClick={handleDownloadAll}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white text-xs font-bold shadow-lg shadow-amber-500/20 transition-all cursor-pointer"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] hover:from-[#00B5B8] hover:to-[#00A3AD] text-white text-xs font-black shadow-lg shadow-teal-500/20 transition-all cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>Download All ({images.length})</span>
@@ -172,19 +172,19 @@ export const ImageOptimizerPage: React.FC = () => {
 
       {/* Overview Stats Ribbon if images exist */}
       {images.length > 0 && (
-        <div className="my-6 p-4 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+        <div className="my-6 p-4 rounded-3xl bg-white border border-slate-200 shadow-2xs flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-6">
             <div>
-              <span className="text-[10px] text-slate-400 uppercase font-mono">Original Total</span>
-              <div className="text-sm font-bold text-slate-200">{formatBytes(totalOriginal)}</div>
+              <span className="text-[10px] text-slate-400 uppercase font-mono font-bold">Original Total</span>
+              <div className="text-sm font-bold text-slate-700">{formatBytes(totalOriginal)}</div>
             </div>
             <div>
-              <span className="text-[10px] text-slate-400 uppercase font-mono">Compressed Total</span>
-              <div className="text-sm font-bold text-emerald-400">{formatBytes(totalCompressed)}</div>
+              <span className="text-[10px] text-slate-400 uppercase font-mono font-bold">Compressed Total</span>
+              <div className="text-sm font-bold text-emerald-600">{formatBytes(totalCompressed)}</div>
             </div>
             <div>
-              <span className="text-[10px] text-slate-400 uppercase font-mono">Net Bandwidth Saved</span>
-              <div className="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">
+              <span className="text-[10px] text-slate-400 uppercase font-mono font-bold">Net Bandwidth Saved</span>
+              <div className="text-sm font-black text-[#007A82]">
                 {totalSavings}% Less Data
               </div>
             </div>
@@ -192,7 +192,7 @@ export const ImageOptimizerPage: React.FC = () => {
 
           <button
             onClick={() => setImages([])}
-            className="text-xs text-slate-500 hover:text-rose-400 transition-colors"
+            className="text-xs text-slate-500 hover:text-rose-600 transition-colors font-bold cursor-pointer"
           >
             Clear All Images
           </button>
@@ -202,17 +202,17 @@ export const ImageOptimizerPage: React.FC = () => {
       <div className="my-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Side: Parameters Controls */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="rounded-3xl bg-slate-900/60 border border-slate-800 p-6 backdrop-blur-xl space-y-5">
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
-              <Sliders className="w-4 h-4 text-amber-400" />
+          <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-2xs space-y-5">
+            <h3 className="text-xs font-black text-[#0A2540] uppercase tracking-wider flex items-center gap-2">
+              <Sliders className="w-4 h-4 text-[#00A3AD]" />
               <span>Compression Tuning</span>
             </h3>
 
             {/* Quality Slider */}
             <div>
-              <div className="flex justify-between text-xs text-slate-300 mb-1.5 font-medium">
+              <div className="flex justify-between text-xs text-slate-700 mb-1.5 font-bold">
                 <span>Visual Quality</span>
-                <span className="font-mono text-amber-300">{Math.round(quality * 100)}%</span>
+                <span className="font-mono text-[#007A82]">{Math.round(quality * 100)}%</span>
               </div>
               <input
                 type="range"
@@ -225,7 +225,7 @@ export const ImageOptimizerPage: React.FC = () => {
                   setQuality(val);
                   recompressAll(val, scalePercent, format);
                 }}
-                className="w-full accent-amber-400"
+                className="w-full accent-[#00A3AD] cursor-pointer"
               />
               <div className="flex justify-between text-[10px] text-slate-500 mt-1">
                 <span>Maximum Savings (10%)</span>
@@ -235,9 +235,9 @@ export const ImageOptimizerPage: React.FC = () => {
 
             {/* Scale Resize Slider */}
             <div>
-              <div className="flex justify-between text-xs text-slate-300 mb-1.5 font-medium">
+              <div className="flex justify-between text-xs text-slate-700 mb-1.5 font-bold">
                 <span>Dimensions Scaling</span>
-                <span className="font-mono text-cyan-300">{scalePercent}%</span>
+                <span className="font-mono text-[#007A82]">{scalePercent}%</span>
               </div>
               <input
                 type="range"
@@ -250,13 +250,13 @@ export const ImageOptimizerPage: React.FC = () => {
                   setScalePercent(val);
                   recompressAll(quality, val, format);
                 }}
-                className="w-full accent-cyan-400"
+                className="w-full accent-[#00A3AD] cursor-pointer"
               />
             </div>
 
             {/* Target Output Format */}
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-2">
+              <label className="block text-xs font-bold text-slate-700 mb-2">
                 Output Format
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -271,10 +271,10 @@ export const ImageOptimizerPage: React.FC = () => {
                       setFormat(f.val);
                       recompressAll(quality, scalePercent, f.val);
                     }}
-                    className={`py-2 px-2 rounded-xl text-xs font-semibold border transition-all ${
+                    className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                       format === f.val
-                        ? 'bg-amber-500/20 text-amber-300 border-amber-500/60'
-                        : 'bg-slate-950 border-slate-800 text-slate-400'
+                        ? 'bg-[#E6F8F9] text-[#007A82] border-[#00A3AD]'
+                        : 'bg-[#F8FBFC] border-slate-200 text-slate-600 hover:bg-white'
                     }`}
                   >
                     {f.label}
@@ -289,7 +289,7 @@ export const ImageOptimizerPage: React.FC = () => {
 
         {/* Right Side: Dropzone & Gallery */}
         <div className="lg:col-span-8 space-y-6">
-          <div className="relative rounded-3xl border-2 border-dashed border-slate-800 hover:border-amber-500/50 bg-slate-900/40 p-8 text-center backdrop-blur-xl transition-all">
+          <div className="relative rounded-3xl border-2 border-dashed border-[#B3EAEF] hover:border-[#00A3AD] bg-white p-8 text-center shadow-[0_4px_20px_rgba(10,37,64,0.03)] transition-all">
             <input
               type="file"
               accept="image/*"
@@ -297,13 +297,13 @@ export const ImageOptimizerPage: React.FC = () => {
               onChange={handleUpload}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
-            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-tr from-amber-600/20 to-orange-500/20 border border-amber-500/30 flex items-center justify-center">
-              <Upload className="w-7 h-7 text-amber-400" />
+            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] flex items-center justify-center">
+              <Upload className="w-7 h-7 text-[#00A3AD]" />
             </div>
-            <h3 className="text-base font-bold text-white mb-1">
+            <h3 className="text-base font-black text-[#0A2540] mb-1">
               Select or Drop Images to Compress
             </h3>
-            <p className="text-xs text-slate-400 max-w-md mx-auto">
+            <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">
               PNG, JPG, WebP, AVIF up to 50MB. Instant canvas batch optimization.
             </p>
           </div>
@@ -313,33 +313,33 @@ export const ImageOptimizerPage: React.FC = () => {
               {images.map((item) => (
                 <div
                   key={item.id}
-                  className="rounded-2xl bg-slate-900/80 border border-slate-800 p-4 flex flex-col justify-between backdrop-blur-xl"
+                  className="rounded-3xl bg-white border border-slate-200 p-4 flex flex-col justify-between shadow-2xs"
                 >
                   <div>
-                    <div className="relative rounded-xl overflow-hidden bg-slate-950 border border-slate-800 h-40 flex items-center justify-center mb-3">
+                    <div className="relative rounded-2xl overflow-hidden bg-[#F8FBFC] border border-slate-200 h-40 flex items-center justify-center mb-3">
                       <img
                         src={item.compressedDataUrl}
                         alt="Optimized Preview"
                         className="max-h-full max-w-full object-contain"
                       />
-                      <span className="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-950/90 text-emerald-300 border border-emerald-700/60 font-mono">
+                      <span className="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300 font-mono">
                         -{item.savingsPercentage}%
                       </span>
                     </div>
 
-                    <h4 className="text-xs font-bold text-white truncate" title={item.name}>
+                    <h4 className="text-xs font-black text-[#0A2540] truncate" title={item.name}>
                       {item.name}
                     </h4>
 
-                    <div className="flex items-center justify-between text-[11px] text-slate-400 mt-1 font-mono">
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 mt-1 font-mono font-medium">
                       <span>{formatBytes(item.originalSize)}</span>
                       <span>→</span>
-                      <span className="text-emerald-400 font-bold">{formatBytes(item.compressedSize)}</span>
+                      <span className="text-emerald-600 font-bold">{formatBytes(item.compressedSize)}</span>
                     </div>
                   </div>
 
-                  <div className="pt-3 mt-3 border-t border-slate-800 flex items-center justify-between">
-                    <span className="text-[10px] text-slate-500 font-mono">
+                  <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-[10px] text-slate-400 font-mono">
                       {item.width}x{item.height}px
                     </span>
                     <button
@@ -347,9 +347,9 @@ export const ImageOptimizerPage: React.FC = () => {
                         const ext = format === 'image/webp' ? 'webp' : format === 'image/jpeg' ? 'jpg' : 'png';
                         downloadBlob(item.compressedBlob, `${item.name.replace(/\.[^/.]+$/, '')}_opt.${ext}`);
                       }}
-                      className="flex items-center gap-1 text-xs font-bold text-amber-300 hover:text-white px-2.5 py-1 rounded-lg bg-amber-950/60 border border-amber-700/50"
+                      className="flex items-center gap-1.5 text-xs font-bold text-[#007A82] hover:text-[#00A3AD] px-3 py-1.5 rounded-xl bg-[#E6F8F9] hover:bg-[#D0F2F5] border border-[#B3EAEF] transition-all cursor-pointer"
                     >
-                      <Download className="w-3 h-3" />
+                      <Download className="w-3.5 h-3.5" />
                       <span>Save</span>
                     </button>
                   </div>

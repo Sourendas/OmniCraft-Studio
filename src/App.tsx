@@ -6,11 +6,10 @@ import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { UpgradeModal } from './components/modals/UpgradeModal';
 
-// Pages
+// Pages - 12 Client-Side Power Tools
 import { HomePage } from './pages/HomePage';
 import { ResumeBuilderPage } from './pages/tools/ResumeBuilderPage';
 import { PdfSuitePage } from './pages/tools/PdfSuitePage';
-import { AiStudioPage } from './pages/tools/AiStudioPage';
 import { FileConverterPage } from './pages/tools/FileConverterPage';
 import { ImageOptimizerPage } from './pages/tools/ImageOptimizerPage';
 import { CurrencyCryptoPage } from './pages/tools/CurrencyCryptoPage';
@@ -18,6 +17,9 @@ import { DevToolsPage } from './pages/tools/DevToolsPage';
 import { QrGeneratorPage } from './pages/tools/QrGeneratorPage';
 import { SocialStudioPage } from './pages/tools/SocialStudioPage';
 import { HealthCalcPage } from './pages/tools/HealthCalcPage';
+import { MarkdownEditorPage } from './pages/tools/MarkdownEditorPage';
+import { SvgStudioPage } from './pages/tools/SvgStudioPage';
+import { TextDiffPage } from './pages/tools/TextDiffPage';
 
 // Legal Pages
 import { 
@@ -52,7 +54,6 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/resume-builder" element={<ResumeBuilderPage />} />
               <Route path="/pdf-suite" element={<PdfSuitePage />} />
-              <Route path="/ai-studio" element={<AiStudioPage />} />
               <Route path="/file-converter" element={<FileConverterPage />} />
               <Route path="/image-optimizer" element={<ImageOptimizerPage />} />
               <Route path="/currency-crypto" element={<CurrencyCryptoPage />} />
@@ -60,6 +61,9 @@ export default function App() {
               <Route path="/qr-generator" element={<QrGeneratorPage />} />
               <Route path="/social-studio" element={<SocialStudioPage />} />
               <Route path="/health-calc" element={<HealthCalcPage />} />
+              <Route path="/markdown-editor" element={<MarkdownEditorPage />} />
+              <Route path="/svg-editor" element={<SvgStudioPage />} />
+              <Route path="/text-diff" element={<TextDiffPage />} />
 
               {/* Legal & Trust */}
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

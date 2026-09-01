@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSubscription } from '../../context/SubscriptionContext';
 import { 
@@ -8,17 +8,26 @@ import {
   CheckCircle2,
   ChevronDown,
   Zap,
-  ArrowRight
+  Search,
+  Command
 } from 'lucide-react';
 import { TOOLS_DATA } from '../../data/toolsData';
+import { CommandPalette } from './CommandPalette';
 
 export const Navbar: React.FC = () => {
   const { isPro, openUpgradeModal, toggleProTestMode } = useSubscription();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const location = useLocation();
 
   const isHome = location.pathname === '/';
+
+  useEffect(() => {
+    const handleToggleEvent = () => setCommandPaletteOpen(prev => !prev);
+    window.addEventListener('toggle-command-palette', handleToggleEvent);
+    return () => window.removeEventListener('toggle-command-palette', handleToggleEvent);
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md transition-all shadow-[0_2px_15px_rgba(10,37,64,0.03)]">
@@ -43,7 +52,7 @@ export const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-600">
+        <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600">
           {/* Tools Dropdown */}
           <div className="relative">
             <button
@@ -52,7 +61,7 @@ export const Navbar: React.FC = () => {
               onMouseEnter={() => setToolsDropdownOpen(true)}
               className="flex items-center gap-1.5 hover:text-[#00A3AD] transition-colors py-1 cursor-pointer font-bold text-slate-700"
             >
-              <span>All 10 Power Tools</span>
+              <span>All 12 Power Tools</span>
               <ChevronDown className={`w-3.5 h-3.5 transition-transform text-slate-400 ${toolsDropdownOpen ? 'rotate-180 text-[#00A3AD]' : ''}`} />
             </button>
 
@@ -88,16 +97,22 @@ export const Navbar: React.FC = () => {
           </div>
 
           <a 
+            href={isHome ? "#workflows" : "/#workflows"}
+            className="hover:text-[#00A3AD] transition-colors font-bold text-slate-700"
+          >
+            Workflows
+          </a>
+          <a 
+            href={isHome ? "#architecture" : "/#architecture"}
+            className="hover:text-[#00A3AD] transition-colors font-bold text-slate-700"
+          >
+            Security & Specs
+          </a>
+          <a 
             href={isHome ? "#pricing" : "/#pricing"}
             className="hover:text-[#00A3AD] transition-colors font-bold text-slate-700"
           >
             Pricing ($7/mo)
-          </a>
-          <a 
-            href={isHome ? "#reviews" : "/#reviews"}
-            className="hover:text-[#00A3AD] transition-colors font-bold text-slate-700"
-          >
-            Customer Reviews
           </a>
           <a 
             href={isHome ? "#faq" : "/#faq"}
@@ -108,7 +123,21 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right Action Cluster */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          {/* Quick Command Launcher Pill */}
+          <button
+            id="quick-command-launcher-btn"
+            onClick={() => setCommandPaletteOpen(true)}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F4F8FA] hover:bg-[#E6F8F9] border border-slate-200 text-slate-500 hover:text-[#007A82] text-xs font-bold transition-all cursor-pointer shadow-2xs"
+            title="Search tools (Cmd+K / Ctrl+K)"
+          >
+            <Search className="w-3.5 h-3.5 text-[#00A3AD]" />
+            <span className="hidden sm:inline">Search Tools</span>
+            <kbd className="hidden sm:inline-flex items-center gap-0.5 text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-white border border-slate-200 text-slate-400">
+              <Command className="w-2.5 h-2.5" /> K
+            </kbd>
+          </button>
+
           {/* Pro Status / Test Switcher */}
           {isPro ? (
             <div 
@@ -124,10 +153,11 @@ export const Navbar: React.FC = () => {
             <button
               id="upgrade-nav-cta-btn"
               onClick={() => openUpgradeModal('Global Pro Subscription')}
-              className="relative px-5 py-2.5 bg-gradient-to-r from-[#00A3AD] to-[#008C95] hover:from-[#00B5B8] hover:to-[#00A3AD] text-white rounded-full font-black text-xs shadow-md shadow-teal-500/20 transition-all overflow-hidden group cursor-pointer active:scale-95 flex items-center gap-1.5 tracking-tight"
+              className="relative px-4 sm:px-5 py-2.5 bg-gradient-to-r from-[#00A3AD] to-[#008C95] hover:from-[#00B5B8] hover:to-[#00A3AD] text-white rounded-full font-black text-xs shadow-md shadow-teal-500/20 transition-all overflow-hidden group cursor-pointer active:scale-95 flex items-center gap-1.5 tracking-tight"
             >
               <Sparkles className="w-3.5 h-3.5 text-white animate-pulse" />
-              <span>UPGRADE TO PRO ($7/MO)</span>
+              <span className="hidden sm:inline">UPGRADE TO PRO ($7/MO)</span>
+              <span className="sm:hidden">PRO ($7)</span>
             </button>
           )}
 
@@ -135,7 +165,7 @@ export const Navbar: React.FC = () => {
           <button
             id="mobile-menu-toggle-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-2xl text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+            className="lg:hidden p-2 rounded-2xl text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -144,9 +174,9 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 bg-white/98 p-4 space-y-3 backdrop-blur-xl max-h-[80vh] overflow-y-auto shadow-xl">
+        <div className="lg:hidden border-b border-slate-200 bg-white/98 p-4 space-y-3 backdrop-blur-xl max-h-[80vh] overflow-y-auto shadow-xl">
           <div className="font-black text-xs text-[#008C95] uppercase tracking-wider px-2">
-            10 Sovereign Tools
+            12 Sovereign Tools
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
             {TOOLS_DATA.map((t) => (
@@ -164,18 +194,25 @@ export const Navbar: React.FC = () => {
 
           <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
             <a
+              href="#workflows"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-xs text-slate-800 font-bold py-2.5 px-3 hover:bg-[#E6F8F9] rounded-xl"
+            >
+              Curated Workflows
+            </a>
+            <a
+              href="#architecture"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-xs text-slate-800 font-bold py-2.5 px-3 hover:bg-[#E6F8F9] rounded-xl"
+            >
+              Security Architecture & Specs
+            </a>
+            <a
               href="#pricing"
               onClick={() => setMobileMenuOpen(false)}
               className="text-xs text-slate-800 font-bold py-2.5 px-3 hover:bg-[#E6F8F9] rounded-xl"
             >
               Pricing ($7 / Month)
-            </a>
-            <a
-              href="#reviews"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-xs text-slate-800 font-bold py-2.5 px-3 hover:bg-[#E6F8F9] rounded-xl"
-            >
-              Customer Reviews
             </a>
             <a
               href="#faq"
@@ -187,6 +224,12 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Global Command Palette Modal */}
+      <CommandPalette 
+        isOpen={commandPaletteOpen} 
+        onClose={() => setCommandPaletteOpen(false)} 
+      />
     </header>
   );
 };

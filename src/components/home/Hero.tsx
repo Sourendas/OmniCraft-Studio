@@ -26,7 +26,7 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   const { isPro, openUpgradeModal } = useSubscription();
 
-  const categories = ['All Categories', 'Document & AI', 'Media & Graphics', 'Developer & Data', 'Productivity & Utility'];
+  const categories = ['All Categories', 'Document & Career', 'Media & Graphics', 'Developer & Data', 'Productivity & Utility'];
 
   return (
     <section className="relative pt-12 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
@@ -52,7 +52,7 @@ export const Hero: React.FC<HeroProps> = ({
             transition={{ duration: 0.4, delay: 0.05 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight leading-[1.12]"
           >
-            10 Sovereign Browser Power Utilities
+            12 Sovereign Browser Power Utilities
           </motion.h1>
 
           <motion.p
@@ -108,12 +108,12 @@ export const Hero: React.FC<HeroProps> = ({
             className="px-6 py-3 rounded-full bg-white hover:bg-slate-50 text-[#0A2540] hover:text-[#00A3AD] font-bold text-xs border border-slate-200 shadow-sm transition-all flex items-center justify-center gap-2"
           >
             <Layers className="w-4 h-4 text-[#00A3AD]" />
-            <span>Explore All 10 Power Tools</span>
+            <span>Explore All 12 Power Tools</span>
           </a>
         </motion.div>
       </div>
 
-      {/* Interactive Search & Filter Bar - Solutionreach Rounded Styling */}
+      {/* Interactive Search & Filter Bar */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -127,7 +127,7 @@ export const Hero: React.FC<HeroProps> = ({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search all 10 tools (e.g. ATS Resume, PDF Suite, AI Studio, DOCX Converter, Image Optimizer, Dev Tools, QR, Fitness)..."
+            placeholder="Search all 12 tools (e.g. ATS Resume, PDF Suite, SVG Studio, Text Diff, Markdown, Image Optimizer, Dev Tools, QR, FX Matrix)..."
             className="w-full pl-11 pr-4 py-3 rounded-full bg-[#F4F8FA] border border-slate-200/80 text-xs sm:text-sm text-[#0A2540] font-medium placeholder-slate-400 focus:outline-none focus:border-[#00A3AD] focus:bg-white focus:ring-2 focus:ring-[#00A3AD]/20 transition-all"
           />
         </div>

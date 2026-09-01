@@ -1,7 +1,7 @@
 export interface ToolItem {
   id: string;
   name: string;
-  category: 'Document & AI' | 'Media & Graphics' | 'Developer & Data' | 'Productivity & Utility';
+  category: 'Document & Career' | 'Document & AI' | 'Media & Graphics' | 'Developer & Data' | 'Productivity & Utility' | string;
   description: string;
   detailedDescription?: string;
   route: string;
@@ -12,19 +12,6 @@ export interface ToolItem {
   image: string;
   howItWorks?: string[];
   screenshotAlt?: string;
-}
-
-export interface Testimonial {
-  id: string;
-  name: string;
-  role: string;
-  company?: string;
-  avatarText: string;
-  avatarBg: string;
-  stars: number;
-  quote: string;
-  toolUsed: string;
-  verified: boolean;
 }
 
 export interface FaqItem {

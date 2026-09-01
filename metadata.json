@@ -1,6 +1,6 @@
 {
   "name": "OmniCraft Studio",
-  "description": "10 Superpower Browser Utilities — 100% Private, Zero Cloud Uploads. Convert, edit, create, and optimize everything right inside your browser.",
+  "description": "12 Superpower Browser Utilities — 100% Private, Zero Cloud Uploads. Convert, edit, create, and optimize everything right inside your browser.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
