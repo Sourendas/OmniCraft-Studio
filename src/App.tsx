@@ -4,6 +4,7 @@ import { SubscriptionProvider } from './context/SubscriptionContext';
 import { AmbientBackground } from './components/layout/AmbientBackground';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
+import { AbDebugPanel } from './experiments';
 
 import { HomePage } from './pages/HomePage';
 import { ResumeBuilderPage } from './pages/tools/ResumeBuilderPage';
@@ -74,6 +75,7 @@ export default function App() {
             </Routes>
           </main>
           <Footer />
+          <AbDebugPanel />
         </div>
       </BrowserRouter>
     </SubscriptionProvider>
