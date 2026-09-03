@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
           </div>
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <ShieldCheck className="w-4 h-4 text-[#007A82] mt-0.5" />
-            <div><h4 className="font-black text-[#0A2540] text-xs mb-0.5">Local execution</h4><p className="text-[11px]">No ad or analytics scripts today.</p></div>
+            <div><h4 className="font-black text-[#0A2540] text-xs mb-0.5">Local execution</h4><p className="text-[11px]">No ad script is embedded today.</p></div>
           </div>
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <Cpu className="w-4 h-4 text-emerald-700 mt-0.5" />
@@ -28,11 +28,10 @@ export const Footer: React.FC = () => {
       </div>
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-5 gap-8">
         <div className="md:col-span-2 space-y-3">
-          <Link to="/" aria-label="FileTools Kit home">
-            <BrandLockup compact />
-          </Link>
+          <Link to="/" aria-label="FileTools Kit home"><BrandLockup compact /></Link>
           <p className="text-xs font-medium">12 in-browser tools. Operated by Souren Das, Bengaluru, India.</p>
-          <p className="text-[11px]">support@filetoolskit.com · privacy@filetoolskit.com</p>
+          <p className="text-[11px]"><a className="text-[#007A82] underline font-bold" href="mailto:support@filetoolskit.com">support@filetoolskit.com</a></p>
+          <p className="text-[11px]"><a className="text-[#007A82] underline font-bold" href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a></p>
         </div>
         <div className="space-y-2">
           <h4 className="font-black text-[#0A2540] text-xs uppercase">Document</h4>
@@ -59,11 +58,12 @@ export const Footer: React.FC = () => {
         <div className="space-y-2">
           <h4 className="font-black text-[#0A2540] text-xs uppercase">Site</h4>
           <ul className="space-y-2">
+            <li><Link to="/#tools-grid" className="font-bold hover:text-[#00A3AD]">Tools</Link></li>
             <li><Link to="/about" className="font-bold hover:text-[#00A3AD]">About</Link></li>
             <li><Link to="/guides" className="font-bold hover:text-[#00A3AD]">Guides</Link></li>
-            <li><Link to="/privacy-policy" className="font-bold hover:text-[#00A3AD]">Privacy</Link></li>
-            <li><Link to="/terms-of-service" className="font-bold hover:text-[#00A3AD]">Terms</Link></li>
-            <li><Link to="/cookie-policy" className="font-bold hover:text-[#00A3AD]">Cookies</Link></li>
+            <li><Link to="/privacy" className="font-bold hover:text-[#00A3AD]">Privacy</Link></li>
+            <li><Link to="/terms" className="font-bold hover:text-[#00A3AD]">Terms</Link></li>
+            <li><Link to="/cookie-policy" className="font-bold hover:text-[#00A3AD]">Cookie policy</Link></li>
             <li><Link to="/disclaimer" className="font-bold hover:text-[#00A3AD]">Disclaimer</Link></li>
             <li><Link to="/contact" className="font-bold hover:text-[#00A3AD]">Contact</Link></li>
           </ul>
