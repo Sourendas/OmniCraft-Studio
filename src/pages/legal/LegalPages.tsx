@@ -24,7 +24,7 @@ export const PrivacyPolicyPage: React.FC = () => (
       <h2 className="text-lg font-black text-[#0A2540]">5. Advertising and analytics</h2>
       <p>This site does not run Google AdSense, Meta ads, or analytics scripts today. If advertising or measurement is added later, this policy will be updated first and the legal pages will describe the vendor.</p>
       <h2 className="text-lg font-black text-[#0A2540]">6. Local storage</h2>
-      <p>The browser may keep UI preferences in localStorage. There is no paid account. Clear site data for filetoolskit.com to delete local items.</p>
+      <p>The browser may keep UI preferences in localStorage. A first-party A/B helper may also store a random visitor id, experiment assignment, and click counts in this browser only. Those records are not sent to FileTools Kit or an analytics vendor. There is no paid account. Clear site data for filetoolskit.com to delete local items.</p>
       <h2 className="text-lg font-black text-[#0A2540]">7. Children</h2>
       <p>The site is not directed at children under 13.</p>
       <h2 className="text-lg font-black text-[#0A2540]">8. Your requests</h2>
@@ -50,7 +50,7 @@ export const CookiePolicyPage: React.FC = () => (
     <Back />
     <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-5 text-sm text-slate-700">
       <div className="flex items-center gap-3"><Lock className="w-8 h-8 text-[#007A82]" /><h1 className="text-3xl font-black text-[#0A2540]">Cookie & Storage Policy</h1></div>
-      <p>FileTools Kit does not set advertising or analytics cookies today. The browser may store UI preferences in localStorage. Vercel and font/image CDNs may set their own technical cookies when assets load. Clear site data for filetoolskit.com to delete first-party storage.</p>
+      <p>FileTools Kit does not set advertising or analytics cookies today. The browser may store UI preferences and first-party A/B assignment keys (ftk_ab_visitor, ftk_ab_assign, ftk_ab_events) in localStorage. Those stay on your device. Vercel and font/image CDNs may set their own technical cookies when assets load. Clear site data for filetoolskit.com to delete first-party storage.</p>
     </div>
   </div>
 );
