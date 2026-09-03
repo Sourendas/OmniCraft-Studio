@@ -117,8 +117,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-fuchsia-500/20 via-pink-500/10 to-rose-500/20',
     highlights: ['Unicode font styles', 'Caption length meters', 'Starter hashtag lists', 'One-click copy'],
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Unicode typography and caption formatter',
+    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80',
+    screenshotAlt: 'Caption and hashtag text tools',
     howItWorks: ['Type a caption or bio', 'Copy a Unicode style', 'Optionally copy a starter hashtag list']
   },
   {
@@ -126,7 +126,7 @@ export const TOOLS_DATA: ToolItem[] = [
     name: 'Health Calculator',
     category: 'Productivity & Utility',
     description: 'Mifflin-St Jeor BMR and TDEE estimates with macro sliders. Not medical advice.',
-    detailedDescription: 'Estimates BMR with Mifflin-St Jeor and TDEE from an activity multiplier. Macro grams follow simple ratio sliders. Educational only — not medical advice.',
+    detailedDescription: 'Estimates BMR with Mifflin-St Jeor and TDEE from an activity multiplier. Macro grams follow simple ratio sliders. Educational only \u2014 not medical advice.',
     route: '/health-calc',
     iconName: 'Flame',
     badge: 'Free',
