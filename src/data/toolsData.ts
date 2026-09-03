@@ -5,58 +5,46 @@ export const TOOLS_DATA: ToolItem[] = [
     id: 'resume-builder',
     name: 'ATS Resume Builder',
     category: 'Document & Career',
-    description: 'Multi-step wizard with local keyword-overlap scoring, heuristic bullet rewriter, and Pro PDF export.',
-    detailedDescription: 'Build a resume in the browser. Compare a pasted job description against a keyword list (overlap score, not an employer ATS), rewrite bullets with local action-verb templates, and export a PDF. Files stay in this tab. PDF download is a Pro-preview feature.',
+    description: 'Multi-step wizard with local keyword-overlap scoring, heuristic bullet rewriter, and PDF export.',
+    detailedDescription: 'Build a resume in the browser. Compare a pasted job description against a keyword list (overlap score, not an employer ATS), rewrite bullets with local action-verb templates, and export a PDF. Files stay in this tab.',
     route: '/resume-builder',
     iconName: 'FileText',
-    badge: 'Pro $7/mo',
+    badge: 'Free',
     gradient: 'from-amber-500/20 via-orange-500/10 to-yellow-500/20',
-    highlights: ['Keyword overlap score', 'Heuristic bullet rewriter', 'Live preview', 'Pro PDF export'],
+    highlights: ['Keyword overlap score', 'Heuristic bullet rewriter', 'Live preview', 'PDF export'],
     image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'ATS Resume Builder and keyword overlap interface',
-    howItWorks: [
-      'Enter career history in the form',
-      'Paste a job description to see keyword overlap %',
-      'Rewrite bullets locally and download PDF (Pro preview)'
-    ]
+    howItWorks: ['Enter career history in the form', 'Paste a job description to see keyword overlap %', 'Rewrite bullets locally and download PDF']
   },
   {
     id: 'pdf-suite',
     name: 'PDF Power Suite',
     category: 'Document & Career',
-    description: 'Merge, rotate, split by page range, add a text watermark, and edit metadata — in the browser.',
-    detailedDescription: 'Load PDFs in this tab with pdf-lib. Free: merge and rotate. Free split exports a new file for pages you list (e.g. 1-3,5). Pro preview: text watermark plus document metadata on export. Preview tiles are placeholders, not rendered PDF pages. No encryption or redaction.',
+    description: 'Merge, rotate, split by page range, add a text watermark, and edit metadata in the browser.',
+    detailedDescription: 'Load PDFs in this tab with pdf-lib. Merge, rotate, split by page list (e.g. 1-3,5), add a text watermark, and set metadata on export. Preview tiles are placeholders, not rendered PDF pages. No encryption or redaction.',
     route: '/pdf-suite',
     iconName: 'Layers',
-    badge: 'Pro $7/mo',
+    badge: 'Free',
     gradient: 'from-violet-500/20 via-purple-500/10 to-fuchsia-500/20',
     highlights: ['Merge & rotate', 'Page-range split', 'Text watermark', 'Metadata editor'],
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'PDF merge, split, and watermark workspace',
-    howItWorks: [
-      'Drop PDF files into the page',
-      'Merge or rotate for free; enter a page range to split',
-      'Pro preview: text watermark and metadata, then export'
-    ]
+    howItWorks: ['Drop PDF files into the page', 'Merge, rotate, or enter a page range to split', 'Add a text watermark and metadata, then export']
   },
   {
     id: 'file-converter',
     name: 'Universal File Converter',
     category: 'Productivity & Utility',
-    description: 'Images PNG/JPG/WebP via canvas, audio decode to WAV, DOCX to text PDF or TXT — in the browser.',
+    description: 'Images PNG/JPG/WebP via canvas, audio decode to WAV, DOCX to text PDF or TXT in the browser.',
     detailedDescription: 'Convert images between WebP, PNG, and JPEG with the Canvas API. Decode browser-supported audio to WAV. Extract DOCX text with mammoth and write PDF or TXT. Unsupported types are rejected rather than renamed. No AVIF/MP3/OGG encoding.',
     route: '/file-converter',
     iconName: 'RefreshCw',
     badge: 'Free',
     gradient: 'from-emerald-500/20 via-teal-500/10 to-cyan-500/20',
-    highlights: ['PNG / JPG / WebP', 'Audio → WAV', 'DOCX to PDF or TXT', 'Runs in the browser'],
+    highlights: ['PNG / JPG / WebP', 'Audio to WAV', 'DOCX to PDF or TXT', 'Runs in the browser'],
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'In-browser file converter queue',
-    howItWorks: [
-      'Drop images, audio, or Word DOCX files',
-      'Pick a format this tool actually encodes',
-      'Convert in the tab and download the result'
-    ]
+    howItWorks: ['Drop images, audio, or Word DOCX files', 'Pick a format this tool actually encodes', 'Convert in the tab and download the result']
   },
   {
     id: 'image-optimizer',
@@ -71,11 +59,7 @@ export const TOOLS_DATA: ToolItem[] = [
     highlights: ['Quality & scale sliders', 'WebP / JPEG / PNG', 'Before/after sizes', 'Multi-file download'],
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'Image compression with size comparison',
-    howItWorks: [
-      'Upload one or more images',
-      'Tune quality and scale; sizes update in the list',
-      'Download each optimized file'
-    ]
+    howItWorks: ['Upload one or more images', 'Tune quality and scale; sizes update in the list', 'Download each optimized file']
   },
   {
     id: 'currency-crypto',
@@ -90,17 +74,13 @@ export const TOOLS_DATA: ToolItem[] = [
     highlights: ['Fixed example rates', 'Fiat & a few cryptos', 'Hypothetical fees', 'Not a live feed'],
     image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'Reference currency conversion worksheet',
-    howItWorks: [
-      'Pick source and destination from the example list',
-      'Enter an amount to apply the fixed rate',
-      'Read the illustration chart and hypothetical fee cards'
-    ]
+    howItWorks: ['Pick source and destination from the example list', 'Enter an amount to apply the fixed rate', 'Read the illustration chart and hypothetical fee cards']
   },
   {
     id: 'dev-tools',
     name: 'Dev Utility Workbench',
     category: 'Developer & Data',
-    description: 'JSON ↔ CSV for flat objects, keyword SQL line-breaks, regex tester, Base64, SHA-1/256/384/512.',
+    description: 'JSON to CSV for flat objects, keyword SQL line-breaks, regex tester, Base64, SHA-1/256/384/512.',
     detailedDescription: 'Offline helpers in the browser. JSON/CSV handles arrays of flat objects. SQL helper inserts line breaks before common keywords (not a full formatter). Regex tester uses the JS engine. Hashes use Web Crypto (SHA family; no MD5).',
     route: '/dev-tools',
     iconName: 'Terminal',
@@ -109,11 +89,7 @@ export const TOOLS_DATA: ToolItem[] = [
     highlights: ['JSON / CSV (flat)', 'SQL keyword line-breaks', 'RegEx tester', 'SHA hashes'],
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'Developer converters and hash tools',
-    howItWorks: [
-      'Paste JSON, CSV, SQL, or a regex',
-      'Run the transform in this tab',
-      'Copy the result'
-    ]
+    howItWorks: ['Paste JSON, CSV, SQL, or a regex', 'Run the transform in this tab', 'Copy the result']
   },
   {
     id: 'qr-generator',
@@ -128,11 +104,7 @@ export const TOOLS_DATA: ToolItem[] = [
     highlights: ['URL, Wi-Fi & vCard', 'Color styling', 'PNG & SVG export'],
     image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'QR code designer and exporter',
-    howItWorks: [
-      'Choose data type and enter content',
-      'Adjust colors',
-      'Export PNG or SVG'
-    ]
+    howItWorks: ['Choose data type and enter content', 'Adjust colors', 'Export PNG or SVG']
   },
   {
     id: 'social-studio',
@@ -147,11 +119,7 @@ export const TOOLS_DATA: ToolItem[] = [
     highlights: ['Unicode font styles', 'Caption length meters', 'Starter hashtag lists', 'One-click copy'],
     image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'Unicode typography and caption formatter',
-    howItWorks: [
-      'Type a caption or bio',
-      'Copy a Unicode style',
-      'Optionally copy a starter hashtag list'
-    ]
+    howItWorks: ['Type a caption or bio', 'Copy a Unicode style', 'Optionally copy a starter hashtag list']
   },
   {
     id: 'health-calc',
@@ -166,11 +134,7 @@ export const TOOLS_DATA: ToolItem[] = [
     highlights: ['Mifflin-St Jeor BMR', 'TDEE multipliers', 'Macro sliders', 'Not medical advice'],
     image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'BMR and macro estimate calculator',
-    howItWorks: [
-      'Enter age, sex, height, weight, and activity',
-      'Pick cut / maintain / bulk',
-      'Read calorie and gram estimates (not medical advice)'
-    ]
+    howItWorks: ['Enter age, sex, height, weight, and activity', 'Pick cut / maintain / bulk', 'Read calorie and gram estimates (not medical advice)']
   },
   {
     id: 'markdown-editor',
@@ -185,11 +149,7 @@ export const TOOLS_DATA: ToolItem[] = [
     highlights: ['Side-by-side preview', 'Formatting toolbar', 'Word & read time', 'HTML & MD export'],
     image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'Markdown editor and HTML preview',
-    howItWorks: [
-      'Type or paste Markdown',
-      'Use the toolbar for headings and lists',
-      'Export HTML or Markdown'
-    ]
+    howItWorks: ['Type or paste Markdown', 'Use the toolbar for headings and lists', 'Export HTML or Markdown']
   },
   {
     id: 'svg-editor',
@@ -204,11 +164,7 @@ export const TOOLS_DATA: ToolItem[] = [
     highlights: ['Color & stroke editor', 'Minified SVG', 'React JSX export', 'PNG export'],
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'SVG vector studio',
-    howItWorks: [
-      'Paste SVG, upload, or pick a preset',
-      'Adjust stroke, fill, and canvas',
-      'Download SVG, JSX, or PNG'
-    ]
+    howItWorks: ['Paste SVG, upload, or pick a preset', 'Adjust stroke, fill, and canvas', 'Download SVG, JSX, or PNG']
   },
   {
     id: 'text-diff',
@@ -223,38 +179,34 @@ export const TOOLS_DATA: ToolItem[] = [
     highlights: ['Split & unified views', 'Line highlights', 'Diff stats', 'Git .patch export'],
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'Text diff comparator',
-    howItWorks: [
-      'Paste original text on the left and changed text on the right',
-      'Toggle split or unified view',
-      'Copy or download a unified patch'
-    ]
+    howItWorks: ['Paste original text on the left and changed text on the right', 'Toggle split or unified view', 'Copy or download a unified patch']
   }
 ];
 
 export const FAQ_DATA: FaqItem[] = [
   {
-    category: 'Privacy & Security',
-    question: 'Are my files and documents uploaded to any remote server?',
-    answer: 'OmniCraft does not run a server that receives your documents. Conversions, PDF edits, image compression, SVG work, and hashes run in this browser tab. The website host still serves the app’s HTML, CSS, and JavaScript (and tool-card images may load from Unsplash).'
+    category: 'Privacy',
+    question: 'Are my files uploaded to your server?',
+    answer: 'FileTools Kit does not run an upload API that receives your documents. PDF, image, resume, SVG, and hash work runs in this browser tab. Vercel still serves the website files, and tool-card photos may load from Unsplash.'
   },
   {
-    category: 'Billing & Plans',
-    question: 'What is included in the Pro Membership ($7/mo, $70/yr, or $130 Lifetime)?',
-    answer: 'When paid billing launches, Pro is intended to unlock annotated PDF export (text watermark + metadata) and ATS resume PDF download. Image conversion and compression are already unlimited on the free tier. Checkout is not live: “Activate Free Pro Preview” only sets a localStorage flag in this browser. Prices: $7/month, $70/year (save about 16%), or $130 lifetime.'
+    category: 'Pricing',
+    question: 'Is anything paid?',
+    answer: 'No. All 12 tools are free in the browser. There is no checkout and no subscription on this site.'
   },
   {
-    category: 'Commercial Use',
-    question: 'Can I use generated assets (SVGs, resumes, QR codes, images) for commercial purposes?',
-    answer: 'Outputs you generate belong to you, subject to third-party rights in any content you paste in. OmniCraft does not claim a license fee on those files.'
+    category: 'Commercial use',
+    question: 'Can I use generated files commercially?',
+    answer: 'Outputs you generate belong to you, subject to third-party rights in any content you paste in. FileTools Kit does not charge a license fee on those files.'
   },
   {
-    category: 'Cancellation & Billing',
-    question: 'Can I cancel my subscription anytime?',
-    answer: 'No subscription is billed today. When paid monthly or yearly billing launches, we intend cancellation at period end with no extra penalty. Lifetime would be a one-time fee with no recurring charge.'
+    category: 'Limits',
+    question: 'What does not work?',
+    answer: 'Encrypted PDFs may fail. Currency rates are static examples. Health numbers are not medical advice. Resume match % is a local keyword overlap, not a real employer ATS.'
   },
   {
-    category: 'Refund Policy',
-    question: 'Is there a money-back guarantee for the Pro Membership?',
-    answer: 'No payment is taken now. When paid billing launches, we intend a 30-day refund from the purchase date on monthly, yearly, and lifetime plans. Email support@omnicraft.studio.'
+    category: 'Contact',
+    question: 'How do I reach you?',
+    answer: 'Email support@filetoolskit.com or privacy@filetoolskit.com. Operator: Souren Das, Bengaluru, India.'
   }
 ];
