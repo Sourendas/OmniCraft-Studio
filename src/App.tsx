@@ -61,6 +61,7 @@ export default function App() {
               <Route path="/markdown-editor" element={<MarkdownEditorPage />} />
               <Route path="/svg-editor" element={<SvgStudioPage />} />
               <Route path="/text-diff" element={<TextDiffPage />} />
+              <Route path="/privacy" element={<PrivacyPolicyPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/terms-of-service" element={<TermsPage />} />
