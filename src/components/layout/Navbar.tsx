@@ -27,7 +27,7 @@ export const Navbar: React.FC = () => {
         <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600">
           <div className="relative">
             <button onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)} onMouseEnter={() => setToolsDropdownOpen(true)} className="flex items-center gap-1.5 hover:text-[#00A3AD] font-bold text-slate-700">
-              <span>All 12 tools</span>
+              <span>Tools</span>
               <ChevronDown className={`w-3.5 h-3.5 ${toolsDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
             {toolsDropdownOpen && (
