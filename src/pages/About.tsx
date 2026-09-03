@@ -25,13 +25,18 @@ export const AboutPage: React.FC = () => {
           Operator: <strong>Souren Das</strong>, Bengaluru, Karnataka, India.
         </p>
         <p className="font-medium">
-          Site: <a className="text-[#007A82] underline font-bold" href="https://filetoolskit.com">filetoolskit.com</a>
+          Site: <a className="text-[#007A82] underline font-bold" href="https://www.filetoolskit.com">filetoolskit.com</a>
         </p>
         <p className="font-medium">
           Support: <a className="text-[#007A82] underline font-bold" href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>
         </p>
+        <p className="font-medium">
+          Trust pages: <Link to="/privacy" className="text-[#007A82] underline font-bold">Privacy</Link>,{' '}
+          <Link to="/terms" className="text-[#007A82] underline font-bold">Terms</Link>,{' '}
+          <Link to="/contact" className="text-[#007A82] underline font-bold">Contact</Link>.
+        </p>
         <p className="text-xs text-slate-500 font-medium">
-          There is no paid upgrade on this site. All 12 tools are free to use in the browser.
+          There is no paid upgrade on this site. All 12 tools are free. Google AdSense may be added after approval; the script is not embedded today.
         </p>
       </div>
     </div>
