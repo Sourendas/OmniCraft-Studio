@@ -3,7 +3,7 @@ import { ToolItem, FaqItem } from '../types';
 export const TOOLS_DATA: ToolItem[] = [
   {
     id: 'resume-builder',
-    name: 'ATS Resume Builder',
+    name: 'Resume Builder',
     category: 'Document & Career',
     description: 'Multi-step wizard with local keyword-overlap scoring, heuristic bullet rewriter, and PDF export.',
     detailedDescription: 'Build a resume in the browser. Compare a pasted job description against a keyword list (overlap score, not an employer ATS), rewrite bullets with local action-verb templates, and export a PDF. Files stay in this tab.',
@@ -13,12 +13,12 @@ export const TOOLS_DATA: ToolItem[] = [
     gradient: 'from-amber-500/20 via-orange-500/10 to-yellow-500/20',
     highlights: ['Keyword overlap score', 'Heuristic bullet rewriter', 'Live preview', 'PDF export'],
     image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'ATS Resume Builder and keyword overlap interface',
+    screenshotAlt: 'Resume Builder and keyword overlap interface',
     howItWorks: ['Enter career history in the form', 'Paste a job description to see keyword overlap %', 'Rewrite bullets locally and download PDF']
   },
   {
     id: 'pdf-suite',
-    name: 'PDF Power Suite',
+    name: 'PDF Suite',
     category: 'Document & Career',
     description: 'Merge, rotate, split by page range, add a text watermark, and edit metadata in the browser.',
     detailedDescription: 'Load PDFs in this tab with pdf-lib. Merge, rotate, split by page list (e.g. 1-3,5), add a text watermark, and set metadata on export. Preview tiles are placeholders, not rendered PDF pages. No encryption or redaction.',
@@ -33,7 +33,7 @@ export const TOOLS_DATA: ToolItem[] = [
   },
   {
     id: 'file-converter',
-    name: 'Universal File Converter',
+    name: 'File Converter',
     category: 'Productivity & Utility',
     description: 'Images PNG/JPG/WebP via canvas, audio decode to WAV, DOCX to text PDF or TXT in the browser.',
     detailedDescription: 'Convert images between WebP, PNG, and JPEG with the Canvas API. Decode browser-supported audio to WAV. Extract DOCX text with mammoth and write PDF or TXT. Unsupported types are rejected rather than renamed. No AVIF/MP3/OGG encoding.',
@@ -48,7 +48,7 @@ export const TOOLS_DATA: ToolItem[] = [
   },
   {
     id: 'image-optimizer',
-    name: 'Smart Image Optimizer & WebP Compressor',
+    name: 'Image Optimizer',
     category: 'Media & Graphics',
     description: 'Compress and resize images in canvas; download WebP, JPEG, or PNG with before/after file sizes.',
     detailedDescription: 'Uses the browser canvas to scale and re-encode images. Adjust quality and dimensions, then download each file. Savings vary by source; there is no ZIP pack and no comparison slider.',
@@ -63,7 +63,7 @@ export const TOOLS_DATA: ToolItem[] = [
   },
   {
     id: 'currency-crypto',
-    name: 'Reference FX Worksheet',
+    name: 'Currency Worksheet',
     category: 'Productivity & Utility',
     description: 'Example FX worksheet with fixed reference rates (not live) and hypothetical remittance fee examples.',
     detailedDescription: 'Multiply amounts using a hardcoded rate table last authored September 2026. The chart is an illustration, not historical market data. Remittance cards are hypothetical fee examples, not quotes from banks or apps.',
@@ -78,7 +78,7 @@ export const TOOLS_DATA: ToolItem[] = [
   },
   {
     id: 'dev-tools',
-    name: 'Dev Utility Workbench',
+    name: 'Dev Tools',
     category: 'Developer & Data',
     description: 'JSON to CSV for flat objects, keyword SQL line-breaks, regex tester, Base64, SHA-1/256/384/512.',
     detailedDescription: 'Offline helpers in the browser. JSON/CSV handles arrays of flat objects. SQL helper inserts line breaks before common keywords (not a full formatter). Regex tester uses the JS engine. Hashes use Web Crypto (SHA family; no MD5).',
@@ -93,7 +93,7 @@ export const TOOLS_DATA: ToolItem[] = [
   },
   {
     id: 'qr-generator',
-    name: 'Custom Branded QR Code Studio',
+    name: 'QR Generator',
     category: 'Media & Graphics',
     description: 'Create QR codes for URLs, Wi-Fi, and vCards with colors and PNG/SVG export.',
     detailedDescription: 'Encode URL, Wi-Fi, vCard, or text into a QR image in the browser. Adjust colors and export PNG or SVG.',
@@ -108,7 +108,7 @@ export const TOOLS_DATA: ToolItem[] = [
   },
   {
     id: 'social-studio',
-    name: 'Social Studio & Unicode Typography',
+    name: 'Social Studio',
     category: 'Productivity & Utility',
     description: 'Unicode font styles plus caption length meters and starter hashtag lists.',
     detailedDescription: 'Map your text into Unicode letter styles and copy them. Hashtag chips are static starter lists, not research or trending data.',
@@ -123,7 +123,7 @@ export const TOOLS_DATA: ToolItem[] = [
   },
   {
     id: 'health-calc',
-    name: 'Health & Macro Nutrition Engine',
+    name: 'Health Calculator',
     category: 'Productivity & Utility',
     description: 'Mifflin-St Jeor BMR and TDEE estimates with macro sliders. Not medical advice.',
     detailedDescription: 'Estimates BMR with Mifflin-St Jeor and TDEE from an activity multiplier. Macro grams follow simple ratio sliders. Educational only — not medical advice.',
@@ -138,7 +138,7 @@ export const TOOLS_DATA: ToolItem[] = [
   },
   {
     id: 'markdown-editor',
-    name: 'Markdown & Rich Doc Editor',
+    name: 'Markdown Editor',
     category: 'Developer & Data',
     description: 'Side-by-side Markdown writing with live preview, word count, and export to MD or HTML.',
     detailedDescription: 'Write Markdown in the browser with a live HTML preview, word count and reading-time estimate, and download as Markdown or HTML.',
@@ -153,7 +153,7 @@ export const TOOLS_DATA: ToolItem[] = [
   },
   {
     id: 'svg-editor',
-    name: 'SVG & Vector Icon Studio',
+    name: 'SVG Studio',
     category: 'Media & Graphics',
     description: 'Edit SVG stroke/fill, scale the canvas, and export SVG, React JSX, or PNG.',
     detailedDescription: 'Paste SVG markup or pick a preset, adjust stroke and fill, then download minified SVG, copy React JSX, or export a PNG.',
@@ -168,7 +168,7 @@ export const TOOLS_DATA: ToolItem[] = [
   },
   {
     id: 'text-diff',
-    name: 'Text Diff & Code Comparator',
+    name: 'Text Diff',
     category: 'Developer & Data',
     description: 'Side-by-side text/code comparator with line highlights, stats, and unified patch export.',
     detailedDescription: 'Compare two texts in the browser, inspect line differences, and export a unified .patch file.',
