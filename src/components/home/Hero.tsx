@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Layers, Zap, ShieldCheck } from 'lucide-react';
+import { Search, Layers, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface HeroProps {
@@ -17,26 +17,21 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, setSearchQuery, selecte
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
         <div className="max-w-2xl">
           <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-xs font-black text-[#007A82] mb-4">
-            <Zap className="w-3.5 h-3.5 text-[#00A3AD]" />
-            <span>In-browser tools</span>
+            <ShieldCheck className="w-3.5 h-3.5 text-[#00A3AD]" />
+            <span>Free tools · work stays in this tab</span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight leading-[1.12]">
-            12 file tools that run in your browser
+            Merge, convert, and export files without sending them to us
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-3.5 text-base sm:text-lg text-slate-600 max-w-xl font-medium">
-            Merge PDFs, convert images, build a resume PDF, and more in this tab. File Tools Kit does not receive your files on a server.
+            PDF merge and split, image convert, resume PDF, QR, SVG, hashes, and more. FileTools Kit hosts the app. Your documents are processed in the browser, not uploaded to our server.
           </motion.p>
-          <div className="flex items-center gap-5 mt-5">
-            <span className="text-xs uppercase tracking-wider text-slate-700 font-bold flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" /> RUNS IN YOUR BROWSER
-            </span>
-          </div>
         </div>
         <div className="flex flex-col gap-3.5">
           <a href="#tools-grid" className="px-6 py-3 rounded-full bg-[#00A3AD] text-white font-bold text-xs flex items-center justify-center gap-2">
-            <Layers className="w-4 h-4" /> Open the 12 tools
+            <Layers className="w-4 h-4" /> Browse tools
           </a>
-          <Link to="/about" className="px-6 py-3 rounded-full bg-white text-[#0A2540] font-bold text-xs border border-slate-200 text-center">About File Tools Kit</Link>
+          <Link to="/about" className="px-6 py-3 rounded-full bg-white text-[#0A2540] font-bold text-xs border border-slate-200 text-center">How it works</Link>
         </div>
       </div>
       <div className="mt-8 rounded-3xl bg-white border border-slate-200 p-3.5">
