@@ -4,7 +4,6 @@ import { ToolGrid } from '../components/home/ToolGrid';
 import { WorkflowPresets } from '../components/home/WorkflowPresets';
 import { SecurityArchitecture } from '../components/home/SecurityArchitecture';
 import { LiveSystemDiagnostics } from '../components/home/LiveSystemDiagnostics';
-import { PricingSection } from '../components/home/PricingSection';
 import { FaqSection } from '../components/home/FaqSection';
 import { AdBanner } from '../components/layout/AdBanner';
 
@@ -20,24 +19,16 @@ export const HomePage: React.FC = () => {
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
       />
-
       <ToolGrid
         searchQuery={searchQuery}
         selectedCategory={selectedCategory}
       />
-
       <WorkflowPresets />
-
       <SecurityArchitecture />
-
       <LiveSystemDiagnostics />
-
       <div className="px-4 max-w-7xl mx-auto w-full">
         <AdBanner type="in-content" />
       </div>
-
-      <PricingSection />
-
       <FaqSection />
     </div>
   );

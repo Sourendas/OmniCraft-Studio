@@ -4,9 +4,7 @@ import { SubscriptionProvider } from './context/SubscriptionContext';
 import { AmbientBackground } from './components/layout/AmbientBackground';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
-import { UpgradeModal } from './components/modals/UpgradeModal';
 
-// Pages - 12 Client-Side Power Tools
 import { HomePage } from './pages/HomePage';
 import { ResumeBuilderPage } from './pages/tools/ResumeBuilderPage';
 import { PdfSuitePage } from './pages/tools/PdfSuitePage';
@@ -21,17 +19,17 @@ import { MarkdownEditorPage } from './pages/tools/MarkdownEditorPage';
 import { SvgStudioPage } from './pages/tools/SvgStudioPage';
 import { TextDiffPage } from './pages/tools/TextDiffPage';
 
-// Legal & Utility Pages
-import { 
-  PrivacyPolicyPage, 
-  TermsPage, 
-  CookiePolicyPage, 
-  DisclaimerPage, 
-  ContactPage 
+import {
+  PrivacyPolicyPage,
+  TermsPage,
+  CookiePolicyPage,
+  DisclaimerPage,
+  ContactPage
 } from './pages/legal/LegalPages';
+import { AboutPage } from './pages/About';
+import { GuidesPage } from './pages/Guides';
 import { NotFoundPage } from './pages/NotFoundPage';
 
-// Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -47,9 +45,7 @@ export default function App() {
         <div className="relative min-h-screen bg-[#F6FAFC]/80 text-[#0A2540] selection:bg-[#00A3AD]/25 selection:text-[#006066] overflow-x-hidden font-sans flex flex-col justify-between">
           <AmbientBackground />
           <ScrollToTop />
-          
           <Navbar />
-
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -65,21 +61,18 @@ export default function App() {
               <Route path="/markdown-editor" element={<MarkdownEditorPage />} />
               <Route path="/svg-editor" element={<SvgStudioPage />} />
               <Route path="/text-diff" element={<TextDiffPage />} />
-
-              {/* Legal & Trust */}
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
               <Route path="/terms-of-service" element={<TermsPage />} />
               <Route path="/cookie-policy" element={<CookiePolicyPage />} />
               <Route path="/disclaimer" element={<DisclaimerPage />} />
               <Route path="/contact" element={<ContactPage />} />
-
-              {/* Catch-all fallback */}
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/guides" element={<GuidesPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
-
           <Footer />
-          <UpgradeModal />
         </div>
       </BrowserRouter>
     </SubscriptionProvider>

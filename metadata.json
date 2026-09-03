@@ -1,6 +1,6 @@
 {
-  "name": "OmniCraft Studio",
-  "description": "12 Superpower Browser Utilities — 100% Private, Zero Cloud Uploads. Convert, edit, create, and optimize everything right inside your browser.",
+  "name": "File Tools Kit",
+  "description": "12 in-browser file tools. Local file manipulation in your browser tab.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
