@@ -194,7 +194,7 @@ export const ResumeBuilderPage: React.FC = () => {
             <span>/</span><span>Documents</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
-            <FileText className="w-7 h-7 text-[#00A3AD]" /> ATS Resume Builder
+            <FileText className="w-7 h-7 text-[#00A3AD]" /> Resume Builder
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Match % is local keyword overlap, not an employer ATS. Bullet rewrite is a local template. PDF export is included.
