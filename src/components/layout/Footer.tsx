@@ -1,216 +1,75 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ShieldCheck, 
-  Lock, 
-  Cpu, 
-  HardDrive,
-  Zap
-} from 'lucide-react';
+import { ShieldCheck, Lock, Cpu, HardDrive, Zap } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
     <footer className="relative z-10 bg-white/95 border-t border-slate-200 text-slate-600 text-xs">
-      {/* Trust & Guarantee Bento Row - Solutionreach Clean Rounded Styling */}
       <div className="border-b border-slate-200/80 py-8 bg-[#F4F8FA]/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="flex items-start gap-3.5 p-4.5 rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_15px_rgba(10,37,64,0.03)]">
-            <div className="p-2.5 rounded-2xl bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] shrink-0">
-              <Lock className="w-4 h-4" />
-            </div>
-            <div>
-              <h4 className="font-black text-[#0A2540] text-xs mb-0.5">Files processed in the browser</h4>
-              <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-                No OmniCraft server receives your documents or images.
-              </p>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
+            <Lock className="w-4 h-4 text-[#007A82] mt-0.5" />
+            <div><h4 className="font-black text-[#0A2540] text-xs mb-0.5">Files processed in the browser</h4><p className="text-[11px]">No File Tools Kit server receives your documents.</p></div>
           </div>
-
-          <div className="flex items-start gap-3.5 p-4.5 rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_15px_rgba(10,37,64,0.03)]">
-            <div className="p-2.5 rounded-2xl bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] shrink-0">
-              <ShieldCheck className="w-4 h-4" />
-            </div>
-            <div>
-              <h4 className="font-black text-[#0A2540] text-xs mb-0.5">Browser-local processing</h4>
-              <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-                No file uploads to OmniCraft servers. No ad or analytics scripts today.
-              </p>
-            </div>
+          <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
+            <ShieldCheck className="w-4 h-4 text-[#007A82] mt-0.5" />
+            <div><h4 className="font-black text-[#0A2540] text-xs mb-0.5">Local execution</h4><p className="text-[11px]">No ad or analytics scripts today.</p></div>
           </div>
-
-          <div className="flex items-start gap-3.5 p-4.5 rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_15px_rgba(10,37,64,0.03)]">
-            <div className="p-2.5 rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
-              <Cpu className="w-4 h-4" />
-            </div>
-            <div>
-              <h4 className="font-black text-[#0A2540] text-xs mb-0.5">Canvas & Web APIs</h4>
-              <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-                Processing happens in this tab using standard browser APIs.
-              </p>
-            </div>
+          <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
+            <Cpu className="w-4 h-4 text-emerald-700 mt-0.5" />
+            <div><h4 className="font-black text-[#0A2540] text-xs mb-0.5">Canvas and Web APIs</h4><p className="text-[11px]">Processing happens in this tab.</p></div>
           </div>
-
-          <div className="flex items-start gap-3.5 p-4.5 rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_15px_rgba(10,37,64,0.03)]">
-            <div className="p-2.5 rounded-2xl bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] shrink-0">
-              <HardDrive className="w-4 h-4" />
-            </div>
-            <div>
-              <h4 className="font-black text-[#0A2540] text-xs mb-0.5">Commercial Grade</h4>
-              <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-                All generated assets and outputs belong 100% to you.
-              </p>
-            </div>
+          <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
+            <HardDrive className="w-4 h-4 text-[#007A82] mt-0.5" />
+            <div><h4 className="font-black text-[#0A2540] text-xs mb-0.5">Active client build</h4><p className="text-[11px]">Generated files belong to you.</p></div>
           </div>
         </div>
       </div>
-
-      {/* Main Footer Directory */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-          {/* Col 1: Brand */}
-          <div className="md:col-span-2 space-y-3">
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-2xl bg-gradient-to-br from-[#00A3AD] via-[#0FB5BA] to-[#0F4C81] flex items-center justify-center shadow-xs">
-                <Zap className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-black text-[#0A2540] text-base tracking-tight">
-                OmniCraft <span className="text-[#008C95] font-mono text-xs font-bold">STUDIO</span>
-              </span>
-            </Link>
-            <p className="text-xs text-slate-600 leading-relaxed max-w-sm font-medium">
-              The in-browser utility workstation. 12 tools for creators and developers. File processing stays in this tab.
-            </p>
-            <div className="flex items-center gap-2 text-[11px] text-slate-500 font-mono pt-1">
-              <span className="text-emerald-600 font-bold">● 100% Operational</span>
-              <span>•</span>
-              <span>Hardware-Accelerated Client Engine</span>
-            </div>
-          </div>
-
-          {/* Col 2: Document & Productivity */}
-          <div className="space-y-2.5">
-            <h4 className="font-black text-[#0A2540] text-xs uppercase tracking-wider">
-              Document & Career
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <Link to="/resume-builder" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  ATS Resume Builder
-                </Link>
-              </li>
-              <li>
-                <Link to="/pdf-suite" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Advanced PDF Suite
-                </Link>
-              </li>
-              <li>
-                <Link to="/markdown-editor" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Markdown Editor & Preview
-                </Link>
-              </li>
-              <li>
-                <Link to="/social-studio" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Social Typography Studio
-                </Link>
-              </li>
-              <li>
-                <Link to="/health-calc" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Health & Macro Calculator
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 3: Media & Dev */}
-          <div className="space-y-2.5">
-            <h4 className="font-black text-[#0A2540] text-xs uppercase tracking-wider">
-              Media & Dev Tools
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <Link to="/file-converter" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Universal File Converter
-                </Link>
-              </li>
-              <li>
-                <Link to="/image-optimizer" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Smart Image Compressor
-                </Link>
-              </li>
-              <li>
-                <Link to="/svg-editor" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  SVG & Vector Icon Studio
-                </Link>
-              </li>
-              <li>
-                <Link to="/dev-tools" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Developer Workbench
-                </Link>
-              </li>
-              <li>
-                <Link to="/text-diff" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Text & Code Diff Checker
-                </Link>
-              </li>
-              <li>
-                <Link to="/qr-generator" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Branded QR Code Studio
-                </Link>
-              </li>
-              <li>
-                <Link to="/currency-crypto" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Reference FX Worksheet
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Legal & Compliance Hub */}
-          <div className="space-y-2.5">
-            <h4 className="font-black text-[#0A2540] text-xs uppercase tracking-wider">
-              Legal & Trust Hub
-            </h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <Link to="/privacy-policy" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms-of-service" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link to="/cookie-policy" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Cookie & Storage Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/disclaimer" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Analytical Disclaimer
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-slate-600 hover:text-[#00A3AD] transition-colors font-bold">
-                  Contact & Support
-                </Link>
-              </li>
-            </ul>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="md:col-span-2 space-y-3">
+          <Link to="/" className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-2xl bg-gradient-to-br from-[#00A3AD] to-[#0F4C81] flex items-center justify-center"><Zap className="w-4 h-4 text-white" /></div>
+            <span className="font-black text-[#0A2540] text-base">File Tools Kit</span>
+          </Link>
+          <p className="text-xs font-medium">12 in-browser tools. Operated by Souren Das, Bengaluru, India.</p>
+          <p className="text-[11px]">support@filetoolskit.com · privacy@filetoolskit.com</p>
         </div>
-
-        {/* Bottom copyright */}
-        <div className="mt-10 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-          <div>© {new Date().getFullYear()} OmniCraft Studio. File tools run in your browser.</div>
-          <div className="flex gap-4 font-bold text-slate-600">
-            <Link to="/privacy-policy" className="hover:text-[#00A3AD] transition-colors">Privacy</Link>
-            <Link to="/terms-of-service" className="hover:text-[#00A3AD] transition-colors">Terms</Link>
-            <Link to="/cookie-policy" className="hover:text-[#00A3AD] transition-colors">Cookies</Link>
-            <Link to="/contact" className="hover:text-[#00A3AD] transition-colors">Contact</Link>
-          </div>
+        <div className="space-y-2">
+          <h4 className="font-black text-[#0A2540] text-xs uppercase">Document</h4>
+          <ul className="space-y-2">
+            <li><Link to="/resume-builder" className="font-bold hover:text-[#00A3AD]">Resume Builder</Link></li>
+            <li><Link to="/pdf-suite" className="font-bold hover:text-[#00A3AD]">PDF Suite</Link></li>
+            <li><Link to="/markdown-editor" className="font-bold hover:text-[#00A3AD]">Markdown Editor</Link></li>
+            <li><Link to="/social-studio" className="font-bold hover:text-[#00A3AD]">Social Studio</Link></li>
+            <li><Link to="/health-calc" className="font-bold hover:text-[#00A3AD]">Health Calculator</Link></li>
+          </ul>
+        </div>
+        <div className="space-y-2">
+          <h4 className="font-black text-[#0A2540] text-xs uppercase">Media and dev</h4>
+          <ul className="space-y-2">
+            <li><Link to="/file-converter" className="font-bold hover:text-[#00A3AD]">File Converter</Link></li>
+            <li><Link to="/image-optimizer" className="font-bold hover:text-[#00A3AD]">Image Optimizer</Link></li>
+            <li><Link to="/svg-editor" className="font-bold hover:text-[#00A3AD]">SVG Studio</Link></li>
+            <li><Link to="/dev-tools" className="font-bold hover:text-[#00A3AD]">Dev Tools</Link></li>
+            <li><Link to="/text-diff" className="font-bold hover:text-[#00A3AD]">Text Diff</Link></li>
+            <li><Link to="/qr-generator" className="font-bold hover:text-[#00A3AD]">QR Generator</Link></li>
+            <li><Link to="/currency-crypto" className="font-bold hover:text-[#00A3AD]">FX Worksheet</Link></li>
+          </ul>
+        </div>
+        <div className="space-y-2">
+          <h4 className="font-black text-[#0A2540] text-xs uppercase">Site</h4>
+          <ul className="space-y-2">
+            <li><Link to="/about" className="font-bold hover:text-[#00A3AD]">About</Link></li>
+            <li><Link to="/guides" className="font-bold hover:text-[#00A3AD]">Guides</Link></li>
+            <li><Link to="/privacy-policy" className="font-bold hover:text-[#00A3AD]">Privacy</Link></li>
+            <li><Link to="/terms-of-service" className="font-bold hover:text-[#00A3AD]">Terms</Link></li>
+            <li><Link to="/cookie-policy" className="font-bold hover:text-[#00A3AD]">Cookies</Link></li>
+            <li><Link to="/disclaimer" className="font-bold hover:text-[#00A3AD]">Disclaimer</Link></li>
+            <li><Link to="/contact" className="font-bold hover:text-[#00A3AD]">Contact</Link></li>
+          </ul>
         </div>
       </div>
+      <div className="max-w-7xl mx-auto px-4 pb-8 text-slate-500">© {new Date().getFullYear()} File Tools Kit · Souren Das · Bengaluru</div>
     </footer>
   );
 };
