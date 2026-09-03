@@ -43,6 +43,7 @@ export const Navbar: React.FC = () => {
           </div>
           <Link to="/about" className="hover:text-[#00A3AD] font-bold text-slate-700">About</Link>
           <Link to="/guides" className="hover:text-[#00A3AD] font-bold text-slate-700">Guides</Link>
+          <Link to="/privacy" className="hover:text-[#00A3AD] font-bold text-slate-700">Privacy</Link>
           <a href={isHome ? '#faq' : '/#faq'} className="hover:text-[#00A3AD] font-bold text-slate-700">FAQ</a>
           <Link to="/contact" className="hover:text-[#00A3AD] font-bold text-slate-700">Contact</Link>
         </nav>
@@ -64,6 +65,7 @@ export const Navbar: React.FC = () => {
           </div>
           <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block text-xs font-bold py-2 px-3">About</Link>
           <Link to="/guides" onClick={() => setMobileMenuOpen(false)} className="block text-xs font-bold py-2 px-3">Guides</Link>
+          <Link to="/privacy" onClick={() => setMobileMenuOpen(false)} className="block text-xs font-bold py-2 px-3">Privacy</Link>
           <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block text-xs font-bold py-2 px-3">Contact</Link>
         </div>
       )}
