@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Layers, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
+import { HERO_CTA_COPY, useExperiment } from '../../experiments';
 
 interface HeroProps {
   searchQuery: string;
@@ -12,6 +13,13 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ searchQuery, setSearchQuery, selectedCategory, setSelectedCategory }) => {
   const categories = ['All Categories', 'Document & Career', 'Media & Graphics', 'Developer & Data', 'Productivity & Utility'];
+  const { variant, track } = useExperiment('hero_cta');
+  const ctaLabel = HERO_CTA_COPY[variant] ?? HERO_CTA_COPY.a;
+
+  useEffect(() => {
+    track('expose');
+  }, [track]);
+
   return (
     <section className="relative pt-12 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
@@ -28,8 +36,8 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, setSearchQuery, selecte
           </motion.p>
         </div>
         <div className="flex flex-col gap-3.5">
-          <a href="#tools-grid" className="px-6 py-3 rounded-full bg-[#00A3AD] text-white font-bold text-xs flex items-center justify-center gap-2">
-            <Layers className="w-4 h-4" /> Browse tools
+          <a href="#tools-grid" onClick={() => track('click')} className="px-6 py-3 rounded-full bg-[#00A3AD] text-white font-bold text-xs flex items-center justify-center gap-2">
+            <Layers className="w-4 h-4" /> {ctaLabel}
           </a>
           <Link to="/about" className="px-6 py-3 rounded-full bg-white text-[#0A2540] font-bold text-xs border border-slate-200 text-center">How it works</Link>
         </div>
