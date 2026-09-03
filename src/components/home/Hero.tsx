@@ -18,13 +18,13 @@ export const Hero: React.FC<HeroProps> = ({ searchQuery, setSearchQuery, selecte
         <div className="max-w-2xl">
           <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-xs font-black text-[#007A82] mb-4">
             <ShieldCheck className="w-3.5 h-3.5 text-[#00A3AD]" />
-            <span>Free tools · work stays in this tab</span>
+            <span>Free tools · files stay in this tab</span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight leading-[1.12]">
-            Merge, convert, and export files without sending them to us
+            Merge, convert, and export files without uploading them.
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-3.5 text-base sm:text-lg text-slate-600 max-w-xl font-medium">
-            PDF merge and split, image convert, resume PDF, QR, SVG, hashes, and more. FileTools Kit hosts the app. Your documents are processed in the browser, not uploaded to our server.
+            PDF merge and split, image convert, resume PDF, QR, SVG, hashes, and more. Work runs in this browser tab. FileTools Kit hosts the site.
           </motion.p>
         </div>
         <div className="flex flex-col gap-3.5">
