@@ -12,17 +12,23 @@ export const PrivacyPolicyPage: React.FC = () => (
   <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
     <Back />
     <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-5 text-sm text-slate-700">
-      <div className="flex items-center gap-3"><ShieldCheck className="w-8 h-8 text-[#007A82]" /><div><h1 className="text-3xl font-black text-[#0A2540]">Privacy Policy</h1><p className="text-xs text-slate-500">Last updated: September 2026</p></div></div>
-      <h2 className="text-lg font-black text-[#0A2540]">1. Operator</h2>
-      <p>File Tools Kit is operated by <strong>Souren Das</strong>, Bengaluru, Karnataka, India. Domain: filetoolskit.com. Email: <a className="text-[#007A82] underline" href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a>.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">2. How file tools work</h2>
-      <p>The 12 utilities run inside your browser using Web APIs, Canvas, pdf-lib, and jsPDF. File Tools Kit does not operate a server that receives your documents or images. Hosting HTML/CSS/JS and Unsplash tool-card photos is separate from file processing.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">3. What we do not collect from the tools</h2>
-      <p>We do not upload your PDFs, images, or resume text to File Tools Kit servers. We do not run advertising or analytics scripts today. If that changes, this policy will be updated first.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">4. Local storage</h2>
-      <p>The site may use browser localStorage for UI preferences. Clear site data to delete it. There is no paid account.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">5. Children</h2>
-      <p>This site is not directed at children under 13.</p>
+      <div className="flex items-center gap-3"><ShieldCheck className="w-8 h-8 text-[#007A82]" /><div><h1 className="text-3xl font-black text-[#0A2540]">Privacy Policy</h1><p className="text-xs text-slate-500">Last updated: 3 September 2026</p></div></div>
+      <h2 className="text-lg font-black text-[#0A2540]">1. Who we are</h2>
+      <p>FileTools Kit (filetoolskit.com) is operated by <strong>Souren Das</strong>, Bengaluru, Karnataka, India. Privacy contact: <a className="text-[#007A82] underline" href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a>. Support: <a className="text-[#007A82] underline" href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+      <h2 className="text-lg font-black text-[#0A2540]">2. What the tools do with your files</h2>
+      <p>The 12 utilities run in your browser with libraries such as pdf-lib, jsPDF, and the Canvas API. We do not operate an upload API that receives your PDFs, images, resume text, or other files you open in a tool. Closing the tab discards that working copy unless you downloaded it.</p>
+      <h2 className="text-lg font-black text-[#0A2540]">3. What the website host may see</h2>
+      <p>The site is hosted on Vercel. Like most websites, the host may process technical request data (IP address, browser type, pages requested, timestamps) to serve pages and keep the service online. That is separate from opening a file inside a tool.</p>
+      <h2 className="text-lg font-black text-[#0A2540]">4. Third-party content on pages</h2>
+      <p>Tool-card photos may load from Unsplash. Google Fonts may load Outfit and related typefaces. Those providers receive a request from your browser for that asset. Contact form submit opens your own email app with a mailto: draft to support@filetoolskit.com; we do not run a message database.</p>
+      <h2 className="text-lg font-black text-[#0A2540]">5. Advertising and analytics</h2>
+      <p>This site does not run Google AdSense, Meta ads, or analytics scripts today. If advertising or measurement is added later, this policy will be updated first and the legal pages will describe the vendor.</p>
+      <h2 className="text-lg font-black text-[#0A2540]">6. Local storage</h2>
+      <p>The browser may keep UI preferences in localStorage. There is no paid account. Clear site data for filetoolskit.com to delete local items.</p>
+      <h2 className="text-lg font-black text-[#0A2540]">7. Children</h2>
+      <p>The site is not directed at children under 13.</p>
+      <h2 className="text-lg font-black text-[#0A2540]">8. Your requests</h2>
+      <p>Email privacy@filetoolskit.com for questions. We respond from Bengaluru, India. This policy is meant to describe current practice; it is not a certification of GDPR, CCPA, HIPAA, or COPPA compliance.</p>
     </div>
   </div>
 );
@@ -31,10 +37,10 @@ export const TermsPage: React.FC = () => (
   <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
     <Back />
     <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-5 text-sm text-slate-700">
-      <div className="flex items-center gap-3"><FileText className="w-8 h-8 text-[#007A82]" /><div><h1 className="text-3xl font-black text-[#0A2540]">Terms of Service</h1><p className="text-xs text-slate-500">Last updated: September 2026</p></div></div>
+      <div className="flex items-center gap-3"><FileText className="w-8 h-8 text-[#007A82]" /><div><h1 className="text-3xl font-black text-[#0A2540]">Terms of Service</h1><p className="text-xs text-slate-500">Last updated: 3 September 2026</p></div></div>
       <p>These terms are between you and Souren Das (Bengaluru, India) for filetoolskit.com.</p>
       <p>All 12 tools are free to use in the browser. There is no paid upgrade or checkout on this site. Outputs you generate are yours, subject to third-party rights in content you paste in.</p>
-      <p>Do not use the tools for unlawful content. The site is provided AS IS. Governed by the laws of India.</p>
+      <p>Do not use the tools for unlawful content. Tools are provided as-is. Encrypted PDFs, unusual file types, and very large files may fail in the browser. Governed by the laws of India.</p>
     </div>
   </div>
 );
@@ -44,7 +50,7 @@ export const CookiePolicyPage: React.FC = () => (
     <Back />
     <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-5 text-sm text-slate-700">
       <div className="flex items-center gap-3"><Lock className="w-8 h-8 text-[#007A82]" /><h1 className="text-3xl font-black text-[#0A2540]">Cookie & Storage Policy</h1></div>
-      <p>File Tools Kit does not set advertising or analytics cookies today. The browser may store UI preferences in localStorage. Clear site data for filetoolskit.com to delete them.</p>
+      <p>FileTools Kit does not set advertising or analytics cookies today. The browser may store UI preferences in localStorage. Vercel and font/image CDNs may set their own technical cookies when assets load. Clear site data for filetoolskit.com to delete first-party storage.</p>
     </div>
   </div>
 );
