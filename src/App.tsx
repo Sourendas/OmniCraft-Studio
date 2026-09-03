@@ -29,6 +29,7 @@ import {
 } from './pages/legal/LegalPages';
 import { AboutPage } from './pages/About';
 import { GuidesPage } from './pages/Guides';
+import { GuideArticlePage } from './pages/guides/GuideArticle';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 const ScrollToTop = () => {
@@ -71,6 +72,7 @@ export default function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/guides" element={<GuidesPage />} />
+              <Route path="/guides/:slug" element={<GuideArticlePage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
