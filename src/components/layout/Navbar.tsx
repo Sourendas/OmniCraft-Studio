@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Zap, Search, Command } from 'lucide-react';
+import { Menu, X, ChevronDown, Search, Command } from 'lucide-react';
 import { TOOLS_DATA } from '../../data/toolsData';
 import { CommandPalette } from './CommandPalette';
+import { BrandLockup } from './BrandLockup';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,11 +21,8 @@ export const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-[#00A3AD] via-[#0FB5BA] to-[#0F4C81] flex items-center justify-center">
-            <Zap className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-xl font-black tracking-tight text-[#0A2540] group-hover:text-[#00A3AD]">File Tools Kit</span>
+        <Link to="/" className="shrink-0 group" aria-label="FileTools Kit home">
+          <BrandLockup />
         </Link>
         <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600">
           <div className="relative">

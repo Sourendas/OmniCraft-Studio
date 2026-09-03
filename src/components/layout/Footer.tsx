@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Lock, Cpu, HardDrive, Zap } from 'lucide-react';
+import { ShieldCheck, Lock, Cpu, HardDrive } from 'lucide-react';
+import { BrandLockup } from './BrandLockup';
 
 export const Footer: React.FC = () => {
   return (
@@ -27,9 +28,8 @@ export const Footer: React.FC = () => {
       </div>
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-5 gap-8">
         <div className="md:col-span-2 space-y-3">
-          <Link to="/" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-2xl bg-gradient-to-br from-[#00A3AD] to-[#0F4C81] flex items-center justify-center"><Zap className="w-4 h-4 text-white" /></div>
-            <span className="font-black text-[#0A2540] text-base">File Tools Kit</span>
+          <Link to="/" aria-label="FileTools Kit home">
+            <BrandLockup compact />
           </Link>
           <p className="text-xs font-medium">12 in-browser tools. Operated by Souren Das, Bengaluru, India.</p>
           <p className="text-[11px]">support@filetoolskit.com · privacy@filetoolskit.com</p>
@@ -69,7 +69,7 @@ export const Footer: React.FC = () => {
           </ul>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-4 pb-8 text-slate-500">© {new Date().getFullYear()} File Tools Kit · Souren Das · Bengaluru</div>
+      <div className="max-w-7xl mx-auto px-4 pb-8 text-slate-500">© {new Date().getFullYear()} FileTools Kit · Souren Das · Bengaluru</div>
     </footer>
   );
 };
