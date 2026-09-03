@@ -1,28 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { GUIDES } from '../data/guides';
 
-export const GuidesPage: React.FC = () => {
-  return (
-    <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <Link to="/" className="inline-flex items-center gap-1.5 text-xs font-black text-[#007A82] hover:text-[#00A3AD] mb-6">
-        <ArrowLeft className="w-3.5 h-3.5" /> Back to tools
-      </Link>
-      <div className="rounded-3xl bg-white border border-slate-200/90 p-8 sm:p-12 space-y-8 text-slate-700 text-sm leading-relaxed">
-        <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">How the tools work</h1>
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-[#0A2540]">PDF merge and split</h2>
-          <p className="font-medium">Open <Link to="/pdf-suite" className="text-[#007A82] underline font-bold">PDF Suite</Link>. Merge and split run with pdf-lib in this tab.</p>
-        </section>
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-[#0A2540]">Image convert and compress</h2>
-          <p className="font-medium">Use File Converter or Image Optimizer. Images are re-encoded on an HTML5 canvas.</p>
-        </section>
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-[#0A2540]">Resume PDF</h2>
-          <p className="font-medium">Resume Builder exports a PDF with jsPDF in this browser. Keyword overlap is not an employer ATS.</p>
-        </section>
-      </div>
+export const GuidesPage: React.FC = () => (
+  <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
+    <Link to="/" className="inline-flex items-center gap-1.5 text-xs font-black text-[#007A82] mb-6"><ArrowLeft className="w-3.5 h-3.5" /> Back to tools</Link>
+    <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-6">
+      <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">Guides</h1>
+      <p className="text-sm text-slate-700 font-medium">Short explainers for the tools. Work still happens in this tab.</p>
+      <ul className="grid gap-4">
+        {GUIDES.map((g) => (
+          <li key={g.slug}>
+            <Link to={`/guides/${g.slug}`} className="block p-5 rounded-2xl border border-slate-200 bg-[#F4F8FA] hover:bg-[#E6F8F9]">
+              <h2 className="font-black text-[#0A2540]">{g.title}</h2>
+              <p className="text-sm text-slate-600 mt-1">{g.summary}</p>
+              <span className="inline-flex items-center gap-1 text-xs font-black text-[#007A82] mt-2">Read guide <ArrowRight className="w-3.5 h-3.5" /></span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
-  );
-};
+  </div>
+);
