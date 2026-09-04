@@ -1,298 +1,460 @@
-import React, { useState, useMemo } from 'react';
-import { AdBanner } from '../../components/layout/AdBanner';
-import { jsPDF } from 'jspdf';
-import { FileText, Plus, Trash2, Download, ArrowLeft, Eye, Edit3 } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  FileText, Plus, Trash2, Download, ArrowLeft, Eye, Edit3, Check
+} from 'lucide-react';
 import { ResumeData } from '../../types';
+import { AdBanner } from '../../components/layout/AdBanner';
+import { downloadResumePdf, RESUME_TEMPLATES, ResumeTemplateId } from '../../lib/resumePdf';
+
+const STORAGE_KEY = 'ftk_resume_v1';
+
+const SAMPLE: ResumeData = {
+  fullName: 'Alex Mercer',
+  jobTitle: 'Senior Full Stack Engineer',
+  email: 'alex.mercer@devmail.io',
+  phone: '+1 (555) 234-8901',
+  location: 'San Francisco, CA',
+  linkedin: 'linkedin.com/in/alex-mercer',
+  github: 'github.com/alexmercer',
+  website: 'alexmercer.dev',
+  summary:
+    'Full-stack engineer with 6+ years building React applications and in-browser utilities. Focused on TypeScript, performance, and shipping tools that run on the client.',
+  experience: [
+    {
+      id: '1',
+      company: 'Vanguard Cloud Systems',
+      position: 'Staff Frontend Engineer',
+      startDate: '2022',
+      endDate: 'Present',
+      current: true,
+      location: 'San Francisco, CA',
+      bullets: [
+        'Built client-side document tools in the browser, reducing server compute costs.',
+        'Migrated a legacy application to React 19 and Vite.',
+        'Mentored 8 engineers on TypeScript and testing.'
+      ]
+    },
+    {
+      id: '2',
+      company: 'Apex Digital Labs',
+      position: 'Software Engineer',
+      startDate: '2019',
+      endDate: '2022',
+      current: false,
+      location: 'Austin, TX',
+      bullets: [
+        'Designed shared UI components used by 14 teams.',
+        'Added offline-first caching with IndexedDB.'
+      ]
+    }
+  ],
+  education: [
+    {
+      id: '1',
+      school: 'University of California, Berkeley',
+      degree: 'B.S. in Computer Science',
+      field: 'Software Engineering',
+      graduationYear: '2019',
+      gpa: '3.89'
+    }
+  ],
+  skills: ['TypeScript', 'React 19', 'Vite', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
+  certifications: [],
+  targetJobDescription: 'Senior Software Engineer with TypeScript, React, and modern frontend architecture.'
+};
+
+const field =
+  'w-full px-3 py-2.5 rounded-xl bg-[#F4F8FA] border border-slate-200 text-sm text-[#0A2540]';
 
 export const ResumeBuilderPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'edit' | 'preview'>('edit');
-  const [activeStep, setActiveStep] = useState<number>(0);
-  const [isEnhancingBullet, setIsEnhancingBullet] = useState<string | null>(null);
+  const [tab, setTab] = useState<'edit' | 'preview'>('edit');
+  const [template, setTemplate] = useState<ResumeTemplateId>('modern');
+  const [data, setData] = useState<ResumeData>(SAMPLE);
+  const [rewriteKey, setRewriteKey] = useState<string | null>(null);
 
-  const [resumeData, setResumeData] = useState<ResumeData>({
-    fullName: 'Alex Mercer',
-    jobTitle: 'Senior Full Stack & AI Applications Engineer',
-    email: 'alex.mercer@devmail.io',
-    phone: '+1 (555) 234-8901',
-    location: 'San Francisco, CA',
-    linkedin: 'linkedin.com/in/alex-mercer',
-    github: 'github.com/alexmercer',
-    website: 'alexmercer.dev',
-    summary: 'Full-stack software engineer with 6+ years of experience building React applications and browser utilities.',
-    experience: [
-      {
-        id: '1',
-        company: 'Vanguard Cloud Systems',
-        position: 'Staff Frontend Engineer',
-        startDate: '2022',
-        endDate: 'Present',
-        current: true,
-        location: 'San Francisco, CA',
-        bullets: [
-          'Built client-side document tools in the browser, reducing server compute costs.',
-          'Migrated a legacy app to React 19 and Vite.',
-          'Mentored 8 engineers on TypeScript and testing.'
-        ]
-      },
-      {
-        id: '2',
-        company: 'Apex Digital Labs',
-        position: 'Software Engineer',
-        startDate: '2019',
-        endDate: '2022',
-        current: false,
-        location: 'Austin, TX',
-        bullets: [
-          'Designed shared UI components used by 14 teams.',
-          'Added offline-first caching with IndexedDB.'
-        ]
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as { data?: ResumeData; template?: ResumeTemplateId };
+        if (parsed.data?.fullName) setData({ ...SAMPLE, ...parsed.data });
+        if (parsed.template) setTemplate(parsed.template);
       }
-    ],
-    education: [
-      { id: '1', school: 'University of California, Berkeley', degree: 'B.S. in Computer Science', field: 'Software Engineering', graduationYear: '2019', gpa: '3.89' }
-    ],
-    skills: ['TypeScript', 'React 19', 'Vite', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
-    certifications: [],
-    targetJobDescription: 'Looking for a Senior Software Engineer with TypeScript, React, and modern frontend architecture.'
-  });
-
-  const steps = [
-    { title: 'Personal Info', desc: 'Contact & Links' },
-    { title: 'Summary', desc: 'Pitch' },
-    { title: 'Experience', desc: 'Work History' },
-    { title: 'Education & Skills', desc: 'Qualifications' },
-    { title: 'Keyword overlap', desc: 'Local match' }
-  ];
-
-  const atsAnalysis = useMemo(() => {
-    if (!resumeData.targetJobDescription.trim()) {
-      return { score: 0, matched: [] as string[], missing: [] as string[], density: 'No JD' };
+    } catch {
+      /* ignore */
     }
-    const jobText = resumeData.targetJobDescription.toLowerCase();
-    const commonKeywords = ['react', 'typescript', 'javascript', 'node.js', 'python', 'sql', 'docker', 'frontend', 'backend', 'full stack', 'performance', 'architecture', 'api', 'testing', 'vite'];
-    const targetKeywords = commonKeywords.filter(kw => jobText.includes(kw));
-    const fullResumeText = [resumeData.fullName, resumeData.jobTitle, resumeData.summary, ...resumeData.skills, ...resumeData.experience.flatMap(e => [e.company, e.position, ...e.bullets]), ...resumeData.education.map(ed => `${ed.degree} ${ed.field}`)].join(' ').toLowerCase();
-    const matched = targetKeywords.filter(kw => fullResumeText.includes(kw));
-    const missing = targetKeywords.filter(kw => !fullResumeText.includes(kw));
-    const score = targetKeywords.length > 0 ? Math.round((matched.length / targetKeywords.length) * 100) : 0;
-    return { score, matched, missing, density: score > 80 ? 'High overlap' : score > 60 ? 'Moderate' : 'Low' };
-  }, [resumeData]);
+  }, []);
 
-  const enhanceBullet = (expId: string, bulletIdx: number, currentText: string) => {
-    const key = `${expId}-${bulletIdx}`;
-    setIsEnhancingBullet(key);
-    setTimeout(() => {
-      const cleanBody = currentText.trim().replace(/^[\u2022\-\*]\s*/, '').replace(/^(i\s+|we\s+)?(was\s+responsible\s+for|responsible\s+for|worked\s+on|helped\s+with|built|developed|managed|created)\s+/i, '');
-      const verbs = ['Built', 'Led', 'Shipped', 'Improved', 'Designed'];
-      const chosen = verbs[(currentText.length + bulletIdx) % verbs.length];
-      let enhanced = `${chosen} ${cleanBody.charAt(0).toLowerCase() + cleanBody.slice(1)}`;
-      if (!enhanced.endsWith('.')) enhanced += '.';
-      updateBullet(expId, bulletIdx, enhanced);
-      setIsEnhancingBullet(null);
-    }, 150);
-  };
-
-  const updateBullet = (expId: string, bulletIdx: number, newText: string) => {
-    setResumeData(prev => ({ ...prev, experience: prev.experience.map(exp => {
-      if (exp.id !== expId) return exp;
-      const newBullets = [...exp.bullets];
-      newBullets[bulletIdx] = newText;
-      return { ...exp, bullets: newBullets };
-    })}));
-  };
-
-  const addBullet = (expId: string) => setResumeData(prev => ({ ...prev, experience: prev.experience.map(exp => exp.id !== expId ? exp : { ...exp, bullets: [...exp.bullets, 'Shipped a project that improved delivery time.'] }) }));
-  const removeBullet = (expId: string, bulletIdx: number) => setResumeData(prev => ({ ...prev, experience: prev.experience.map(exp => exp.id !== expId ? exp : { ...exp, bullets: exp.bullets.filter((_, idx) => idx !== bulletIdx) }) }));
-  const addExperience = () => setResumeData(prev => ({ ...prev, experience: [{ id: Date.now().toString(), company: 'New Company', position: 'Engineer', startDate: '2023', endDate: '2024', current: false, location: 'Remote', bullets: ['Delivered a core feature.'] }, ...prev.experience] }));
-  const removeExperience = (id: string) => setResumeData(prev => ({ ...prev, experience: prev.experience.filter(e => e.id !== id) }));
-
-  const handleDownloadPdf = () => {
-    const doc = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'letter' });
-    const margin = 40;
-    let y = 45;
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(18);
-    doc.setTextColor(20, 24, 33);
-    doc.text(resumeData.fullName.toUpperCase(), margin, y);
-    y += 18;
-    doc.setFontSize(11);
-    doc.setTextColor(60, 70, 90);
-    doc.text(resumeData.jobTitle, margin, y);
-    y += 14;
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9);
-    doc.setTextColor(90, 100, 120);
-    doc.text([resumeData.email, resumeData.phone, resumeData.location, resumeData.linkedin].filter(Boolean).join('  |  '), margin, y);
-    y += 12;
-    doc.setDrawColor(200, 205, 215);
-    doc.line(margin, y, 572, y);
-    y += 16;
-    if (resumeData.summary) {
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(10);
-      doc.setTextColor(20, 24, 33);
-      doc.text('PROFESSIONAL SUMMARY', margin, y);
-      y += 12;
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      const splitSummary = doc.splitTextToSize(resumeData.summary, 532);
-      doc.text(splitSummary, margin, y);
-      y += splitSummary.length * 11 + 8;
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, template }));
+    } catch {
+      /* ignore */
     }
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
-    doc.text('WORK EXPERIENCE', margin, y);
-    y += 12;
-    resumeData.experience.forEach((exp) => {
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(9.5);
-      doc.text(exp.position, margin, y);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      const dateText = `${exp.company}  |  ${exp.startDate} - ${exp.current ? 'Present' : exp.endDate}`;
-      doc.text(dateText, 572 - doc.getTextWidth(dateText), y);
-      y += 12;
-      exp.bullets.forEach((b) => {
-        const lines = doc.splitTextToSize(`\u2022  ${b}`, 520);
-        doc.text(lines, margin + 8, y);
-        y += lines.length * 10.5;
-      });
-      y += 6;
-    });
-    y += 4;
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
-    doc.text('EDUCATION', margin, y);
-    y += 12;
-    resumeData.education.forEach((edu) => {
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(9);
-      doc.text(`${edu.degree} \u2014 ${edu.field}`, margin, y);
-      doc.setFont('helvetica', 'normal');
-      const eduInfo = `${edu.school} (${edu.graduationYear})`;
-      doc.text(eduInfo, 572 - doc.getTextWidth(eduInfo), y);
-      y += 12;
-    });
-    y += 4;
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
-    doc.text('SKILLS', margin, y);
-    y += 12;
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8.5);
-    doc.text(doc.splitTextToSize(resumeData.skills.join('  \u2022  '), 532), margin, y);
-    doc.save(`${resumeData.fullName.replace(/\s+/g, '_')}_Resume.pdf`);
+  }, [data, template]);
+
+  const overlap = useMemo(() => {
+    if (!data.targetJobDescription.trim()) return { score: 0, matched: [] as string[], missing: [] as string[] };
+    const job = data.targetJobDescription.toLowerCase();
+    const keys = ['react', 'typescript', 'javascript', 'node.js', 'python', 'sql', 'docker', 'frontend', 'backend', 'full stack', 'performance', 'architecture', 'api', 'testing', 'vite'];
+    const wanted = keys.filter((k) => job.includes(k));
+    const hay = [
+      data.jobTitle,
+      data.summary,
+      ...data.skills,
+      ...data.experience.flatMap((e) => [e.company, e.position, ...e.bullets])
+    ]
+      .join(' ')
+      .toLowerCase();
+    const matched = wanted.filter((k) => hay.includes(k));
+    const missing = wanted.filter((k) => !hay.includes(k));
+    const score = wanted.length ? Math.round((matched.length / wanted.length) * 100) : 0;
+    return { score, matched, missing };
+  }, [data]);
+
+  const patch = (partial: Partial<ResumeData>) => setData((prev) => ({ ...prev, ...partial }));
+
+  const rewriteBullet = (expId: string, idx: number, text: string) => {
+    const key = `${expId}-${idx}`;
+    setRewriteKey(key);
+    const body = text
+      .trim()
+      .replace(/^[\u2022\-*]\s*/, '')
+      .replace(/^(i\s+|we\s+)?(was\s+responsible\s+for|responsible\s+for|worked\s+on|helped\s+with|built|developed|managed|created)\s+/i, '');
+    const verbs = ['Built', 'Led', 'Shipped', 'Improved', 'Designed'];
+    const verb = verbs[(text.length + idx) % verbs.length];
+    let next = `${verb} ${body.charAt(0).toLowerCase()}${body.slice(1)}`;
+    if (!next.endsWith('.')) next += '.';
+    setData((prev) => ({
+      ...prev,
+      experience: prev.experience.map((e) => {
+        if (e.id !== expId) return e;
+        const bullets = [...e.bullets];
+        bullets[idx] = next;
+        return { ...e, bullets };
+      })
+    }));
+    setRewriteKey(null);
   };
+
+  const handleDownload = () => downloadResumePdf(data, template);
 
   return (
-    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
-        <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] mb-1 font-bold">
-            <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1"><ArrowLeft className="w-3.5 h-3.5" /> All Tools</Link>
-            <span>/</span><span>Documents</span>
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 min-w-0">
+      <div className="flex flex-col gap-4 pb-5 border-b border-slate-200">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] mb-1 font-bold">
+              <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
+                <ArrowLeft className="w-3.5 h-3.5" /> All Tools
+              </Link>
+              <span>/</span>
+              <span>Documents</span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
+              <FileText className="w-7 h-7 text-[#00A3AD] shrink-0" /> Resume Builder
+            </h1>
+            <p className="text-sm text-slate-600 mt-1 font-medium">
+              Fill the form, pick a template, then download a one-page PDF. Match % is local keyword overlap, not an employer ATS. Bullet rewrite is a local template.
+            </p>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
-            <FileText className="w-7 h-7 text-[#00A3AD]" /> Resume Builder
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
-            Match % is local keyword overlap, not an employer ATS. Bullet rewrite is a local template. PDF export is included.
-          </p>
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <div className="flex bg-white border border-slate-200 rounded-full p-1">
+              <button onClick={() => setTab('edit')} className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold ${tab === 'edit' ? 'bg-[#00A3AD] text-white' : 'text-slate-600'}`}>
+                <Edit3 className="w-3.5 h-3.5" /> Editor
+              </button>
+              <button onClick={() => setTab('preview')} className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold ${tab === 'preview' ? 'bg-[#00A3AD] text-white' : 'text-slate-600'}`}>
+                <Eye className="w-3.5 h-3.5" /> Preview
+              </button>
+            </div>
+            <button
+              id="download-resume-pdf-btn"
+              type="button"
+              onClick={handleDownload}
+              className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] text-white text-sm font-black min-h-11"
+            >
+              <Download className="w-4 h-4" /> Download PDF
+            </button>
+          </div>
         </div>
-        <div className="flex items-center gap-2.5">
-          <div className="flex bg-white border border-slate-200 rounded-full p-1">
-            <button onClick={() => setActiveTab('edit')} className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold ${activeTab === 'edit' ? 'bg-[#00A3AD] text-white' : 'text-slate-600'}`}><Edit3 className="w-3.5 h-3.5" /><span>Editor</span></button>
-            <button onClick={() => setActiveTab('preview')} className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold ${activeTab === 'preview' ? 'bg-[#00A3AD] text-white' : 'text-slate-600'}`}><Eye className="w-3.5 h-3.5" /><span>Preview</span></button>
-          </div>
-          <button id="download-ats-pdf-btn" onClick={handleDownloadPdf} className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] text-white text-xs font-black">
-            <Download className="w-4 h-4" /><span>Download PDF</span>
-          </button>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          {RESUME_TEMPLATES.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => setTemplate(t.id)}
+              className={`text-left rounded-2xl border p-3.5 ${template === t.id ? 'border-[#00A3AD] bg-[#E6F8F9]' : 'border-slate-200 bg-white'}`}
+            >
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-sm font-black text-[#0A2540]">{t.name}</span>
+                {template === t.id && <Check className="w-4 h-4 text-[#007A82]" />}
+              </div>
+              <p className="text-[11px] text-slate-600 mt-1 font-medium">{t.blurb}</p>
+            </button>
+          ))}
         </div>
       </div>
 
       <div className="mt-4 p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 font-medium">
-        Match % is local keyword overlap against a short list. It is not an employer ATS score. Bullet rewrite is a local template, not AI.
+        PDF uses the current form, not a separate generate step. Empty fields are skipped. This is not an ATS scorer.
       </div>
 
-      <div className="my-6 p-4.5 rounded-3xl bg-white border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] flex flex-col items-center justify-center">
-            <span className="text-lg font-black text-[#007A82]">{atsAnalysis.score}%</span>
-            <span className="text-[9px] text-[#008C95] uppercase font-mono font-bold">Overlap</span>
-          </div>
-          <div>
-            <h4 className="text-xs sm:text-sm font-black text-[#0A2540]">Keyword overlap</h4>
-            <p className="text-xs text-slate-600 mt-0.5">{atsAnalysis.matched.length} keywords matched • {atsAnalysis.missing.length} missing from the pasted job text.</p>
-          </div>
-        </div>
-      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 items-start">
+        <div className={`lg:col-span-7 space-y-5 ${tab === 'preview' ? 'hidden lg:block' : ''}`}>
+          <section className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3">
+            <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Contact</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label className="text-xs font-bold">Full name<input className={field} value={data.fullName} onChange={(e) => patch({ fullName: e.target.value })} /></label>
+              <label className="text-xs font-bold">Job title<input className={field} value={data.jobTitle} onChange={(e) => patch({ jobTitle: e.target.value })} /></label>
+              <label className="text-xs font-bold">Email<input className={field} value={data.email} onChange={(e) => patch({ email: e.target.value })} /></label>
+              <label className="text-xs font-bold">Phone<input className={field} value={data.phone} onChange={(e) => patch({ phone: e.target.value })} /></label>
+              <label className="text-xs font-bold">Location<input className={field} value={data.location} onChange={(e) => patch({ location: e.target.value })} /></label>
+              <label className="text-xs font-bold">LinkedIn<input className={field} value={data.linkedin} onChange={(e) => patch({ linkedin: e.target.value })} /></label>
+              <label className="text-xs font-bold">GitHub<input className={field} value={data.github} onChange={(e) => patch({ github: e.target.value })} /></label>
+              <label className="text-xs font-bold">Website<input className={field} value={data.website} onChange={(e) => patch({ website: e.target.value })} /></label>
+            </div>
+          </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div className={`lg:col-span-7 space-y-6 ${activeTab === 'preview' ? 'hidden lg:block' : ''}`}>
-          <div className="grid grid-cols-5 gap-1.5 p-1.5 rounded-2xl bg-white border border-slate-200 text-center">
-            {steps.map((s, idx) => (
-              <button key={idx} onClick={() => setActiveStep(idx)} className={`py-2 px-1 rounded-xl text-xs font-bold ${activeStep === idx ? 'bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF]' : 'text-slate-500'}`}>{s.title}</button>
-            ))}
-          </div>
-          {activeStep === 0 && (
-            <div className="rounded-3xl bg-white border border-slate-200 p-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div><label className="block font-bold mb-1">Full Name</label><input value={resumeData.fullName} onChange={(e) => setResumeData({ ...resumeData, fullName: e.target.value })} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200" /></div>
-              <div><label className="block font-bold mb-1">Job Title</label><input value={resumeData.jobTitle} onChange={(e) => setResumeData({ ...resumeData, jobTitle: e.target.value })} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200" /></div>
-              <div><label className="block font-bold mb-1">Email</label><input value={resumeData.email} onChange={(e) => setResumeData({ ...resumeData, email: e.target.value })} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200" /></div>
-              <div><label className="block font-bold mb-1">Phone</label><input value={resumeData.phone} onChange={(e) => setResumeData({ ...resumeData, phone: e.target.value })} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200" /></div>
+          <section className="rounded-3xl bg-white border border-slate-200 p-5">
+            <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82] mb-2">Summary</h2>
+            <textarea rows={5} className={field} value={data.summary} onChange={(e) => patch({ summary: e.target.value })} />
+          </section>
+
+          <section className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Experience</h2>
+              <button
+                type="button"
+                onClick={() =>
+                  setData((prev) => ({
+                    ...prev,
+                    experience: [
+                      {
+                        id: Date.now().toString(),
+                        company: '',
+                        position: '',
+                        startDate: '',
+                        endDate: '',
+                        current: false,
+                        location: '',
+                        bullets: ['']
+                      },
+                      ...prev.experience
+                    ]
+                  }))
+                }
+                className="text-xs font-bold text-[#007A82] flex items-center gap-1"
+              >
+                <Plus className="w-3.5 h-3.5" /> Add role
+              </button>
             </div>
-          )}
-          {activeStep === 1 && (
-            <div className="rounded-3xl bg-white border border-slate-200 p-6 text-xs">
-              <label className="block font-bold mb-1">Summary</label>
-              <textarea rows={6} value={resumeData.summary} onChange={(e) => setResumeData({ ...resumeData, summary: e.target.value })} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200" />
-            </div>
-          )}
-          {activeStep === 2 && (
-            <div className="space-y-4">
-              <button onClick={addExperience} className="text-xs font-bold text-[#007A82] flex items-center gap-1"><Plus className="w-3.5 h-3.5" /> Add role</button>
-              {resumeData.experience.map((exp) => (
-                <div key={exp.id} className="rounded-3xl bg-white border border-slate-200 p-5 space-y-2 text-xs">
-                  <div className="flex justify-between"><input value={exp.position} onChange={(e) => setResumeData(prev => ({ ...prev, experience: prev.experience.map(x => x.id === exp.id ? { ...x, position: e.target.value } : x) }))} className="px-2 py-1 rounded-lg bg-[#F4F8FA] border border-slate-200 font-bold" /><button onClick={() => removeExperience(exp.id)}><Trash2 className="w-3.5 h-3.5 text-rose-500" /></button></div>
-                  {exp.bullets.map((b, i) => (
-                    <div key={i} className="flex gap-2">
-                      <textarea rows={2} value={b} onChange={(e) => updateBullet(exp.id, i, e.target.value)} className="flex-1 px-2 py-1 rounded-lg bg-[#F4F8FA] border border-slate-200" />
-                      <button onClick={() => enhanceBullet(exp.id, i, b)} className="text-[10px] font-bold text-[#007A82]">{isEnhancingBullet === `${exp.id}-${i}` ? '...' : 'Rewrite'}</button>
-                    </div>
-                  ))}
-                  <button onClick={() => addBullet(exp.id)} className="text-[10px] font-bold text-slate-500">Add bullet</button>
+            {data.experience.map((exp) => (
+              <div key={exp.id} className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3">
+                <div className="flex justify-between gap-2">
+                  <input className={`${field} font-bold`} placeholder="Job title" value={exp.position} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, position: e.target.value } : x)) }))} />
+                  <button type="button" onClick={() => setData((p) => ({ ...p, experience: p.experience.filter((x) => x.id !== exp.id) }))} aria-label="Remove role">
+                    <Trash2 className="w-4 h-4 text-rose-500" />
+                  </button>
                 </div>
-              ))}
-            </div>
-          )}
-          {activeStep === 3 && (
-            <div className="rounded-3xl bg-white border border-slate-200 p-6 text-xs space-y-3">
-              <div><label className="block font-bold mb-1">Skills (comma separated)</label><input value={resumeData.skills.join(', ')} onChange={(e) => setResumeData({ ...resumeData, skills: e.target.value.split(',').map(s => s.trim()).filter(Boolean) })} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200" /></div>
-            </div>
-          )}
-          {activeStep === 4 && (
-            <div className="rounded-3xl bg-white border border-slate-200 p-6 text-xs">
-              <label className="block font-bold mb-1">Paste a job description</label>
-              <textarea rows={8} value={resumeData.targetJobDescription} onChange={(e) => setResumeData({ ...resumeData, targetJobDescription: e.target.value })} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200" />
-            </div>
-          )}
-          <AdBanner type="in-content" />
-        </div>
-        <div className="lg:col-span-5">
-          <div className="rounded-3xl bg-white border border-slate-200 p-6 text-xs text-[#0A2540]">
-            <h2 className="text-xl font-black">{resumeData.fullName}</h2>
-            <p className="text-slate-600">{resumeData.jobTitle}</p>
-            <p className="text-slate-500 mt-1">{resumeData.email} · {resumeData.phone}</p>
-            <h3 className="mt-4 font-black text-[11px] uppercase">Summary</h3>
-            <p>{resumeData.summary}</p>
-            <h3 className="mt-4 font-black text-[11px] uppercase">Experience</h3>
-            {resumeData.experience.map(exp => (
-              <div key={exp.id} className="mt-2">
-                <div className="font-bold">{exp.position} — {exp.company}</div>
-                <ul className="list-disc ml-4">{exp.bullets.map((b, i) => <li key={i}>{b}</li>)}</ul>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input className={field} placeholder="Company" value={exp.company} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, company: e.target.value } : x)) }))} />
+                  <input className={field} placeholder="Location" value={exp.location} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, location: e.target.value } : x)) }))} />
+                  <input className={field} placeholder="Start (e.g. 2022)" value={exp.startDate} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, startDate: e.target.value } : x)) }))} />
+                  <input className={field} placeholder="End" disabled={exp.current} value={exp.current ? 'Present' : exp.endDate} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, endDate: e.target.value } : x)) }))} />
+                </div>
+                <label className="flex items-center gap-2 text-xs font-bold text-slate-600">
+                  <input type="checkbox" checked={exp.current} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, current: e.target.checked } : x)) }))} />
+                  Current role
+                </label>
+                {exp.bullets.map((b, i) => (
+                  <div key={i} className="flex gap-2 items-start">
+                    <textarea
+                      rows={2}
+                      className={field}
+                      value={b}
+                      onChange={(e) =>
+                        setData((p) => ({
+                          ...p,
+                          experience: p.experience.map((x) => {
+                            if (x.id !== exp.id) return x;
+                            const bullets = [...x.bullets];
+                            bullets[i] = e.target.value;
+                            return { ...x, bullets };
+                          })
+                        }))
+                      }
+                    />
+                    <button type="button" onClick={() => rewriteBullet(exp.id, i, b)} className="text-[10px] font-bold text-[#007A82] shrink-0 pt-2">
+                      {rewriteKey === `${exp.id}-${i}` ? '...' : 'Rewrite'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setData((p) => ({
+                          ...p,
+                          experience: p.experience.map((x) => (x.id === exp.id ? { ...x, bullets: x.bullets.filter((_, j) => j !== i) } : x))
+                        }))
+                      }
+                      className="pt-2"
+                      aria-label="Remove bullet"
+                    >
+                      <Trash2 className="w-3.5 h-3.5 text-slate-400" />
+                    </button>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={() =>
+                    setData((p) => ({
+                      ...p,
+                      experience: p.experience.map((x) => (x.id === exp.id ? { ...x, bullets: [...x.bullets, ''] } : x))
+                    }))
+                  }
+                  className="text-[11px] font-bold text-slate-500"
+                >
+                  Add bullet
+                </button>
               </div>
             ))}
+          </section>
+
+          <section className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Education</h2>
+              <button
+                type="button"
+                onClick={() =>
+                  setData((p) => ({
+                    ...p,
+                    education: [
+                      ...p.education,
+                      { id: Date.now().toString(), school: '', degree: '', field: '', graduationYear: '', gpa: '' }
+                    ]
+                  }))
+                }
+                className="text-xs font-bold text-[#007A82] flex items-center gap-1"
+              >
+                <Plus className="w-3.5 h-3.5" /> Add school
+              </button>
+            </div>
+            {data.education.map((edu) => (
+              <div key={edu.id} className="rounded-3xl bg-white border border-slate-200 p-5 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input className={field} placeholder="School" value={edu.school} onChange={(e) => setData((p) => ({ ...p, education: p.education.map((x) => (x.id === edu.id ? { ...x, school: e.target.value } : x)) }))} />
+                <input className={field} placeholder="Degree" value={edu.degree} onChange={(e) => setData((p) => ({ ...p, education: p.education.map((x) => (x.id === edu.id ? { ...x, degree: e.target.value } : x)) }))} />
+                <input className={field} placeholder="Field" value={edu.field} onChange={(e) => setData((p) => ({ ...p, education: p.education.map((x) => (x.id === edu.id ? { ...x, field: e.target.value } : x)) }))} />
+                <input className={field} placeholder="Year" value={edu.graduationYear} onChange={(e) => setData((p) => ({ ...p, education: p.education.map((x) => (x.id === edu.id ? { ...x, graduationYear: e.target.value } : x)) }))} />
+                <input className={field} placeholder="GPA (optional)" value={edu.gpa || ''} onChange={(e) => setData((p) => ({ ...p, education: p.education.map((x) => (x.id === edu.id ? { ...x, gpa: e.target.value } : x)) }))} />
+                <button type="button" className="text-xs font-bold text-rose-600" onClick={() => setData((p) => ({ ...p, education: p.education.filter((x) => x.id !== edu.id) }))}>
+                  Remove
+                </button>
+              </div>
+            ))}
+          </section>
+
+          <section className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3">
+            <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Skills & certifications</h2>
+            <label className="text-xs font-bold block">
+              Skills (comma separated)
+              <input className={field} value={data.skills.join(', ')} onChange={(e) => patch({ skills: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) })} />
+            </label>
+            <label className="text-xs font-bold block">
+              Certifications (comma separated)
+              <input className={field} value={data.certifications.join(', ')} onChange={(e) => patch({ certifications: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) })} />
+            </label>
+          </section>
+
+          <section className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Keyword overlap (optional)</h2>
+              <span className="text-sm font-black text-[#007A82]">{overlap.score}%</span>
+            </div>
+            <textarea
+              rows={5}
+              className={field}
+              placeholder="Paste a job description to see local keyword overlap"
+              value={data.targetJobDescription}
+              onChange={(e) => patch({ targetJobDescription: e.target.value })}
+            />
+            <p className="text-[11px] text-slate-500 font-medium">
+              {overlap.matched.length} matched · {overlap.missing.length} missing. Not an employer ATS.
+            </p>
+          </section>
+
+          <button type="button" onClick={handleDownload} className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] text-white text-sm font-black min-h-12">
+            <Download className="w-4 h-4" /> Download {RESUME_TEMPLATES.find((t) => t.id === template)?.name} PDF
+          </button>
+          <AdBanner type="in-content" />
+        </div>
+
+        <div className={`lg:col-span-5 ${tab === 'edit' ? 'hidden lg:block' : ''}`}>
+          <div className={`sticky top-20 rounded-3xl bg-white border border-slate-200 overflow-hidden shadow-sm ${template === 'modern' ? 'border-l-4 border-l-[#00A3AD]' : ''}`}>
+            <div className="px-6 pt-6 pb-4 border-b border-slate-100">
+              <p className={`text-xl font-black text-[#0A2540] ${template === 'classic' ? 'text-center' : ''}`}>{data.fullName || 'Your name'}</p>
+              <p className={`text-sm font-bold ${template === 'classic' ? 'text-center' : ''} text-[#007A82]`}>{data.jobTitle}</p>
+              <p className={`text-[11px] text-slate-500 mt-2 ${template === 'classic' ? 'text-center' : ''}`}>
+                {[data.email, data.phone, data.location, data.linkedin, data.github, data.website].filter(Boolean).join(' · ')}
+              </p>
+            </div>
+            <div className="px-6 py-5 space-y-4 text-[12px] text-[#0A2540] max-h-[70vh] overflow-y-auto">
+              {data.summary && (
+                <div>
+                  <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Summary</h3>
+                  <p className="leading-relaxed">{data.summary}</p>
+                </div>
+              )}
+              {data.experience.length > 0 && (
+                <div>
+                  <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Experience</h3>
+                  {data.experience.map((exp) => (
+                    <div key={exp.id} className="mt-2">
+                      <div className="flex justify-between gap-2 font-bold">
+                        <span>{exp.position}</span>
+                        <span className="text-slate-500 font-normal shrink-0">{exp.startDate} – {exp.current ? 'Present' : exp.endDate}</span>
+                      </div>
+                      <p className="text-slate-500 italic">{[exp.company, exp.location].filter(Boolean).join(' · ')}</p>
+                      <ul className="list-disc ml-4 mt-1 space-y-0.5">
+                        {exp.bullets.filter(Boolean).map((b, i) => (
+                          <li key={i}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {data.education.length > 0 && (
+                <div>
+                  <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Education</h3>
+                  {data.education.map((edu) => (
+                    <div key={edu.id} className="mt-1">
+                      <div className="flex justify-between gap-2 font-bold">
+                        <span>{[edu.degree, edu.field].filter(Boolean).join(' — ')}</span>
+                        <span className="font-normal text-slate-500">{edu.graduationYear}</span>
+                      </div>
+                      <p className="text-slate-500 italic">{edu.school}{edu.gpa ? ` · GPA ${edu.gpa}` : ''}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {data.skills.length > 0 && (
+                <div>
+                  <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Skills</h3>
+                  <p>{data.skills.join(' · ')}</p>
+                </div>
+              )}
+              {data.certifications.length > 0 && (
+                <div>
+                  <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Certifications</h3>
+                  <p>{data.certifications.join(' · ')}</p>
+                </div>
+              )}
+            </div>
+            <div className="p-4 border-t border-slate-100">
+              <button type="button" onClick={handleDownload} className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#00A3AD] text-white text-sm font-black">
+                <Download className="w-4 h-4" /> Download PDF with this info
+              </button>
+            </div>
           </div>
         </div>
       </div>
