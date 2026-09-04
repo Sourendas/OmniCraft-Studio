@@ -1,0 +1,30 @@
+# FileTools Kit
+
+> Free in-browser file tools at https://www.filetoolskit.com. Merge and split PDFs, convert and compress images, build a resume PDF, make QR codes, hash text, and more. Work runs in the visitor's browser tab. Operator: Souren Das, Bengaluru, India. Support: support@filetoolskit.com. Privacy: privacy@filetoolskit.com.
+
+The site does not operate a file-upload API. Encrypted PDFs may fail. Currency rates are static examples. Health numbers are not medical advice. Resume match % is local keyword overlap, not an employer ATS.
+
+## Tools
+
+- [Resume Builder](https://www.filetoolskit.com/resume-builder): Form plus local keyword overlap and PDF export.
+- [PDF Suite](https://www.filetoolskit.com/pdf-suite): Merge, split, rotate, text watermark with pdf-lib.
+- [File Converter](https://www.filetoolskit.com/file-converter): PNG/JPG/WebP, audio to WAV, DOCX text export.
+- [Image Optimizer](https://www.filetoolskit.com/image-optimizer): Canvas compress and resize.
+- [Currency Worksheet](https://www.filetoolskit.com/currency-crypto): Static example rates, not live FX.
+- [Dev Tools](https://www.filetoolskit.com/dev-tools): JSON/CSV, regex, Base64, SHA hashes.
+- [QR Generator](https://www.filetoolskit.com/qr-generator): URL, Wi-Fi, vCard; PNG/SVG export.
+- [Social Studio](https://www.filetoolskit.com/social-studio): Unicode styles and starter hashtags.
+- [Health Calculator](https://www.filetoolskit.com/health-calc): Mifflin-St Jeor estimate, not medical advice.
+- [Markdown Editor](https://www.filetoolskit.com/markdown-editor): Preview and HTML/MD export.
+- [SVG Studio](https://www.filetoolskit.com/svg-editor): Stroke/fill edit; SVG, JSX, PNG export.
+- [Text Diff](https://www.filetoolskit.com/text-diff): Side-by-side diff and unified patch.
+
+## Docs
+
+- [About](https://www.filetoolskit.com/about)
+- [Guides](https://www.filetoolskit.com/guides)
+- [Privacy](https://www.filetoolskit.com/privacy)
+- [Terms](https://www.filetoolskit.com/terms)
+- [Cookie policy](https://www.filetoolskit.com/cookie-policy)
+- [Contact](https://www.filetoolskit.com/contact)
+- [What stays in the tab](https://www.filetoolskit.com/guides/what-stays-in-the-tab)
