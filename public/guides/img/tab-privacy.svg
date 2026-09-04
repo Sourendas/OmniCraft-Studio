@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="t">
+  <title id="t">What stays in this tab versus hosting logs</title>
+  <rect width="960" height="540" fill="#F6FAFC"/>
+  <rect x="32" y="28" width="896" height="484" rx="28" fill="#fff" stroke="#e2e8f0"/>
+  <text x="64" y="76" font-family="system-ui,sans-serif" font-size="20" font-weight="700" fill="#0A2540">Two different channels</text>
+  <rect x="64" y="110" width="400" height="350" rx="20" fill="#E6F8F9" stroke="#00A3AD"/>
+  <text x="84" y="150" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#007A82">In this tab</text>
+  <text x="84" y="190" font-family="system-ui,sans-serif" font-size="14" fill="#0A2540">PDF bytes</text>
+  <text x="84" y="220" font-family="system-ui,sans-serif" font-size="14" fill="#0A2540">Resume text</text>
+  <text x="84" y="250" font-family="system-ui,sans-serif" font-size="14" fill="#0A2540">Canvas pixels</text>
+  <text x="84" y="280" font-family="system-ui,sans-serif" font-size="14" fill="#0A2540">Hashes you type</text>
+  <text x="84" y="330" font-family="system-ui,sans-serif" font-size="12" fill="#475569">No FileTools Kit upload API</text>
+  <text x="84" y="354" font-family="system-ui,sans-serif" font-size="12" fill="#475569">Closing the tab discards working copy</text>
+  <rect x="496" y="110" width="400" height="350" rx="20" fill="#F4F8FA" stroke="#e2e8f0"/>
+  <text x="516" y="150" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#0A2540">On the network</text>
+  <text x="516" y="190" font-family="system-ui,sans-serif" font-size="14" fill="#0A2540">Vercel page request (IP, URL)</text>
+  <text x="516" y="220" font-family="system-ui,sans-serif" font-size="14" fill="#0A2540">Google Fonts (Outfit)</text>
+  <text x="516" y="250" font-family="system-ui,sans-serif" font-size="14" fill="#0A2540">Unsplash card photos</text>
+  <text x="516" y="280" font-family="system-ui,sans-serif" font-size="14" fill="#0A2540">AdSense cookies — not live yet</text>
+  <text x="516" y="330" font-family="system-ui,sans-serif" font-size="12" fill="#475569">This is not an air-gapped device</text>
+</svg>
