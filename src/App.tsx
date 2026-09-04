@@ -5,6 +5,7 @@ import { AmbientBackground } from './components/layout/AmbientBackground';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { AbDebugPanel } from './experiments';
+import { Seo } from './components/Seo';
 
 import { HomePage } from './pages/HomePage';
 import { ResumeBuilderPage } from './pages/tools/ResumeBuilderPage';
@@ -47,6 +48,7 @@ export default function App() {
         <div className="relative min-h-screen min-w-0 max-w-[100vw] bg-[#F6FAFC]/80 text-[#0A2540] selection:bg-[#00A3AD]/25 selection:text-[#006066] overflow-x-clip font-sans flex flex-col justify-between">
           <AmbientBackground />
           <ScrollToTop />
+          <Seo />
           <Navbar />
           <main className="flex-grow min-w-0 w-full">
             <Routes>
