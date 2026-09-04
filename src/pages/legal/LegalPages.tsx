@@ -33,42 +33,46 @@ export const PrivacyPolicyPage: React.FC = () => (
       <p>This policy covers the website and the in-browser tools. It does not cover websites you open because a QR code pointed there, or third-party readers you use to view a downloaded PDF.</p>
 
       <h2 className={h2}>3. What the tools do not send us</h2>
-      <p>The 12 utilities run in your browser with libraries such as pdf-lib, jsPDF, qrcode, mammoth, and the Canvas and Web Crypto APIs. We do not operate an upload API that receives your PDFs, images, resume text, hashes, or other files you open in a tool. Closing the tab discards that working copy unless you downloaded it or your browser kept a localStorage draft (see section 7).</p>
+      <p>The 12 utilities run in your browser with libraries such as pdf-lib, jsPDF, qrcode, mammoth, and the Canvas and Web Crypto APIs. We do not operate an upload API that receives your PDFs, images, resume text, hashes, or other files you open in a tool. Closing the tab discards that working copy unless you downloaded it or your browser kept a localStorage draft (see section 8).</p>
       <p>That is not an air-gapped device. The website still loads over HTTPS. Browser extensions you installed can read a page. Malware on the device is outside this product.</p>
 
       <h2 className={h2}>4. What the website host may see</h2>
       <p>The site is hosted on Vercel. When you request a page, the host may process technical data such as IP address, user agent, URL, referrer, and timestamps in order to serve and protect the site. Those logs are not a copy of a PDF you opened in a tool. We do not sell host logs as a data product.</p>
 
-      <h2 className={h2}>5. Third-party content on pages</h2>
+      <h2 className={h2}>5. Visit analytics (Vercel Web Analytics)</h2>
+      <p>We use <strong>Vercel Web Analytics</strong> to count page views and see which routes are opened (for example /resume-builder or /pdf-suite). It is first-party to the host. Vercel documents it as cookie-less. Typical fields are path, referrer host, country, device type, operating system, and browser. It does not receive the contents of files you open in a tool.</p>
+      <p>We do not use Google Analytics, Meta Pixel, or Meta Audience Network on this site today. If that changes, this policy will be updated first.</p>
+      <p>Vercel privacy information: <a className={a} href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">vercel.com/legal/privacy-policy</a>.</p>
+
+      <h2 className={h2}>6. Third-party content on pages</h2>
       <p>Tool-card photographs may load from Unsplash. Google Fonts may load the Outfit, Plus Jakarta Sans, and JetBrains Mono families. Those providers receive a request from your browser for that asset (typically IP address, user agent, and the font or image URL). That request is not your document.</p>
       <p>Contact submit opens your email app with a mailto draft to support@filetoolskit.com. We do not run a ticket database. If you send mail, we receive whatever you put in that message, including your address.</p>
 
-      <h2 className={h2}>6. Advertising (Google AdSense — not live yet)</h2>
+      <h2 className={h2}>7. Advertising (Google AdSense — not live yet)</h2>
       <p>FileTools Kit may display third-party ads through Google AdSense after Google approves the site. The AdSense JavaScript snippet is not embedded today. ads.txt on this domain is comments only until a publisher ID exists. This section describes ads and cookies that will apply when ads are turned on.</p>
       <p>Google, as a third-party vendor, may use cookies or similar storage to serve ads on this site and across the web, including ads based on visits to this site and other sites. Users can opt out of personalized ads at <a className={a} href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>. Google’s privacy policy: <a className={a} href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>. How Google uses data on partner sites: <a className={a} href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">policies.google.com/technologies/partner-sites</a>.</p>
       <p>FileTools Kit does not sell the contents of files you open in a tool to advertisers. Ad networks do not receive your PDF, image, or resume bytes from our servers because those files are not uploaded to us. Tools still run in this tab.</p>
       <p>Users in the EEA/UK may see a consent message from Google Privacy & messaging if that is enabled after approval. Until ads are live, FileTools Kit does not set an advertising cookie.</p>
-      <p>We do not use Meta Pixel, Meta Audience Network, or Google Analytics on this site today. If that changes, this policy will be updated first.</p>
 
-      <h2 className={h2}>7. Local storage and drafts</h2>
-      <p>The browser may keep UI preferences in localStorage. A first-party A/B helper may store ftk_ab_visitor, ftk_ab_assign, and ftk_ab_events on this device only. Those records are not sent to an analytics vendor. The Resume Builder may store a draft (ftk_resume_v1) on this device so a refresh does not wipe the form. Clear site data for filetoolskit.com to delete first-party keys. We cannot remote-wipe your browser.</p>
+      <h2 className={h2}>8. Local storage and drafts</h2>
+      <p>The browser may keep UI preferences in localStorage. A first-party A/B helper may store ftk_ab_visitor, ftk_ab_assign, and ftk_ab_events on this device only. Those A/B keys are not uploaded as a separate event stream. The Resume Builder may store a draft (ftk_resume_v1) on this device so a refresh does not wipe the form. Clear site data for filetoolskit.com to delete first-party keys. We cannot remote-wipe your browser.</p>
 
-      <h2 className={h2}>8. Children</h2>
+      <h2 className={h2}>9. Children</h2>
       <p>The site is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child sent us mail, write to privacy@filetoolskit.com and we will delete that correspondence.</p>
 
-      <h2 className={h2}>9. International visitors</h2>
-      <p>The operator is in India. Hosting may process requests in other regions (Vercel). If you visit from the EEA, UK, or elsewhere, technical data may cross borders in order to serve the page. We do not claim GDPR, CCPA, or DPDP certification. If you want a file deleted from our mailbox, email privacy@filetoolskit.com. We cannot delete a PDF that never left your tab.</p>
+      <h2 className={h2}>10. International visitors</h2>
+      <p>The operator is in India. Hosting and Vercel Web Analytics may process requests in other regions. If you visit from the EEA, UK, or elsewhere, technical data may cross borders in order to serve the page and count visits. We do not claim GDPR, CCPA, or DPDP certification. If you want a file deleted from our mailbox, email privacy@filetoolskit.com. We cannot delete a PDF that never left your tab.</p>
 
-      <h2 className={h2}>10. Retention</h2>
-      <p>We do not keep a copy of tool files because we do not receive them. Email you send us is kept as long as needed to reply and run the site, then deleted or archived in ordinary mail practice. Host logs follow the host’s retention.</p>
+      <h2 className={h2}>11. Retention</h2>
+      <p>We do not keep a copy of tool files because we do not receive them. Email you send us is kept as long as needed to reply and run the site, then deleted or archived in ordinary mail practice. Host logs and Vercel Analytics aggregates follow the host’s retention (Hobby reporting is a short rolling window).</p>
 
-      <h2 className={h2}>11. Security limits</h2>
+      <h2 className={h2}>12. Security limits</h2>
       <p>HTTPS protects the website in transit. Client-side tools reduce our access to your files. They do not encrypt a PDF you export, they do not hide the file from extensions, and they do not replace backups. Encrypted PDFs you drop in may fail to parse.</p>
 
-      <h2 className={h2}>12. Your requests</h2>
+      <h2 className={h2}>13. Your requests</h2>
       <p>Email privacy@filetoolskit.com to ask what mail we hold from you, to correct an address, or to ask us to delete correspondence. We respond from Bengaluru, India. There is no automated portal.</p>
 
-      <h2 className={h2}>13. Changes</h2>
+      <h2 className={h2}>14. Changes</h2>
       <p>We will change the “Last updated” date when this policy changes in a material way. The live page is the current version.</p>
 
       <p className="text-xs text-slate-500">See also the <Link className={a} to="/cookie-policy">cookie policy</Link>, <Link className={a} to="/guides/what-stays-in-the-tab">what stays in this tab</Link>, and <Link className={a} to="/about">about</Link>.</p>
@@ -90,7 +94,7 @@ export const TermsPage: React.FC = () => (
       <p>These terms are between you and Souren Das (Bengaluru, India) for filetoolskit.com.</p>
       <p>All 12 tools are free in the browser. There is no paid upgrade or checkout on this site. Outputs you generate are yours, subject to third-party rights in content you paste in. FileTools Kit does not charge a license fee on those files.</p>
       <p>Do not use the tools for unlawful content. Tools are provided as-is, without warranty. Encrypted PDFs, unusual file types, and very large files may fail in the browser. Currency figures are static examples, not live quotes. Health numbers are not medical advice. Resume overlap % is not an employer ATS.</p>
-      <p>The site may show third-party ads after Google AdSense approval. Ads are not embedded today. Governed by the laws of India, with courts in Bengaluru, without limiting any non-waivable consumer rights you have where you live.</p>
+      <p>The site uses Vercel Web Analytics for page views. The site may show third-party ads after Google AdSense approval. Ads are not embedded today. Governed by the laws of India, with courts in Bengaluru, without limiting any non-waivable consumer rights you have where you live.</p>
       <p>Questions: support@filetoolskit.com.</p>
     </div>
   </div>
@@ -107,9 +111,12 @@ export const CookiePolicyPage: React.FC = () => (
           <p className="text-xs text-slate-500">Last updated: 4 September 2026</p>
         </div>
       </div>
-      <p>FileTools Kit does not set advertising or analytics cookies today. The AdSense script is not embedded. Until AdSense is enabled, no advertising cookie is set by FileTools Kit.</p>
+      <p>FileTools Kit does not set advertising cookies today. The AdSense script is not embedded. Until AdSense is enabled, no advertising cookie is set by FileTools Kit.</p>
+      <h2 className={h2}>Visit analytics</h2>
+      <p>Vercel Web Analytics is enabled. Vercel documents it as cookie-less. It records page path and coarse visit metadata so we can see which tools are opened. It does not receive file contents. See <a className={a} href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel Analytics privacy notes</a>.</p>
+      <p>Google Analytics is not installed.</p>
       <h2 className={h2}>First-party storage</h2>
-      <p>This domain may use localStorage for UI preferences, an optional A/B helper (ftk_ab_visitor, ftk_ab_assign, ftk_ab_events), and a Resume Builder draft (ftk_resume_v1). These stay on the device. They are not sent to an analytics vendor. Clear site data for filetoolskit.com to delete them.</p>
+      <p>This domain may use localStorage for UI preferences, an optional A/B helper (ftk_ab_visitor, ftk_ab_assign, ftk_ab_events), and a Resume Builder draft (ftk_resume_v1). These stay on the device. Clear site data for filetoolskit.com to delete them.</p>
       <h2 className={h2}>Hosting, fonts, and images</h2>
       <p>Vercel may set technical cookies to serve and protect the site. Google Fonts and Unsplash may set their own cookies when those assets load. We do not control those third-party cookies.</p>
       <h2 className={h2}>Advertising cookies — after approval only</h2>
