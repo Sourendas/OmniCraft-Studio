@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  FileText, Plus, Trash2, Download, ArrowLeft, Eye, Edit3, Check
-} from 'lucide-react';
+import { FileText, Plus, Trash2, Download, ArrowLeft, Eye, Edit3 } from 'lucide-react';
 import { ResumeData } from '../../types';
 import { AdBanner } from '../../components/layout/AdBanner';
 import { downloadResumePdf, RESUME_TEMPLATES, ResumeTemplateId } from '../../lib/resumePdf';
+import { LiveResumePreview, TemplatePicker } from '../../components/resume/TemplatePicker';
 
 const STORAGE_KEY = 'ftk_resume_v1';
+const ACTION_VERBS = /^(built|led|shipped|improved|designed|created|developed|managed|migrated|mentored|added|implemented|owned|launched|reduced|increased)\b/i;
 
 const SAMPLE: ResumeData = {
   fullName: 'Alex Mercer',
@@ -71,7 +71,6 @@ export const ResumeBuilderPage: React.FC = () => {
   const [tab, setTab] = useState<'edit' | 'preview'>('edit');
   const [template, setTemplate] = useState<ResumeTemplateId>('modern');
   const [data, setData] = useState<ResumeData>(SAMPLE);
-  const [rewriteKey, setRewriteKey] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -79,7 +78,7 @@ export const ResumeBuilderPage: React.FC = () => {
       if (raw) {
         const parsed = JSON.parse(raw) as { data?: ResumeData; template?: ResumeTemplateId };
         if (parsed.data?.fullName) setData({ ...SAMPLE, ...parsed.data });
-        if (parsed.template) setTemplate(parsed.template);
+        if (parsed.template && RESUME_TEMPLATES.some((t) => t.id === parsed.template)) setTemplate(parsed.template);
       }
     } catch {
       /* ignore */
@@ -99,14 +98,7 @@ export const ResumeBuilderPage: React.FC = () => {
     const job = data.targetJobDescription.toLowerCase();
     const keys = ['react', 'typescript', 'javascript', 'node.js', 'python', 'sql', 'docker', 'frontend', 'backend', 'full stack', 'performance', 'architecture', 'api', 'testing', 'vite'];
     const wanted = keys.filter((k) => job.includes(k));
-    const hay = [
-      data.jobTitle,
-      data.summary,
-      ...data.skills,
-      ...data.experience.flatMap((e) => [e.company, e.position, ...e.bullets])
-    ]
-      .join(' ')
-      .toLowerCase();
+    const hay = [data.jobTitle, data.summary, ...data.skills, ...data.experience.flatMap((e) => [e.company, e.position, ...e.bullets])].join(' ').toLowerCase();
     const matched = wanted.filter((k) => hay.includes(k));
     const missing = wanted.filter((k) => !hay.includes(k));
     const score = wanted.length ? Math.round((matched.length / wanted.length) * 100) : 0;
@@ -116,15 +108,12 @@ export const ResumeBuilderPage: React.FC = () => {
   const patch = (partial: Partial<ResumeData>) => setData((prev) => ({ ...prev, ...partial }));
 
   const rewriteBullet = (expId: string, idx: number, text: string) => {
-    const key = `${expId}-${idx}`;
-    setRewriteKey(key);
-    const body = text
-      .trim()
-      .replace(/^[\u2022\-*]\s*/, '')
-      .replace(/^(i\s+|we\s+)?(was\s+responsible\s+for|responsible\s+for|worked\s+on|helped\s+with|built|developed|managed|created)\s+/i, '');
+    const body = text.trim().replace(/^[\u2022\-*]\s*/, '');
+    if (ACTION_VERBS.test(body)) return;
+    const stripped = body.replace(/^(i\s+|we\s+)?(was\s+responsible\s+for|responsible\s+for|worked\s+on|helped\s+with)\s+/i, '');
     const verbs = ['Built', 'Led', 'Shipped', 'Improved', 'Designed'];
     const verb = verbs[(text.length + idx) % verbs.length];
-    let next = `${verb} ${body.charAt(0).toLowerCase()}${body.slice(1)}`;
+    let next = `${verb} ${stripped.charAt(0).toLowerCase()}${stripped.slice(1)}`;
     if (!next.endsWith('.')) next += '.';
     setData((prev) => ({
       ...prev,
@@ -135,10 +124,11 @@ export const ResumeBuilderPage: React.FC = () => {
         return { ...e, bullets };
       })
     }));
-    setRewriteKey(null);
   };
 
   const handleDownload = () => downloadResumePdf(data, template);
+  const contacts = [data.email, data.phone, data.location, data.linkedin, data.github, data.website].filter(Boolean).join(' · ');
+  const currentName = RESUME_TEMPLATES.find((t) => t.id === template)?.name || 'Modern Teal';
 
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 min-w-0">
@@ -156,7 +146,7 @@ export const ResumeBuilderPage: React.FC = () => {
               <FileText className="w-7 h-7 text-[#00A3AD] shrink-0" /> Resume Builder
             </h1>
             <p className="text-sm text-slate-600 mt-1 font-medium">
-              Fill the form, pick a template, then download a one-page PDF. Match % is local keyword overlap, not an employer ATS. Bullet rewrite is a local template.
+              12 layouts. Pick one, fill the form, download a PDF. Keyword overlap is local, not an ATS. Rewrite is a local verb helper.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2 shrink-0">
@@ -168,37 +158,16 @@ export const ResumeBuilderPage: React.FC = () => {
                 <Eye className="w-3.5 h-3.5" /> Preview
               </button>
             </div>
-            <button
-              id="download-resume-pdf-btn"
-              type="button"
-              onClick={handleDownload}
-              className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] text-white text-sm font-black min-h-11"
-            >
+            <button id="download-resume-pdf-btn" type="button" onClick={handleDownload} className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] text-white text-sm font-black min-h-11">
               <Download className="w-4 h-4" /> Download PDF
             </button>
           </div>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-          {RESUME_TEMPLATES.map((t) => (
-            <button
-              key={t.id}
-              type="button"
-              onClick={() => setTemplate(t.id)}
-              className={`text-left rounded-2xl border p-3.5 ${template === t.id ? 'border-[#00A3AD] bg-[#E6F8F9]' : 'border-slate-200 bg-white'}`}
-            >
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-sm font-black text-[#0A2540]">{t.name}</span>
-                {template === t.id && <Check className="w-4 h-4 text-[#007A82]" />}
-              </div>
-              <p className="text-[11px] text-slate-600 mt-1 font-medium">{t.blurb}</p>
-            </button>
-          ))}
-        </div>
+        <TemplatePicker value={template} onChange={setTemplate} />
       </div>
 
       <div className="mt-4 p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 font-medium">
-        PDF uses the current form, not a separate generate step. Empty fields are skipped. This is not an ATS scorer.
+        PDF uses the current form and the selected template. Empty fields are skipped. Fonts are Helvetica or Times (built into the PDF, no extra download).
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 items-start">
@@ -225,28 +194,7 @@ export const ResumeBuilderPage: React.FC = () => {
           <section className="space-y-3">
             <div className="flex items-center justify-between">
               <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Experience</h2>
-              <button
-                type="button"
-                onClick={() =>
-                  setData((prev) => ({
-                    ...prev,
-                    experience: [
-                      {
-                        id: Date.now().toString(),
-                        company: '',
-                        position: '',
-                        startDate: '',
-                        endDate: '',
-                        current: false,
-                        location: '',
-                        bullets: ['']
-                      },
-                      ...prev.experience
-                    ]
-                  }))
-                }
-                className="text-xs font-bold text-[#007A82] flex items-center gap-1"
-              >
+              <button type="button" onClick={() => setData((prev) => ({ ...prev, experience: [{ id: Date.now().toString(), company: '', position: '', startDate: '', endDate: '', current: false, location: '', bullets: [''] }, ...prev.experience] }))} className="text-xs font-bold text-[#007A82] flex items-center gap-1">
                 <Plus className="w-3.5 h-3.5" /> Add role
               </button>
             </div>
@@ -254,9 +202,7 @@ export const ResumeBuilderPage: React.FC = () => {
               <div key={exp.id} className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3">
                 <div className="flex justify-between gap-2">
                   <input className={`${field} font-bold`} placeholder="Job title" value={exp.position} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, position: e.target.value } : x)) }))} />
-                  <button type="button" onClick={() => setData((p) => ({ ...p, experience: p.experience.filter((x) => x.id !== exp.id) }))} aria-label="Remove role">
-                    <Trash2 className="w-4 h-4 text-rose-500" />
-                  </button>
+                  <button type="button" onClick={() => setData((p) => ({ ...p, experience: p.experience.filter((x) => x.id !== exp.id) }))} aria-label="Remove role"><Trash2 className="w-4 h-4 text-rose-500" /></button>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <input className={field} placeholder="Company" value={exp.company} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, company: e.target.value } : x)) }))} />
@@ -265,57 +211,16 @@ export const ResumeBuilderPage: React.FC = () => {
                   <input className={field} placeholder="End" disabled={exp.current} value={exp.current ? 'Present' : exp.endDate} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, endDate: e.target.value } : x)) }))} />
                 </div>
                 <label className="flex items-center gap-2 text-xs font-bold text-slate-600">
-                  <input type="checkbox" checked={exp.current} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, current: e.target.checked } : x)) }))} />
-                  Current role
+                  <input type="checkbox" checked={exp.current} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, current: e.target.checked } : x)) }))} /> Current role
                 </label>
                 {exp.bullets.map((b, i) => (
                   <div key={i} className="flex gap-2 items-start">
-                    <textarea
-                      rows={2}
-                      className={field}
-                      value={b}
-                      onChange={(e) =>
-                        setData((p) => ({
-                          ...p,
-                          experience: p.experience.map((x) => {
-                            if (x.id !== exp.id) return x;
-                            const bullets = [...x.bullets];
-                            bullets[i] = e.target.value;
-                            return { ...x, bullets };
-                          })
-                        }))
-                      }
-                    />
-                    <button type="button" onClick={() => rewriteBullet(exp.id, i, b)} className="text-[10px] font-bold text-[#007A82] shrink-0 pt-2">
-                      {rewriteKey === `${exp.id}-${i}` ? '...' : 'Rewrite'}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setData((p) => ({
-                          ...p,
-                          experience: p.experience.map((x) => (x.id === exp.id ? { ...x, bullets: x.bullets.filter((_, j) => j !== i) } : x))
-                        }))
-                      }
-                      className="pt-2"
-                      aria-label="Remove bullet"
-                    >
-                      <Trash2 className="w-3.5 h-3.5 text-slate-400" />
-                    </button>
+                    <textarea rows={2} className={field} value={b} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => { if (x.id !== exp.id) return x; const bullets = [...x.bullets]; bullets[i] = e.target.value; return { ...x, bullets }; }) }))} />
+                    <button type="button" onClick={() => rewriteBullet(exp.id, i, b)} className="text-[10px] font-bold text-[#007A82] shrink-0 pt-2">Rewrite</button>
+                    <button type="button" onClick={() => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, bullets: x.bullets.filter((_, j) => j !== i) } : x)) }))} className="pt-2" aria-label="Remove bullet"><Trash2 className="w-3.5 h-3.5 text-slate-400" /></button>
                   </div>
                 ))}
-                <button
-                  type="button"
-                  onClick={() =>
-                    setData((p) => ({
-                      ...p,
-                      experience: p.experience.map((x) => (x.id === exp.id ? { ...x, bullets: [...x.bullets, ''] } : x))
-                    }))
-                  }
-                  className="text-[11px] font-bold text-slate-500"
-                >
-                  Add bullet
-                </button>
+                <button type="button" onClick={() => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, bullets: [...x.bullets, ''] } : x)) }))} className="text-[11px] font-bold text-slate-500">Add bullet</button>
               </div>
             ))}
           </section>
@@ -323,19 +228,7 @@ export const ResumeBuilderPage: React.FC = () => {
           <section className="space-y-3">
             <div className="flex items-center justify-between">
               <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Education</h2>
-              <button
-                type="button"
-                onClick={() =>
-                  setData((p) => ({
-                    ...p,
-                    education: [
-                      ...p.education,
-                      { id: Date.now().toString(), school: '', degree: '', field: '', graduationYear: '', gpa: '' }
-                    ]
-                  }))
-                }
-                className="text-xs font-bold text-[#007A82] flex items-center gap-1"
-              >
+              <button type="button" onClick={() => setData((p) => ({ ...p, education: [...p.education, { id: Date.now().toString(), school: '', degree: '', field: '', graduationYear: '', gpa: '' }] }))} className="text-xs font-bold text-[#007A82] flex items-center gap-1">
                 <Plus className="w-3.5 h-3.5" /> Add school
               </button>
             </div>
@@ -346,23 +239,15 @@ export const ResumeBuilderPage: React.FC = () => {
                 <input className={field} placeholder="Field" value={edu.field} onChange={(e) => setData((p) => ({ ...p, education: p.education.map((x) => (x.id === edu.id ? { ...x, field: e.target.value } : x)) }))} />
                 <input className={field} placeholder="Year" value={edu.graduationYear} onChange={(e) => setData((p) => ({ ...p, education: p.education.map((x) => (x.id === edu.id ? { ...x, graduationYear: e.target.value } : x)) }))} />
                 <input className={field} placeholder="GPA (optional)" value={edu.gpa || ''} onChange={(e) => setData((p) => ({ ...p, education: p.education.map((x) => (x.id === edu.id ? { ...x, gpa: e.target.value } : x)) }))} />
-                <button type="button" className="text-xs font-bold text-rose-600" onClick={() => setData((p) => ({ ...p, education: p.education.filter((x) => x.id !== edu.id) }))}>
-                  Remove
-                </button>
+                <button type="button" className="text-xs font-bold text-rose-600" onClick={() => setData((p) => ({ ...p, education: p.education.filter((x) => x.id !== edu.id) }))}>Remove</button>
               </div>
             ))}
           </section>
 
           <section className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3">
             <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Skills & certifications</h2>
-            <label className="text-xs font-bold block">
-              Skills (comma separated)
-              <input className={field} value={data.skills.join(', ')} onChange={(e) => patch({ skills: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) })} />
-            </label>
-            <label className="text-xs font-bold block">
-              Certifications (comma separated)
-              <input className={field} value={data.certifications.join(', ')} onChange={(e) => patch({ certifications: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) })} />
-            </label>
+            <label className="text-xs font-bold block">Skills (comma separated)<input className={field} value={data.skills.join(', ')} onChange={(e) => patch({ skills: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) })} /></label>
+            <label className="text-xs font-bold block">Certifications (comma separated)<input className={field} value={data.certifications.join(', ')} onChange={(e) => patch({ certifications: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) })} /></label>
           </section>
 
           <section className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3">
@@ -370,92 +255,60 @@ export const ResumeBuilderPage: React.FC = () => {
               <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Keyword overlap (optional)</h2>
               <span className="text-sm font-black text-[#007A82]">{overlap.score}%</span>
             </div>
-            <textarea
-              rows={5}
-              className={field}
-              placeholder="Paste a job description to see local keyword overlap"
-              value={data.targetJobDescription}
-              onChange={(e) => patch({ targetJobDescription: e.target.value })}
-            />
-            <p className="text-[11px] text-slate-500 font-medium">
-              {overlap.matched.length} matched · {overlap.missing.length} missing. Not an employer ATS.
-            </p>
+            <textarea rows={5} className={field} placeholder="Paste a job description to see local keyword overlap" value={data.targetJobDescription} onChange={(e) => patch({ targetJobDescription: e.target.value })} />
+            <p className="text-[11px] text-slate-500 font-medium">{overlap.matched.length} matched · {overlap.missing.length} missing. Not an employer ATS.</p>
           </section>
 
           <button type="button" onClick={handleDownload} className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] text-white text-sm font-black min-h-12">
-            <Download className="w-4 h-4" /> Download {RESUME_TEMPLATES.find((t) => t.id === template)?.name} PDF
+            <Download className="w-4 h-4" /> Download {currentName} PDF
           </button>
           <AdBanner type="in-content" />
         </div>
 
         <div className={`lg:col-span-5 ${tab === 'edit' ? 'hidden lg:block' : ''}`}>
-          <div className={`sticky top-20 rounded-3xl bg-white border border-slate-200 overflow-hidden shadow-sm ${template === 'modern' ? 'border-l-4 border-l-[#00A3AD]' : ''}`}>
-            <div className="px-6 pt-6 pb-4 border-b border-slate-100">
-              <p className={`text-xl font-black text-[#0A2540] ${template === 'classic' ? 'text-center' : ''}`}>{data.fullName || 'Your name'}</p>
-              <p className={`text-sm font-bold ${template === 'classic' ? 'text-center' : ''} text-[#007A82]`}>{data.jobTitle}</p>
-              <p className={`text-[11px] text-slate-500 mt-2 ${template === 'classic' ? 'text-center' : ''}`}>
-                {[data.email, data.phone, data.location, data.linkedin, data.github, data.website].filter(Boolean).join(' · ')}
-              </p>
-            </div>
-            <div className="px-6 py-5 space-y-4 text-[12px] text-[#0A2540] max-h-[70vh] overflow-y-auto">
-              {data.summary && (
-                <div>
-                  <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Summary</h3>
-                  <p className="leading-relaxed">{data.summary}</p>
-                </div>
-              )}
-              {data.experience.length > 0 && (
-                <div>
-                  <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Experience</h3>
-                  {data.experience.map((exp) => (
-                    <div key={exp.id} className="mt-2">
-                      <div className="flex justify-between gap-2 font-bold">
-                        <span>{exp.position}</span>
-                        <span className="text-slate-500 font-normal shrink-0">{exp.startDate} – {exp.current ? 'Present' : exp.endDate}</span>
-                      </div>
-                      <p className="text-slate-500 italic">{[exp.company, exp.location].filter(Boolean).join(' · ')}</p>
-                      <ul className="list-disc ml-4 mt-1 space-y-0.5">
-                        {exp.bullets.filter(Boolean).map((b, i) => (
-                          <li key={i}>{b}</li>
-                        ))}
-                      </ul>
+          <LiveResumePreview template={template} name={data.fullName} title={data.jobTitle} contacts={contacts} summary={data.summary}>
+            {data.experience.length > 0 && (
+              <div>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Experience</h3>
+                {data.experience.map((exp) => (
+                  <div key={exp.id} className="mt-2">
+                    <div className="flex justify-between gap-2 font-bold">
+                      <span>{exp.position}</span>
+                      <span className="text-slate-500 font-normal shrink-0">{exp.startDate} – {exp.current ? 'Present' : exp.endDate}</span>
                     </div>
-                  ))}
-                </div>
-              )}
-              {data.education.length > 0 && (
-                <div>
-                  <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Education</h3>
-                  {data.education.map((edu) => (
-                    <div key={edu.id} className="mt-1">
-                      <div className="flex justify-between gap-2 font-bold">
-                        <span>{[edu.degree, edu.field].filter(Boolean).join(' — ')}</span>
-                        <span className="font-normal text-slate-500">{edu.graduationYear}</span>
-                      </div>
-                      <p className="text-slate-500 italic">{edu.school}{edu.gpa ? ` · GPA ${edu.gpa}` : ''}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-              {data.skills.length > 0 && (
-                <div>
-                  <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Skills</h3>
-                  <p>{data.skills.join(' · ')}</p>
-                </div>
-              )}
-              {data.certifications.length > 0 && (
-                <div>
-                  <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Certifications</h3>
-                  <p>{data.certifications.join(' · ')}</p>
-                </div>
-              )}
-            </div>
-            <div className="p-4 border-t border-slate-100">
-              <button type="button" onClick={handleDownload} className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#00A3AD] text-white text-sm font-black">
-                <Download className="w-4 h-4" /> Download PDF with this info
-              </button>
-            </div>
-          </div>
+                    <p className="text-slate-500 italic">{[exp.company, exp.location].filter(Boolean).join(' · ')}</p>
+                    <ul className="list-disc ml-4 mt-1 space-y-0.5">{exp.bullets.filter(Boolean).map((b, i) => <li key={i}>{b}</li>)}</ul>
+                  </div>
+                ))}
+              </div>
+            )}
+            {data.education.length > 0 && (
+              <div>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Education</h3>
+                {data.education.map((edu) => (
+                  <div key={edu.id} className="mt-1">
+                    <div className="flex justify-between gap-2 font-bold"><span>{[edu.degree, edu.field].filter(Boolean).join(' — ')}</span><span className="font-normal text-slate-500">{edu.graduationYear}</span></div>
+                    <p className="text-slate-500 italic">{edu.school}{edu.gpa ? ` · GPA ${edu.gpa}` : ''}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {data.skills.length > 0 && template !== 'sidebar' && (
+              <div>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Skills</h3>
+                <p>{data.skills.join(' · ')}</p>
+              </div>
+            )}
+            {data.certifications.length > 0 && (
+              <div>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Certifications</h3>
+                <p>{data.certifications.join(' · ')}</p>
+              </div>
+            )}
+          </LiveResumePreview>
+          <button type="button" onClick={handleDownload} className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#00A3AD] text-white text-sm font-black">
+            <Download className="w-4 h-4" /> Download {currentName} PDF
+          </button>
         </div>
       </div>
     </div>
