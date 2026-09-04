@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="t">
+  <title id="t">Dev Tools SHA-256 hash in the browser</title>
+  <rect width="960" height="540" fill="#F6FAFC"/>
+  <rect x="32" y="28" width="896" height="484" rx="28" fill="#fff" stroke="#e2e8f0"/>
+  <text x="64" y="76" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#0A2540">Dev Tools · Web Crypto</text>
+  <text x="64" y="120" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#007A82">INPUT</text>
+  <rect x="64" y="136" width="832" height="120" rx="16" fill="#F4F8FA" stroke="#e2e8f0"/>
+  <text x="88" y="190" font-family="ui-monospace,monospace" font-size="16" fill="#0A2540">FileTools Kit</text>
+  <text x="64" y="300" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#007A82">SHA-256</text>
+  <rect x="64" y="316" width="832" height="80" rx="16" fill="#0A2540"/>
+  <text x="88" y="364" font-family="ui-monospace,monospace" font-size="14" fill="#E6F8F9">a1b2…  (digest computed in this tab · not MD5 · not encryption)</text>
+  <text x="64" y="440" font-family="system-ui,sans-serif" font-size="13" fill="#64748B">A trailing newline changes the digest. Matching hashes mean the same bytes, not who wrote them.</text>
+</svg>
