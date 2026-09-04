@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="t">
+  <title id="t">Image Optimizer before and after sizes</title>
+  <rect width="960" height="540" fill="#F6FAFC"/>
+  <rect x="32" y="28" width="896" height="484" rx="28" fill="#fff" stroke="#e2e8f0"/>
+  <text x="64" y="76" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#0A2540">Image Optimizer</text>
+  <rect x="64" y="120" width="400" height="320" rx="20" fill="#F4F8FA"/>
+  <text x="264" y="280" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="700" fill="#0A2540">Before</text>
+  <text x="264" y="312" text-anchor="middle" font-family="ui-monospace,monospace" font-size="20" fill="#64748B">2.4 MB</text>
+  <rect x="496" y="120" width="400" height="320" rx="20" fill="#E6F8F9" stroke="#00A3AD"/>
+  <text x="696" y="250" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="700" fill="#0A2540">After</text>
+  <text x="696" y="286" text-anchor="middle" font-family="ui-monospace,monospace" font-size="20" fill="#007A82">410 KB</text>
+  <text x="696" y="318" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#475569">quality 0.72 · scale 80%</text>
+  <text x="696" y="400" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#64748B">Savings vary. This is canvas re-encoding, not a magic ZIP.</text>
+</svg>
