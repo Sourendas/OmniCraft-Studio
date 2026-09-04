@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { SubscriptionProvider } from './context/SubscriptionContext';
 import { AmbientBackground } from './components/layout/AmbientBackground';
 import { Navbar } from './components/layout/Navbar';
@@ -80,6 +81,7 @@ export default function App() {
           </main>
           <Footer />
           <AbDebugPanel />
+          <Analytics />
         </div>
       </BrowserRouter>
     </SubscriptionProvider>
