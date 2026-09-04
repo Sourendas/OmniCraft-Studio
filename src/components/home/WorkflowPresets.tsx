@@ -96,7 +96,7 @@ export const WorkflowPresets: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-xs font-black text-[#007A82] mb-3">
-            <Workflow className="w-3.5 h-3.5 text-[#00A3AD]" />
+            <Workflow className="w-3.5 h-3.5 text-[#007A82]" />
             <span className="uppercase tracking-wider">Suggested paths</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-black text-[#0A2540] tracking-tight">Suggested paths</h2>
@@ -119,13 +119,13 @@ export const WorkflowPresets: React.FC = () => {
               }`}
             >
               <div className={`p-2.5 rounded-2xl shrink-0 ${
-                isActive ? 'bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF]' : 'bg-white text-slate-500 border border-slate-200'
+                isActive ? 'bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF]' : 'bg-white text-slate-600 border border-slate-200'
               }`}>
                 <Icon className="w-5 h-5" />
               </div>
               <div className="min-w-0">
-                <h4 className={`text-xs font-black truncate ${isActive ? 'text-[#0A2540]' : 'text-slate-700'}`}>{wf.shortTitle}</h4>
-                <p className="text-[10px] text-slate-500 font-mono font-medium truncate">{wf.badge}</p>
+                <p className={`text-xs font-black truncate ${isActive ? 'text-[#0A2540]' : 'text-slate-700'}`}>{wf.shortTitle}</p>
+                <p className="text-[10px] text-slate-600 font-mono font-medium truncate">{wf.badge}</p>
               </div>
             </button>
           );
@@ -137,7 +137,7 @@ export const WorkflowPresets: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF]">{activeWorkflow.badge}</span>
-              <span className="text-xs text-slate-400 font-medium">\u2022 3 tools in this tab</span>
+              <span className="text-xs text-slate-600 font-medium">3 tools in this tab</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-black text-[#0A2540]">{activeWorkflow.title}</h3>
             <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium max-w-2xl">{activeWorkflow.description}</p>
@@ -161,14 +161,14 @@ export const WorkflowPresets: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-white text-slate-600 border border-slate-200 group-hover:border-[#00A3AD] group-hover:text-[#007A82]">{step.tag}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#00A3AD] group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#007A82] group-hover:translate-x-0.5 transition-all" />
                 </div>
                 <h4 className="text-sm font-black text-[#0A2540] group-hover:text-[#007A82] transition-colors mb-1">{step.name}</h4>
                 <p className="text-xs text-slate-600 leading-relaxed font-medium">{step.action}</p>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-[#007A82] font-bold">
                 <span>Open tool</span>
-                <span className="font-mono text-slate-400">In this tab</span>
+                <span className="font-mono text-slate-600">In this tab</span>
               </div>
             </Link>
           ))}
