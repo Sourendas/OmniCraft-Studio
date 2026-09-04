@@ -8,32 +8,70 @@ const Back = () => (
   </Link>
 );
 
+const box = 'rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 space-y-5 text-sm text-slate-700 leading-relaxed';
+const h2 = 'text-lg font-black text-[#0A2540] pt-2';
+const a = 'text-[#007A82] underline font-bold';
+
 export const PrivacyPolicyPage: React.FC = () => (
   <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
     <Back />
-    <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-5 text-sm text-slate-700">
-      <div className="flex items-center gap-3"><ShieldCheck className="w-8 h-8 text-[#007A82]" /><div><h1 className="text-3xl font-black text-[#0A2540]">Privacy Policy</h1><p className="text-xs text-slate-500">Last updated: 3 September 2026</p></div></div>
-      <h2 className="text-lg font-black text-[#0A2540]">1. Who we are</h2>
-      <p>FileTools Kit (filetoolskit.com) is operated by <strong>Souren Das</strong>, Bengaluru, Karnataka, India. Privacy: <a className="text-[#007A82] underline" href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a>. Support: <a className="text-[#007A82] underline" href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">2. What the tools do with your files</h2>
-      <p>The 12 utilities run in your browser with libraries such as pdf-lib, jsPDF, and the Canvas API. We do not operate an upload API that receives your PDFs, images, resume text, or other files you open in a tool. Closing the tab discards that working copy unless you downloaded it.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">3. What the website host may see</h2>
-      <p>The site is hosted on Vercel. The host may process technical request data (IP address, browser type, pages requested, timestamps) to serve pages. That is separate from opening a file inside a tool.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">4. Third-party content on pages</h2>
-      <p>Tool-card photos may load from Unsplash. Google Fonts may load Outfit. Those providers receive a request from your browser for that asset. Contact submit opens your email app with a mailto draft; we do not run a message database.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">5. Advertising (Google AdSense — not live yet)</h2>
-      <p>FileTools Kit may display third-party ads through Google AdSense after Google approves the site. The AdSense script is not embedded until that approval. This section describes the ads and cookies that will apply when ads are turned on. The site is not already running AdSense today.</p>
-      <p>Google, as a third-party vendor, may use cookies or similar storage to serve ads on this site and across the web, including ads based on visits to this site and other sites.</p>
+    <div className={box}>
+      <div className="flex items-center gap-3">
+        <ShieldCheck className="w-8 h-8 text-[#007A82] shrink-0" />
+        <div>
+          <h1 className="text-3xl font-black text-[#0A2540]">Privacy Policy</h1>
+          <p className="text-xs text-slate-500">Last updated: 4 September 2026</p>
+        </div>
+      </div>
+      <p>This policy describes how FileTools Kit (filetoolskit.com) handles information. It is a description of practice, not a certification of GDPR, CCPA, HIPAA, DPDP, or COPPA compliance.</p>
+
+      <h2 className={h2}>1. Who we are</h2>
+      <p>FileTools Kit is operated by <strong>Souren Das</strong>, Bengaluru, Karnataka, India. Privacy: <a className={a} href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a>. Support: <a className={a} href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>. Optional: <a className={a} href="mailto:hello@filetoolskit.com">hello@filetoolskit.com</a>.</p>
+      <p>The public site is https://www.filetoolskit.com (also reachable at https://filetoolskit.com). The product is a set of 12 browser tools for PDFs, images, resumes, QR codes, hashes, markdown, SVG, diffs, and related utilities.</p>
+
+      <h2 className={h2}>2. Scope</h2>
+      <p>This policy covers the website and the in-browser tools. It does not cover websites you open because a QR code pointed there, or third-party readers you use to view a downloaded PDF.</p>
+
+      <h2 className={h2}>3. What the tools do not send us</h2>
+      <p>The 12 utilities run in your browser with libraries such as pdf-lib, jsPDF, qrcode, mammoth, and the Canvas and Web Crypto APIs. We do not operate an upload API that receives your PDFs, images, resume text, hashes, or other files you open in a tool. Closing the tab discards that working copy unless you downloaded it or your browser kept a localStorage draft (see section 7).</p>
+      <p>That is not an air-gapped device. The website still loads over HTTPS. Browser extensions you installed can read a page. Malware on the device is outside this product.</p>
+
+      <h2 className={h2}>4. What the website host may see</h2>
+      <p>The site is hosted on Vercel. When you request a page, the host may process technical data such as IP address, user agent, URL, referrer, and timestamps in order to serve and protect the site. Those logs are not a copy of a PDF you opened in a tool. We do not sell host logs as a data product.</p>
+
+      <h2 className={h2}>5. Third-party content on pages</h2>
+      <p>Tool-card photographs may load from Unsplash. Google Fonts may load the Outfit, Plus Jakarta Sans, and JetBrains Mono families. Those providers receive a request from your browser for that asset (typically IP address, user agent, and the font or image URL). That request is not your document.</p>
+      <p>Contact submit opens your email app with a mailto draft to support@filetoolskit.com. We do not run a ticket database. If you send mail, we receive whatever you put in that message, including your address.</p>
+
+      <h2 className={h2}>6. Advertising (Google AdSense — not live yet)</h2>
+      <p>FileTools Kit may display third-party ads through Google AdSense after Google approves the site. The AdSense JavaScript snippet is not embedded today. ads.txt on this domain is comments only until a publisher ID exists. This section describes ads and cookies that will apply when ads are turned on.</p>
+      <p>Google, as a third-party vendor, may use cookies or similar storage to serve ads on this site and across the web, including ads based on visits to this site and other sites. Users can opt out of personalized ads at <a className={a} href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>. Google’s privacy policy: <a className={a} href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>. How Google uses data on partner sites: <a className={a} href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">policies.google.com/technologies/partner-sites</a>.</p>
       <p>FileTools Kit does not sell the contents of files you open in a tool to advertisers. Ad networks do not receive your PDF, image, or resume bytes from our servers because those files are not uploaded to us. Tools still run in this tab.</p>
-      <p>Personalized ads: <a className="text-[#007A82] underline" href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>. Google privacy policy: <a className="text-[#007A82] underline" href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>. Partner sites: <a className="text-[#007A82] underline" href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">how Google uses data on partner sites</a>.</p>
-      <p>Users in the EEA/UK may see a consent message from Google Privacy & messaging if that is enabled after approval. Until ads are live, no ad cookie is set by FileTools Kit.</p>
-      <p>This page is a description of practice, not a certification of GDPR, CCPA, HIPAA, or COPPA compliance. Questions: privacy@filetoolskit.com.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">6. Local storage</h2>
-      <p>The browser may keep UI preferences in localStorage. A first-party A/B helper may store ftk_ab_visitor, ftk_ab_assign, and ftk_ab_events on this device only. Those records are not sent to an analytics vendor. Clear site data for filetoolskit.com to delete them.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">7. Children</h2>
-      <p>The site is not directed at children under 13.</p>
-      <h2 className="text-lg font-black text-[#0A2540]">8. Your requests</h2>
-      <p>Email privacy@filetoolskit.com. We respond from Bengaluru, India.</p>
+      <p>Users in the EEA/UK may see a consent message from Google Privacy & messaging if that is enabled after approval. Until ads are live, FileTools Kit does not set an advertising cookie.</p>
+      <p>We do not use Meta Pixel, Meta Audience Network, or Google Analytics on this site today. If that changes, this policy will be updated first.</p>
+
+      <h2 className={h2}>7. Local storage and drafts</h2>
+      <p>The browser may keep UI preferences in localStorage. A first-party A/B helper may store ftk_ab_visitor, ftk_ab_assign, and ftk_ab_events on this device only. Those records are not sent to an analytics vendor. The Resume Builder may store a draft (ftk_resume_v1) on this device so a refresh does not wipe the form. Clear site data for filetoolskit.com to delete first-party keys. We cannot remote-wipe your browser.</p>
+
+      <h2 className={h2}>8. Children</h2>
+      <p>The site is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child sent us mail, write to privacy@filetoolskit.com and we will delete that correspondence.</p>
+
+      <h2 className={h2}>9. International visitors</h2>
+      <p>The operator is in India. Hosting may process requests in other regions (Vercel). If you visit from the EEA, UK, or elsewhere, technical data may cross borders in order to serve the page. We do not claim GDPR, CCPA, or DPDP certification. If you want a file deleted from our mailbox, email privacy@filetoolskit.com. We cannot delete a PDF that never left your tab.</p>
+
+      <h2 className={h2}>10. Retention</h2>
+      <p>We do not keep a copy of tool files because we do not receive them. Email you send us is kept as long as needed to reply and run the site, then deleted or archived in ordinary mail practice. Host logs follow the host’s retention.</p>
+
+      <h2 className={h2}>11. Security limits</h2>
+      <p>HTTPS protects the website in transit. Client-side tools reduce our access to your files. They do not encrypt a PDF you export, they do not hide the file from extensions, and they do not replace backups. Encrypted PDFs you drop in may fail to parse.</p>
+
+      <h2 className={h2}>12. Your requests</h2>
+      <p>Email privacy@filetoolskit.com to ask what mail we hold from you, to correct an address, or to ask us to delete correspondence. We respond from Bengaluru, India. There is no automated portal.</p>
+
+      <h2 className={h2}>13. Changes</h2>
+      <p>We will change the “Last updated” date when this policy changes in a material way. The live page is the current version.</p>
+
+      <p className="text-xs text-slate-500">See also the <Link className={a} to="/cookie-policy">cookie policy</Link>, <Link className={a} to="/guides/what-stays-in-the-tab">what stays in this tab</Link>, and <Link className={a} to="/about">about</Link>.</p>
     </div>
   </div>
 );
@@ -41,11 +79,19 @@ export const PrivacyPolicyPage: React.FC = () => (
 export const TermsPage: React.FC = () => (
   <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
     <Back />
-    <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-5 text-sm text-slate-700">
-      <div className="flex items-center gap-3"><FileText className="w-8 h-8 text-[#007A82]" /><div><h1 className="text-3xl font-black text-[#0A2540]">Terms of Service</h1><p className="text-xs text-slate-500">Last updated: 3 September 2026</p></div></div>
+    <div className={box}>
+      <div className="flex items-center gap-3">
+        <FileText className="w-8 h-8 text-[#007A82]" />
+        <div>
+          <h1 className="text-3xl font-black text-[#0A2540]">Terms of Service</h1>
+          <p className="text-xs text-slate-500">Last updated: 4 September 2026</p>
+        </div>
+      </div>
       <p>These terms are between you and Souren Das (Bengaluru, India) for filetoolskit.com.</p>
-      <p>All 12 tools are free in the browser. There is no paid upgrade or checkout on this site. Outputs you generate are yours, subject to third-party rights in content you paste in.</p>
-      <p>Do not use the tools for unlawful content. Tools are provided as-is. Encrypted PDFs, unusual file types, and very large files may fail in the browser. Governed by the laws of India.</p>
+      <p>All 12 tools are free in the browser. There is no paid upgrade or checkout on this site. Outputs you generate are yours, subject to third-party rights in content you paste in. FileTools Kit does not charge a license fee on those files.</p>
+      <p>Do not use the tools for unlawful content. Tools are provided as-is, without warranty. Encrypted PDFs, unusual file types, and very large files may fail in the browser. Currency figures are static examples, not live quotes. Health numbers are not medical advice. Resume overlap % is not an employer ATS.</p>
+      <p>The site may show third-party ads after Google AdSense approval. Ads are not embedded today. Governed by the laws of India, with courts in Bengaluru, without limiting any non-waivable consumer rights you have where you live.</p>
+      <p>Questions: support@filetoolskit.com.</p>
     </div>
   </div>
 );
@@ -53,12 +99,24 @@ export const TermsPage: React.FC = () => (
 export const CookiePolicyPage: React.FC = () => (
   <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
     <Back />
-    <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-5 text-sm text-slate-700">
-      <div className="flex items-center gap-3"><Lock className="w-8 h-8 text-[#007A82]" /><div><h1 className="text-3xl font-black text-[#0A2540]">Cookie & Storage Policy</h1><p className="text-xs text-slate-500">Last updated: 3 September 2026</p></div></div>
+    <div className={box}>
+      <div className="flex items-center gap-3">
+        <Lock className="w-8 h-8 text-[#007A82]" />
+        <div>
+          <h1 className="text-3xl font-black text-[#0A2540]">Cookie & Storage Policy</h1>
+          <p className="text-xs text-slate-500">Last updated: 4 September 2026</p>
+        </div>
+      </div>
       <p>FileTools Kit does not set advertising or analytics cookies today. The AdSense script is not embedded. Until AdSense is enabled, no advertising cookie is set by FileTools Kit.</p>
+      <h2 className={h2}>First-party storage</h2>
+      <p>This domain may use localStorage for UI preferences, an optional A/B helper (ftk_ab_visitor, ftk_ab_assign, ftk_ab_events), and a Resume Builder draft (ftk_resume_v1). These stay on the device. They are not sent to an analytics vendor. Clear site data for filetoolskit.com to delete them.</p>
+      <h2 className={h2}>Hosting, fonts, and images</h2>
+      <p>Vercel may set technical cookies to serve and protect the site. Google Fonts and Unsplash may set their own cookies when those assets load. We do not control those third-party cookies.</p>
+      <h2 className={h2}>Advertising cookies — after approval only</h2>
       <p>After Google approves the site and the official snippet is added, Google may set advertising and measurement cookies (including historical DoubleClick / IDE-style cookies). Ads are third-party. File bytes are not uploaded to us and are not sent to advertisers from our servers.</p>
-      <p>Manage ads at <a className="text-[#007A82] underline" href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">adssettings.google.com</a>. Google privacy: <a className="text-[#007A82] underline" href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</p>
-      <p>First-party keys may include UI prefs and ftk_ab_visitor, ftk_ab_assign, ftk_ab_events. Vercel, fonts, and Unsplash may set their own technical cookies. Clear site data for filetoolskit.com to delete first-party storage.</p>
+      <p>Manage personalized ads at <a className={a} href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">adssettings.google.com</a>. Google privacy: <a className={a} href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>. Partner sites: <a className={a} href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">how Google uses data on partner sites</a>.</p>
+      <p>EEA/UK visitors may see a consent message from Google Privacy & messaging if that product is enabled after approval. We will not show a fake consent banner before ads exist.</p>
+      <p>See the <Link className={a} to="/privacy">privacy policy</Link> for the rest of the story.</p>
     </div>
   </div>
 );
@@ -66,11 +124,15 @@ export const CookiePolicyPage: React.FC = () => (
 export const DisclaimerPage: React.FC = () => (
   <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
     <Back />
-    <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-5 text-sm text-slate-700">
-      <div className="flex items-center gap-3"><AlertTriangle className="w-8 h-8 text-amber-700" /><h1 className="text-3xl font-black text-[#0A2540]">Disclaimer</h1></div>
-      <p>Currency figures are static examples, not live quotes or financial advice.</p>
+    <div className={box}>
+      <div className="flex items-center gap-3">
+        <AlertTriangle className="w-8 h-8 text-amber-700" />
+        <h1 className="text-3xl font-black text-[#0A2540]">Disclaimer</h1>
+      </div>
+      <p>Currency figures are static examples last authored September 2026, not live quotes or financial advice.</p>
       <p>Health numbers use formulas such as Mifflin-St Jeor and are not medical advice.</p>
       <p>Resume match percentage is a local keyword-overlap heuristic, not an employer ATS.</p>
+      <p>Encrypted PDFs may fail. Preview tiles in PDF Suite are placeholders, not rendered pages.</p>
     </div>
   </div>
 );
@@ -89,19 +151,25 @@ export const ContactPage: React.FC = () => {
   return (
     <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
       <Back />
-      <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-5">
-        <div className="flex items-center gap-3"><Mail className="w-8 h-8 text-[#007A82]" /><div><h1 className="text-3xl font-black text-[#0A2540]">Contact</h1><p className="text-xs text-slate-500">Souren Das · Bengaluru</p></div></div>
-        <p className="text-sm text-slate-700">Mail is received by the operator. There is no ticket system. Write to <a className="text-[#007A82] underline font-bold" href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> or <a className="text-[#007A82] underline font-bold" href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a>.</p>
+      <div className={box}>
+        <div className="flex items-center gap-3">
+          <Mail className="w-8 h-8 text-[#007A82]" />
+          <div>
+            <h1 className="text-3xl font-black text-[#0A2540]">Contact</h1>
+            <p className="text-xs text-slate-500">Souren Das · Bengaluru</p>
+          </div>
+        </div>
+        <p>Mail is received by the operator. There is no ticket system. Write to <a className={a} href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> or <a className={a} href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a>.</p>
         {submitted ? (
           <div className="p-6 rounded-3xl bg-emerald-50 border border-emerald-300 text-center">
-            <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto mb-2" />
+            <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto mb-2 mx-auto" />
             <p className="text-sm font-medium">Your email app should open a draft to support@filetoolskit.com.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-3">
-            <input required placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className="w-full px-4 py-3 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs" />
-            <input required type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs" />
-            <textarea required rows={5} placeholder="Message" value={message} onChange={(e) => setMessage(e.target.value)} className="w-full px-4 py-3 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs" />
+            <input required placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className="w-full px-4 py-3 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-sm" />
+            <input required type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-4 py-3 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-sm" />
+            <textarea required rows={5} placeholder="Message" value={message} onChange={(e) => setMessage(e.target.value)} className="w-full px-4 py-3 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-sm" />
             <button type="submit" className="px-6 py-3 rounded-full bg-[#00A3AD] text-white text-xs font-black">Email support@filetoolskit.com</button>
           </form>
         )}
