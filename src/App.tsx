@@ -21,12 +21,10 @@ const HealthCalcPage = lazy(() => import('./pages/tools/HealthCalcPage').then((m
 const MarkdownEditorPage = lazy(() => import('./pages/tools/MarkdownEditorPage').then((m) => ({ default: m.MarkdownEditorPage })));
 const SvgStudioPage = lazy(() => import('./pages/tools/SvgStudioPage').then((m) => ({ default: m.SvgStudioPage })));
 const TextDiffPage = lazy(() => import('./pages/tools/TextDiffPage').then((m) => ({ default: m.TextDiffPage })));
-const LegalPages = lazy(() => import('./pages/legal/LegalPages'));
 const AboutPage = lazy(() => import('./pages/About').then((m) => ({ default: m.AboutPage })));
 const GuidesPage = lazy(() => import('./pages/Guides').then((m) => ({ default: m.GuidesPage })));
 const GuideArticlePage = lazy(() => import('./pages/guides/GuideArticle').then((m) => ({ default: m.GuideArticlePage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
-
 const PrivacyPolicyPage = lazy(() => import('./pages/legal/LegalPages').then((m) => ({ default: m.PrivacyPolicyPage })));
 const TermsPage = lazy(() => import('./pages/legal/LegalPages').then((m) => ({ default: m.TermsPage })));
 const CookiePolicyPage = lazy(() => import('./pages/legal/LegalPages').then((m) => ({ default: m.CookiePolicyPage })));
