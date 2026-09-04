@@ -8,3 +8,10 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>,
 );
+
+const dropBoot = () => document.getElementById('boot')?.remove();
+if (typeof requestAnimationFrame === 'function') {
+  requestAnimationFrame(() => requestAnimationFrame(dropBoot));
+} else {
+  setTimeout(dropBoot, 0);
+}
