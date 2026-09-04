@@ -111,9 +111,9 @@ export const HealthCalcPage: React.FC = () => {
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
             <HeartPulse className="w-7 h-7 text-rose-600" />
-            Fitness, TDEE, BMR & Macro Blueprint
+            Health Calculator
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Mifflin-St Jeor estimate. Not medical advice.
           </p>
         </div>
@@ -133,38 +133,38 @@ export const HealthCalcPage: React.FC = () => {
             <div className="flex items-center justify-between">
               <h3 className="text-xs font-bold text-[#0A2540] uppercase tracking-wider">Biometric Inputs</h3>
               <div className="flex rounded-xl bg-[#F4F8FA] p-1 border border-slate-200 text-xs">
-                <button onClick={() => setUnitSystem('metric')} className={`px-3 py-1 rounded-lg font-semibold ${unitSystem === 'metric' ? 'bg-rose-500/20 text-rose-300' : 'text-slate-500'}`}>Metric (kg/cm)</button>
-                <button onClick={() => setUnitSystem('imperial')} className={`px-3 py-1 rounded-lg font-semibold ${unitSystem === 'imperial' ? 'bg-rose-500/20 text-rose-300' : 'text-slate-500'}`}>Imperial (lbs/ft)</button>
+                <button onClick={() => setUnitSystem('metric')} className={`px-3 py-1 rounded-lg font-semibold ${unitSystem === 'metric' ? 'bg-rose-50 text-rose-800' : 'text-slate-500'}`}>Metric (kg/cm)</button>
+                <button onClick={() => setUnitSystem('imperial')} className={`px-3 py-1 rounded-lg font-semibold ${unitSystem === 'imperial' ? 'bg-rose-50 text-rose-800' : 'text-slate-500'}`}>Imperial (lbs/ft)</button>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <button onClick={() => setGender('male')} className={`py-2 rounded-xl font-bold border ${gender === 'male' ? 'bg-cyan-500/20 text-[#007A82] border-cyan-500/50' : 'bg-[#F4F8FA] border-slate-200 text-slate-400'}`}>Male</button>
-              <button onClick={() => setGender('female')} className={`py-2 rounded-xl font-bold border ${gender === 'female' ? 'bg-pink-500/20 text-pink-300 border-pink-500/50' : 'bg-[#F4F8FA] border-slate-200 text-slate-400'}`}>Female</button>
+              <button onClick={() => setGender('male')} className={`py-2 rounded-xl font-bold border ${gender === 'male' ? 'bg-[#E6F8F9] text-[#007A82] border-[#B3EAEF]' : 'bg-[#F4F8FA] border-slate-200 text-slate-400'}`}>Male</button>
+              <button onClick={() => setGender('female')} className={`py-2 rounded-xl font-bold border ${gender === 'female' ? 'bg-pink-50 text-pink-800 border-pink-200' : 'bg-[#F4F8FA] border-slate-200 text-slate-400'}`}>Female</button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
               <div>
-                <label className="block text-slate-400 mb-1">Age</label>
+                <label className="block text-slate-600 mb-1">Age</label>
                 <input type="number" value={age} onChange={(e) => setAge(parseInt(e.target.value) || 0)} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]" />
               </div>
               {unitSystem === 'metric' ? (
                 <>
                   <div>
-                    <label className="block text-slate-400 mb-1">Weight (kg)</label>
+                    <label className="block text-slate-600 mb-1">Weight (kg)</label>
                     <input type="number" value={weightKg} onChange={(e) => setWeightKg(parseFloat(e.target.value) || 0)} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]" />
                   </div>
                   <div>
-                    <label className="block text-slate-400 mb-1">Height (cm)</label>
+                    <label className="block text-slate-600 mb-1">Height (cm)</label>
                     <input type="number" value={heightCm} onChange={(e) => setHeightCm(parseFloat(e.target.value) || 0)} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]" />
                   </div>
                 </>
               ) : (
                 <>
                   <div>
-                    <label className="block text-slate-400 mb-1">Weight (lbs)</label>
+                    <label className="block text-slate-600 mb-1">Weight (lbs)</label>
                     <input type="number" value={weightLbs} onChange={(e) => setWeightLbs(parseFloat(e.target.value) || 0)} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]" />
                   </div>
                   <div>
-                    <label className="block text-slate-400 mb-1">Height (ft & in)</label>
+                    <label className="block text-slate-600 mb-1">Height (ft & in)</label>
                     <div className="flex gap-1">
                       <input type="number" value={heightFt} onChange={(e) => setHeightFt(parseInt(e.target.value) || 0)} className="w-1/2 px-2 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]" />
                       <input type="number" value={heightIn} onChange={(e) => setHeightIn(parseInt(e.target.value) || 0)} className="w-1/2 px-2 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]" />
@@ -174,7 +174,7 @@ export const HealthCalcPage: React.FC = () => {
               )}
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1">Activity Level</label>
+              <label className="block text-xs font-bold text-slate-600 mb-1">Activity Level</label>
               <select value={activityLevel} onChange={(e) => setActivityLevel(parseFloat(e.target.value))} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540]">
                 <option value={1.2}>Sedentary (Desk job, little exercise)</option>
                 <option value={1.375}>Lightly Active (Workouts 1-3 days/week)</option>
@@ -184,15 +184,15 @@ export const HealthCalcPage: React.FC = () => {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1">Primary Fitness Goal</label>
+              <label className="block text-xs font-bold text-slate-600 mb-1">Primary Fitness Goal</label>
               <div className="grid grid-cols-3 gap-2 text-xs">
                 {[{ id: 'cut' as const, label: 'Fat Loss (-500)' }, { id: 'maintain' as const, label: 'Maintain' }, { id: 'bulk' as const, label: 'Muscle Gain (+350)' }].map((g) => (
-                  <button key={g.id} onClick={() => setGoal(g.id)} className={`py-2 px-1 rounded-xl font-bold border ${goal === g.id ? 'bg-rose-500/20 text-rose-300 border-rose-500/50' : 'bg-[#F4F8FA] border-slate-200 text-slate-400'}`}>{g.label}</button>
+                  <button key={g.id} onClick={() => setGoal(g.id)} className={`py-2 px-1 rounded-xl font-bold border ${goal === g.id ? 'bg-rose-50 text-rose-800 border-rose-200' : 'bg-[#F4F8FA] border-slate-200 text-slate-400'}`}>{g.label}</button>
                 ))}
               </div>
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1">Macronutrient Ratio</label>
+              <label className="block text-xs font-bold text-slate-600 mb-1">Macronutrient Ratio</label>
               <select value={dietPlan} onChange={(e) => setDietPlan(e.target.value as any)} className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540]">
                 <option value="high-protein">High Protein (35% P / 35% C / 30% F)</option>
                 <option value="balanced">Balanced Zone (30% P / 40% C / 30% F)</option>
@@ -213,10 +213,10 @@ export const HealthCalcPage: React.FC = () => {
               <div className="text-xl font-extrabold text-[#00A3AD] mt-1">{tdee} <span className="text-xs text-slate-400 font-normal">kcal/d</span></div>
               <p className="text-[10px] text-slate-500 mt-1">Daily energy with activity factored</p>
             </div>
-            <div className="p-5 rounded-3xl bg-gradient-to-br from-rose-950/40 to-amber-950/40 border border-rose-500/30">
-              <span className="text-[10px] text-rose-300 uppercase font-mono font-bold">Target Daily Intake</span>
-              <div className="text-2xl font-black text-rose-600 mt-1">{targetCalories} <span className="text-xs text-rose-200 font-normal">kcal/d</span></div>
-              <p className="text-[10px] text-rose-200/70 mt-1">Optimized for {goal.toUpperCase()}</p>
+            <div className="p-5 rounded-3xl bg-rose-50 border border-rose-200">
+              <span className="text-[10px] text-rose-800 uppercase font-mono font-bold">Target Daily Intake</span>
+              <div className="text-2xl font-black text-rose-600 mt-1">{targetCalories} <span className="text-xs text-rose-700 font-normal">kcal/d</span></div>
+              <p className="text-[10px] text-rose-700 mt-1">Optimized for {goal.toUpperCase()}</p>
             </div>
           </div>
           <div className="p-6 rounded-3xl bg-white border border-slate-200 space-y-4">

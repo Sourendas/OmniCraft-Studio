@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSubscription } from '../../context/SubscriptionContext';
 import { AdBanner } from '../../components/layout/AdBanner';
 import QRCode from 'qrcode';
 import { 
@@ -23,19 +22,19 @@ export const QrGeneratorPage: React.FC = () => {
   const [qrType, setQrType] = useState<'url' | 'wifi' | 'vcard' | 'text' | 'email'>('url');
 
   // Input states
-  const [urlValue, setUrlValue] = useState('https://omnicraft.studio');
-  const [wifiSsid, setWifiSsid] = useState('OmniCraft-Guest-WiFi');
-  const [wifiPass, setWifiPass] = useState('SuperSecret2026');
+  const [urlValue, setUrlValue] = useState('https://www.filetoolskit.com');
+  const [wifiSsid, setWifiSsid] = useState('Home-WiFi');
+  const [wifiPass, setWifiPass] = useState('example-password');
   const [wifiType, setWifiType] = useState('WPA');
   const [vcardName, setVcardName] = useState('Alex Mercer');
   const [vcardPhone, setVcardPhone] = useState('+1 (555) 923-4567');
-  const [vcardEmail, setVcardEmail] = useState('alex@omnicraft.studio');
-  const [vcardOrg, setVcardOrg] = useState('OmniCraft Studio');
-  const [plainText, setPlainText] = useState('Hello from OmniCraft QR Studio!');
+  const [vcardEmail, setVcardEmail] = useState('alex@example.com');
+  const [vcardOrg, setVcardOrg] = useState('Example Company');
+  const [plainText, setPlainText] = useState('Hello from FileTools Kit');
 
   // Styling states
-  const [fgColor, setFgColor] = useState('#06b6d4');
-  const [bgColor, setBgColor] = useState('#020617');
+  const [fgColor, setFgColor] = useState('#0A2540');
+  const [bgColor, setBgColor] = useState('#FFFFFF');
   const [eccLevel, setEccLevel] = useState<'L' | 'M' | 'Q' | 'H'>('H');
   const [marginSize, setMarginSize] = useState(2);
 
@@ -101,7 +100,7 @@ export const QrGeneratorPage: React.FC = () => {
     const url = canvasRef.current.toDataURL('image/png');
     const a = document.createElement('a');
     a.href = url;
-    a.download = `OmniCraft_QR_${Date.now()}.png`;
+    a.download = `filetoolskit-qr.png`;
     a.click();
   };
 
@@ -111,7 +110,7 @@ export const QrGeneratorPage: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `OmniCraft_QR_${Date.now()}.svg`;
+    a.download = `filetoolskit-qr.svg`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -130,17 +129,17 @@ export const QrGeneratorPage: React.FC = () => {
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
             <QrCode className="w-7 h-7 text-indigo-400" />
-            Custom Branded QR Studio
+            QR Generator
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Generate vector QR codes for URLs, Wi-Fi, vCard contacts with custom palettes and SVG export.
+          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
+            Encode a URL, Wi-Fi network, vCard, or text. Export PNG or SVG. Work stays in this tab.
           </p>
         </div>
 
         <div className="flex items-center gap-2.5">
           <button
             onClick={downloadPng}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white hover:bg-slate-50 text-white text-xs font-bold border border-slate-200 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white hover:bg-slate-50 text-[#0A2540] text-xs font-bold border border-slate-200 transition-all cursor-pointer"
           >
             <Download className="w-3.5 h-3.5 text-[#00A3AD]" />
             <span>Download PNG</span>
@@ -174,8 +173,8 @@ export const QrGeneratorPage: React.FC = () => {
                   onClick={() => setQrType(t.id)}
                   className={`py-2 px-1 rounded-lg font-semibold flex flex-col items-center gap-1 transition-all ${
                     qrType === t.id
-                      ? 'bg-indigo-600/30 text-indigo-300 border border-indigo-500/40 shadow-sm'
-                      : 'text-slate-400 hover:text-[#0A2540]'
+                      ? 'bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] shadow-sm'
+                      : 'text-slate-500 hover:text-[#0A2540]'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -189,7 +188,7 @@ export const QrGeneratorPage: React.FC = () => {
           <div className="p-6 rounded-3xl bg-white border border-slate-200 space-y-4 backdrop-blur-xl">
             {qrType === 'url' && (
               <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1">Target Website URL</label>
+                <label className="block text-xs font-bold text-slate-600 mb-1">Target Website URL</label>
                 <input
                   type="url"
                   value={urlValue}
@@ -203,7 +202,7 @@ export const QrGeneratorPage: React.FC = () => {
             {qrType === 'wifi' && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div className="sm:col-span-2">
-                  <label className="block text-slate-400 mb-1">Network SSID Name</label>
+                  <label className="block text-slate-600 mb-1">Network SSID Name</label>
                   <input
                     type="text"
                     value={wifiSsid}
@@ -212,7 +211,7 @@ export const QrGeneratorPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Password</label>
+                  <label className="block text-slate-600 mb-1">Password</label>
                   <input
                     type="text"
                     value={wifiPass}
@@ -221,7 +220,7 @@ export const QrGeneratorPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Encryption Protocol</label>
+                  <label className="block text-slate-600 mb-1">Encryption Protocol</label>
                   <select
                     value={wifiType}
                     onChange={(e) => setWifiType(e.target.value)}
@@ -238,7 +237,7 @@ export const QrGeneratorPage: React.FC = () => {
             {qrType === 'vcard' && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div>
-                  <label className="block text-slate-400 mb-1">Full Name</label>
+                  <label className="block text-slate-600 mb-1">Full Name</label>
                   <input
                     type="text"
                     value={vcardName}
@@ -247,7 +246,7 @@ export const QrGeneratorPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Company / Org</label>
+                  <label className="block text-slate-600 mb-1">Company / Org</label>
                   <input
                     type="text"
                     value={vcardOrg}
@@ -256,7 +255,7 @@ export const QrGeneratorPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Phone</label>
+                  <label className="block text-slate-600 mb-1">Phone</label>
                   <input
                     type="text"
                     value={vcardPhone}
@@ -265,7 +264,7 @@ export const QrGeneratorPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Email</label>
+                  <label className="block text-slate-600 mb-1">Email</label>
                   <input
                     type="email"
                     value={vcardEmail}
@@ -278,7 +277,7 @@ export const QrGeneratorPage: React.FC = () => {
 
             {qrType === 'text' && (
               <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1">Text Content</label>
+                <label className="block text-xs font-bold text-slate-600 mb-1">Text Content</label>
                 <textarea
                   rows={4}
                   value={plainText}
@@ -298,7 +297,7 @@ export const QrGeneratorPage: React.FC = () => {
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
               <div>
-                <label className="block text-slate-400 mb-1">Foreground</label>
+                <label className="block text-slate-600 mb-1">Foreground</label>
                 <div className="flex items-center gap-2">
                   <input
                     type="color"
@@ -306,12 +305,12 @@ export const QrGeneratorPage: React.FC = () => {
                     onChange={(e) => setFgColor(e.target.value)}
                     className="w-8 h-8 rounded-lg cursor-pointer bg-transparent border-0"
                   />
-                  <span className="font-mono text-[11px] text-slate-300">{fgColor}</span>
+                  <span className="font-mono text-[11px] text-slate-600">{fgColor}</span>
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Background</label>
+                <label className="block text-slate-600 mb-1">Background</label>
                 <div className="flex items-center gap-2">
                   <input
                     type="color"
@@ -319,12 +318,12 @@ export const QrGeneratorPage: React.FC = () => {
                     onChange={(e) => setBgColor(e.target.value)}
                     className="w-8 h-8 rounded-lg cursor-pointer bg-transparent border-0"
                   />
-                  <span className="font-mono text-[11px] text-slate-300">{bgColor}</span>
+                  <span className="font-mono text-[11px] text-slate-600">{bgColor}</span>
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Error Correction</label>
+                <label className="block text-slate-600 mb-1">Error Correction</label>
                 <select
                   value={eccLevel}
                   onChange={(e) => setEccLevel(e.target.value as any)}
@@ -338,7 +337,7 @@ export const QrGeneratorPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Quiet Margin</label>
+                <label className="block text-slate-600 mb-1">Quiet Margin</label>
                 <input
                   type="number"
                   min="0"
@@ -366,7 +365,7 @@ export const QrGeneratorPage: React.FC = () => {
             <div className="mt-6 flex items-center justify-center gap-3 w-full">
               <button
                 onClick={downloadPng}
-                className="flex-1 py-2.5 px-3 rounded-xl bg-white hover:bg-slate-50 text-white font-bold text-xs border border-slate-200 transition-all cursor-pointer"
+                className="flex-1 py-2.5 px-3 rounded-xl bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200 transition-all cursor-pointer"
               >
                 PNG Export
               </button>

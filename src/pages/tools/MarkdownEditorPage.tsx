@@ -25,13 +25,11 @@ import {
   ShieldCheck,
   Columns
 } from 'lucide-react';
-import { useSubscription } from '../../context/SubscriptionContext';
-
-const SAMPLE_MARKDOWN = `# OmniCraft Studio — Markdown notes
+const SAMPLE_MARKDOWN = `# FileTools Kit notes
 
 > File tools run in your browser. This sample is just Markdown.
 
-Welcome to **OmniCraft Studio**. Use this editor to draft notes with a live preview.
+Welcome to **FileTools Kit**. Draft notes with a live preview in this tab.
 
 ---
 
@@ -46,12 +44,11 @@ Welcome to **OmniCraft Studio**. Use this editor to draft notes with a live prev
 - [ ] Your next note
 
 \`\`\`typescript
-const greeting = 'Hello from OmniCraft';
+const greeting = 'Hello from FileTools Kit';
 \`\`\`
 `;
 
 export const MarkdownEditorPage: React.FC = () => {
-  const { isPro } = useSubscription();
   const [markdown, setMarkdown] = useState<string>(SAMPLE_MARKDOWN);
   const [activeView, setActiveView] = useState<'split' | 'edit' | 'preview'>('split');
   const [copiedType, setCopiedType] = useState<string | null>(null);
@@ -159,18 +156,18 @@ export const MarkdownEditorPage: React.FC = () => {
               className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#00A3AD] transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back to Studio Tools</span>
+              <span>Back to tools</span>
             </Link>
             <span className="text-slate-300">•</span>
             <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF]">
-              100% Client-Side Rich Editor
+              Runs in this tab
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] tracking-tight">
-            Markdown & Rich Doc Editor
+            Markdown Editor
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 font-medium">
-            Live side-by-side Markdown writing workstation with instant formatting tools, word count metrics, and export to Markdown, HTML, or styled documents.
+            Write Markdown with a live preview. Export .md or copy HTML. Simple parser — not a full CommonMark engine.
           </p>
         </div>
 

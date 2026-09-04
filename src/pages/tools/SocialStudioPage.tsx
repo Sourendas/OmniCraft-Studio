@@ -111,7 +111,7 @@ const PLATFORMS = [
 ];
 
 export const SocialStudioPage: React.FC = () => {
-  const [inputText, setInputText] = useState('Building in the browser with OmniCraft Studio');
+  const [inputText, setInputText] = useState('Building in the browser with FileTools Kit');
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   const handleCopy = (text: string, index: number) => {
@@ -233,7 +233,7 @@ export const SocialStudioPage: React.FC = () => {
 
           <div className="space-y-3">
             {UNICODE_STYLES.map((style, idx) => {
-              const transformed = style.transform(inputText || 'OmniCraft Studio');
+              const transformed = style.transform(inputText || 'FileTools Kit');
               return (
                 <div
                   key={style.name}

@@ -97,7 +97,7 @@ export const DevToolsPage: React.FC = () => {
   const [regexPattern, setRegexPattern] = useState('([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})');
   const [regexFlags, setRegexFlags] = useState('g');
   const [regexTestString, setRegexTestString] = useState(
-    'Contact our team at support@omnicraft.studio for questions about OmniCraft Studio.'
+    'Contact our team at support@filetoolskit.com for questions about FileTools Kit.'
   );
 
   const regexMatches = useMemo(() => {
@@ -121,7 +121,7 @@ export const DevToolsPage: React.FC = () => {
   }, [regexPattern, regexFlags, regexTestString]);
 
   // --- Base64 / URL Encoder ---
-  const [base64Text, setBase64Text] = useState('OmniCraft browser suite');
+  const [base64Text, setBase64Text] = useState('FileTools Kit browser suite');
   const [base64Encoded, setBase64Encoded] = useState('');
 
   const handleBase64Encode = () => {

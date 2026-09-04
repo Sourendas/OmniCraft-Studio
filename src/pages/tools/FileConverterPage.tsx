@@ -279,7 +279,7 @@ export const FileConverterPage: React.FC = () => {
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
             <RefreshCw className="w-7 h-7 text-[#00A3AD]" />
-            Universal In-Browser Converter
+            File Converter
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Convert Images (PNG, JPG, WebP), Audio → WAV, and DOCX to PDF/TXT in this browser.

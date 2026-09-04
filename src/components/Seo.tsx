@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { SITE, seoForPath, websiteJsonLd } from '../lib/seo';
 import { getGuide } from '../data/guides';

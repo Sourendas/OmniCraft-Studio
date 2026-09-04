@@ -30,7 +30,7 @@ interface DiffStat {
 }
 
 const SAMPLE_ORIGINAL = `{
-  "name": "OmniCraft Studio",
+  "name": "FileTools Kit",
   "version": "1.0.0",
   "privacy": "client-side",
   "features": [
@@ -42,7 +42,7 @@ const SAMPLE_ORIGINAL = `{
 }`;
 
 const SAMPLE_MODIFIED = `{
-  "name": "OmniCraft Studio",
+  "name": "FileTools Kit",
   "version": "2.1.0",
   "privacy": "100%-client-side-wasm",
   "features": [
@@ -188,7 +188,7 @@ export const TextDiffPage: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'omnicraft-diff.patch';
+    a.download = 'filetoolskit-diff.patch';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
