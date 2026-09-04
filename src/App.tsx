@@ -44,11 +44,11 @@ export default function App() {
   return (
     <SubscriptionProvider>
       <BrowserRouter>
-        <div className="relative min-h-screen bg-[#F6FAFC]/80 text-[#0A2540] selection:bg-[#00A3AD]/25 selection:text-[#006066] overflow-x-hidden font-sans flex flex-col justify-between">
+        <div className="relative min-h-screen min-w-0 max-w-[100vw] bg-[#F6FAFC]/80 text-[#0A2540] selection:bg-[#00A3AD]/25 selection:text-[#006066] overflow-x-clip font-sans flex flex-col justify-between">
           <AmbientBackground />
           <ScrollToTop />
           <Navbar />
-          <main className="flex-grow">
+          <main className="flex-grow min-w-0 w-full">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/resume-builder" element={<ResumeBuilderPage />} />
