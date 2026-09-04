@@ -51,12 +51,12 @@ export const LiveSystemDiagnostics: React.FC = () => {
         <div className="relative z-10">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-white/10">
             <div>
-              <div className="flex items-center gap-2 text-xs font-mono text-cyan-300 font-bold mb-2">
-                <Activity className="w-4 h-4 text-[#00A3AD]" />
+              <div className="flex items-center gap-2 text-xs font-mono text-cyan-200 font-bold mb-2">
+                <Activity className="w-4 h-4 text-[#7EE0E6]" />
                 <span className="uppercase tracking-wider">Browser check</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Browser check</h2>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl font-medium">Runs a short JavaScript sample in this tab. Not a security audit.</p>
+              <p className="text-xs sm:text-sm text-slate-200 mt-1 max-w-xl font-medium">Runs a short JavaScript sample in this tab. Not a security audit.</p>
             </div>
             <button id="run-engine-benchmark-btn" onClick={runBenchmark} disabled={isBenchmarking} className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#00A3AD] hover:bg-[#00B5B8] text-white text-xs font-black transition-all cursor-pointer disabled:opacity-50 shadow-lg shadow-teal-900/40 shrink-0">
               {isBenchmarking ? (<><RefreshCw className="w-4 h-4 animate-spin" /><span>Sampling JavaScript...</span></>) : (<><Gauge className="w-4 h-4" /><span>Run sample</span></>)}
@@ -64,24 +64,24 @@ export const LiveSystemDiagnostics: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-8">
             <div className="p-4.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <div className="flex items-center justify-between text-slate-400 mb-2"><span className="text-xs font-bold">JS runtime</span><Cpu className="w-4 h-4 text-cyan-400" /></div>
+              <div className="flex items-center justify-between text-slate-200 mb-2"><span className="text-xs font-bold">JS runtime</span><Cpu className="w-4 h-4 text-cyan-200" /></div>
               <div className="text-xl font-black text-white font-mono flex items-center gap-2"><span>This tab</span></div>
-              <p className="text-[11px] text-slate-400 mt-1 font-mono">{browserHardwareConcurrency} CPU Threads Available</p>
+              <p className="text-[11px] text-slate-200 mt-1 font-mono">{browserHardwareConcurrency} CPU Threads Available</p>
             </div>
             <div className="p-4.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <div className="flex items-center justify-between text-slate-400 mb-2"><span className="text-xs font-bold">JS compute sample</span><Zap className="w-4 h-4 text-amber-400" /></div>
+              <div className="flex items-center justify-between text-slate-200 mb-2"><span className="text-xs font-bold">JS compute sample</span><Zap className="w-4 h-4 text-amber-300" /></div>
               <div className="text-xl font-black text-white font-mono">{jsLoopsPerSec ? `${(jsLoopsPerSec / 1000).toFixed(0)}k loops/sec` : 'Not run yet'}</div>
-              <p className="text-[11px] text-slate-400 mt-1 font-mono">{jsLoopsPerSec ? 'JS loop + SHA-256 sample' : 'Click the button to sample'}</p>
+              <p className="text-[11px] text-slate-200 mt-1 font-mono">{jsLoopsPerSec ? 'JS loop + SHA-256 sample' : 'Click the button to sample'}</p>
             </div>
             <div className="p-4.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <div className="flex items-center justify-between text-slate-400 mb-2"><span className="text-xs font-bold">Tab memory</span><HardDrive className="w-4 h-4 text-cyan-400" /></div>
+              <div className="flex items-center justify-between text-slate-200 mb-2"><span className="text-xs font-bold">Tab memory</span><HardDrive className="w-4 h-4 text-cyan-200" /></div>
               <div className="text-xl font-black text-white font-mono">{heapSizeMb >= 0 ? `${heapSizeMb} MB` : 'Not exposed'}</div>
-              <p className="text-[11px] text-slate-400 mt-1 font-mono">This tab (performance.memory if the browser exposes it)</p>
+              <p className="text-[11px] text-slate-200 mt-1 font-mono">This tab (performance.memory if the browser exposes it)</p>
             </div>
             <div className="p-4.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <div className="flex items-center justify-between text-slate-400 mb-2"><span className="text-xs font-bold">File tools</span><WifiOff className="w-4 h-4 text-emerald-400" /></div>
-              <div className="text-xl font-black text-emerald-400 font-mono flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-emerald-400" /><span>Local tab</span></div>
-              <p className="text-[11px] text-slate-400 mt-1 font-mono">File tools run locally in this tab</p>
+              <div className="flex items-center justify-between text-slate-200 mb-2"><span className="text-xs font-bold">File tools</span><WifiOff className="w-4 h-4 text-emerald-300" /></div>
+              <div className="text-xl font-black text-emerald-300 font-mono flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-emerald-300" /><span>Local tab</span></div>
+              <p className="text-[11px] text-slate-200 mt-1 font-mono">File tools run locally in this tab</p>
             </div>
           </div>
         </div>
