@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SubscriptionProvider } from './context/SubscriptionContext';
 import { AmbientBackground } from './components/layout/AmbientBackground';
@@ -69,9 +69,9 @@ export default function App() {
                 <Route path="/svg-editor" element={<SvgStudioPage />} />
                 <Route path="/text-diff" element={<TextDiffPage />} />
                 <Route path="/privacy" element={<PrivacyPolicyPage />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                <Route path="/privacy-policy" element={<Navigate replace to="/privacy" />} />
                 <Route path="/terms" element={<TermsPage />} />
-                <Route path="/terms-of-service" element={<TermsPage />} />
+                <Route path="/terms-of-service" element={<Navigate replace to="/terms" />} />
                 <Route path="/cookie-policy" element={<CookiePolicyPage />} />
                 <Route path="/disclaimer" element={<DisclaimerPage />} />
                 <Route path="/contact" element={<ContactPage />} />
