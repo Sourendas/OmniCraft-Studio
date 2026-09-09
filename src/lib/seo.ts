@@ -34,12 +34,12 @@ export const SEO_PAGES: Record<string, SeoPage> = {
   '/privacy': {
     path: '/privacy',
     title: 'Privacy Policy | FileTools Kit',
-    description: 'How FileTools Kit handles files in the browser, Vercel logs, Google Fonts, Unsplash, future Google AdSense, and how to contact privacy@filetoolskit.com.'
+    description: 'How FileTools Kit handles browser-only files, hosting and analytics data, third-party assets, Google AdSense advertising, and privacy requests.'
   },
   '/privacy-policy': {
-    path: '/privacy-policy',
+    path: '/privacy',
     title: 'Privacy Policy | FileTools Kit',
-    description: 'How FileTools Kit handles files in the browser, hosting logs, third-party assets, and future Google AdSense.'
+    description: 'Canonical privacy policy for FileTools Kit, including browser-only file processing, analytics, third-party assets, and Google AdSense advertising.'
   },
   '/terms': {
     path: '/terms',
@@ -47,14 +47,14 @@ export const SEO_PAGES: Record<string, SeoPage> = {
     description: 'Terms for using FileTools Kit. Free in-browser tools, no checkout, operated by Souren Das in Bengaluru.'
   },
   '/terms-of-service': {
-    path: '/terms-of-service',
+    path: '/terms',
     title: 'Terms of Service | FileTools Kit',
-    description: 'Terms for using FileTools Kit. Free in-browser tools, no checkout.'
+    description: 'Canonical terms of service for FileTools Kit. Free in-browser tools, no checkout.'
   },
   '/cookie-policy': {
     path: '/cookie-policy',
-    title: 'Cookie Policy | FileTools Kit',
-    description: 'FileTools Kit does not set advertising cookies today. After AdSense approval, Google may set ad cookies. Manage ads at Ads Settings.'
+    title: 'Cookie & Storage Policy | FileTools Kit',
+    description: 'How FileTools Kit uses browser storage, Vercel Analytics, third-party assets, and Google AdSense advertising technologies.'
   },
   '/disclaimer': {
     path: '/disclaimer',
