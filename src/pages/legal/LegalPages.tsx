@@ -20,7 +20,7 @@ export const PrivacyPolicyPage: React.FC = () => (
         <ShieldCheck className="w-8 h-8 text-[#007A82] shrink-0" />
         <div>
           <h1 className="text-3xl font-black text-[#0A2540]">Privacy Policy</h1>
-          <p className="text-xs text-slate-500">Last updated: 4 September 2026</p>
+          <p className="text-xs text-slate-500">Last updated: 10 September 2026</p>
         </div>
       </div>
       <p>This policy describes how FileTools Kit (filetoolskit.com) handles information. It is a description of practice, not a certification of GDPR, CCPA, HIPAA, DPDP, or COPPA compliance.</p>
@@ -48,11 +48,11 @@ export const PrivacyPolicyPage: React.FC = () => (
       <p>Tool-card photographs may load from Unsplash. Google Fonts may load the Outfit, Plus Jakarta Sans, and JetBrains Mono families. Those providers receive a request from your browser for that asset (typically IP address, user agent, and the font or image URL). That request is not your document.</p>
       <p>Contact submit opens your email app with a mailto draft to support@filetoolskit.com. We do not run a ticket database. If you send mail, we receive whatever you put in that message, including your address.</p>
 
-      <h2 className={h2}>7. Advertising (Google AdSense — not live yet)</h2>
-      <p>FileTools Kit may display third-party ads through Google AdSense after Google approves the site. The AdSense JavaScript snippet is not embedded today. ads.txt on this domain is comments only until a publisher ID exists. This section describes ads and cookies that will apply when ads are turned on.</p>
-      <p>Google, as a third-party vendor, may use cookies or similar storage to serve ads on this site and across the web, including ads based on visits to this site and other sites. Users can opt out of personalized ads at <a className={a} href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>. Google’s privacy policy: <a className={a} href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>. How Google uses data on partner sites: <a className={a} href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">policies.google.com/technologies/partner-sites</a>.</p>
+      <h2 className={h2}>7. Advertising (Google AdSense)</h2>
+      <p>FileTools Kit uses Google AdSense Auto ads. Google may display third-party advertisements on eligible pages after the site is approved for ad serving. The AdSense publisher script is included on the site, and the domain publishes an ads.txt authorization for publisher ID pub-4409273905876536.</p>
+      <p>Google, as a third-party advertising vendor, may use cookies, web beacons, device information, IP address, or similar technologies to serve and measure ads, including personalized ads where permitted. Users can manage personalized ads at <a className={a} href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>. Google’s privacy policy: <a className={a} href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>. How Google uses data on partner sites: <a className={a} href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">policies.google.com/technologies/partner-sites</a>.</p>
       <p>FileTools Kit does not sell the contents of files you open in a tool to advertisers. Ad networks do not receive your PDF, image, or resume bytes from our servers because those files are not uploaded to us. Tools still run in this tab.</p>
-      <p>Users in the EEA/UK may see a consent message from Google Privacy & messaging if that is enabled after approval. Until ads are live, FileTools Kit does not set an advertising cookie.</p>
+      <p>Where consent is required, visitors in the EEA, UK, Switzerland, or other regulated regions may be shown an applicable Google Privacy &amp; messaging consent experience before personalized advertising. Advertising and measurement technologies are subject to the choices available in that consent experience and Google’s policies.</p>
 
       <h2 className={h2}>8. Local storage and drafts</h2>
       <p>The browser may keep UI preferences in localStorage. A first-party A/B helper may store ftk_ab_visitor, ftk_ab_assign, and ftk_ab_events on this device only. Those A/B keys are not uploaded as a separate event stream. The Resume Builder may store a draft (ftk_resume_v1) on this device so a refresh does not wipe the form. Clear site data for filetoolskit.com to delete first-party keys. We cannot remote-wipe your browser.</p>
@@ -88,13 +88,13 @@ export const TermsPage: React.FC = () => (
         <FileText className="w-8 h-8 text-[#007A82]" />
         <div>
           <h1 className="text-3xl font-black text-[#0A2540]">Terms of Service</h1>
-          <p className="text-xs text-slate-500">Last updated: 4 September 2026</p>
+          <p className="text-xs text-slate-500">Last updated: 10 September 2026</p>
         </div>
       </div>
       <p>These terms are between you and Souren Das (Bengaluru, India) for filetoolskit.com.</p>
       <p>All 12 tools are free in the browser. There is no paid upgrade or checkout on this site. Outputs you generate are yours, subject to third-party rights in content you paste in. FileTools Kit does not charge a license fee on those files.</p>
       <p>Do not use the tools for unlawful content. Tools are provided as-is, without warranty. Encrypted PDFs, unusual file types, and very large files may fail in the browser. Currency figures are static examples, not live quotes. Health numbers are not medical advice. Resume overlap % is not an employer ATS.</p>
-      <p>The site uses Vercel Web Analytics for page views. The site may show third-party ads after Google AdSense approval. Ads are not embedded today. Governed by the laws of India, with courts in Bengaluru, without limiting any non-waivable consumer rights you have where you live.</p>
+      <p>The site uses Vercel Web Analytics for page views and may display Google AdSense Auto ads on eligible pages. Ads are supplied by a third-party advertising service and may be personalized where permitted and subject to applicable consent choices. Governed by the laws of India, with courts in Bengaluru, without limiting any non-waivable consumer rights you have where you live.</p>
       <p>Questions: support@filetoolskit.com.</p>
     </div>
   </div>
@@ -108,10 +108,10 @@ export const CookiePolicyPage: React.FC = () => (
         <Lock className="w-8 h-8 text-[#007A82]" />
         <div>
           <h1 className="text-3xl font-black text-[#0A2540]">Cookie & Storage Policy</h1>
-          <p className="text-xs text-slate-500">Last updated: 4 September 2026</p>
+          <p className="text-xs text-slate-500">Last updated: 10 September 2026</p>
         </div>
       </div>
-      <p>FileTools Kit does not set advertising cookies today. The AdSense script is not embedded. Until AdSense is enabled, no advertising cookie is set by FileTools Kit.</p>
+      <p>FileTools Kit uses Google AdSense Auto ads. Google may use advertising and measurement cookies or similar technologies when ads are served, subject to applicable consent requirements and your choices. FileTools Kit does not control Google’s third-party advertising technologies.</p>
       <h2 className={h2}>Visit analytics</h2>
       <p>Vercel Web Analytics is enabled. Vercel documents it as cookie-less. It records page path and coarse visit metadata so we can see which tools are opened. It does not receive file contents. See <a className={a} href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel Analytics privacy notes</a>.</p>
       <p>Google Analytics is not installed.</p>
@@ -119,10 +119,10 @@ export const CookiePolicyPage: React.FC = () => (
       <p>This domain may use localStorage for UI preferences, an optional A/B helper (ftk_ab_visitor, ftk_ab_assign, ftk_ab_events), and a Resume Builder draft (ftk_resume_v1). These stay on the device. Clear site data for filetoolskit.com to delete them.</p>
       <h2 className={h2}>Hosting, fonts, and images</h2>
       <p>Vercel may set technical cookies to serve and protect the site. Google Fonts and Unsplash may set their own cookies when those assets load. We do not control those third-party cookies.</p>
-      <h2 className={h2}>Advertising cookies — after approval only</h2>
-      <p>After Google approves the site and the official snippet is added, Google may set advertising and measurement cookies (including historical DoubleClick / IDE-style cookies). Ads are third-party. File bytes are not uploaded to us and are not sent to advertisers from our servers.</p>
+      <h2 className={h2}>Advertising</h2>
+      <p>Google may set advertising and measurement cookies or use similar technologies, including historical DoubleClick / IDE-style identifiers, to serve and measure ads. The exact technologies and purposes can change under Google’s advertising products and applicable regional consent choices. File bytes are not uploaded to us and are not sent to advertisers from our servers.</p>
       <p>Manage personalized ads at <a className={a} href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">adssettings.google.com</a>. Google privacy: <a className={a} href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>. Partner sites: <a className={a} href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">how Google uses data on partner sites</a>.</p>
-      <p>EEA/UK visitors may see a consent message from Google Privacy & messaging if that product is enabled after approval. We will not show a fake consent banner before ads exist.</p>
+      <p>Where required, EEA/UK/Switzerland visitors may see a Google Privacy &amp; messaging consent experience. The availability and wording of that message depends on the applicable regional configuration.</p>
       <p>See the <Link className={a} to="/privacy">privacy policy</Link> for the rest of the story.</p>
     </div>
   </div>
