@@ -1,4 +1,1 @@
-# FileTools Kit — ads.txt
-# Add the official Google AdSense line after publisher approval.
-# Format will be: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-# Do not serve ads until that line and the AdSense snippet are both real.
+google.com, pub-4409273905876536, DIRECT, f08c47fec0942fa0
