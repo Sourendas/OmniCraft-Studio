@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
           </div>
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <ShieldCheck className="w-4 h-4 text-[#007A82] mt-0.5" />
-            <div><h4 className="font-black text-[#0A2540] text-xs mb-0.5">Local execution</h4><p className="text-[11px]">No ad script is embedded today.</p></div>
+            <div><h4 className="font-black text-[#0A2540] text-xs mb-0.5">Local execution</h4><p className="text-[11px]">Google AdSense may display ads; see our privacy and cookie policies.</p></div>
           </div>
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <Cpu className="w-4 h-4 text-emerald-700 mt-0.5" />
