@@ -32,6 +32,18 @@ export const Footer: React.FC = () => {
           <p className="text-xs font-medium">12 in-browser tools. Operated by Souren Das, Bengaluru, India.</p>
           <p className="text-[11px]"><a className="text-[#007A82] underline font-bold" href="mailto:support@filetoolskit.com">support@filetoolskit.com</a></p>
           <p className="text-[11px]"><a className="text-[#007A82] underline font-bold" href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a></p>
+          <a
+            href="https://fazier.com/launches/www.filetoolskit.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block pt-1"
+          >
+            <img
+              src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light"
+              width={120}
+              alt="Fazier badge"
+            />
+          </a>
         </div>
         <div className="space-y-2">
           <h4 className="font-black text-[#0A2540] text-xs uppercase">Document</h4>
@@ -69,7 +81,7 @@ export const Footer: React.FC = () => {
           </ul>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-4 pb-8 text-slate-500">© {new Date().getFullYear()} FileTools Kit · Souren Das · Bengaluru</div>
+      <div className="max-w-7xl mx-auto px-4 pb-8 text-slate-500">© ${new Date().getFullYear()} FileTools Kit · Souren Das · Bengaluru</div>
     </footer>
   );
 };
