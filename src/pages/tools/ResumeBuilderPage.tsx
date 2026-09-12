@@ -65,7 +65,7 @@ const SAMPLE: ResumeData = {
 };
 
 const field =
-  'w-full px-3 py-2.5 rounded-xl bg-[#F4F8FA] border border-slate-200 text-sm text-[#0A2540]';
+  'w-full px-3 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-sm text-[#0A2540]';
 
 export const ResumeBuilderPage: React.FC = () => {
   const [tab, setTab] = useState<'edit' | 'preview'>('edit');
@@ -127,7 +127,7 @@ export const ResumeBuilderPage: React.FC = () => {
   };
 
   const handleDownload = () => downloadResumePdf(data, template);
-  const contacts = [data.email, data.phone, data.location, data.linkedin, data.github, data.website].filter(Boolean).join(' · ');
+  const contacts = [data.email, data.phone, data.location, data.linkedin, data.github, data.website].filter(Boolean).join(' \u00b7 ');
   const currentName = RESUME_TEMPLATES.find((t) => t.id === template)?.name || 'Modern Teal';
 
   return (
@@ -135,15 +135,15 @@ export const ResumeBuilderPage: React.FC = () => {
       <div className="flex flex-col gap-4 pb-5 border-b border-slate-200">
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
           <div className="min-w-0">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] mb-1 font-bold">
-              <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#C2410C] mb-1 font-bold">
+              <Link to="/" className="text-slate-500 hover:text-[#EA580C] flex items-center gap-1">
                 <ArrowLeft className="w-3.5 h-3.5" /> All Tools
               </Link>
               <span>/</span>
               <span>Documents</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
-              <FileText className="w-7 h-7 text-[#00A3AD] shrink-0" /> Resume Builder
+              <FileText className="w-7 h-7 text-[#EA580C] shrink-0" /> Resume Builder
             </h1>
             <p className="text-sm text-slate-600 mt-1 font-medium">
               12 layouts. Pick one, fill the form, download a PDF. Keyword overlap is local, not an ATS. Rewrite is a local verb helper.
@@ -151,14 +151,14 @@ export const ResumeBuilderPage: React.FC = () => {
           </div>
           <div className="flex flex-wrap items-center gap-2 shrink-0">
             <div className="flex bg-white border border-slate-200 rounded-full p-1">
-              <button onClick={() => setTab('edit')} className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold ${tab === 'edit' ? 'bg-[#00A3AD] text-white' : 'text-slate-600'}`}>
+              <button onClick={() => setTab('edit')} className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold ${tab === 'edit' ? 'bg-[#EA580C] text-white' : 'text-slate-600'}`}>
                 <Edit3 className="w-3.5 h-3.5" /> Editor
               </button>
-              <button onClick={() => setTab('preview')} className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold ${tab === 'preview' ? 'bg-[#00A3AD] text-white' : 'text-slate-600'}`}>
+              <button onClick={() => setTab('preview')} className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold ${tab === 'preview' ? 'bg-[#EA580C] text-white' : 'text-slate-600'}`}>
                 <Eye className="w-3.5 h-3.5" /> Preview
               </button>
             </div>
-            <button id="download-resume-pdf-btn" type="button" onClick={handleDownload} className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] text-white text-sm font-black min-h-11">
+            <button id="download-resume-pdf-btn" type="button" onClick={handleDownload} className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#EA580C] to-[#C2410C] text-white text-sm font-black min-h-11">
               <Download className="w-4 h-4" /> Download PDF
             </button>
           </div>
@@ -173,7 +173,7 @@ export const ResumeBuilderPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 items-start">
         <div className={`lg:col-span-7 space-y-5 ${tab === 'preview' ? 'hidden lg:block' : ''}`}>
           <section className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3">
-            <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Contact</h2>
+            <h2 className="text-xs font-black uppercase tracking-wider text-[#C2410C]">Contact</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <label className="text-xs font-bold">Full name<input className={field} value={data.fullName} onChange={(e) => patch({ fullName: e.target.value })} /></label>
               <label className="text-xs font-bold">Job title<input className={field} value={data.jobTitle} onChange={(e) => patch({ jobTitle: e.target.value })} /></label>
@@ -187,14 +187,14 @@ export const ResumeBuilderPage: React.FC = () => {
           </section>
 
           <section className="rounded-3xl bg-white border border-slate-200 p-5">
-            <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82] mb-2">Summary</h2>
+            <h2 className="text-xs font-black uppercase tracking-wider text-[#C2410C] mb-2">Summary</h2>
             <textarea rows={5} className={field} value={data.summary} onChange={(e) => patch({ summary: e.target.value })} />
           </section>
 
           <section className="space-y-3">
             <div className="flex items-center justify-between">
-              <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Experience</h2>
-              <button type="button" onClick={() => setData((prev) => ({ ...prev, experience: [{ id: Date.now().toString(), company: '', position: '', startDate: '', endDate: '', current: false, location: '', bullets: [''] }, ...prev.experience] }))} className="text-xs font-bold text-[#007A82] flex items-center gap-1">
+              <h2 className="text-xs font-black uppercase tracking-wider text-[#C2410C]">Experience</h2>
+              <button type="button" onClick={() => setData((prev) => ({ ...prev, experience: [{ id: Date.now().toString(), company: '', position: '', startDate: '', endDate: '', current: false, location: '', bullets: [''] }, ...prev.experience] }))} className="text-xs font-bold text-[#C2410C] flex items-center gap-1">
                 <Plus className="w-3.5 h-3.5" /> Add role
               </button>
             </div>
@@ -216,7 +216,7 @@ export const ResumeBuilderPage: React.FC = () => {
                 {exp.bullets.map((b, i) => (
                   <div key={i} className="flex gap-2 items-start">
                     <textarea rows={2} className={field} value={b} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => { if (x.id !== exp.id) return x; const bullets = [...x.bullets]; bullets[i] = e.target.value; return { ...x, bullets }; }) }))} />
-                    <button type="button" onClick={() => rewriteBullet(exp.id, i, b)} className="text-[10px] font-bold text-[#007A82] shrink-0 pt-2">Rewrite</button>
+                    <button type="button" onClick={() => rewriteBullet(exp.id, i, b)} className="text-[10px] font-bold text-[#C2410C] shrink-0 pt-2">Rewrite</button>
                     <button type="button" onClick={() => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, bullets: x.bullets.filter((_, j) => j !== i) } : x)) }))} className="pt-2" aria-label="Remove bullet"><Trash2 className="w-3.5 h-3.5 text-slate-400" /></button>
                   </div>
                 ))}
@@ -227,8 +227,8 @@ export const ResumeBuilderPage: React.FC = () => {
 
           <section className="space-y-3">
             <div className="flex items-center justify-between">
-              <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Education</h2>
-              <button type="button" onClick={() => setData((p) => ({ ...p, education: [...p.education, { id: Date.now().toString(), school: '', degree: '', field: '', graduationYear: '', gpa: '' }] }))} className="text-xs font-bold text-[#007A82] flex items-center gap-1">
+              <h2 className="text-xs font-black uppercase tracking-wider text-[#C2410C]">Education</h2>
+              <button type="button" onClick={() => setData((p) => ({ ...p, education: [...p.education, { id: Date.now().toString(), school: '', degree: '', field: '', graduationYear: '', gpa: '' }] }))} className="text-xs font-bold text-[#C2410C] flex items-center gap-1">
                 <Plus className="w-3.5 h-3.5" /> Add school
               </button>
             </div>
@@ -245,21 +245,21 @@ export const ResumeBuilderPage: React.FC = () => {
           </section>
 
           <section className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3">
-            <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Skills & certifications</h2>
+            <h2 className="text-xs font-black uppercase tracking-wider text-[#C2410C]">Skills & certifications</h2>
             <label className="text-xs font-bold block">Skills (comma separated)<input className={field} value={data.skills.join(', ')} onChange={(e) => patch({ skills: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) })} /></label>
             <label className="text-xs font-bold block">Certifications (comma separated)<input className={field} value={data.certifications.join(', ')} onChange={(e) => patch({ certifications: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) })} /></label>
           </section>
 
           <section className="rounded-3xl bg-white border border-slate-200 p-5 space-y-3">
             <div className="flex items-center justify-between gap-3">
-              <h2 className="text-xs font-black uppercase tracking-wider text-[#007A82]">Keyword overlap (optional)</h2>
-              <span className="text-sm font-black text-[#007A82]">{overlap.score}%</span>
+              <h2 className="text-xs font-black uppercase tracking-wider text-[#C2410C]">Keyword overlap (optional)</h2>
+              <span className="text-sm font-black text-[#C2410C]">{overlap.score}%</span>
             </div>
             <textarea rows={5} className={field} placeholder="Paste a job description to see local keyword overlap" value={data.targetJobDescription} onChange={(e) => patch({ targetJobDescription: e.target.value })} />
-            <p className="text-[11px] text-slate-500 font-medium">{overlap.matched.length} matched · {overlap.missing.length} missing. Not an employer ATS.</p>
+            <p className="text-[11px] text-slate-500 font-medium">{overlap.matched.length} matched \u00b7 {overlap.missing.length} missing. Not an employer ATS.</p>
           </section>
 
-          <button type="button" onClick={handleDownload} className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] text-white text-sm font-black min-h-12">
+          <button type="button" onClick={handleDownload} className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#EA580C] to-[#C2410C] text-white text-sm font-black min-h-12">
             <Download className="w-4 h-4" /> Download {currentName} PDF
           </button>
           <AdBanner type="in-content" />
@@ -269,14 +269,14 @@ export const ResumeBuilderPage: React.FC = () => {
           <LiveResumePreview template={template} name={data.fullName} title={data.jobTitle} contacts={contacts} summary={data.summary}>
             {data.experience.length > 0 && (
               <div>
-                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Experience</h3>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#C2410C] mb-1">Experience</h3>
                 {data.experience.map((exp) => (
                   <div key={exp.id} className="mt-2">
                     <div className="flex justify-between gap-2 font-bold">
                       <span>{exp.position}</span>
                       <span className="text-slate-500 font-normal shrink-0">{exp.startDate} – {exp.current ? 'Present' : exp.endDate}</span>
                     </div>
-                    <p className="text-slate-500 italic">{[exp.company, exp.location].filter(Boolean).join(' · ')}</p>
+                    <p className="text-slate-500 italic">{[exp.company, exp.location].filter(Boolean).join(' \u00b7 ')}</p>
                     <ul className="list-disc ml-4 mt-1 space-y-0.5">{exp.bullets.filter(Boolean).map((b, i) => <li key={i}>{b}</li>)}</ul>
                   </div>
                 ))}
@@ -284,29 +284,29 @@ export const ResumeBuilderPage: React.FC = () => {
             )}
             {data.education.length > 0 && (
               <div>
-                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Education</h3>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#C2410C] mb-1">Education</h3>
                 {data.education.map((edu) => (
                   <div key={edu.id} className="mt-1">
-                    <div className="flex justify-between gap-2 font-bold"><span>{[edu.degree, edu.field].filter(Boolean).join(' — ')}</span><span className="font-normal text-slate-500">{edu.graduationYear}</span></div>
-                    <p className="text-slate-500 italic">{edu.school}{edu.gpa ? ` · GPA ${edu.gpa}` : ''}</p>
+                    <div className="flex justify-between gap-2 font-bold"><span>{[edu.degree, edu.field].filter(Boolean).join(' \u2014 ')}</span><span className="font-normal text-slate-500">{edu.graduationYear}</span></div>
+                    <p className="text-slate-500 italic">{edu.school}{edu.gpa ? ` \u00b7 GPA ${edu.gpa}` : ''}</p>
                   </div>
                 ))}
               </div>
             )}
             {data.skills.length > 0 && template !== 'sidebar' && (
               <div>
-                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Skills</h3>
-                <p>{data.skills.join(' · ')}</p>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#C2410C] mb-1">Skills</h3>
+                <p>{data.skills.join(' \u00b7 ')}</p>
               </div>
             )}
             {data.certifications.length > 0 && (
               <div>
-                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-1">Certifications</h3>
-                <p>{data.certifications.join(' · ')}</p>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#C2410C] mb-1">Certifications</h3>
+                <p>{data.certifications.join(' \u00b7 ')}</p>
               </div>
             )}
           </LiveResumePreview>
-          <button type="button" onClick={handleDownload} className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#00A3AD] text-white text-sm font-black">
+          <button type="button" onClick={handleDownload} className="mt-3 w-full flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#EA580C] text-white text-sm font-black">
             <Download className="w-4 h-4" /> Download {currentName} PDF
           </button>
         </div>
