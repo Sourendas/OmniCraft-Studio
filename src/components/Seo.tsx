@@ -51,15 +51,27 @@ export const Seo: React.FC = () => {
     upsertMeta('property', 'og:title', page.title);
     upsertMeta('property', 'og:description', page.description);
     upsertMeta('property', 'og:url', `${SITE}${page.path}`);
-    const canonical = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (canonical) canonical.href = `${SITE}${page.path}`;
+    upsertMeta('property', 'og:type', pathname === '/' ? 'website' : 'article');
+    upsertMeta('property', 'og:image', `${SITE}/og.svg`);
+    upsertMeta('name', 'twitter:card', 'summary_large_image');
+    upsertMeta('name', 'twitter:title', page.title);
+    upsertMeta('name', 'twitter:description', page.description);
+    upsertMeta('name', 'twitter:image', `${SITE}/og.svg`);
 
-    const existing = document.getElementById('ftk-jsonld');
-    if (existing) existing.remove();
+    let link = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'canonical';
+      document.head.appendChild(link);
+    }
+    link.href = `${SITE}${page.path}`;
+
+    const id = 'ftk-jsonld';
+    document.getElementById(id)?.remove();
     if (jsonLd) {
       const script = document.createElement('script');
-      script.id = 'ftk-jsonld';
       script.type = 'application/ld+json';
+      script.id = id;
       script.text = JSON.stringify(jsonLd);
       document.head.appendChild(script);
     }
