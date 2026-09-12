@@ -182,7 +182,7 @@ export const DevToolsPage: React.FC = () => {
 
       <div className="my-6 flex items-center gap-2 border-b border-slate-200 pb-3 overflow-x-auto scrollbar-none">
         {[
-          { id: 'json-csv' as const, label: 'JSON \u2194 CSV', icon: FileJson },
+          { id: 'json-csv' as const, label: 'JSON / CSV', icon: FileJson },
           { id: 'sql' as const, label: 'SQL line-breaks', icon: Database },
           { id: 'regex' as const, label: 'RegEx Live Tester', icon: Code },
           { id: 'base64' as const, label: 'Base64 & URL', icon: Lock },
@@ -217,16 +217,16 @@ export const DevToolsPage: React.FC = () => {
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs text-slate-300">
                 <span className="font-bold">JSON Input / Output</span>
-                <button onClick={convertJsonToCsv} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Convert JSON \u2192 CSV</button>
+                <button onClick={convertJsonToCsv} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Convert JSON to CSV</button>
               </div>
               <textarea rows={12} value={jsonInput} onChange={(e) => setJsonInput(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs text-slate-300">
                 <span className="font-bold">CSV Input / Output</span>
-                <button onClick={convertCsvToJson} className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200">Convert CSV \u2192 JSON</button>
+                <button onClick={convertCsvToJson} className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200">Convert CSV to JSON</button>
               </div>
-              <textarea rows={12} value={csvOutput} onChange={(e) => setCsvOutput(e.target.value)} placeholder="Click Convert JSON \u2192 CSV or paste CSV here..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
+              <textarea rows={12} value={csvOutput} onChange={(e) => setCsvOutput(e.target.value)} placeholder="Click Convert JSON to CSV or paste CSV here..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
             </div>
           </div>
         </div>
@@ -293,14 +293,14 @@ export const DevToolsPage: React.FC = () => {
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs text-slate-300">
               <span className="font-bold">Decoded Plain Text</span>
-              <button onClick={handleBase64Encode} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Encode to Base64 \u2192</button>
+              <button onClick={handleBase64Encode} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Encode to Base64</button>
             </div>
             <textarea rows={8} value={base64Text} onChange={(e) => setBase64Text(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono" />
           </div>
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs text-slate-300">
               <span className="font-bold">Base64 Encoded Output</span>
-              <button onClick={handleBase64Decode} className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200">\u2190 Decode from Base64</button>
+              <button onClick={handleBase64Decode} className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200">Decode from Base64</button>
             </div>
             <textarea rows={8} value={base64Encoded} onChange={(e) => setBase64Encoded(e.target.value)} placeholder="Base64 output..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#C2410C] font-mono" />
           </div>
