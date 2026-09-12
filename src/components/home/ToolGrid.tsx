@@ -13,11 +13,6 @@ interface ToolGridProps {
   selectedCategory: string;
 }
 
-const optimizeUnsplash = (url: string) =>
-  url.includes('images.unsplash.com')
-    ? url.replace(/w=\d+&q=\d+/, 'w=640&q=55&fm=webp')
-    : url;
-
 const TitleTablet: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
   <span className={`inline-flex max-w-full items-center px-3 py-1 rounded-full bg-[#FFEDD5] border border-[#FDBA74] text-[#C2410C] font-black tracking-wider uppercase ${className}`}>
     <span className="truncate">{children}</span>
@@ -74,25 +69,18 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6">
           {filteredTools.map((tool, index) => (
             <div key={tool.id} id={`tool-card-${tool.id}`} className="group rounded-3xl bg-white border border-slate-200/90 hover:border-[#EA580C] transition-all duration-300 flex flex-col overflow-hidden shadow-[0_4px_20px_rgba(28,25,23,0.04)] hover:shadow-[0_12px_35px_rgba(249,115,22,0.12)] sm:hover:-translate-y-0.5">
-              <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-100 cursor-pointer" onClick={() => setActivePreviewTool(tool)}>
+              <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-[#FFEDD5] cursor-pointer" onClick={() => setActivePreviewTool(tool)}>
                 <img
-                  src={optimizeUnsplash(tool.image)}
+                  src={tool.image}
                   alt={tool.screenshotAlt || tool.name}
                   width={640}
-                  height={352}
+                  height={360}
                   loading={index < 2 ? 'eager' : 'lazy'}
                   decoding="async"
                   fetchPriority={index === 0 ? 'high' : 'low'}
-                  referrerPolicy="no-referrer"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    if (!target.src.includes('photo-1607604276583-eef5d076aa5f')) {
-                      target.src = 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=640&q=55&fm=webp';
-                    }
-                  }}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/60 via-transparent to-black/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/55 via-transparent to-black/5" />
                 <div className="absolute top-3 left-3 max-w-[70%] flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-[11px] font-bold text-[#1C1917] shadow-xs">
                   {getToolIcon(tool.iconName)}<span className="truncate">{tool.category}</span>
                 </div>
@@ -138,7 +126,7 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
                 <TitleTablet className="text-sm sm:text-lg normal-case tracking-tight">{activePreviewTool.name}</TitleTablet>
               </h3>
               <div className="mt-4 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200 bg-slate-50 shadow-inner">
-                <img src={optimizeUnsplash(activePreviewTool.image)} alt={activePreviewTool.screenshotAlt || activePreviewTool.name} width={640} height={360} decoding="async" referrerPolicy="no-referrer" className="w-full h-44 sm:h-60 object-cover object-center" />
+                <img src={activePreviewTool.image} alt={activePreviewTool.screenshotAlt || activePreviewTool.name} width={640} height={360} decoding="async" className="w-full h-44 sm:h-60 object-cover object-center" />
               </div>
               <div className="mt-5">
                 <h4 className="text-xs font-black uppercase tracking-wider text-[#C2410C] mb-1.5">About this tool</h4>
