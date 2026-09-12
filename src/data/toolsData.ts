@@ -40,7 +40,7 @@ export const TOOLS_DATA: ToolItem[] = [
     route: '/file-converter',
     iconName: 'RefreshCw',
     badge: 'Free',
-    gradient: 'from-emerald-500/20 via-teal-500/10 to-cyan-500/20',
+    gradient: 'from-emerald-500/20 via-orange-500/10 to-cyan-500/20',
     highlights: ['PNG / JPG / WebP', 'Audio to WAV', 'DOCX to PDF or TXT', 'Runs in the browser'],
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'In-browser file converter queue',
@@ -85,7 +85,7 @@ export const TOOLS_DATA: ToolItem[] = [
     route: '/dev-tools',
     iconName: 'Terminal',
     badge: 'Free',
-    gradient: 'from-teal-500/20 via-emerald-500/10 to-green-500/20',
+    gradient: 'from-orange-500/20 via-emerald-500/10 to-green-500/20',
     highlights: ['JSON / CSV (flat)', 'SQL keyword line-breaks', 'RegEx tester', 'SHA hashes'],
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'Developer converters and hash tools',
@@ -126,7 +126,7 @@ export const TOOLS_DATA: ToolItem[] = [
     name: 'Health Calculator',
     category: 'Productivity & Utility',
     description: 'Mifflin-St Jeor BMR and TDEE estimates with macro sliders. Not medical advice.',
-    detailedDescription: 'Estimates BMR with Mifflin-St Jeor and TDEE from an activity multiplier. Macro grams follow simple ratio sliders. Educational only \u2014 not medical advice.',
+    detailedDescription: 'Estimates BMR with Mifflin-St Jeor and TDEE from an activity multiplier. Macro grams follow simple ratio sliders. Educational only — not medical advice.',
     route: '/health-calc',
     iconName: 'Flame',
     badge: 'Free',
@@ -160,7 +160,7 @@ export const TOOLS_DATA: ToolItem[] = [
     route: '/svg-editor',
     iconName: 'Sparkles',
     badge: 'Free',
-    gradient: 'from-teal-500/20 via-cyan-500/10 to-emerald-500/20',
+    gradient: 'from-orange-500/20 via-cyan-500/10 to-emerald-500/20',
     highlights: ['Color & stroke editor', 'Minified SVG', 'React JSX export', 'PNG export'],
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
     screenshotAlt: 'SVG vector studio',
@@ -192,7 +192,7 @@ export const FAQ_DATA: FaqItem[] = [
   {
     category: 'Pricing',
     question: 'Is anything paid?',
-    answer: 'No. All 12 tools are free in the browser. There is no checkout and no subscription on this site.'
+    answer: 'No. All 12 tools are free in the browser. There is no checkout and no subscription on this site. The site is supported by Google AdSense ads.'
   },
   {
     category: 'Commercial use',
@@ -207,6 +207,26 @@ export const FAQ_DATA: FaqItem[] = [
   {
     category: 'Contact',
     question: 'How do I reach you?',
-    answer: 'Email support@filetoolskit.com or privacy@filetoolskit.com. Operator: Souren Das, Bengaluru, India.'
+    answer: 'Email support@filetoolskit.com or privacy@filetoolskit.com. Operator: Souren Das, Bengaluru, India. There is no phone line or ticket portal.'
+  },
+  {
+    category: 'Advertising',
+    question: 'Do you show ads?',
+    answer: 'Yes. FileTools Kit uses Google AdSense Auto ads to support the free tools. The publisher script is on the site (pub-4409273905876536). Ads may be personalized where permitted. Manage them at adssettings.google.com. See Privacy and the Cookie policy.'
+  },
+  {
+    category: 'Advertising',
+    question: 'Do advertisers get my files?',
+    answer: 'No. Tools do not upload your PDFs, images, or resume text to FileTools Kit. Ad networks do not receive those bytes from our servers. Loading the website and showing ads is a separate channel from file bytes in the tab.'
+  },
+  {
+    category: 'Advertising',
+    question: 'How do I turn off personalized ads?',
+    answer: 'Use Google Ads Settings (adssettings.google.com) and your browser cookie controls. Visitors in the EEA, UK, and Switzerland may see a Google consent message. Some US-state visitors may see a Google US-state privacy notice. Blocking cookies may limit ads rather than remove every advertisement.'
+  },
+  {
+    category: 'Policies',
+    question: 'Where are the legal pages?',
+    answer: 'Privacy, Terms, Cookie policy, Disclaimer, About, and Contact are linked in the footer on every page. Guides explain how individual tools work in this tab.'
   }
 ];
