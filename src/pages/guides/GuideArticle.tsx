@@ -9,7 +9,7 @@ export const GuideArticlePage: React.FC = () => {
   if (!guide) return <Navigate to="/guides" replace />;
   return (
     <article className="relative z-10 max-w-3xl mx-auto px-4 py-12">
-      <Link to="/guides" className="inline-flex items-center gap-1.5 text-xs font-black text-[#007A82] mb-6">
+      <Link to="/guides" className="inline-flex items-center gap-1.5 text-xs font-black text-[#C2410C] mb-6">
         <ArrowLeft className="w-3.5 h-3.5" /> All guides
       </Link>
       <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 space-y-6 text-sm text-slate-700 leading-relaxed">
@@ -18,7 +18,7 @@ export const GuideArticlePage: React.FC = () => {
         <p className="text-xs text-slate-500">Last updated: {guide.updated} · Souren Das, FileTools Kit, Bengaluru · About {guide.wordCount} words</p>
 
         {guide.figures.map((f) => (
-          <figure key={f.src} className="rounded-2xl overflow-hidden border border-slate-200 bg-[#F4F8FA]">
+          <figure key={f.src} className="rounded-3xl overflow-hidden border border-slate-200 bg-[#FFF7ED]">
             <img src={f.src} alt={f.alt} className="w-full h-auto" width={960} height={540} />
             <figcaption className="px-4 py-3 text-xs text-slate-600 font-medium">{f.caption}</figcaption>
           </figure>
@@ -64,13 +64,13 @@ export const GuideArticlePage: React.FC = () => {
         ))}
         <p>
           Files you open in a tool are not uploaded to FileTools Kit. Vercel still serves this page. Read the{' '}
-          <Link className="text-[#007A82] underline font-bold" to="/privacy">privacy policy</Link>.
+          <Link className="text-[#C2410C] underline font-bold" to="/privacy">privacy policy</Link>.
         </p>
 
         <h2 className="text-lg font-black text-[#0A2540]">Related</h2>
         <p className="text-xs text-slate-500 font-medium">{guide.notes.join(' ')}</p>
         <div className="flex flex-wrap gap-3 pt-2">
-          <Link to={guide.toolRoute} className="px-5 py-2.5 rounded-full bg-[#00A3AD] text-white text-xs font-black">
+          <Link to={guide.toolRoute} className="px-5 py-2.5 rounded-full bg-[#EA580C] text-white text-xs font-black">
             {guide.toolLabel}
           </Link>
           <Link to="/guides" className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-black">
