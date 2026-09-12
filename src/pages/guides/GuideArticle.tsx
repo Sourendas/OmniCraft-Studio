@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { getGuide } from '../../data/guides';
+import { getGuide } from '../../data/honestGuides';
 
 export const GuideArticlePage: React.FC = () => {
   const { slug } = useParams();
@@ -63,8 +63,10 @@ export const GuideArticlePage: React.FC = () => {
           <p key={p.slice(0, 40)}>{p}</p>
         ))}
         <p>
-          Files you open in a tool are not uploaded to FileTools Kit. Vercel still serves this page. Read the{' '}
-          <Link className="text-[#C2410C] underline font-bold" to="/privacy">privacy policy</Link>.
+          Files you open in a tool are not uploaded to FileTools Kit. Vercel still serves this page. Google AdSense may show ads. Read the{' '}
+          <Link className="text-[#C2410C] underline font-bold" to="/privacy">privacy policy</Link>
+          {' '}and{' '}
+          <Link className="text-[#C2410C] underline font-bold" to="/cookie-policy">cookie policy</Link>.
         </p>
 
         <h2 className="text-lg font-black text-[#0A2540]">Related</h2>
