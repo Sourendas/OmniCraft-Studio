@@ -120,15 +120,15 @@ export const QrGeneratorPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] font-bold mb-1">
-            <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#C2410C] font-bold mb-1">
+            <Link to="/" className="text-slate-500 hover:text-[#EA580C] flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
             <span>Media & Graphics</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
-            <QrCode className="w-7 h-7 text-indigo-400" />
+            <QrCode className="w-7 h-7 text-[#EA580C]" />
             QR Generator
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
@@ -141,12 +141,12 @@ export const QrGeneratorPage: React.FC = () => {
             onClick={downloadPng}
             className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white hover:bg-slate-50 text-[#0A2540] text-xs font-bold border border-slate-200 transition-all cursor-pointer"
           >
-            <Download className="w-3.5 h-3.5 text-[#00A3AD]" />
+            <Download className="w-3.5 h-3.5 text-[#EA580C]" />
             <span>Download PNG</span>
           </button>
           <button
             onClick={downloadSvg}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-400 hover:to-cyan-400 text-white text-xs font-bold shadow-lg shadow-indigo-500/20 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#F97316] hover:to-[#EA580C] text-white text-xs font-bold shadow-lg shadow-[#EA580C]/20 transition-all cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Vector SVG</span>
@@ -173,7 +173,7 @@ export const QrGeneratorPage: React.FC = () => {
                   onClick={() => setQrType(t.id)}
                   className={`py-2 px-1 rounded-lg font-semibold flex flex-col items-center gap-1 transition-all ${
                     qrType === t.id
-                      ? 'bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] shadow-sm'
+                      ? 'bg-[#FFEDD5] text-[#C2410C] border border-[#FDBA74] shadow-sm'
                       : 'text-slate-500 hover:text-[#0A2540]'
                   }`}
                 >
@@ -194,7 +194,7 @@ export const QrGeneratorPage: React.FC = () => {
                   value={urlValue}
                   onChange={(e) => setUrlValue(e.target.value)}
                   placeholder="https://example.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#007A82] font-mono focus:border-[#00A3AD]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#C2410C] font-mono focus:border-[#EA580C]"
                 />
               </div>
             )}
@@ -207,7 +207,7 @@ export const QrGeneratorPage: React.FC = () => {
                     type="text"
                     value={wifiSsid}
                     onChange={(e) => setWifiSsid(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
+                    className="w-full px-3 py-2 rounded-xl bg-[#FFF7ED] border border-slate-200 text-[#0A2540]"
                   />
                 </div>
                 <div>
@@ -216,7 +216,7 @@ export const QrGeneratorPage: React.FC = () => {
                     type="text"
                     value={wifiPass}
                     onChange={(e) => setWifiPass(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540] font-mono"
+                    className="w-full px-3 py-2 rounded-xl bg-[#FFF7ED] border border-slate-200 text-[#0A2540] font-mono"
                   />
                 </div>
                 <div>
@@ -224,7 +224,7 @@ export const QrGeneratorPage: React.FC = () => {
                   <select
                     value={wifiType}
                     onChange={(e) => setWifiType(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
+                    className="w-full px-3 py-2 rounded-xl bg-[#FFF7ED] border border-slate-200 text-[#0A2540]"
                   >
                     <option value="WPA">WPA / WPA2 / WPA3</option>
                     <option value="WEP">WEP</option>
@@ -242,7 +242,7 @@ export const QrGeneratorPage: React.FC = () => {
                     type="text"
                     value={vcardName}
                     onChange={(e) => setVcardName(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-lg bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
+                    className="w-full px-3 py-1.5 rounded-lg bg-[#FFF7ED] border border-slate-200 text-[#0A2540]"
                   />
                 </div>
                 <div>
@@ -251,7 +251,7 @@ export const QrGeneratorPage: React.FC = () => {
                     type="text"
                     value={vcardOrg}
                     onChange={(e) => setVcardOrg(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-lg bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
+                    className="w-full px-3 py-1.5 rounded-lg bg-[#FFF7ED] border border-slate-200 text-[#0A2540]"
                   />
                 </div>
                 <div>
@@ -260,7 +260,7 @@ export const QrGeneratorPage: React.FC = () => {
                     type="text"
                     value={vcardPhone}
                     onChange={(e) => setVcardPhone(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-lg bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
+                    className="w-full px-3 py-1.5 rounded-lg bg-[#FFF7ED] border border-slate-200 text-[#0A2540]"
                   />
                 </div>
                 <div>
@@ -269,7 +269,7 @@ export const QrGeneratorPage: React.FC = () => {
                     type="email"
                     value={vcardEmail}
                     onChange={(e) => setVcardEmail(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-lg bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
+                    className="w-full px-3 py-1.5 rounded-lg bg-[#FFF7ED] border border-slate-200 text-[#0A2540]"
                   />
                 </div>
               </div>
@@ -282,7 +282,7 @@ export const QrGeneratorPage: React.FC = () => {
                   rows={4}
                   value={plainText}
                   onChange={(e) => setPlainText(e.target.value)}
-                  className="w-full p-3 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540]"
+                  className="w-full p-3 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540]"
                 />
               </div>
             )}
@@ -291,7 +291,7 @@ export const QrGeneratorPage: React.FC = () => {
           {/* Color & Aesthetic Parameters */}
           <div className="p-6 rounded-3xl bg-white border border-slate-200 space-y-4 backdrop-blur-xl">
             <h3 className="text-xs font-bold text-[#0A2540] uppercase tracking-wider flex items-center gap-2">
-              <Palette className="w-4 h-4 text-[#00A3AD]" />
+              <Palette className="w-4 h-4 text-[#EA580C]" />
               <span>Palette & Error Correction</span>
             </h3>
 
@@ -327,7 +327,7 @@ export const QrGeneratorPage: React.FC = () => {
                 <select
                   value={eccLevel}
                   onChange={(e) => setEccLevel(e.target.value as any)}
-                  className="w-full px-2 py-1.5 rounded-lg bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
+                  className="w-full px-2 py-1.5 rounded-lg bg-[#FFF7ED] border border-slate-200 text-[#0A2540]"
                 >
                   <option value="L">L (7%)</option>
                   <option value="M">M (15%)</option>
@@ -344,7 +344,7 @@ export const QrGeneratorPage: React.FC = () => {
                   max="6"
                   value={marginSize}
                   onChange={(e) => setMarginSize(parseInt(e.target.value) || 0)}
-                  className="w-full px-2 py-1.5 rounded-lg bg-[#F4F8FA] border border-slate-200 text-[#0A2540]"
+                  className="w-full px-2 py-1.5 rounded-lg bg-[#FFF7ED] border border-slate-200 text-[#0A2540]"
                 />
               </div>
             </div>
@@ -354,7 +354,7 @@ export const QrGeneratorPage: React.FC = () => {
         {/* Right Side: Live QR Canvas */}
         <div className="lg:col-span-5 space-y-6">
           <div className="rounded-3xl bg-white border border-slate-200 p-8 flex flex-col items-center justify-center text-center shadow-2xl shadow-sm">
-            <div className="p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 shadow-xl mb-4">
+            <div className="p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 shadow-xl mb-4">
               <canvas ref={canvasRef} className="rounded-lg max-w-full" />
             </div>
 
@@ -371,7 +371,7 @@ export const QrGeneratorPage: React.FC = () => {
               </button>
               <button
                 onClick={downloadSvg}
-                className="flex-1 py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition-all cursor-pointer"
+                className="flex-1 py-2.5 px-3 rounded-xl bg-[#EA580C] hover:bg-[#C2410C] text-white font-bold text-xs transition-all cursor-pointer"
               >
                 Vector SVG
               </button>
