@@ -28,8 +28,8 @@ export const SEO_PAGES: Record<string, SeoPage> = {
   },
   '/guides': {
     path: '/guides',
-    title: 'Guides | How FileTools Kit PDF, image, and resume tools work',
-    description: 'Step-by-step guides for merging PDFs, converting images, building a resume PDF, QR codes, and hashing text in the browser.'
+    title: 'How to merge PDFs and convert images | FileTools Kit',
+    description: 'Guides for merging and splitting PDFs, converting PNG/JPG/WebP, compressing images, and building a resume PDF in your browser.'
   },
   '/privacy': {
     path: '/privacy',
@@ -66,11 +66,11 @@ export const SEO_PAGES: Record<string, SeoPage> = {
     title: 'Contact | FileTools Kit',
     description: 'Email support@filetoolskit.com or privacy@filetoolskit.com. Operator: Souren Das, Bengaluru, India.'
   },
-  '/resume-builder': tool('/resume-builder', 'Resume Builder', 'Fill a resume in the browser and download a PDF. Keyword overlap is local, not an employer ATS.'),
-  '/pdf-suite': tool('/pdf-suite', 'PDF Suite', 'Merge, split, rotate, and watermark PDFs in this tab with pdf-lib. Encrypted files may fail.'),
-  '/file-converter': tool('/file-converter', 'File Converter', 'Convert PNG, JPG, and WebP in the browser canvas. Audio to WAV. DOCX to text or a simple PDF.'),
-  '/image-optimizer': tool('/image-optimizer', 'Image Optimizer', 'Compress and resize images in this tab. Download WebP, JPEG, or PNG with before and after sizes.'),
-  '/qr-generator': tool('/qr-generator', 'QR Generator', 'Create a QR code for a URL, Wi-Fi network, or vCard and export PNG or SVG in the browser.'),
+  '/resume-builder': tool('/resume-builder', 'Build a resume PDF in your browser', 'Fill a form, pick a layout, and download a resume PDF in this tab. Keyword overlap is local, not an employer ATS.'),
+  '/pdf-suite': tool('/pdf-suite', 'Merge PDF online in your browser', 'Merge, split, rotate, and watermark PDFs in this tab with pdf-lib. Encrypted files may fail.'),
+  '/file-converter': tool('/file-converter', 'Convert PNG, JPG, and WebP in your browser', 'Convert PNG, JPG, and WebP in the canvas. Audio to WAV. DOCX to text or a simple PDF. Files stay in this tab.'),
+  '/image-optimizer': tool('/image-optimizer', 'Compress images online in your browser', 'Compress and resize images in this tab. Download WebP, JPEG, or PNG with before and after sizes.'),
+  '/qr-generator': tool('/qr-generator', 'QR code generator in your browser', 'Create a QR code for a URL, Wi-Fi network, or vCard and export PNG or SVG in this tab.'),
   '/dev-tools': tool('/dev-tools', 'Dev Tools', 'JSON to CSV, regex tester, Base64, and SHA-256 in the browser. No MD5.'),
   '/markdown-editor': tool('/markdown-editor', 'Markdown Editor', 'Write Markdown with a live preview and export HTML or .md in this tab.'),
   '/svg-editor': tool('/svg-editor', 'SVG Studio', 'Edit SVG stroke and fill, then export SVG, React JSX, or PNG in the browser.'),
