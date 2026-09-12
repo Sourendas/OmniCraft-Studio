@@ -14,8 +14,8 @@ export const AmbientBackground: React.FC = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden>
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-[#F6FAFC] to-[#EDF5F8]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,163,173,0.12),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(15,76,129,0.08),transparent_50%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-[#FFF4E8] to-[#FFEDD5]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(249,115,22,0.12),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(124,58,237,0.10),transparent_50%)]" />
       {enableCanvas ? <GoldenRibbonsBackground /> : null}
     </div>
   );
