@@ -10,8 +10,11 @@
   }
 
   body {
-    color: #0A2540;
-    background-color: #F6FAFC;
+    color: #1C1917;
+    background-color: #FFF4E8;
+    background-image:
+      radial-gradient(1200px 500px at 8% -10%, rgba(249, 115, 22, 0.18), transparent 55%),
+      radial-gradient(900px 420px at 100% 0%, rgba(124, 58, 237, 0.12), transparent 50%);
     overflow-x: clip;
     max-width: 100%;
   }
@@ -50,14 +53,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #F0F6F9;
+  background: #FFEDD5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C4DCE3;
+  background: #FB923C;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00A3AD;
+  background: #EA580C;
 }
