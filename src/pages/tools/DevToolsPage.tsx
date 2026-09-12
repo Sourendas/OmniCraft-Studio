@@ -25,7 +25,6 @@ export const DevToolsPage: React.FC = () => {
     setTimeout(() => setCopiedKey(null), 2000);
   };
 
-  // --- JSON <-> CSV state ---
   const [jsonInput, setJsonInput] = useState(
     JSON.stringify([
       { id: 101, name: "Alice Developer", role: "Frontend Lead", country: "US" },
@@ -73,7 +72,6 @@ export const DevToolsPage: React.FC = () => {
     }
   };
 
-  // --- SQL Formatter state ---
   const [sqlInput, setSqlInput] = useState(
     "select u.id, u.name, o.total_amount, o.status from users u inner join orders o on u.id = o.user_id where o.created_at >= '2024-01-01' and o.status in ('completed', 'shipped') group by u.id order by o.total_amount desc limit 50;"
   );
@@ -93,7 +91,6 @@ export const DevToolsPage: React.FC = () => {
     setSqlOutput(formatted.trim());
   };
 
-  // --- RegEx Live Tester ---
   const [regexPattern, setRegexPattern] = useState('([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})');
   const [regexFlags, setRegexFlags] = useState('g');
   const [regexTestString, setRegexTestString] = useState(
@@ -120,7 +117,6 @@ export const DevToolsPage: React.FC = () => {
     }
   }, [regexPattern, regexFlags, regexTestString]);
 
-  // --- Base64 / URL Encoder ---
   const [base64Text, setBase64Text] = useState('FileTools Kit browser suite');
   const [base64Encoded, setBase64Encoded] = useState('');
 
@@ -140,25 +136,21 @@ export const DevToolsPage: React.FC = () => {
     }
   };
 
-  // --- Hashes Generator (Web Crypto API) ---
   const [hashInput, setHashInput] = useState('SecretToken2026!#');
   const [hashes, setHashes] = useState<Record<string, string>>({});
 
   const computeHashes = async () => {
     const encoder = new TextEncoder();
     const data = encoder.encode(hashInput);
-
     const getHex = (buf: ArrayBuffer) => {
       return Array.from(new Uint8Array(buf))
         .map(b => b.toString(16).padStart(2, '0'))
         .join('');
     };
-
     const sha1 = await crypto.subtle.digest('SHA-1', data);
     const sha256 = await crypto.subtle.digest('SHA-256', data);
     const sha384 = await crypto.subtle.digest('SHA-384', data);
     const sha512 = await crypto.subtle.digest('SHA-512', data);
-
     setHashes({
       'SHA-1': getHex(sha1),
       'SHA-256': getHex(sha256),
@@ -169,18 +161,17 @@ export const DevToolsPage: React.FC = () => {
 
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] font-bold mb-1">
-            <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#C2410C] font-bold mb-1">
+            <Link to="/" className="text-slate-500 hover:text-[#EA580C] flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
             <span>Developer & Data</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
-            <Terminal className="w-7 h-7 text-[#007A82]" />
+            <Terminal className="w-7 h-7 text-[#C2410C]" />
             Developer Powerstation
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
@@ -189,10 +180,9 @@ export const DevToolsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Tabs */}
       <div className="my-6 flex items-center gap-2 border-b border-slate-200 pb-3 overflow-x-auto scrollbar-none">
         {[
-          { id: 'json-csv' as const, label: 'JSON ↔ CSV', icon: FileJson },
+          { id: 'json-csv' as const, label: 'JSON \u2194 CSV', icon: FileJson },
           { id: 'sql' as const, label: 'SQL line-breaks', icon: Database },
           { id: 'regex' as const, label: 'RegEx Live Tester', icon: Code },
           { id: 'base64' as const, label: 'Base64 & URL', icon: Lock },
@@ -205,7 +195,7 @@ export const DevToolsPage: React.FC = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                 activeTab === tab.id
-                  ? 'bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] shadow-sm'
+                  ? 'bg-[#FFEDD5] text-[#C2410C] border border-[#FDBA74] shadow-sm'
                   : 'bg-white text-slate-400 hover:text-[#0A2540] border border-slate-200'
               }`}
             >
@@ -216,7 +206,6 @@ export const DevToolsPage: React.FC = () => {
         })}
       </div>
 
-      {/* Tab 1: JSON <-> CSV */}
       {activeTab === 'json-csv' && (
         <div className="space-y-6">
           {jsonCsvError && (
@@ -224,139 +213,73 @@ export const DevToolsPage: React.FC = () => {
               {jsonCsvError}
             </div>
           )}
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs text-slate-300">
                 <span className="font-bold">JSON Input / Output</span>
-                <button
-                  onClick={convertJsonToCsv}
-                  className="px-3 py-1 rounded-lg bg-[#00A3AD] hover:bg-[#00B5B8] text-white font-bold text-xs"
-                >
-                  Convert JSON → CSV
-                </button>
+                <button onClick={convertJsonToCsv} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Convert JSON \u2192 CSV</button>
               </div>
-              <textarea
-                rows={12}
-                value={jsonInput}
-                onChange={(e) => setJsonInput(e.target.value)}
-                className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#00A3AD] focus:outline-none"
-              />
+              <textarea rows={12} value={jsonInput} onChange={(e) => setJsonInput(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
             </div>
-
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs text-slate-300">
                 <span className="font-bold">CSV Input / Output</span>
-                <button
-                  onClick={convertCsvToJson}
-                  className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200"
-                >
-                  Convert CSV → JSON
-                </button>
+                <button onClick={convertCsvToJson} className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200">Convert CSV \u2192 JSON</button>
               </div>
-              <textarea
-                rows={12}
-                value={csvOutput}
-                onChange={(e) => setCsvOutput(e.target.value)}
-                placeholder="Click Convert JSON → CSV or paste CSV here..."
-                className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#00A3AD] focus:outline-none"
-              />
+              <textarea rows={12} value={csvOutput} onChange={(e) => setCsvOutput(e.target.value)} placeholder="Click Convert JSON \u2192 CSV or paste CSV here..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
             </div>
           </div>
         </div>
       )}
 
-      {/* Tab 2: SQL Formatter */}
       {activeTab === 'sql' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs text-slate-300">
               <span className="font-bold">Raw SQL Query</span>
-              <button
-                onClick={formatSql}
-                className="px-3 py-1 rounded-lg bg-[#00A3AD] hover:bg-[#00B5B8] text-white font-bold text-xs"
-              >
-                Insert line breaks
-              </button>
+              <button onClick={formatSql} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Insert line breaks</button>
             </div>
-            <textarea
-              rows={12}
-              value={sqlInput}
-              onChange={(e) => setSqlInput(e.target.value)}
-              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#00A3AD] focus:outline-none"
-            />
+            <textarea rows={12} value={sqlInput} onChange={(e) => setSqlInput(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
           </div>
-
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs text-slate-300">
               <span className="font-bold">Beautified SQL Result</span>
-              <button
-                onClick={() => copyToClipboard(sqlOutput, 'sql')}
-                className="text-xs text-[#007A82] hover:text-[#00A3AD] flex items-center gap-1"
-              >
+              <button onClick={() => copyToClipboard(sqlOutput, 'sql')} className="text-xs text-[#C2410C] hover:text-[#EA580C] flex items-center gap-1">
                 {copiedKey === 'sql' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>Copy</span>
               </button>
             </div>
-            <textarea
-              rows={12}
-              readOnly
-              value={sqlOutput}
-              placeholder="Formatted output appears here..."
-              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#007A82] font-mono"
-            />
+            <textarea rows={12} readOnly value={sqlOutput} placeholder="Formatted output appears here..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#C2410C] font-mono" />
           </div>
         </div>
       )}
 
-      {/* Tab 3: RegEx Live Tester */}
       {activeTab === 'regex' && (
         <div className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
             <div className="sm:col-span-9">
               <label className="block text-xs font-bold text-slate-300 mb-1">Regular Expression Pattern</label>
-              <input
-                type="text"
-                value={regexPattern}
-                onChange={(e) => setRegexPattern(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs font-mono text-[#007A82] focus:outline-none focus:border-[#00A3AD]"
-              />
+              <input type="text" value={regexPattern} onChange={(e) => setRegexPattern(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs font-mono text-[#C2410C] focus:outline-none focus:border-[#EA580C]" />
             </div>
             <div className="sm:col-span-3">
               <label className="block text-xs font-bold text-slate-300 mb-1">Flags (e.g. g, i, m)</label>
-              <input
-                type="text"
-                value={regexFlags}
-                onChange={(e) => setRegexFlags(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs font-mono text-[#0A2540]"
-              />
+              <input type="text" value={regexFlags} onChange={(e) => setRegexFlags(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs font-mono text-[#0A2540]" />
             </div>
           </div>
-
           <div>
             <label className="block text-xs font-bold text-slate-300 mb-1">Test String Content</label>
-            <textarea
-              rows={5}
-              value={regexTestString}
-              onChange={(e) => setRegexTestString(e.target.value)}
-              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#00A3AD]"
-            />
+            <textarea rows={5} value={regexTestString} onChange={(e) => setRegexTestString(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C]" />
           </div>
-
           <div className="rounded-2xl bg-white border border-slate-200 p-4 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-[#0A2540]">
-                Detected Matches ({regexMatches.length})
-              </span>
+              <span className="text-xs font-bold text-[#0A2540]">Detected Matches ({regexMatches.length})</span>
             </div>
             <div className="space-y-2 max-h-60 overflow-y-auto">
               {regexMatches.map((m, idx) => (
-                <div key={idx} className="p-3 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs font-mono">
-                  <div className="text-[#007A82] font-bold">Match #{idx + 1}: "{m.full}" (Index: {m.index})</div>
+                <div key={idx} className="p-3 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs font-mono">
+                  <div className="text-[#C2410C] font-bold">Match #{idx + 1}: "{m.full}" (Index: {m.index})</div>
                   {m.groups.length > 0 && (
-                    <div className="text-slate-400 text-[11px] mt-1">
-                      Groups: {m.groups.map((g, gi) => `$${gi + 1}: "${g}"`).join('  |  ')}
-                    </div>
+                    <div className="text-slate-400 text-[11px] mt-1">Groups: {m.groups.map((g, gi) => `$${gi + 1}: "${g}"`).join('  |  ')}</div>
                   )}
                 </div>
               ))}
@@ -365,82 +288,42 @@ export const DevToolsPage: React.FC = () => {
         </div>
       )}
 
-      {/* Tab 4: Base64 */}
       {activeTab === 'base64' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs text-slate-300">
               <span className="font-bold">Decoded Plain Text</span>
-              <button
-                onClick={handleBase64Encode}
-                className="px-3 py-1 rounded-lg bg-[#00A3AD] hover:bg-[#00B5B8] text-white font-bold text-xs"
-              >
-                Encode to Base64 →
-              </button>
+              <button onClick={handleBase64Encode} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Encode to Base64 \u2192</button>
             </div>
-            <textarea
-              rows={8}
-              value={base64Text}
-              onChange={(e) => setBase64Text(e.target.value)}
-              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono"
-            />
+            <textarea rows={8} value={base64Text} onChange={(e) => setBase64Text(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono" />
           </div>
-
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs text-slate-300">
               <span className="font-bold">Base64 Encoded Output</span>
-              <button
-                onClick={handleBase64Decode}
-                className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200"
-              >
-                ← Decode from Base64
-              </button>
+              <button onClick={handleBase64Decode} className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200">\u2190 Decode from Base64</button>
             </div>
-            <textarea
-              rows={8}
-              value={base64Encoded}
-              onChange={(e) => setBase64Encoded(e.target.value)}
-              placeholder="Base64 output..."
-              className="w-full p-4 rounded-2xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#007A82] font-mono"
-            />
+            <textarea rows={8} value={base64Encoded} onChange={(e) => setBase64Encoded(e.target.value)} placeholder="Base64 output..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#C2410C] font-mono" />
           </div>
         </div>
       )}
 
-      {/* Tab 5: Hashes Generator */}
       {activeTab === 'hashes' && (
         <div className="space-y-6">
           <div className="space-y-2">
             <label className="block text-xs font-bold text-slate-300">Input String for Cryptographic Hashing</label>
             <div className="flex gap-2">
-              <input
-                type="text"
-                value={hashInput}
-                onChange={(e) => setHashInput(e.target.value)}
-                className="flex-1 px-4 py-2.5 rounded-xl bg-[#F4F8FA] border border-slate-200 text-xs text-[#0A2540] font-mono"
-              />
-              <button
-                onClick={computeHashes}
-                className="px-5 py-2.5 rounded-xl bg-[#00A3AD] hover:bg-[#00B5B8] text-white font-bold text-xs shrink-0"
-              >
-              Generate hashes
-              </button>
+              <input type="text" value={hashInput} onChange={(e) => setHashInput(e.target.value)} className="flex-1 px-4 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono" />
+              <button onClick={computeHashes} className="px-5 py-2.5 rounded-xl bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs shrink-0">Generate hashes</button>
             </div>
           </div>
-
           <div className="space-y-3">
             {Object.entries(hashes).map(([algo, hashVal]) => (
               <div key={algo} className="p-4 rounded-2xl bg-white border border-slate-200 flex items-center justify-between gap-4">
                 <div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] uppercase">
-                    {algo}
-                  </span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FFEDD5] text-[#C2410C] border border-[#FDBA74] uppercase">{algo}</span>
                   <p className="text-xs font-mono text-slate-300 break-all mt-1.5">{String(hashVal)}</p>
                 </div>
-                <button
-                  onClick={() => copyToClipboard(String(hashVal), algo)}
-                  className="text-slate-400 hover:text-[#007A82] p-2 shrink-0"
-                >
+                <button onClick={() => copyToClipboard(String(hashVal), algo)} className="text-slate-400 hover:text-[#C2410C] p-2 shrink-0">
                   {copiedKey === algo ? <Check className="w-4 h-4 text-emerald-700" /> : <Copy className="w-4 h-4" />}
                 </button>
               </div>
