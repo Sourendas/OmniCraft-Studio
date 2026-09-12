@@ -18,6 +18,12 @@ const optimizeUnsplash = (url: string) =>
     ? url.replace(/w=\d+&q=\d+/, 'w=640&q=55&fm=webp')
     : url;
 
+const TitleTablet: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
+  <span className={`inline-flex max-w-full items-center px-3 py-1 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-[#007A82] font-black tracking-wider uppercase ${className}`}>
+    <span className="truncate">{children}</span>
+  </span>
+);
+
 export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategory }) => {
   const [activePreviewTool, setActivePreviewTool] = useState<ToolItem | null>(null);
 
@@ -55,7 +61,7 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
       <div className="mb-6 sm:mb-8 pb-4 border-b border-slate-200/80">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#00A3AD] animate-pulse" />
-          <h2 className="text-base font-black uppercase tracking-wider text-[#0A2540]">Tools</h2>
+          <h2 className="text-base font-black uppercase tracking-wider text-[#00A3AD]">Tools</h2>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">Open a tool. Work happens in this tab.</p>
       </div>
@@ -99,9 +105,11 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
               </div>
               <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-black text-lg text-[#0A2540] group-hover:text-[#007A82] transition-colors"><span>{tool.name}</span></h3>
+                  <h3 className="text-sm sm:text-base">
+                    <TitleTablet>{tool.name}</TitleTablet>
+                  </h3>
                   <p className="text-sm text-slate-600 mt-2 leading-relaxed line-clamp-2 font-medium">{tool.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-1.5">{tool.highlights.map((h, i) => (<span key={i} className="text-[11px] px-3 py-1 rounded-full bg-[#F4F8FA] border border-slate-200 text-slate-700 font-bold">{h}</span>))}</div>
+                  <div className="mt-4 flex flex-wrap gap-1.5">{tool.highlights.map((h, i) => (<span key={i} className="text-[11px] px-3 py-1 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-[#007A82] font-bold">{h}</span>))}</div>
                 </div>
                 <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
                   <button type="button" onClick={() => setActivePreviewTool(tool)} className="text-xs font-bold text-slate-600 hover:text-[#007A82] transition-colors flex items-center gap-1 cursor-pointer min-h-10">
@@ -126,7 +134,9 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
                 <span className="px-3 py-1 rounded-full bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF] text-xs font-mono font-bold">{activePreviewTool.badge}</span>
                 <span className="text-xs text-slate-600 font-mono font-bold truncate">{activePreviewTool.category}</span>
               </div>
-              <h3 className="text-xl sm:text-3xl font-black text-[#0A2540] pr-8">{activePreviewTool.name}</h3>
+              <h3 className="text-lg sm:text-2xl pr-8">
+                <TitleTablet className="text-sm sm:text-lg normal-case tracking-tight">{activePreviewTool.name}</TitleTablet>
+              </h3>
               <div className="mt-4 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200 bg-slate-50 shadow-inner">
                 <img src={optimizeUnsplash(activePreviewTool.image)} alt={activePreviewTool.screenshotAlt || activePreviewTool.name} width={640} height={360} decoding="async" referrerPolicy="no-referrer" className="w-full h-44 sm:h-60 object-cover object-center" />
               </div>
@@ -142,7 +152,7 @@ export const ToolGrid: React.FC<ToolGridProps> = ({ searchQuery, selectedCategor
               )}
               <div className="mt-5">
                 <h4 className="text-xs font-black uppercase tracking-wider text-slate-600 mb-2">Key capabilities</h4>
-                <div className="flex flex-wrap gap-2">{activePreviewTool.highlights.map((h, i) => (<div key={i} className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-xs text-[#0A2540] font-bold"><CheckCircle2 className="w-3.5 h-3.5 text-[#007A82] shrink-0" /><span>{h}</span></div>))}</div>
+                <div className="flex flex-wrap gap-2">{activePreviewTool.highlights.map((h, i) => (<div key={i} className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-xs text-[#007A82] font-bold"><CheckCircle2 className="w-3.5 h-3.5 text-[#007A82] shrink-0" /><span>{h}</span></div>))}</div>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-100 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
                 <button type="button" onClick={() => setActivePreviewTool(null)} className="px-5 py-3 rounded-full text-sm font-bold text-slate-600 hover:text-slate-900 transition-colors cursor-pointer min-h-11">Close</button>
