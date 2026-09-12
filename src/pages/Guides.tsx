@@ -7,8 +7,8 @@ export const GuidesPage: React.FC = () => (
   <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
     <Link to="/" className="inline-flex items-center gap-1.5 text-xs font-black text-[#007A82] mb-6"><ArrowLeft className="w-3.5 h-3.5" /> Back to tools</Link>
     <div className="rounded-3xl bg-white border border-slate-200 p-8 space-y-6">
-      <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">Guides</h1>
-      <p className="text-sm text-slate-700 font-medium">Short explainers for the tools. Work still happens in this tab.</p>
+      <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">How to merge PDFs and convert images</h1>
+      <p className="text-sm text-slate-700 font-medium">Step-by-step guides for merging and splitting PDFs, converting PNG/JPG/WebP, compressing images, and building a resume PDF. Work still happens in this tab.</p>
       <ul className="grid gap-4">
         {GUIDES.map((g) => (
           <li key={g.slug}>
