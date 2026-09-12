@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96"><image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAA1Q0lEQVR42uW9d5hlVZX3/9n7nHNj5eocgKbpQGwkhyajEkQUBxVFRwEVMIw66IgoCAJmR5FRBAkiAgojSSRKBhu6aZrUDTSdY3XlW1U3nbP3+v2xzw3VuUt4/b3Pe5/nPrfCPWmtvfJ3ra2stcK/+CWACFgBpcDXW/5uPoRCCKUIIiuAwteQ9CAVQDax5WONcdfQCpQGxb/+pf6VDLACFvCVI3zlVYxgZQ4W98JbPbC0D9b3C51D0J+HQhnCCKJI0BaUQKAg60NzUtGWhvFNsHMLTBsD08fAzqMU2eTw60fGMUHr/4cYIICR4UQXgVd74Om18OwaeHm9sLYfBosQRaAFEgp8wAM8EZSAsgplBTEgFsSANWAiiEIwkaAFGgJhYhPsNVFx8G6Kw6cr9t5JEfgKEEScdGg9fCH8CxngRPvdIHxQt9pe6IR7lwuPrISFXTBYAk8grSABYB0hw9AxQixI5MRGC6iY6FhBWQXWHe8J+EpIKHc9ZSEqQ7EkRGUh48H0cXDs3pqTDtQcNENVCR9F/2cZ8a5LgMSqpqLXu0tw53Lh1iXwQgcUS5DWjug2gnwZyiEEAs0JGJ+BSQ2KSQ3C+Cy0p6AxAWnfSZGIU0f5slNP3YOwrk9Y3Q3reoTOXiFfABVBUkM2EDRQLAiFAqR9xaxdFKfNVpx6hMeYVicVUSRord51RryrDDB1hF+dh98uhj8sEVb0OZ3d6DniDRbdKp2Qhn3b4ZBxiv1Hw/Q2mNDgjOtIXv15WN0tvLlWmL9EmP82LFol9PQJCSU0JZ1ay+ehmBcmtSlOO1Lz7x/02Wl8hRHgef+XMaDizWjlVvxVbwm/fRs6BiDjQVJBruh09ZQsHD8BTt5Zccg4GJvZVIQiKwy/SxUryIqqFKROZSrc6vU2Y1yXdQjPvCY8+qLl+dcsXT2QSrcUS5DWjg==" width="96" height="96"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="FileTools Kit">
+  <defs>
+    <linearGradient id="ring" x1="28" y1="12" x2="228" y2="244" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22B8FF"/>
+      <stop offset="1" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="page" x1="78" y1="42" x2="168" y2="168" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="wrench" x1="148" y1="108" x2="208" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#4338CA"/>
+    </linearGradient>
+  </defs>
+  <circle cx="128" cy="128" r="122" fill="#fff"/>
+  <circle cx="128" cy="128" r="116" fill="none" stroke="url(#ring)" stroke-width="12"/>
+  <path d="M86 58h52l28 28v78c0 8-6 14-14 14H86c-8 0-14-6-14-14V72c0-8 6-14 14-14z" fill="url(#page)"/>
+  <path d="M138 58v26c0 6 4 10 10 10h26" fill="#93C5FD"/>
+  <rect x="96" y="86" width="36" height="8" rx="4" fill="#fff"/>
+  <rect x="96" y="104" width="28" height="8" rx="4" fill="#fff"/>
+  <rect x="96" y="122" width="32" height="8" rx="4" fill="#fff"/>
+  <path d="M64 118c28-18 72-22 112-8" fill="none" stroke="#38BDF8" stroke-width="8" stroke-linecap="round" opacity=".85"/>
+  <circle cx="176" cy="148" r="34" fill="url(#wrench)"/>
+  <circle cx="176" cy="148" r="28" fill="none" stroke="#fff" stroke-width="3" opacity=".35"/>
+  <path d="M166 136c4-8 16-10 22-4 4 4 4 10 0 14l-6 6 16 16c3 3 3 8 0 11l-6 6c-3 3-8 3-11 0l-16-16-6 6c-4 4-10 4-14 0-6-6-4-18 4-22l6-6-2-2c-4-4-4-10 0-14 4-4 10-4 13-1z" fill="#fff"/>
+</svg>
