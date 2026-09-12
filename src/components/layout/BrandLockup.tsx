@@ -8,10 +8,10 @@ export const BrandLockup: React.FC<BrandLockupProps> = ({ compact = false }) => 
   const size = compact ? 32 : 40;
   return (
     <span className="flex items-center gap-2 min-w-0">
-      <span className={`${compact ? 'w-8 h-8' : 'w-10 h-10'} rounded-full overflow-hidden shrink-0 bg-white`}>
+      <span className={`${compact ? 'w-8 h-8' : 'w-10 h-10'} rounded-full overflow-hidden shrink-0 bg-white ring-1 ring-slate-200/80`}>
         <img
-          src="/logo.svg"
-          alt=""
+          src="/logo.jpg"
+          alt="FileTools Kit"
           width={size}
           height={size}
           className="w-full h-full object-cover"
