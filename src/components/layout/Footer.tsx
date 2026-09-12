@@ -10,11 +10,11 @@ export const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <Lock className="w-4 h-4 text-[#C2410C] mt-0.5" />
-            <div><h4 className="font-black text-[#1C1917] text-xs mb-0.5">Files processed in the browser</h4><p className="text-[11px]">No File Tools Kit server receives your documents.</p></div>
+            <div><h4 className="font-black text-[#1C1917] text-xs mb-0.5">Files processed in the browser</h4><p className="text-[11px]">No FileTools Kit server receives your documents.</p></div>
           </div>
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <ShieldCheck className="w-4 h-4 text-[#C2410C] mt-0.5" />
-            <div><h4 className="font-black text-[#1C1917] text-xs mb-0.5">Local execution</h4><p className="text-[11px]">Google AdSense may display ads; see our privacy and cookie policies.</p></div>
+            <div><h4 className="font-black text-[#1C1917] text-xs mb-0.5">Supported by ads</h4><p className="text-[11px]">Google AdSense may display ads. Files stay in this tab. See Privacy and Cookies.</p></div>
           </div>
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <Cpu className="w-4 h-4 text-emerald-700 mt-0.5" />
@@ -69,7 +69,10 @@ export const Footer: React.FC = () => {
           </ul>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-4 pb-8 text-slate-500">© 2026 FileTools Kit · Souren Das · Bengaluru</div>
+      <div className="max-w-7xl mx-auto px-4 pb-8 text-slate-500 space-y-1">
+        <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+        <p className="text-[11px]">Free tools supported by Google AdSense. <Link to="/privacy" className="underline hover:text-[#EA580C]">Privacy</Link> · <Link to="/cookie-policy" className="underline hover:text-[#EA580C]">Cookies</Link> · <Link to="/terms" className="underline hover:text-[#EA580C]">Terms</Link> · <Link to="/disclaimer" className="underline hover:text-[#EA580C]">Disclaimer</Link> · <Link to="/contact" className="underline hover:text-[#EA580C]">Contact</Link></p>
+      </div>
     </footer>
   );
 };
