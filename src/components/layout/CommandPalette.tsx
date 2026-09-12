@@ -49,7 +49,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         e.preventDefault();
         if (isOpen) onClose();
         else {
-          // Trigger open via custom event or parent
           window.dispatchEvent(new CustomEvent('toggle-command-palette'));
         }
       }
@@ -73,7 +72,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
   const quickShortcuts = [
     { label: 'Security Architecture Audit', path: '/#architecture', icon: ShieldCheck },
     { label: 'Curated Workflows', path: '/#workflows', icon: Zap },
-    { label: 'Pricing & Pro Plans ($6.99/mo & $69.99/yr)', path: '/#pricing', icon: Command }
+    { label: 'Privacy policy', path: '/privacy', icon: Command }
   ];
 
   const handleSelect = (path: string) => {
@@ -94,15 +93,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         onClick={(e) => e.stopPropagation()}
         className="w-full max-w-2xl bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-150"
       >
-        {/* Search Bar */}
-        <div className="flex items-center gap-3 px-6 py-4 border-b border-slate-100 bg-[#F8FBFC]">
-          <Search className="w-5 h-5 text-[#00A3AD] shrink-0" />
+        <div className="flex items-center gap-3 px-6 py-4 border-b border-slate-100 bg-[#FFF7ED]">
+          <Search className="w-5 h-5 text-[#EA580C] shrink-0" />
           <input
             type="text"
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search tools, workflows, or architectural specifications... (e.g. PDF, ATS, JSON, WebP)"
+            placeholder="Search tools or workflows (e.g. PDF, resume, JSON, WebP)"
             className="w-full text-sm text-[#0A2540] bg-transparent focus:outline-none placeholder:text-slate-400 font-medium"
           />
           <button 
@@ -113,11 +111,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           </button>
         </div>
 
-        {/* Results Body */}
         <div className="max-h-[60vh] overflow-y-auto p-4 space-y-4">
-          {/* Tools List */}
           <div>
-            <div className="text-[11px] font-black text-[#007A82] uppercase tracking-wider px-3 mb-2">
+            <div className="text-[11px] font-black text-[#C2410C] uppercase tracking-wider px-3 mb-2">
               Tools ({filteredTools.length})
             </div>
             <div className="space-y-1">
@@ -127,15 +123,15 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   <button
                     key={tool.id}
                     onClick={() => handleSelect(tool.route)}
-                    className="w-full p-3 rounded-2xl flex items-center justify-between text-left hover:bg-[#E6F8F9] group transition-all cursor-pointer"
+                    className="w-full p-3 rounded-2xl flex items-center justify-between text-left hover:bg-[#FFEDD5] group transition-all cursor-pointer"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="p-2 rounded-xl bg-white border border-slate-200 text-[#007A82] group-hover:border-[#B3EAEF] shrink-0">
+                      <div className="p-2 rounded-xl bg-white border border-slate-200 text-[#C2410C] group-hover:border-[#FDBA74] shrink-0">
                         <IconComponent className="w-4 h-4" />
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-black text-[#0A2540] group-hover:text-[#007A82] truncate">
+                          <span className="text-xs font-black text-[#0A2540] group-hover:text-[#C2410C] truncate">
                             {tool.name}
                           </span>
                           <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-100 group-hover:bg-white text-slate-600 border border-slate-200">
@@ -147,14 +143,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                         </p>
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#00A3AD] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+                    <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#EA580C] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Quick Hub Shortcuts */}
           <div className="pt-3 border-t border-slate-100">
             <div className="text-[11px] font-black text-slate-400 uppercase tracking-wider px-3 mb-2">
               System Shortcuts
@@ -166,9 +161,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   <button
                     key={s.label}
                     onClick={() => handleSelect(s.path)}
-                    className="p-2.5 rounded-xl bg-[#F8FBFC] hover:bg-[#E6F8F9] border border-slate-200/80 text-left flex items-center gap-2 group transition-all text-xs font-bold text-[#0A2540] group-hover:text-[#007A82] cursor-pointer"
+                    className="p-2.5 rounded-xl bg-[#FFF7ED] hover:bg-[#FFEDD5] border border-slate-200/80 text-left flex items-center gap-2 group transition-all text-xs font-bold text-[#0A2540] group-hover:text-[#C2410C] cursor-pointer"
                   >
-                    <Icon className="w-3.5 h-3.5 text-[#00A3AD] shrink-0" />
+                    <Icon className="w-3.5 h-3.5 text-[#EA580C] shrink-0" />
                     <span className="truncate">{s.label}</span>
                   </button>
                 );
@@ -177,8 +172,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           </div>
         </div>
 
-        {/* Footer info */}
-        <div className="px-6 py-3 bg-[#F8FBFC] border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+        <div className="px-6 py-3 bg-[#FFF7ED] border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
           <span>Navigate with mouse or Tab / Enter</span>
           <span>Press ESC to exit</span>
         </div>
