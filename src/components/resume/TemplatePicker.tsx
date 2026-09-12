@@ -7,7 +7,7 @@ function Thumb({ t, selected }: { t: ResumeTemplateMeta; selected: boolean }) {
   const isBanner = t.id === 'banner' || t.id === 'executive' || t.id === 'slate';
   return (
     <div className={`relative h-36 w-full overflow-hidden rounded-xl border bg-white ${
-      selected ? 'border-[#00A3AD] ring-2 ring-[#00A3AD]/30' : 'border-slate-200'
+      selected ? 'border-[#EA580C] ring-2 ring-[#EA580C]/30' : 'border-slate-200'
     }`}>
       {t.id === 'modern' && <div className="absolute inset-y-0 left-0 w-1.5" style={{ background: t.accent }} />}
       {isSidebar && <div className="absolute inset-y-0 left-0 w-[32%]" style={{ background: t.header }} />}
@@ -26,7 +26,7 @@ function Thumb({ t, selected }: { t: ResumeTemplateMeta; selected: boolean }) {
         </div>
       </div>
       {selected && (
-        <span className="absolute bottom-1.5 right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#00A3AD] text-white">
+        <span className="absolute bottom-1.5 right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#EA580C] text-white">
           <Check className="h-3 w-3" />
         </span>
       )}
@@ -45,7 +45,7 @@ export const TemplatePicker: React.FC<{
   return (
     <div className="space-y-3">
       <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
-        <label className="text-xs font-black uppercase tracking-wider text-[#007A82] shrink-0">Template</label>
+        <label className="text-xs font-black uppercase tracking-wider text-[#C2410C] shrink-0">Template</label>
         <div className="relative flex-1 min-w-0">
           <select
             value={value}
@@ -66,7 +66,7 @@ export const TemplatePicker: React.FC<{
           onClick={() => setOpen(true)}
           className="inline-flex items-center justify-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-[#0A2540] min-h-11"
         >
-          <LayoutTemplate className="h-4 w-4 text-[#00A3AD]" /> Preview templates
+          <LayoutTemplate className="h-4 w-4 text-[#EA580C]" /> Preview templates
         </button>
       </div>
       <p className="text-[11px] text-slate-500 font-medium">{current.name}: {current.blurb} Live preview on the right uses this layout. PDF matches the selected template.</p>
@@ -85,7 +85,7 @@ export const TemplatePicker: React.FC<{
             </div>
             {groups.map((g) => (
               <div key={g} className="mb-5">
-                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#007A82] mb-2">{g}</h3>
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[#C2410C] mb-2">{g}</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {RESUME_TEMPLATES.filter((t) => t.group === g).map((t) => (
                     <button
