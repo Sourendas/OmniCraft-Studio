@@ -5,18 +5,27 @@ interface BrandLockupProps {
 }
 
 export const BrandLockup: React.FC<BrandLockupProps> = ({ compact = false }) => {
+  const size = compact ? 32 : 40;
   return (
-    <span className="flex items-center gap-2.5 min-w-0">
-      <span className={`${compact ? 'w-8 h-8' : 'w-9 h-9'} rounded-xl shadow-sm shadow-teal-900/10 overflow-hidden shrink-0`}>
-        <img src="/favicon.svg" alt="" width={36} height={36} className="w-full h-full" />
+    <span className="flex items-center gap-2 min-w-0">
+      <span className={`${compact ? 'w-8 h-8' : 'w-10 h-10'} rounded-full overflow-hidden shrink-0 bg-white`}>
+        <img
+          src="/logo.svg"
+          alt=""
+          width={size}
+          height={size}
+          className="w-full h-full object-cover"
+        />
       </span>
-      <span className="flex items-baseline gap-1.5 leading-none">
-        <span className={`${compact ? 'text-[17px]' : 'text-[19px]'} font-extrabold tracking-[-0.045em] text-[#0A2540]`}>
-          File<span className="text-[#00A3AD]">Tools</span>
+      <span className="flex flex-col leading-none min-w-0">
+        <span className={`${compact ? 'text-[16px]' : 'text-[18px]'} font-extrabold tracking-[-0.04em] text-[#0A2540]`}>
+          File<span className="text-[#2563EB]">Tools</span>Kit
         </span>
-        <span className="inline-flex items-center rounded-md bg-[#E6F8F9] px-1.5 py-[3px] text-[10px] font-extrabold tracking-[0.18em] text-[#0F4C81]">
-          KIT
-        </span>
+        {!compact && (
+          <span className="mt-0.5 text-[9px] font-semibold tracking-[0.12em] uppercase text-slate-500 truncate">
+            Simple tools. Bigger possibilities.
+          </span>
+        )}
       </span>
     </span>
   );
