@@ -23,14 +23,14 @@ export const AbDebugPanel: React.FC = () => {
       <p className="font-mono text-slate-500 break-all mb-2">visitor {getVisitorId()}</p>
       <ul className="space-y-2 mb-3">
         {Object.values(EXPERIMENTS).map((exp) => (
-          <li key={exp.id} className="rounded-xl bg-[#F4F8FA] p-2">
+          <li key={exp.id} className="rounded-xl bg-[#FFF7ED] p-2">
             <div className="font-black text-[#0A2540]">{exp.id}</div>
             <div>{exp.enabled ? 'on' : 'off'} · {assignments[exp.id]?.variant ?? 'unassigned'} ({assignments[exp.id]?.source ?? '—'})</div>
           </li>
         ))}
       </ul>
       <pre className="bg-slate-50 border border-slate-200 rounded-xl p-2 overflow-auto text-[10px]">{JSON.stringify(summary, null, 2)}</pre>
-      <button type="button" onClick={() => { clearAbState(); window.location.reload(); }} className="mt-2 text-[#007A82] font-bold">Reset assignment</button>
+      <button type="button" onClick={() => { clearAbState(); window.location.reload(); }} className="mt-2 text-[#C2410C] font-bold">Reset assignment</button>
     </div>
   );
 };

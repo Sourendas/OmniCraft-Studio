@@ -5,8 +5,8 @@ import { ArrowLeft, Compass, Layers, FileText, Minimize2, QrCode } from 'lucide-
 export const NotFoundPage: React.FC = () => {
   return (
     <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-xs font-black text-[#007A82] mb-4">
-        <Compass className="w-4 h-4 text-[#00A3AD]" />
+      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFEDD5] border border-[#FDBA74] text-xs font-black text-[#C2410C] mb-4">
+        <Compass className="w-4 h-4 text-[#EA580C]" />
         <span>HTTP 404 • Page not found</span>
       </div>
 
@@ -20,7 +20,7 @@ export const NotFoundPage: React.FC = () => {
       <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#00A3AD] hover:bg-[#00B5B8] text-white font-black text-xs transition-all shadow-md active:scale-95"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#EA580C] hover:bg-[#F97316] text-white font-black text-xs transition-all shadow-md active:scale-95"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to tools</span>
@@ -32,20 +32,20 @@ export const NotFoundPage: React.FC = () => {
           Popular tools
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          <Link to="/resume-builder" className="p-3.5 rounded-2xl bg-[#F8FBFC] border border-slate-200 hover:border-[#00A3AD] hover:bg-white transition-all flex items-center gap-2.5">
-            <FileText className="w-4 h-4 text-[#00A3AD]" />
+          <Link to="/resume-builder" className="p-3.5 rounded-2xl bg-[#FFF7ED] border border-slate-200 hover:border-[#EA580C] hover:bg-white transition-all flex items-center gap-2.5">
+            <FileText className="w-4 h-4 text-[#EA580C]" />
             <span className="text-xs font-bold text-[#0A2540]">Resume Builder</span>
           </Link>
-          <Link to="/pdf-suite" className="p-3.5 rounded-2xl bg-[#F8FBFC] border border-slate-200 hover:border-[#00A3AD] hover:bg-white transition-all flex items-center gap-2.5">
-            <Layers className="w-4 h-4 text-[#00A3AD]" />
+          <Link to="/pdf-suite" className="p-3.5 rounded-2xl bg-[#FFF7ED] border border-slate-200 hover:border-[#EA580C] hover:bg-white transition-all flex items-center gap-2.5">
+            <Layers className="w-4 h-4 text-[#EA580C]" />
             <span className="text-xs font-bold text-[#0A2540]">PDF Suite</span>
           </Link>
-          <Link to="/image-optimizer" className="p-3.5 rounded-2xl bg-[#F8FBFC] border border-slate-200 hover:border-[#00A3AD] hover:bg-white transition-all flex items-center gap-2.5">
-            <Minimize2 className="w-4 h-4 text-[#00A3AD]" />
+          <Link to="/image-optimizer" className="p-3.5 rounded-2xl bg-[#FFF7ED] border border-slate-200 hover:border-[#EA580C] hover:bg-white transition-all flex items-center gap-2.5">
+            <Minimize2 className="w-4 h-4 text-[#EA580C]" />
             <span className="text-xs font-bold text-[#0A2540]">Image Optimizer</span>
           </Link>
-          <Link to="/qr-generator" className="p-3.5 rounded-2xl bg-[#F8FBFC] border border-slate-200 hover:border-[#00A3AD] hover:bg-white transition-all flex items-center gap-2.5">
-            <QrCode className="w-4 h-4 text-[#00A3AD]" />
+          <Link to="/qr-generator" className="p-3.5 rounded-2xl bg-[#FFF7ED] border border-slate-200 hover:border-[#EA580C] hover:bg-white transition-all flex items-center gap-2.5">
+            <QrCode className="w-4 h-4 text-[#EA580C]" />
             <span className="text-xs font-bold text-[#0A2540]">QR Generator</span>
           </Link>
         </div>
