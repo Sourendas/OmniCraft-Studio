@@ -12,8 +12,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-amber-500/20 via-orange-500/10 to-yellow-500/20',
     highlights: ['Keyword overlap score', 'Heuristic bullet rewriter', 'Live preview', 'PDF export'],
-    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Resume Builder and keyword overlap interface',
+    image: '/tools/resume-builder.svg',
+    screenshotAlt: 'Resume Builder card illustration',
     howItWorks: ['Enter career history in the form', 'Paste a job description to see keyword overlap %', 'Rewrite bullets locally and download PDF']
   },
   {
@@ -27,8 +27,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-violet-500/20 via-purple-500/10 to-fuchsia-500/20',
     highlights: ['Merge & rotate', 'Page-range split', 'Text watermark', 'Metadata editor'],
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'PDF merge, split, and watermark workspace',
+    image: '/tools/pdf-suite.svg',
+    screenshotAlt: 'PDF Suite card illustration',
     howItWorks: ['Drop PDF files into the page', 'Merge, rotate, or enter a page range to split', 'Add a text watermark and metadata, then export']
   },
   {
@@ -42,8 +42,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-emerald-500/20 via-orange-500/10 to-cyan-500/20',
     highlights: ['PNG / JPG / WebP', 'Audio to WAV', 'DOCX to PDF or TXT', 'Runs in the browser'],
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'In-browser file converter queue',
+    image: '/tools/file-converter.svg',
+    screenshotAlt: 'File Converter card illustration',
     howItWorks: ['Drop images, audio, or Word DOCX files', 'Pick a format this tool actually encodes', 'Convert in the tab and download the result']
   },
   {
@@ -57,8 +57,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-amber-500/20 via-orange-500/10 to-yellow-500/20',
     highlights: ['Quality & scale sliders', 'WebP / JPEG / PNG', 'Before/after sizes', 'Multi-file download'],
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Image compression with size comparison',
+    image: '/tools/image-optimizer.svg',
+    screenshotAlt: 'Image Optimizer card illustration',
     howItWorks: ['Upload one or more images', 'Tune quality and scale; sizes update in the list', 'Download each optimized file']
   },
   {
@@ -72,8 +72,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-blue-500/20 via-indigo-500/10 to-cyan-500/20',
     highlights: ['Fixed example rates', 'Fiat & a few cryptos', 'Hypothetical fees', 'Not a live feed'],
-    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Reference currency conversion worksheet',
+    image: '/tools/currency-crypto.svg',
+    screenshotAlt: 'Currency Worksheet card illustration',
     howItWorks: ['Pick source and destination from the example list', 'Enter an amount to apply the fixed rate', 'Read the illustration chart and hypothetical fee cards']
   },
   {
@@ -87,8 +87,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-orange-500/20 via-emerald-500/10 to-green-500/20',
     highlights: ['JSON / CSV (flat)', 'SQL keyword line-breaks', 'RegEx tester', 'SHA hashes'],
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Developer converters and hash tools',
+    image: '/tools/dev-tools.svg',
+    screenshotAlt: 'Dev Tools card illustration',
     howItWorks: ['Paste JSON, CSV, SQL, or a regex', 'Run the transform in this tab', 'Copy the result']
   },
   {
@@ -102,8 +102,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-indigo-500/20 via-purple-500/10 to-pink-500/20',
     highlights: ['URL, Wi-Fi & vCard', 'Color styling', 'PNG & SVG export'],
-    image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'QR code designer and exporter',
+    image: '/tools/qr-generator.svg',
+    screenshotAlt: 'QR Generator card illustration',
     howItWorks: ['Choose data type and enter content', 'Adjust colors', 'Export PNG or SVG']
   },
   {
@@ -117,8 +117,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-fuchsia-500/20 via-pink-500/10 to-rose-500/20',
     highlights: ['Unicode font styles', 'Caption length meters', 'Starter hashtag lists', 'One-click copy'],
-    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Caption and hashtag text tools',
+    image: '/tools/social-studio.svg',
+    screenshotAlt: 'Social Studio card illustration',
     howItWorks: ['Type a caption or bio', 'Copy a Unicode style', 'Optionally copy a starter hashtag list']
   },
   {
@@ -132,8 +132,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-rose-500/20 via-red-500/10 to-orange-500/20',
     highlights: ['Mifflin-St Jeor BMR', 'TDEE multipliers', 'Macro sliders', 'Not medical advice'],
-    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'BMR and macro estimate calculator',
+    image: '/tools/health-calc.svg',
+    screenshotAlt: 'Health Calculator card illustration',
     howItWorks: ['Enter age, sex, height, weight, and activity', 'Pick cut / maintain / bulk', 'Read calorie and gram estimates (not medical advice)']
   },
   {
@@ -147,8 +147,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-sky-500/20 via-cyan-500/10 to-blue-500/20',
     highlights: ['Side-by-side preview', 'Formatting toolbar', 'Word & read time', 'HTML & MD export'],
-    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Markdown editor and HTML preview',
+    image: '/tools/markdown-editor.svg',
+    screenshotAlt: 'Markdown Editor card illustration',
     howItWorks: ['Type or paste Markdown', 'Use the toolbar for headings and lists', 'Export HTML or Markdown']
   },
   {
@@ -162,8 +162,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-orange-500/20 via-cyan-500/10 to-emerald-500/20',
     highlights: ['Color & stroke editor', 'Minified SVG', 'React JSX export', 'PNG export'],
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'SVG vector studio',
+    image: '/tools/svg-studio.svg',
+    screenshotAlt: 'SVG Studio card illustration',
     howItWorks: ['Paste SVG, upload, or pick a preset', 'Adjust stroke, fill, and canvas', 'Download SVG, JSX, or PNG']
   },
   {
@@ -177,8 +177,8 @@ export const TOOLS_DATA: ToolItem[] = [
     badge: 'Free',
     gradient: 'from-indigo-500/20 via-blue-500/10 to-cyan-500/20',
     highlights: ['Split & unified views', 'Line highlights', 'Diff stats', 'Git .patch export'],
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
-    screenshotAlt: 'Text diff comparator',
+    image: '/tools/text-diff.svg',
+    screenshotAlt: 'Text Diff card illustration',
     howItWorks: ['Paste original text on the left and changed text on the right', 'Toggle split or unified view', 'Copy or download a unified patch']
   }
 ];
@@ -187,7 +187,7 @@ export const FAQ_DATA: FaqItem[] = [
   {
     category: 'Privacy',
     question: 'Are my files uploaded to your server?',
-    answer: 'FileTools Kit does not run an upload API that receives your documents. PDF, image, resume, SVG, and hash work runs in this browser tab. Vercel still serves the website files, and tool-card photos may load from Unsplash.'
+    answer: 'FileTools Kit does not run an upload API that receives your documents. PDF, image, resume, SVG, and hash work runs in this browser tab. Vercel still serves the website files. Tool cards use local illustrations on this site.'
   },
   {
     category: 'Pricing',
