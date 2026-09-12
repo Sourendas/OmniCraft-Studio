@@ -50,21 +50,17 @@ export const ImageOptimizerPage: React.FC = () => {
         img.onload = () => {
           const targetW = Math.round((img.width * scale) / 100);
           const targetH = Math.round((img.height * scale) / 100);
-
           const canvas = document.createElement('canvas');
           canvas.width = targetW;
           canvas.height = targetH;
           const ctx = canvas.getContext('2d');
           if (!ctx) return reject('No canvas context');
-
           ctx.drawImage(img, 0, 0, targetW, targetH);
-
           canvas.toBlob(
             (blob) => {
               if (!blob) return reject('Compression error');
               const compressedUrl = URL.createObjectURL(blob);
               const savings = Math.max(0, Math.round(((file.size - blob.size) / file.size) * 100));
-
               resolve({
                 id: `${Date.now()}-${Math.random()}`,
                 originalFile: file,
@@ -94,14 +90,12 @@ export const ImageOptimizerPage: React.FC = () => {
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const uploaded = e.target.files;
     if (!uploaded || uploaded.length === 0) return;
-
     setIsCompressing(true);
     try {
       const processed: OptimizedImageItem[] = [];
       for (let i = 0; i < uploaded.length; i++) {
         if (!uploaded[i].type.startsWith('image/')) continue;
-        const res = await processFile(uploaded[i]);
-        processed.push(res);
+        processed.push(await processFile(uploaded[i]));
       }
       setImages(prev => [...prev, ...processed]);
     } catch (err) {
@@ -117,8 +111,7 @@ export const ImageOptimizerPage: React.FC = () => {
     try {
       const reprocessed: OptimizedImageItem[] = [];
       for (const item of images) {
-        const res = await processFile(item.originalFile, newQuality, newScale, newFormat);
-        reprocessed.push(res);
+        reprocessed.push(await processFile(item.originalFile, newQuality, newScale, newFormat));
       }
       setImages(reprocessed);
     } catch (err) {
@@ -142,37 +135,30 @@ export const ImageOptimizerPage: React.FC = () => {
 
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-screen">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-[#007A82] mb-1 font-bold">
-            <Link to="/" className="text-slate-500 hover:text-[#00A3AD] flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#C2410C] mb-1 font-bold">
+            <Link to="/" className="text-slate-500 hover:text-[#EA580C] flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5" /> All Tools
             </Link>
             <span>/</span>
             <span>Media & Graphics</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
-            <Minimize2 className="w-7 h-7 text-[#00A3AD]" />
+            <Minimize2 className="w-7 h-7 text-[#EA580C]" />
             Smart Bulk Image Compressor
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Compress and resize in the canvas. Before/after file sizes shown per image — savings vary.
           </p>
         </div>
-
         {images.length > 0 && (
-          <button
-            onClick={handleDownloadAll}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00A3AD] to-[#008C95] hover:from-[#00B5B8] hover:to-[#00A3AD] text-white text-xs font-black shadow-lg shadow-teal-500/20 transition-all cursor-pointer"
-          >
+          <button onClick={handleDownloadAll} className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#F97316] hover:to-[#EA580C] text-white text-xs font-black shadow-lg shadow-orange-500/20 transition-all cursor-pointer">
             <Download className="w-4 h-4" />
             <span>Download All ({images.length})</span>
           </button>
         )}
       </div>
-
-      {/* Overview Stats Ribbon if images exist */}
       {images.length > 0 && (
         <div className="my-6 p-4 rounded-3xl bg-white border border-slate-200 shadow-2xs flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-6">
@@ -186,173 +172,72 @@ export const ImageOptimizerPage: React.FC = () => {
             </div>
             <div>
               <span className="text-[10px] text-slate-400 uppercase font-mono font-bold">Net Bandwidth Saved</span>
-              <div className="text-sm font-black text-[#007A82]">
-                {totalSavings}% Less Data
-              </div>
+              <div className="text-sm font-black text-[#C2410C]">{totalSavings}% Less Data</div>
             </div>
           </div>
-
-          <button
-            onClick={() => setImages([])}
-            className="text-xs text-slate-500 hover:text-rose-600 transition-colors font-bold cursor-pointer"
-          >
-            Clear All Images
-          </button>
+          <button onClick={() => setImages([])} className="text-xs text-slate-500 hover:text-rose-600 transition-colors font-bold cursor-pointer">Clear All Images</button>
         </div>
       )}
-
       <div className="my-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Side: Parameters Controls */}
         <div className="lg:col-span-4 space-y-6">
           <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-2xs space-y-5">
             <h3 className="text-xs font-black text-[#0A2540] uppercase tracking-wider flex items-center gap-2">
-              <Sliders className="w-4 h-4 text-[#00A3AD]" />
+              <Sliders className="w-4 h-4 text-[#EA580C]" />
               <span>Compression Tuning</span>
             </h3>
-
-            {/* Quality Slider */}
             <div>
               <div className="flex justify-between text-xs text-slate-700 mb-1.5 font-bold">
                 <span>Visual Quality</span>
-                <span className="font-mono text-[#007A82]">{Math.round(quality * 100)}%</span>
+                <span className="font-mono text-[#C2410C]">{Math.round(quality * 100)}%</span>
               </div>
-              <input
-                type="range"
-                min="0.1"
-                max="0.95"
-                step="0.05"
-                value={quality}
-                onChange={(e) => {
-                  const val = parseFloat(e.target.value);
-                  setQuality(val);
-                  recompressAll(val, scalePercent, format);
-                }}
-                className="w-full accent-[#00A3AD] cursor-pointer"
-              />
-              <div className="flex justify-between text-[10px] text-slate-500 mt-1">
-                <span>Maximum Savings (10%)</span>
-                <span>Lossless Quality (95%)</span>
-              </div>
+              <input type="range" min="0.1" max="0.95" step="0.05" value={quality} onChange={(e) => { const val = parseFloat(e.target.value); setQuality(val); recompressAll(val, scalePercent, format); }} className="w-full accent-[#EA580C] cursor-pointer" />
+              <div className="flex justify-between text-[10px] text-slate-500 mt-1"><span>Maximum Savings (10%)</span><span>Lossless Quality (95%)</span></div>
             </div>
-
-            {/* Scale Resize Slider */}
             <div>
               <div className="flex justify-between text-xs text-slate-700 mb-1.5 font-bold">
                 <span>Dimensions Scaling</span>
-                <span className="font-mono text-[#007A82]">{scalePercent}%</span>
+                <span className="font-mono text-[#C2410C]">{scalePercent}%</span>
               </div>
-              <input
-                type="range"
-                min="25"
-                max="100"
-                step="5"
-                value={scalePercent}
-                onChange={(e) => {
-                  const val = parseInt(e.target.value);
-                  setScalePercent(val);
-                  recompressAll(quality, val, format);
-                }}
-                className="w-full accent-[#00A3AD] cursor-pointer"
-              />
+              <input type="range" min="25" max="100" step="5" value={scalePercent} onChange={(e) => { const val = parseInt(e.target.value); setScalePercent(val); recompressAll(quality, val, format); }} className="w-full accent-[#EA580C] cursor-pointer" />
             </div>
-
-            {/* Target Output Format */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-2">
-                Output Format
-              </label>
+              <label className="block text-xs font-bold text-slate-700 mb-2">Output Format</label>
               <div className="grid grid-cols-3 gap-2">
-                {[
-                  { label: 'WebP (Best)', val: 'image/webp' as const },
-                  { label: 'JPEG', val: 'image/jpeg' as const },
-                  { label: 'PNG', val: 'image/png' as const }
-                ].map((f) => (
-                  <button
-                    key={f.val}
-                    onClick={() => {
-                      setFormat(f.val);
-                      recompressAll(quality, scalePercent, f.val);
-                    }}
-                    className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                      format === f.val
-                        ? 'bg-[#E6F8F9] text-[#007A82] border-[#00A3AD]'
-                        : 'bg-[#F8FBFC] border-slate-200 text-slate-600 hover:bg-white'
-                    }`}
-                  >
-                    {f.label}
-                  </button>
+                {[{ label: 'WebP (Best)', val: 'image/webp' as const }, { label: 'JPEG', val: 'image/jpeg' as const }, { label: 'PNG', val: 'image/png' as const }].map((f) => (
+                  <button key={f.val} onClick={() => { setFormat(f.val); recompressAll(quality, scalePercent, f.val); }} className={`py-2 px-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${format === f.val ? 'bg-[#FFEDD5] text-[#C2410C] border-[#EA580C]' : 'bg-[#FFF7ED] border-slate-200 text-slate-600 hover:bg-white'}`}>{f.label}</button>
                 ))}
               </div>
             </div>
           </div>
-
           <AdBanner type="sidebar" />
         </div>
-
-        {/* Right Side: Dropzone & Gallery */}
         <div className="lg:col-span-8 space-y-6">
-          <div className="relative rounded-3xl border-2 border-dashed border-[#B3EAEF] hover:border-[#00A3AD] bg-white p-8 text-center shadow-[0_4px_20px_rgba(10,37,64,0.03)] transition-all">
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              onChange={handleUpload}
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-            />
-            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#E6F8F9] border border-[#B3EAEF] flex items-center justify-center">
-              <Upload className="w-7 h-7 text-[#00A3AD]" />
+          <div className="relative rounded-3xl border-2 border-dashed border-[#FDBA74] hover:border-[#EA580C] bg-white p-8 text-center shadow-[0_4px_20px_rgba(10,37,64,0.03)] transition-all">
+            <input type="file" accept="image/*" multiple onChange={handleUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#FFEDD5] border border-[#FDBA74] flex items-center justify-center">
+              <Upload className="w-7 h-7 text-[#EA580C]" />
             </div>
-            <h3 className="text-base font-black text-[#0A2540] mb-1">
-              Select or Drop Images to Compress
-            </h3>
-            <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">
-              PNG, JPG, WebP. Quality and scale sliders; download each file.
-            </p>
+            <h3 className="text-base font-black text-[#0A2540] mb-1">Select or Drop Images to Compress</h3>
+            <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">PNG, JPG, WebP. Quality and scale sliders; download each file.</p>
           </div>
-
           {images.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {images.map((item) => (
-                <div
-                  key={item.id}
-                  className="rounded-3xl bg-white border border-slate-200 p-4 flex flex-col justify-between shadow-2xs"
-                >
+                <div key={item.id} className="rounded-3xl bg-white border border-slate-200 p-4 flex flex-col justify-between shadow-2xs">
                   <div>
-                    <div className="relative rounded-2xl overflow-hidden bg-[#F8FBFC] border border-slate-200 h-40 flex items-center justify-center mb-3">
-                      <img
-                        src={item.compressedDataUrl}
-                        alt="Optimized Preview"
-                        className="max-h-full max-w-full object-contain"
-                      />
-                      <span className="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300 font-mono">
-                        -{item.savingsPercentage}%
-                      </span>
+                    <div className="relative rounded-2xl overflow-hidden bg-[#FFF7ED] border border-slate-200 h-40 flex items-center justify-center mb-3">
+                      <img src={item.compressedDataUrl} alt="Optimized Preview" className="max-h-full max-w-full object-contain" />
+                      <span className="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300 font-mono">-{item.savingsPercentage}%</span>
                     </div>
-
-                    <h4 className="text-xs font-black text-[#0A2540] truncate" title={item.name}>
-                      {item.name}
-                    </h4>
-
+                    <h4 className="text-xs font-black text-[#0A2540] truncate" title={item.name}>{item.name}</h4>
                     <div className="flex items-center justify-between text-[11px] text-slate-500 mt-1 font-mono font-medium">
-                      <span>{formatBytes(item.originalSize)}</span>
-                      <span>→</span>
-                      <span className="text-emerald-600 font-bold">{formatBytes(item.compressedSize)}</span>
+                      <span>{formatBytes(item.originalSize)}</span><span>→</span><span className="text-emerald-600 font-bold">{formatBytes(item.compressedSize)}</span>
                     </div>
                   </div>
-
                   <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-[10px] text-slate-400 font-mono">
-                      {item.width}x{item.height}px
-                    </span>
-                    <button
-                      onClick={() => {
-                        const ext = format === 'image/webp' ? 'webp' : format === 'image/jpeg' ? 'jpg' : 'png';
-                        downloadBlob(item.compressedBlob, `${item.name.replace(/\.[^/.]+$/, '')}_opt.${ext}`);
-                      }}
-                      className="flex items-center gap-1.5 text-xs font-bold text-[#007A82] hover:text-[#00A3AD] px-3 py-1.5 rounded-xl bg-[#E6F8F9] hover:bg-[#D0F2F5] border border-[#B3EAEF] transition-all cursor-pointer"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>Save</span>
+                    <span className="text-[10px] text-slate-400 font-mono">{item.width}x{item.height}px</span>
+                    <button onClick={() => { const ext = format === 'image/webp' ? 'webp' : format === 'image/jpeg' ? 'jpg' : 'png'; downloadBlob(item.compressedBlob, `${item.name.replace(/\.[^/.]+$/, '')}_opt.${ext}`); }} className="flex items-center gap-1.5 text-xs font-bold text-[#C2410C] hover:text-[#EA580C] px-3 py-1.5 rounded-xl bg-[#FFEDD5] hover:bg-[#FED7AA] border border-[#FDBA74] transition-all cursor-pointer">
+                      <Download className="w-3.5 h-3.5" /><span>Save</span>
                     </button>
                   </div>
                 </div>
