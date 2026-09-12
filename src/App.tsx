@@ -47,12 +47,12 @@ export default function App() {
   return (
     <SubscriptionProvider>
       <BrowserRouter>
-        <div className="relative min-h-screen min-w-0 max-w-[100vw] bg-[#F6FAFC]/80 text-[#0A2540] selection:bg-[#00A3AD]/25 selection:text-[#006066] overflow-x-clip font-sans flex flex-col justify-between">
+        <div className="relative min-h-screen min-w-0 max-w-[100vw] bg-[#FFF4E8]/80 text-[#0A2540] selection:bg-[#EA580C]/25 selection:text-[#9A3412] overflow-x-clip font-sans flex flex-col justify-between">
           <AmbientBackground />
           <ScrollToTop />
           <Seo />
           <Navbar />
-          <main className="flex-grow min-w-0 w-full">
+          <main className="relative z-10 flex-grow min-w-0 w-full">
             <Suspense fallback={<RouteFallback />}>
               <Routes>
                 <Route path="/" element={<HomePage />} />
