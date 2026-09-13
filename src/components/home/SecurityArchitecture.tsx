@@ -131,8 +131,8 @@ export const SecurityArchitecture: React.FC = () => {
     <section id="architecture" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E6F8F9] border border-[#B3EAEF] text-xs font-black text-[#007A82] mb-3">
-            <Lock className="w-3.5 h-3.5 text-[#00A3AD]" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FFEDD5] border border-[#FDBA74] text-xs font-black text-[#C2410C] mb-3">
+            <Lock className="w-3.5 h-3.5 text-[#EA580C]" />
             <span className="uppercase tracking-wider">Architecture & Trust</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-black text-[#0A2540] tracking-tight">
@@ -143,7 +143,7 @@ export const SecurityArchitecture: React.FC = () => {
           </p>
         </div>
         <span className="text-xs font-bold text-slate-700 bg-white px-4 py-2 rounded-full border border-slate-200 flex items-center gap-2">
-          <ShieldCheck className="w-3.5 h-3.5 text-[#00A3AD]" />
+          <ShieldCheck className="w-3.5 h-3.5 text-[#EA580C]" />
           <span>Browser-local file tools</span>
         </span>
       </div>
@@ -155,13 +155,13 @@ export const SecurityArchitecture: React.FC = () => {
             <div key={card.id} className="p-6 rounded-3xl bg-white border border-slate-200/90 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-3 rounded-2xl bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF]">
+                  <div className="p-3 rounded-2xl bg-[#FFEDD5] text-[#C2410C] border border-[#FDBA74]">
                     <Icon className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-50 text-slate-600 border border-slate-200">{card.badge}</span>
                 </div>
                 <h3 className="text-base font-black text-[#0A2540] mb-1">{card.title}</h3>
-                <p className="text-xs font-bold text-[#007A82] mb-3">{card.subtitle}</p>
+                <p className="text-xs font-bold text-[#C2410C] mb-3">{card.subtitle}</p>
                 <p className="text-xs text-slate-600 leading-relaxed font-medium">{card.description}</p>
               </div>
               <div className="mt-5 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-emerald-700 font-bold">
@@ -176,7 +176,7 @@ export const SecurityArchitecture: React.FC = () => {
       <div className="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-5 mb-6 gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-2xl bg-[#E6F8F9] text-[#007A82] border border-[#B3EAEF]">
+            <div className="p-2.5 rounded-2xl bg-[#FFEDD5] text-[#C2410C] border border-[#FDBA74]">
               <Terminal className="w-5 h-5" />
             </div>
             <div>
@@ -184,13 +184,13 @@ export const SecurityArchitecture: React.FC = () => {
               <p className="text-xs text-slate-500 font-medium">SHA-256 and a 1 MB buffer in this tab — not a certification or air-gap proof</p>
             </div>
           </div>
-          <button id="run-security-audit-btn" onClick={runLiveSecurityAudit} disabled={isRunningAudit} className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#00A3AD] text-white text-xs font-black disabled:opacity-50">
+          <button id="run-security-audit-btn" onClick={runLiveSecurityAudit} disabled={isRunningAudit} className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white text-xs font-black disabled:opacity-50">
             {isRunningAudit ? (<><RefreshCw className="w-3.5 h-3.5 animate-spin" /><span>Running demo...</span></>) : (<><Play className="w-3.5 h-3.5 fill-current" /><span>{auditCompleted ? 'Re-run browser crypto demo' : 'Run browser crypto demo'}</span></>)}
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {auditChecks.map((check) => (
-            <div key={check.id} className="p-4 rounded-2xl bg-[#F8FBFC] border border-slate-200/80 flex flex-col justify-between gap-3">
+            <div key={check.id} className="p-4 rounded-2xl bg-[#FFF7ED] border border-[#FED7AA]/80 flex flex-col justify-between gap-3">
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-black text-[#0A2540]">{check.name}</span>
