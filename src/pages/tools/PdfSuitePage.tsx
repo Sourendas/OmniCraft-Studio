@@ -226,6 +226,14 @@ export const PdfSuitePage: React.FC = () => {
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Merge, rotate, split by page range, add a text watermark, and edit metadata in this tab. Preview tiles are placeholders, not rendered PDF pages. Encrypted PDFs may fail.
           </p>
+          <p className="text-xs text-slate-500 mt-2 font-medium">
+            Guides:{' '}
+            <Link to="/guides/merge-pdf-in-browser" className="text-[#C2410C] font-black underline underline-offset-2">merge ~20 PDFs</Link>
+            {' · '}
+            <Link to="/guides/split-pdf-pages" className="text-[#C2410C] font-black underline underline-offset-2">extract pages 2–4</Link>
+            {' · '}
+            <Link to="/guides/what-stays-in-the-tab" className="text-[#C2410C] font-black underline underline-offset-2">what stays in the tab</Link>
+          </p>
         </div>
         <div className="flex items-center gap-3">
           <button onClick={loadDemoPdf} className="px-4 py-2 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700">Load Sample PDF</button>

@@ -134,6 +134,10 @@ export const QrGeneratorPage: React.FC = () => {
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Encode a URL, Wi-Fi network, vCard, or text. Export PNG or SVG. Work stays in this tab.
           </p>
+          <p className="text-xs text-slate-500 mt-2 font-medium">
+            Guide:{' '}
+            <Link to="/guides/create-qr-code" className="text-[#C2410C] font-black underline underline-offset-2">create a Wi-Fi or link QR code</Link>
+          </p>
         </div>
 
         <div className="flex items-center gap-2.5">

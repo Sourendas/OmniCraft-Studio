@@ -252,6 +252,10 @@ export const FileConverterPage: React.FC = () => {
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Convert Images (PNG, JPG, WebP), Audio → WAV, and DOCX to PDF/TXT in this browser.
           </p>
+          <p className="text-xs text-slate-500 mt-2 font-medium">
+            Guide:{' '}
+            <Link to="/guides/convert-images-png-jpg-webp" className="text-[#C2410C] font-black underline underline-offset-2">convert JPG / PNG / WebP for the job</Link>
+          </p>
         </div>
         {files.length > 0 && (
           <div className="flex items-center gap-3">

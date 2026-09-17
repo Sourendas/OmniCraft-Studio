@@ -151,6 +151,10 @@ export const ImageOptimizerPage: React.FC = () => {
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             Compress and resize in the canvas. Before/after file sizes shown per image — savings vary.
           </p>
+          <p className="text-xs text-slate-500 mt-2 font-medium">
+            Guide:{' '}
+            <Link to="/guides/compress-images-in-browser" className="text-[#C2410C] font-black underline underline-offset-2">compress images for email or a website</Link>
+          </p>
         </div>
         {images.length > 0 && (
           <button onClick={handleDownloadAll} className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#F97316] hover:to-[#EA580C] text-white text-xs font-black shadow-lg shadow-orange-500/20 transition-all cursor-pointer">

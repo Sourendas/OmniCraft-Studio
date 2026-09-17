@@ -148,6 +148,10 @@ export const ResumeBuilderPage: React.FC = () => {
             <p className="text-sm text-slate-600 mt-1 font-medium">
               12 layouts. Pick one, fill the form, download a PDF. Keyword overlap is local, not an ATS. Rewrite is a local verb helper.
             </p>
+            <p className="text-xs text-slate-500 mt-2 font-medium">
+              Guide:{' '}
+              <Link to="/guides/build-resume-pdf" className="text-[#C2410C] font-black underline underline-offset-2">turn work history into a resume PDF</Link>
+            </p>
           </div>
           <div className="flex flex-wrap items-center gap-2 shrink-0">
             <div className="flex bg-white border border-slate-200 rounded-full p-1">
