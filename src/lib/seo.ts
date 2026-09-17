@@ -81,49 +81,49 @@ export const SEO_PAGES: Record<string, SeoPage> = {
 
   '/guides/merge-pdf-in-browser': {
     path: '/guides/merge-pdf-in-browser',
-    title: 'Merge 20 PDFs in your browser | FileTools Kit',
+    title: 'How to merge 20 PDFs in your browser | FileTools Kit',
     description:
       'Practical workflow for ordering and merging many PDFs in the tab, including limits for encrypted files.'
   },
   '/guides/split-pdf-pages': {
     path: '/guides/split-pdf-pages',
-    title: 'Extract selected pages from a PDF | FileTools Kit',
+    title: 'How to extract pages 2–4 from a PDF | FileTools Kit',
     description:
       'Extract a page range from a PDF in the browser and download the smaller file.'
   },
   '/guides/convert-images-png-jpg-webp': {
     path: '/guides/convert-images-png-jpg-webp',
-    title: 'Convert JPG, PNG, and WebP for the job | FileTools Kit',
+    title: 'How to convert JPG, PNG, and WebP for the job | FileTools Kit',
     description:
       'Choose the right image format, then convert and download it in the browser.'
   },
   '/guides/compress-images-in-browser': {
     path: '/guides/compress-images-in-browser',
-    title: 'Compress images for email or a website | FileTools Kit',
+    title: 'How to compress images for email or a website | FileTools Kit',
     description:
       'Reduce dimensions and file size in the browser while checking quality and before-and-after bytes.'
   },
   '/guides/build-resume-pdf': {
     path: '/guides/build-resume-pdf',
-    title: 'Turn your work history into a resume PDF | FileTools Kit',
+    title: 'How to turn your work history into a resume PDF | FileTools Kit',
     description:
       'Build a focused resume from career notes, check it against a job description, and download a PDF.'
   },
   '/guides/create-qr-code': {
     path: '/guides/create-qr-code',
-    title: 'Create a QR code for Wi-Fi or a link | FileTools Kit',
+    title: 'How to create a QR code for Wi-Fi or a link | FileTools Kit',
     description:
       'Make a scannable QR code for a URL, Wi-Fi details, vCard, or text and export PNG or SVG.'
   },
   '/guides/what-stays-in-the-tab': {
     path: '/guides/what-stays-in-the-tab',
-    title: 'Understand what stays in your browser tab | FileTools Kit',
+    title: 'What “files stay in this tab” actually means | FileTools Kit',
     description:
       'What browser memory, hosting logs, fonts, and ads can and cannot see when a tool runs locally.'
   },
   '/guides/hash-text-sha256': {
     path: '/guides/hash-text-sha256',
-    title: 'Hash text with SHA-256 and verify a checksum | FileTools Kit',
+    title: 'How to hash text with SHA-256 and verify a checksum | FileTools Kit',
     description:
       'Paste text, calculate a SHA-family hash in the browser, and compare the output without sending text to an API.'
   },
