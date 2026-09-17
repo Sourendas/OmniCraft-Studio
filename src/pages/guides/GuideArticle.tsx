@@ -71,6 +71,20 @@ export const GuideArticlePage: React.FC = () => {
 
         <h2 className="text-lg font-black text-[#0A2540]">Related</h2>
         <p className="text-xs text-slate-500 font-medium">{guide.notes.join(' ')}</p>
+        {guide.relatedGuides && guide.relatedGuides.length > 0 && (
+          <ul className="flex flex-wrap gap-2">
+            {guide.relatedGuides.map((g) => (
+              <li key={g.slug}>
+                <Link
+                  to={`/guides/${g.slug}`}
+                  className="inline-flex px-3 py-1.5 rounded-full border border-orange-200 bg-[#FFF7ED] text-xs font-black text-[#C2410C]"
+                >
+                  {g.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
         <div className="flex flex-wrap gap-3 pt-2">
           <Link to={guide.toolRoute} className="px-5 py-2.5 rounded-full bg-[#EA580C] text-white text-xs font-black">
             {guide.toolLabel}
