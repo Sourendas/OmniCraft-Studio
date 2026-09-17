@@ -29,7 +29,6 @@ function honest(text: string): string {
 export function applyGuideFixes(guide: GuideArticle): GuideArticle {
   return {
     ...guide,
-    updated: guide.slug === 'what-stays-in-the-tab' ? '12 September 2026' : guide.updated,
     summary: honest(guide.summary),
     intro: honest(guide.intro),
     figures: guide.figures.map((figure) => ({
