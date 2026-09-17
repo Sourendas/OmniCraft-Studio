@@ -1,0 +1,24 @@
+{
+  "name": "FileTools Kit",
+  "short_name": "FileTools",
+  "description": "Merge PDFs, convert images, and build a resume PDF in your browser. Files stay in this tab.",
+  "start_url": "/pdf-suite",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFF4E8",
+  "theme_color": "#EA580C",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
