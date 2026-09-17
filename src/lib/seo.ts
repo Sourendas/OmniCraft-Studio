@@ -17,9 +17,9 @@ const tool = (path: string, name: string, description: string): SeoPage => ({
 export const SEO_PAGES: Record<string, SeoPage> = {
   '/': {
     path: '/',
-    title: 'FileTools Kit | Free PDF, image, and resume tools in your browser',
+    title: 'Merge PDFs and convert images in your browser | FileTools Kit',
     description:
-      'Merge PDFs, convert images, build a resume PDF, and more in this tab. Free tools operated by Souren Das in Bengaluru. No file-upload API.'
+      'Merge PDFs, convert images, build a resume PDF, and more in this tab. Free tools by Souren Das in Bengaluru. Files stay in the tab; no upload API.'
   },
   '/about': {
     path: '/about',
@@ -66,18 +66,67 @@ export const SEO_PAGES: Record<string, SeoPage> = {
     title: 'Contact | FileTools Kit',
     description: 'Email support@filetoolskit.com or privacy@filetoolskit.com. Operator: Souren Das, Bengaluru, India.'
   },
-  '/resume-builder': tool('/resume-builder', 'Build a resume PDF in your browser', 'Fill a form, pick a layout, and download a resume PDF in this tab. Keyword overlap is local, not an employer ATS.'),
-  '/pdf-suite': tool('/pdf-suite', 'Merge PDF online in your browser', 'Merge, split, rotate, and watermark PDFs in this tab with pdf-lib. Encrypted files may fail.'),
-  '/file-converter': tool('/file-converter', 'Convert PNG, JPG, and WebP in your browser', 'Convert PNG, JPG, and WebP in the canvas. Audio to WAV. DOCX to text or a simple PDF. Files stay in this tab.'),
-  '/image-optimizer': tool('/image-optimizer', 'Compress images online in your browser', 'Compress and resize images in this tab. Download WebP, JPEG, or PNG with before and after sizes.'),
-  '/qr-generator': tool('/qr-generator', 'QR code generator in your browser', 'Create a QR code for a URL, Wi-Fi network, or vCard and export PNG or SVG in this tab.'),
-  '/dev-tools': tool('/dev-tools', 'Dev Tools', 'JSON to CSV, regex tester, Base64, and SHA-256 in the browser. No MD5.'),
-  '/markdown-editor': tool('/markdown-editor', 'Markdown Editor', 'Write Markdown with a live preview and export HTML or .md in this tab.'),
-  '/svg-editor': tool('/svg-editor', 'SVG Studio', 'Edit SVG stroke and fill, then export SVG, React JSX, or PNG in the browser.'),
-  '/text-diff': tool('/text-diff', 'Text Diff', 'Compare two texts side by side and download a unified patch in the browser.'),
-  '/social-studio': tool('/social-studio', 'Social Studio', 'Unicode text styles, caption length meters, and starter hashtag lists. Not trending data.'),
-  '/health-calc': tool('/health-calc', 'Health Calculator', 'Mifflin-St Jeor BMR and TDEE estimates. Not medical advice.'),
-  '/currency-crypto': tool('/currency-crypto', 'Currency Worksheet', 'Static September 2026 example FX rates. Not live market data or financial advice.')
+  '/resume-builder': tool('/resume-builder', 'Build a job-ready resume PDF in your browser', 'Turn your experience into a clean resume PDF with local keyword checks and browser export. Free to use.'),
+  '/pdf-suite': tool('/pdf-suite', 'Merge PDF in your browser', 'Merge, split, rotate, and watermark PDFs in this tab with pdf-lib. Encrypted files may fail.'),
+  '/file-converter': tool('/file-converter', 'Convert JPG, PNG, and WebP in your browser', 'Convert supported images, audio to WAV, and DOCX to text or a simple PDF in the browser. Free, no account.'),
+  '/image-optimizer': tool('/image-optimizer', 'Compress images in your browser', 'Reduce image size with quality and scale controls, compare before and after, and download WebP, JPEG, or PNG.'),
+  '/qr-generator': tool('/qr-generator', 'Create a QR code for a URL, Wi-Fi, or vCard', 'Make a QR code for a URL, Wi-Fi network, or vCard and export PNG or SVG in this tab.'),
+  '/dev-tools': tool('/dev-tools', 'Format JSON, test regex, and hash text in your browser', 'Format flat JSON or CSV, test JavaScript regex, Base64, and SHA hashes in the browser. No MD5.'),
+  '/markdown-editor': tool('/markdown-editor', 'Write and preview Markdown in your browser', 'Write Markdown with a live preview and export HTML or .md in this tab.'),
+  '/svg-editor': tool('/svg-editor', 'Edit SVG colors and export PNG or JSX', 'Edit SVG stroke and fill, then export SVG, React JSX, or PNG in the browser.'),
+  '/text-diff': tool('/text-diff', 'Compare two texts and export a patch', 'Compare original and changed text side by side and download a unified patch in the browser.'),
+  '/social-studio': tool('/social-studio', 'Write social captions and bios faster', 'Draft captions and bios with Unicode styles, length meters, and starter hashtag lists you can copy.'),
+  '/health-calc': tool('/health-calc', 'Estimate calories, macros, and TDEE', 'Estimate BMR and TDEE with Mifflin-St Jeor. Educational estimates, not medical advice.'),
+  '/currency-crypto': tool('/currency-crypto', 'Calculate currency conversions with a worksheet', 'Run a quick currency worksheet with example rates. Rates are illustrative, not live markets.'),
+
+  '/guides/merge-pdf-in-browser': {
+    path: '/guides/merge-pdf-in-browser',
+    title: 'Merge 20 PDFs in your browser | FileTools Kit',
+    description:
+      'Practical workflow for ordering and merging many PDFs in the tab, including limits for encrypted files.'
+  },
+  '/guides/split-pdf-pages': {
+    path: '/guides/split-pdf-pages',
+    title: 'Extract selected pages from a PDF | FileTools Kit',
+    description:
+      'Extract a page range from a PDF in the browser and download the smaller file.'
+  },
+  '/guides/convert-images-png-jpg-webp': {
+    path: '/guides/convert-images-png-jpg-webp',
+    title: 'Convert JPG, PNG, and WebP for the job | FileTools Kit',
+    description:
+      'Choose the right image format, then convert and download it in the browser.'
+  },
+  '/guides/compress-images-in-browser': {
+    path: '/guides/compress-images-in-browser',
+    title: 'Compress images for email or a website | FileTools Kit',
+    description:
+      'Reduce dimensions and file size in the browser while checking quality and before-and-after bytes.'
+  },
+  '/guides/build-resume-pdf': {
+    path: '/guides/build-resume-pdf',
+    title: 'Turn your work history into a resume PDF | FileTools Kit',
+    description:
+      'Build a focused resume from career notes, check it against a job description, and download a PDF.'
+  },
+  '/guides/create-qr-code': {
+    path: '/guides/create-qr-code',
+    title: 'Create a QR code for Wi-Fi or a link | FileTools Kit',
+    description:
+      'Make a scannable QR code for a URL, Wi-Fi details, vCard, or text and export PNG or SVG.'
+  },
+  '/guides/what-stays-in-the-tab': {
+    path: '/guides/what-stays-in-the-tab',
+    title: 'Understand what stays in your browser tab | FileTools Kit',
+    description:
+      'What browser memory, hosting logs, fonts, and ads can and cannot see when a tool runs locally.'
+  },
+  '/guides/hash-text-sha256': {
+    path: '/guides/hash-text-sha256',
+    title: 'Hash text with SHA-256 and verify a checksum | FileTools Kit',
+    description:
+      'Paste text, calculate a SHA-family hash in the browser, and compare the output without sending text to an API.'
+  },
 };
 
 export function seoForPath(pathname: string): SeoPage {
