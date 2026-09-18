@@ -11,6 +11,7 @@ import { HomePage } from './pages/HomePage';
 
 const ResumeBuilderPage = lazy(() => import('./pages/tools/ResumeBuilderPage').then((m) => ({ default: m.ResumeBuilderPage })));
 const PdfSuitePage = lazy(() => import('./pages/tools/PdfSuitePage').then((m) => ({ default: m.PdfSuitePage })));
+const CompressPdfPage = lazy(() => import('./pages/tools/CompressPdfPage').then((m) => ({ default: m.CompressPdfPage })));
 const FileConverterPage = lazy(() => import('./pages/tools/FileConverterPage').then((m) => ({ default: m.FileConverterPage })));
 const ImageOptimizerPage = lazy(() => import('./pages/tools/ImageOptimizerPage').then((m) => ({ default: m.ImageOptimizerPage })));
 const CurrencyCryptoPage = lazy(() => import('./pages/tools/CurrencyCryptoPage').then((m) => ({ default: m.CurrencyCryptoPage })));
@@ -58,6 +59,7 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/resume-builder" element={<ResumeBuilderPage />} />
                 <Route path="/pdf-suite" element={<PdfSuitePage />} />
+                <Route path="/compress-pdf" element={<CompressPdfPage />} />
                 <Route path="/file-converter" element={<FileConverterPage />} />
                 <Route path="/image-optimizer" element={<ImageOptimizerPage />} />
                 <Route path="/currency-crypto" element={<CurrencyCryptoPage />} />
