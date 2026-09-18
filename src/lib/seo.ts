@@ -68,6 +68,17 @@ export const SEO_PAGES: Record<string, SeoPage> = {
   },
   '/resume-builder': tool('/resume-builder', 'Build a job-ready resume PDF in your browser', 'Turn your experience into a clean resume PDF with local keyword checks and browser export. Free to use.'),
   '/pdf-suite': tool('/pdf-suite', 'Merge PDF in your browser', 'Merge, split, rotate, and watermark PDFs in this tab with pdf-lib. Encrypted files may fail.'),
+  '/compress-pdf': tool(
+    '/compress-pdf',
+    'Compress PDF in your browser',
+    'Shrink a PDF in this browser tab with quality presets, before-and-after sizes, and no upload API. Already-compressed PDFs may not shrink.'
+  ),
+  '/guides/compress-pdf-in-browser': {
+    path: '/guides/compress-pdf-in-browser',
+    title: 'How to compress a PDF in your browser | FileTools Kit',
+    description:
+      'Render a PDF locally, compare its size before and after, and download a smaller copy when the source allows it. Text-heavy PDFs may not shrink.'
+  },
   '/file-converter': tool('/file-converter', 'Convert JPG, PNG, and WebP in your browser', 'Convert supported images, audio to WAV, and DOCX to text or a simple PDF in the browser. Free, no account.'),
   '/image-optimizer': tool('/image-optimizer', 'Compress images in your browser', 'Reduce image size with quality and scale controls, compare before and after, and download WebP, JPEG, or PNG.'),
   '/qr-generator': tool('/qr-generator', 'Create a QR code for a URL, Wi-Fi, or vCard', 'Make a QR code for a URL, Wi-Fi network, or vCard and export PNG or SVG in this tab.'),
