@@ -32,6 +32,21 @@ export const TOOLS_DATA: ToolItem[] = [
     howItWorks: ['Drop PDF files into the page', 'Merge, rotate, or enter a page range to split', 'Add a text watermark and metadata, then export']
   },
   {
+    id: 'compress-pdf',
+    name: 'Compress PDF',
+    category: 'Document & Career',
+    description: 'Shrink one PDF in the browser with Low, Medium, or High quality presets and before/after sizes.',
+    detailedDescription: 'Render one PDF page at a time in this browser tab, rebuild it as a JPEG-image PDF, compare original and output bytes, and download the smaller result when there is a saving. Text-heavy or already-compressed PDFs may not shrink; v1 rasterizes pages, so text is not guaranteed to stay selectable. No upload API.',
+    route: '/compress-pdf',
+    iconName: 'Minimize2',
+    badge: 'Free',
+    gradient: 'from-violet-500/20 via-orange-500/10 to-amber-500/20',
+    highlights: ['Low / Medium / High presets', 'Before & after sizes', 'One PDF at a time', 'Runs in this browser tab'],
+    image: '/tools/pdf-suite.svg',
+    screenshotAlt: 'Compress PDF card illustration',
+    howItWorks: ['Drop one PDF into the browser tool', 'Choose a compression preset and wait while pages render locally', 'Compare sizes, then download the smaller result or the original when there are no savings']
+  },
+  {
     id: 'file-converter',
     name: 'File Converter',
     category: 'Productivity & Utility',
