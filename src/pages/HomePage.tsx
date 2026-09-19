@@ -6,6 +6,7 @@ const WorkflowPresets = lazy(() => import('../components/home/WorkflowPresets').
 const SecurityArchitecture = lazy(() => import('../components/home/SecurityArchitecture').then((m) => ({ default: m.SecurityArchitecture })));
 const LiveSystemDiagnostics = lazy(() => import('../components/home/LiveSystemDiagnostics').then((m) => ({ default: m.LiveSystemDiagnostics })));
 const FaqSection = lazy(() => import('../components/home/FaqSection').then((m) => ({ default: m.FaqSection })));
+const HomeExplainer = lazy(() => import('../components/home/HomeExplainer').then((m) => ({ default: m.HomeExplainer })));
 const AdBanner = lazy(() => import('../components/layout/AdBanner').then((m) => ({ default: m.AdBanner })));
 
 export const HomePage: React.FC = () => {
@@ -28,6 +29,7 @@ export const HomePage: React.FC = () => {
         <WorkflowPresets />
         <SecurityArchitecture />
         <LiveSystemDiagnostics />
+        <HomeExplainer />
         <div className="px-4 max-w-7xl mx-auto w-full">
           <AdBanner type="in-content" />
         </div>
