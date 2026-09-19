@@ -12,6 +12,7 @@ import { ToolArticle } from './components/tools/ToolArticle';
 
 const ResumeBuilderPage = lazy(() => import('./pages/tools/ResumeBuilderPage').then((m) => ({ default: m.ResumeBuilderPage })));
 const PdfSuitePage = lazy(() => import('./pages/tools/PdfSuitePage').then((m) => ({ default: m.PdfSuitePage })));
+const InTabPdfJobs = lazy(() => import('./pages/tools/InTabPdfJobs').then((m) => ({ default: m.InTabPdfJobs })));
 const FileConverterPage = lazy(() => import('./pages/tools/FileConverterPage').then((m) => ({ default: m.FileConverterPage })));
 const ImageOptimizerPage = lazy(() => import('./pages/tools/ImageOptimizerPage').then((m) => ({ default: m.ImageOptimizerPage })));
 const CurrencyCryptoPage = lazy(() => import('./pages/tools/CurrencyCryptoPage').then((m) => ({ default: m.CurrencyCryptoPage })));
@@ -33,7 +34,7 @@ const DisclaimerPage = lazy(() => import('./pages/legal/LegalPages').then((m) =>
 const ContactPage = lazy(() => import('./pages/legal/LegalPages').then((m) => ({ default: m.ContactPage })));
 
 const RouteFallback = () => (
-  <div className="max-w-lg mx-auto px-4 py-16 text-center text-sm font-medium text-slate-600">Loading…</div>
+  <div className="max-w-lg mx-auto px-4 py-16 text-center text-sm font-medium text-slate-600">Loading...</div>
 );
 
 const WithArticle = ({ slug, children }: { slug: string; children: React.ReactNode }) => (
@@ -68,8 +69,9 @@ export default function App() {
                 <Route path="/pdf-suite" element={<WithArticle slug="pdf-suite"><PdfSuitePage /></WithArticle>} />
                 <Route path="/merge-pdf" element={<WithArticle slug="merge-pdf"><PdfSuitePage /></WithArticle>} />
                 <Route path="/split-pdf" element={<WithArticle slug="split-pdf"><PdfSuitePage /></WithArticle>} />
-                <Route path="/compress-pdf" element={<WithArticle slug="compress-pdf"><PdfSuitePage /></WithArticle>} />
-                <Route path="/jpg-to-pdf" element={<WithArticle slug="jpg-to-pdf"><PdfSuitePage /></WithArticle>} />
+                <Route path="/compress-pdf" element={<WithArticle slug="compress-pdf"><InTabPdfJobs job="compress" /></WithArticle>} />
+                <Route path="/jpg-to-pdf" element={<WithArticle slug="jpg-to-pdf"><InTabPdfJobs job="jpg" /></WithArticle>} />
+                <Route path="/page-numbers" element={<WithArticle slug="page-numbers"><InTabPdfJobs job="numbers" /></WithArticle>} />
                 <Route path="/file-converter" element={<WithArticle slug="file-converter"><FileConverterPage /></WithArticle>} />
                 <Route path="/image-optimizer" element={<WithArticle slug="image-optimizer"><ImageOptimizerPage /></WithArticle>} />
                 <Route path="/currency-crypto" element={<WithArticle slug="currency-crypto"><CurrencyCryptoPage /></WithArticle>} />
