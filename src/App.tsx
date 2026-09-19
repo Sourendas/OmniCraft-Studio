@@ -66,6 +66,10 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/resume-builder" element={<WithArticle slug="resume-builder"><ResumeBuilderPage /></WithArticle>} />
                 <Route path="/pdf-suite" element={<WithArticle slug="pdf-suite"><PdfSuitePage /></WithArticle>} />
+                <Route path="/merge-pdf" element={<WithArticle slug="merge-pdf"><PdfSuitePage job="merge" /></WithArticle>} />
+                <Route path="/split-pdf" element={<WithArticle slug="split-pdf"><PdfSuitePage job="split" /></WithArticle>} />
+                <Route path="/compress-pdf" element={<WithArticle slug="compress-pdf"><PdfSuitePage job="compress" /></WithArticle>} />
+                <Route path="/jpg-to-pdf" element={<WithArticle slug="jpg-to-pdf"><PdfSuitePage job="jpg" /></WithArticle>} />
                 <Route path="/file-converter" element={<WithArticle slug="file-converter"><FileConverterPage /></WithArticle>} />
                 <Route path="/image-optimizer" element={<WithArticle slug="image-optimizer"><ImageOptimizerPage /></WithArticle>} />
                 <Route path="/currency-crypto" element={<WithArticle slug="currency-crypto"><CurrencyCryptoPage /></WithArticle>} />
