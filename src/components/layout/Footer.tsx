@@ -32,6 +32,7 @@ export const Footer: React.FC = () => {
           <p className="text-xs font-medium">12 in-browser tools. Operated by Souren Das, Bengaluru, India.</p>
           <p className="text-[11px]"><a className="text-[#C2410C] underline font-bold" href="mailto:support@filetoolskit.com">support@filetoolskit.com</a></p>
           <p className="text-[11px]"><a className="text-[#C2410C] underline font-bold" href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a></p>
+          <p className="text-[11px]">Featured on <a href="https://www.directree.io/tool/filetools-kit" className="text-[#C2410C] underline font-bold" target="_blank" rel="noopener noreferrer">directree</a></p>
         </div>
         <div className="space-y-2">
           <h4 className="font-black text-[#1C1917] text-xs uppercase">Document</h4>
