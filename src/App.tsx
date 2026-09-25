@@ -8,10 +8,11 @@ import { Footer } from './components/layout/Footer';
 import { AbDebugPanel } from './experiments';
 import { Seo } from './components/Seo';
 import { HomePage } from './pages/HomePage';
+import { ToolArticle } from './components/tools/ToolArticle';
 
 const ResumeBuilderPage = lazy(() => import('./pages/tools/ResumeBuilderPage').then((m) => ({ default: m.ResumeBuilderPage })));
 const PdfSuitePage = lazy(() => import('./pages/tools/PdfSuitePage').then((m) => ({ default: m.PdfSuitePage })));
-const CompressPdfPage = lazy(() => import('./pages/tools/CompressPdfPage').then((m) => ({ default: m.CompressPdfPage })));
+const InTabPdfJobs = lazy(() => import('./pages/tools/InTabPdfJobs').then((m) => ({ default: m.InTabPdfJobs })));
 const FileConverterPage = lazy(() => import('./pages/tools/FileConverterPage').then((m) => ({ default: m.FileConverterPage })));
 const ImageOptimizerPage = lazy(() => import('./pages/tools/ImageOptimizerPage').then((m) => ({ default: m.ImageOptimizerPage })));
 const CurrencyCryptoPage = lazy(() => import('./pages/tools/CurrencyCryptoPage').then((m) => ({ default: m.CurrencyCryptoPage })));
@@ -33,7 +34,14 @@ const DisclaimerPage = lazy(() => import('./pages/legal/LegalPages').then((m) =>
 const ContactPage = lazy(() => import('./pages/legal/LegalPages').then((m) => ({ default: m.ContactPage })));
 
 const RouteFallback = () => (
-  <div className="max-w-lg mx-auto px-4 py-16 text-center text-sm font-medium text-slate-600">Loading…</div>
+  <div className="max-w-lg mx-auto px-4 py-16 text-center text-sm font-medium text-slate-600">Loading...</div>
+);
+
+const WithArticle = ({ slug, children }: { slug: string; children: React.ReactNode }) => (
+  <>
+    {children}
+    <ToolArticle slug={slug} />
+  </>
 );
 
 const ScrollToTop = () => {
@@ -57,19 +65,23 @@ export default function App() {
             <Suspense fallback={<RouteFallback />}>
               <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/resume-builder" element={<ResumeBuilderPage />} />
-                <Route path="/pdf-suite" element={<PdfSuitePage />} />
-                <Route path="/compress-pdf" element={<CompressPdfPage />} />
-                <Route path="/file-converter" element={<FileConverterPage />} />
-                <Route path="/image-optimizer" element={<ImageOptimizerPage />} />
-                <Route path="/currency-crypto" element={<CurrencyCryptoPage />} />
-                <Route path="/dev-tools" element={<DevToolsPage />} />
-                <Route path="/qr-generator" element={<QrGeneratorPage />} />
-                <Route path="/social-studio" element={<SocialStudioPage />} />
-                <Route path="/health-calc" element={<HealthCalcPage />} />
-                <Route path="/markdown-editor" element={<MarkdownEditorPage />} />
-                <Route path="/svg-editor" element={<SvgStudioPage />} />
-                <Route path="/text-diff" element={<TextDiffPage />} />
+                <Route path="/resume-builder" element={<WithArticle slug="resume-builder"><ResumeBuilderPage /></WithArticle>} />
+                <Route path="/pdf-suite" element={<WithArticle slug="pdf-suite"><PdfSuitePage /></WithArticle>} />
+                <Route path="/merge-pdf" element={<WithArticle slug="merge-pdf"><PdfSuitePage /></WithArticle>} />
+                <Route path="/split-pdf" element={<WithArticle slug="split-pdf"><PdfSuitePage /></WithArticle>} />
+                <Route path="/compress-pdf" element={<WithArticle slug="compress-pdf"><InTabPdfJobs job="compress" /></WithArticle>} />
+                <Route path="/jpg-to-pdf" element={<WithArticle slug="jpg-to-pdf"><InTabPdfJobs job="jpg" /></WithArticle>} />
+                <Route path="/page-numbers" element={<WithArticle slug="page-numbers"><InTabPdfJobs job="numbers" /></WithArticle>} />
+                <Route path="/file-converter" element={<WithArticle slug="file-converter"><FileConverterPage /></WithArticle>} />
+                <Route path="/image-optimizer" element={<WithArticle slug="image-optimizer"><ImageOptimizerPage /></WithArticle>} />
+                <Route path="/currency-crypto" element={<WithArticle slug="currency-crypto"><CurrencyCryptoPage /></WithArticle>} />
+                <Route path="/dev-tools" element={<WithArticle slug="dev-tools"><DevToolsPage /></WithArticle>} />
+                <Route path="/qr-generator" element={<WithArticle slug="qr-generator"><QrGeneratorPage /></WithArticle>} />
+                <Route path="/social-studio" element={<WithArticle slug="social-studio"><SocialStudioPage /></WithArticle>} />
+                <Route path="/health-calc" element={<WithArticle slug="health-calc"><HealthCalcPage /></WithArticle>} />
+                <Route path="/markdown-editor" element={<WithArticle slug="markdown-editor"><MarkdownEditorPage /></WithArticle>} />
+                <Route path="/svg-editor" element={<WithArticle slug="svg-studio"><SvgStudioPage /></WithArticle>} />
+                <Route path="/text-diff" element={<WithArticle slug="text-diff"><TextDiffPage /></WithArticle>} />
                 <Route path="/privacy" element={<PrivacyPolicyPage />} />
                 <Route path="/privacy-policy" element={<Navigate replace to="/privacy" />} />
                 <Route path="/terms" element={<TermsPage />} />
