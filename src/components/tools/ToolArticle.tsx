@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getToolArticle } from '../../data/toolArticles';
+import { PDF_TOOL_ARTICLES, type ToolArticleWithGuides } from '../../data/toolArticlesPdf';
 
 export const ToolArticle: React.FC<{ slug: string }> = ({ slug }) => {
-  const article = getToolArticle(slug);
+  const article: ToolArticleWithGuides | undefined = getToolArticle(slug) ?? PDF_TOOL_ARTICLES[slug];
   if (!article) return null;
 
   return (
@@ -46,6 +47,20 @@ export const ToolArticle: React.FC<{ slug: string }> = ({ slug }) => {
             </div>
           ))}
         </dl>
+        {article.guides && article.guides.length > 0 && (
+          <>
+            <h3 className="text-base font-black text-[#1C1917]">Related guides</h3>
+            <ul className="list-disc pl-5 space-y-1">
+              {article.guides.map((guide) => (
+                <li key={guide.slug}>
+                  <Link className="text-[#C2410C] font-bold underline" to={`/guides/${guide.slug}`}>
+                    {guide.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
         <p>
           Operator: Souren Das, Bengaluru. Guides:{' '}
           <Link className="text-[#C2410C] font-bold underline" to="/guides">
