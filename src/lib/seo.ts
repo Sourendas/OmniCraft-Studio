@@ -71,7 +71,10 @@ export const SEO_PAGES: Record<string, SeoPage> = {
   '/merge-pdf': tool('/merge-pdf', 'Merge PDF files into one in your browser', 'Combine PDFs in the order you choose and rotate sideways pages with pdf-lib in this tab. No upload API. Encrypted PDFs may fail.'),
   '/split-pdf': tool('/split-pdf', 'Split a PDF and extract pages in your browser', 'Type a page range such as 1-3,5 and download just those pages as a new PDF. Runs in this tab; no upload API.'),
   '/jpg-to-pdf': tool('/jpg-to-pdf', 'Convert JPG and PNG images to PDF in your browser', 'Turn JPEG or PNG images into a PDF with one page per image, built in this tab. Your photos are not uploaded.'),
-  '/page-numbers': tool('/page-numbers', 'Add page numbers to a PDF in your browser', 'Number every page at the bottom centre from a starting number you choose. Runs in this tab with pdf-lib; no upload API.'),
+  '/page-numbers': tool('/page-numbers', 'Add page numbers to a PDF in your browser', 'Number every page from a starting number you choose, at the bottom or top, as 1, 1 / N, or Page 1 of N. Runs in this tab with pdf-lib; no upload API.'),
+  '/pdf-to-jpg': tool('/pdf-to-jpg', 'Convert PDF pages to JPG or PNG in your browser', 'Render PDF pages as JPG or PNG images and download one image or a ZIP. Runs in this tab with PDF.js; no upload API.'),
+  '/organize-pdf': tool('/organize-pdf', 'Reorder, rotate, and delete PDF pages in your browser', 'See page thumbnails, drag to reorder, rotate or delete pages, and export a new PDF. Runs in this tab; no upload API.'),
+  '/password-protect-pdf': tool('/password-protect-pdf', 'Password protect a PDF with AES-256 in your browser', 'Encrypt a PDF with AES-256 so it opens only with your password. Runs in this tab; the file and password are not uploaded.'),
   '/compress-pdf': tool(
     '/compress-pdf',
     'Compress PDF in your browser',
@@ -94,6 +97,24 @@ export const SEO_PAGES: Record<string, SeoPage> = {
   '/health-calc': tool('/health-calc', 'Estimate calories, macros, and TDEE', 'Estimate BMR and TDEE with Mifflin-St Jeor. Educational estimates, not medical advice.'),
   '/currency-crypto': tool('/currency-crypto', 'Calculate currency conversions with a worksheet', 'Run a quick currency worksheet with example rates. Rates are illustrative, not live markets.'),
 
+  '/guides/pdf-to-jpg-in-browser': {
+    path: '/guides/pdf-to-jpg-in-browser',
+    title: 'How to turn PDF pages into JPG or PNG images | FileTools Kit',
+    description:
+      'Export PDF pages as JPG or PNG in your browser, pick a resolution, and download a ZIP. Text in the images is not selectable.'
+  },
+  '/guides/organize-pdf-pages-in-browser': {
+    path: '/guides/organize-pdf-pages-in-browser',
+    title: 'How to reorder, rotate, and delete PDF pages | FileTools Kit',
+    description:
+      'Use page thumbnails to put a PDF in the right order, fix sideways pages, drop blank pages, and export a new file in your browser.'
+  },
+  '/guides/password-protect-pdf-in-browser': {
+    path: '/guides/password-protect-pdf-in-browser',
+    title: 'How to password protect a PDF in your browser | FileTools Kit',
+    description:
+      'Encrypt a PDF with AES-256 in this tab, choose a strong password, and understand what PDF passwords do and do not protect.'
+  },
   '/guides/merge-pdf-in-browser': {
     path: '/guides/merge-pdf-in-browser',
     title: 'How to merge 20 PDFs in your browser | FileTools Kit',
