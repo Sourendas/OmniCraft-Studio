@@ -29,9 +29,7 @@ export const FaqSection: React.FC = () => {
                   <ChevronDown className="w-4 h-4" />
                 </div>
               </button>
-              {isOpen && (
-                <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-orange-100 font-medium">{faq.answer}</div>
-              )}
+              <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-orange-100 font-medium">{faq.answer}</div>
             </div>
           );
         })}
