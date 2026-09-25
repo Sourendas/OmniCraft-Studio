@@ -53,7 +53,7 @@ export function applyGuideFixes(guide: GuideArticle): GuideArticle {
   };
 }
 
-export const GUIDES = [...RAW_GUIDES, COMPRESS_PDF_GUIDE as GuideArticle].map(applyGuideFixes);
+export const GUIDES = [...RAW_GUIDES, COMPRESS_PDF_GUIDE].map(applyGuideFixes);
 
 export function getGuide(slug: string | undefined) {
   if (!slug) return undefined;

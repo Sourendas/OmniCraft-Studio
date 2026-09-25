@@ -71,13 +71,13 @@ export const SEO_PAGES: Record<string, SeoPage> = {
   '/compress-pdf': tool(
     '/compress-pdf',
     'Compress PDF in your browser',
-    'Shrink a PDF in this browser tab with quality presets, before-and-after sizes, and no upload API. Already-compressed PDFs may not shrink.'
+    'Rewrite a PDF in this browser tab to trim wasted structure and compare before-and-after sizes. No upload API. Image-heavy or already-compressed PDFs may not shrink.'
   ),
   '/guides/compress-pdf-in-browser': {
     path: '/guides/compress-pdf-in-browser',
     title: 'How to compress a PDF in your browser | FileTools Kit',
     description:
-      'Render a PDF locally, compare its size before and after, and download a smaller copy when the source allows it. Text-heavy PDFs may not shrink.'
+      'Rewrite a PDF locally, compare its size before and after, and keep the smaller copy. Scanned or already-compressed PDFs may barely shrink.'
   },
   '/file-converter': tool('/file-converter', 'Convert JPG, PNG, and WebP in your browser', 'Convert supported images, audio to WAV, and DOCX to text or a simple PDF in the browser. Free, no account.'),
   '/image-optimizer': tool('/image-optimizer', 'Compress images in your browser', 'Reduce image size with quality and scale controls, compare before and after, and download WebP, JPEG, or PNG.'),

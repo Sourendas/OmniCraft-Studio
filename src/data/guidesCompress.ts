@@ -1,24 +1,26 @@
-export const COMPRESS_PDF_GUIDE = {
+import type { GuideArticle } from './guides';
+
+export const COMPRESS_PDF_GUIDE: GuideArticle = {
     slug: 'compress-pdf-in-browser',
     title: 'How to compress a PDF in your browser',
     summary:
-      'Render one PDF locally, compare the sizes, and download a smaller copy when the source allows it. Already-compressed PDFs may not shrink.',
+      'Rewrite one PDF locally, compare the sizes, and keep whichever copy is smaller. Image-heavy scans and already-compressed PDFs often barely shrink.',
     toolRoute: '/compress-pdf',
     toolLabel: 'Open Compress PDF',
-    updated: '18 September 2026',
-    wordCount: 1050,
+    updated: '25 September 2026',
+    wordCount: 820,
     intro:
-      'You need a PDF small enough to email or upload, but you do not want to send it to a processing service. Compress PDF renders each page in this browser tab, rebuilds a JPEG-image PDF, compares the bytes, and downloads the smaller result when there is a real saving. It is a practical raster conversion, not a promise that every PDF will shrink.',
+      'You need a PDF small enough to email or upload, but you do not want to send it to a processing service. Compress PDF copies every page into a new file with pdf-lib in this browser tab and saves it with object streams, which can remove wasted structure. It then shows the original and output sizes. It is a light rewrite, not a promise that every PDF will shrink.',
     figures: [],
     lead: [
       'Start with the file you actually need to send and keep the original until you have opened the result. The tool accepts one PDF at a time.',
-      'Begin with Medium. Use Low when byte size matters more than page detail, or High when a scan needs more visual detail and you can accept a larger result.',
-      'If the output is not smaller, the tool keeps the original bytes instead of forcing a worse or larger re-encode.'
+      'The rewrite keeps pages as PDF pages. Text, fonts, and images are copied from the source rather than re-rendered, so selectable text stays selectable.',
+      'Compare the two sizes shown after the run. If the output is not meaningfully smaller, send the original.'
     ],
     whenToUse: [
-      'Use this when an email or upload form has a PDF size limit and the PDF contains scans or photos.',
-      'Do not use it when selectable text, links, form fields, vector diagrams, or searchable text must remain intact. Use the original in that case.',
-      'For a large document, try fewer than 50 pages for a more comfortable browser-tab run.'
+      'Use this when a PDF was exported by software that wrote a bloated file structure and an upload form has a size limit.',
+      'Do not expect large savings on scanned or photo-heavy PDFs. Their images are copied as they are, so the bytes mostly stay.',
+      'For image-heavy files, shrinking the source images first with Image Optimizer and rebuilding the PDF usually saves far more.'
     ],
     steps: [
       {
@@ -26,55 +28,50 @@ export const COMPRESS_PDF_GUIDE = {
         body: 'Open the tool at /compress-pdf. Until you choose a file, no PDF bytes are processed.'
       },
       {
-        title: 'Drop one PDF',
-        body: 'Add one PDF from your device. The browser reads it as an ArrayBuffer for this tab. Encrypted or damaged PDFs may fail.'
+        title: 'Choose one PDF',
+        body: 'Pick one PDF from your device. The browser reads it in this tab. Encrypted or damaged PDFs may fail.'
       },
       {
-        title: 'Choose a level',
-        body: 'Medium is the balanced starting point. Low uses a smaller render and lower JPEG quality. High keeps more rendered detail but may produce a larger file.'
+        title: 'Let the rewrite run',
+        body: 'Pages are copied into a new document and saved with object streams. Most files finish in a few seconds; very large files take longer, so keep this tab open.'
       },
       {
-        title: 'Wait for page rendering',
-        body: 'The tool renders pages one at a time and shows progress. Large page counts can be slow or memory-heavy, so keep this tab open.'
-      },
-      {
-        title: 'Compare and download',
-        body: 'Check Original and Output sizes. If output is smaller, download the compressed PDF. If it is not, the tool reports Already optimized and downloads the original bytes.'
+        title: 'Compare the sizes',
+        body: 'The status line shows the original size and the output size in KB. The rewritten file downloads as compressed.pdf.'
       },
       {
         title: 'Open the download',
-        body: 'Spot-check the first, middle, and last pages. Confirm that the visual detail is acceptable and remember that v1 output is rasterized.'
+        body: 'Spot-check the first, middle, and last pages. If the output is not smaller or something looks wrong, use the original.'
       }
     ],
     sections: [
       {
         heading: 'Why a PDF may not shrink',
         paragraphs: [
-          'A PDF can already contain compressed JPEG scans, efficient fonts, or mostly text objects. Re-rendering those pages can save little, save nothing, or add bytes. That is why this tool compares the rebuilt file with the original and keeps the original when output is not smaller.',
-          'Savings depend on page content, dimensions, and the selected preset. There is no honest fixed percentage to promise.'
+          'Most of the bytes in a typical PDF are embedded images and fonts. A light rewrite copies those as they are, so a scan or photo-heavy file often ends up about the same size. Savings come from cleaner structure, and they depend on how the source was written.',
+          'There is no honest fixed percentage to promise. The tool reports the real before and after sizes so you can decide.'
         ]
       },
       {
-        heading: 'Rasterization is the trade-off',
+        heading: 'What the rewrite keeps',
         paragraphs: [
-          'The v1 method renders each page to a canvas and embeds a JPEG image in a new PDF. The page should look similar, but text is no longer guaranteed to be selectable or searchable. Links, form fields, vector shapes, accessibility structure, and some metadata are not preserved as editable PDF objects.',
-          'If you need a searchable contract, an accessible report, a fillable form, or crisp vector artwork, keep and send the original instead.'
+          'Because pages are copied rather than rendered to images, text normally stays selectable and vector shapes stay sharp. Some document-level extras, such as bookmarks or form behaviour, may not carry over to the new file, so check anything that matters before you send it.'
         ]
       },
       {
         heading: 'Troubleshooting',
         paragraphs: [
-          'Encrypted PDFs may fail because the browser renderer cannot read the document without the required password or permissions. A damaged PDF can fail for the same reason. Try opening and re-saving it in a desktop PDF reader, then try again.',
-          'If a large document stalls, close other heavy tabs and try a smaller page range with a separate tool. The v1 compressor is intentionally one PDF at a time and does not batch folders.'
+          'Encrypted PDFs often fail because the file cannot be read without the required password or permissions. A damaged PDF can fail for the same reason. Try opening and re-saving it in a desktop PDF reader, then try again.',
+          'If a large document stalls, close other heavy tabs. If you only need some pages, extract them with PDF Suite first and compress the smaller result.'
         ]
       }
     ],
     cannot: [
       'Does not guarantee a smaller file.',
-      'Rasterizes pages; text may not remain selectable or searchable.',
-      'Does not OCR, preserve fillable forms, or guarantee links and accessibility metadata.',
+      'Does not recompress or downsample embedded images.',
+      'Does not OCR or guarantee bookmarks, forms, and accessibility metadata.',
       'Encrypted PDFs may fail.',
-      'Not designed for large batch folders.'
+      'Handles one PDF at a time; no batch folders.'
     ],
     privacy: [
       'The PDF is read and processed in this browser tab; FileTools Kit does not upload it to a processing server. Ordinary page hosting, browser, and third-party asset behavior is covered by the site privacy and cookie policies. This is not an air-gap or compliance certification.'
@@ -88,4 +85,4 @@ export const COMPRESS_PDF_GUIDE = {
       { slug: 'split-pdf-pages', label: 'Extract selected PDF pages' },
       { slug: 'what-stays-in-the-tab', label: 'What stays in the tab' }
     ]
-  } as const;
+  };
