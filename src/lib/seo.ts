@@ -68,6 +68,10 @@ export const SEO_PAGES: Record<string, SeoPage> = {
   },
   '/resume-builder': tool('/resume-builder', 'Build a job-ready resume PDF in your browser', 'Turn your experience into a clean resume PDF with local keyword checks and browser export. Free to use.'),
   '/pdf-suite': tool('/pdf-suite', 'Merge PDF in your browser', 'Merge, split, rotate, and watermark PDFs in this tab with pdf-lib. Encrypted files may fail.'),
+  '/merge-pdf': tool('/merge-pdf', 'Merge PDF files into one in your browser', 'Combine PDFs in the order you choose and rotate sideways pages with pdf-lib in this tab. No upload API. Encrypted PDFs may fail.'),
+  '/split-pdf': tool('/split-pdf', 'Split a PDF and extract pages in your browser', 'Type a page range such as 1-3,5 and download just those pages as a new PDF. Runs in this tab; no upload API.'),
+  '/jpg-to-pdf': tool('/jpg-to-pdf', 'Convert JPG and PNG images to PDF in your browser', 'Turn JPEG or PNG images into a PDF with one page per image, built in this tab. Your photos are not uploaded.'),
+  '/page-numbers': tool('/page-numbers', 'Add page numbers to a PDF in your browser', 'Number every page at the bottom centre from a starting number you choose. Runs in this tab with pdf-lib; no upload API.'),
   '/compress-pdf': tool(
     '/compress-pdf',
     'Compress PDF in your browser',
