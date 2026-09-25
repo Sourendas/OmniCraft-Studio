@@ -1,4 +1,5 @@
-import { GUIDES as RAW_GUIDES, getGuide as rawGetGuide, type GuideArticle } from './guides';
+import { GUIDES as RAW_GUIDES, type GuideArticle } from './guides';
+import { COMPRESS_PDF_GUIDE } from './guidesCompress';
 
 function honest(text: string): string {
   return text
@@ -52,9 +53,9 @@ export function applyGuideFixes(guide: GuideArticle): GuideArticle {
   };
 }
 
-export const GUIDES = RAW_GUIDES.map(applyGuideFixes);
+export const GUIDES = [...RAW_GUIDES, COMPRESS_PDF_GUIDE].map(applyGuideFixes);
 
 export function getGuide(slug: string | undefined) {
-  const guide = rawGetGuide(slug);
-  return guide ? applyGuideFixes(guide) : undefined;
+  if (!slug) return undefined;
+  return GUIDES.find((g) => g.slug === slug);
 }
