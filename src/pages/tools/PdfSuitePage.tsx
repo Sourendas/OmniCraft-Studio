@@ -43,6 +43,16 @@ export const PdfSuitePage: React.FC = () => {
             {' · '}
             <Link to="/compress-pdf" className="text-[#C2410C] font-black underline underline-offset-2">Compress PDF tool</Link>
           </p>
+          <p className="text-xs text-slate-500 mt-1 font-medium">
+            More PDF tools:{' '}
+            <Link to="/organize-pdf" className="text-[#C2410C] font-black underline underline-offset-2">Organize pages</Link>
+            {' · '}
+            <Link to="/pdf-to-jpg" className="text-[#C2410C] font-black underline underline-offset-2">PDF to JPG/PNG</Link>
+            {' · '}
+            <Link to="/page-numbers" className="text-[#C2410C] font-black underline underline-offset-2">Page numbers</Link>
+            {' · '}
+            <Link to="/password-protect-pdf" className="text-[#C2410C] font-black underline underline-offset-2">Password protect</Link>
+          </p>
         </div>
         <div className="flex items-center gap-3">
           <button onClick={loadDemoPdf} className="px-4 py-2 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700">Load Sample PDF</button>
@@ -59,7 +69,7 @@ export const PdfSuitePage: React.FC = () => {
       {statusMessage && (
         <div className="my-4 p-3.5 rounded-2xl bg-[#FFEDD5] border border-[#FDBA74] text-xs text-[#C2410C] font-bold flex items-center justify-between">
           <span>{statusMessage}</span>
-          <button onClick={() => setStatusMessage(null)} className="text-slate-400">\u2715</button>
+          <button onClick={() => setStatusMessage(null)} className="text-slate-400">✕</button>
         </div>
       )}
 
@@ -89,18 +99,18 @@ export const PdfSuitePage: React.FC = () => {
                         <div className="p-2 rounded-xl bg-[#FFEDD5] border border-[#FDBA74] text-[#C2410C]"><FileText className="w-5 h-5" /></div>
                         <div>
                           <h4 className="text-xs font-black text-[#0A2540] truncate max-w-[170px]" title={file.name}>{file.name}</h4>
-                          <p className="text-[10px] text-slate-500 font-mono">{file.pageCount} page(s) \u2022 {(file.size / 1024).toFixed(1)} KB</p>
+                          <p className="text-[10px] text-slate-500 font-mono">{file.pageCount} page(s) • {(file.size / 1024).toFixed(1)} KB</p>
                         </div>
                       </div>
                       <button onClick={() => removeFile(file.id)} className="text-slate-400 hover:text-rose-600"><Trash2 className="w-3.5 h-3.5" /></button>
                     </div>
                     <div style={{ transform: `rotate(${file.rotation}deg)` }} className="w-full h-28 rounded-2xl bg-[#FFF7ED] border border-slate-200 flex flex-col items-center justify-center">
                       <div className="w-12 h-16 rounded-lg bg-white border border-slate-200 flex flex-col items-center justify-center text-[9px] text-slate-500 font-mono font-bold"><span>DOC</span><span className="text-[8px] text-[#C2410C]">p.1-{file.pageCount}</span></div>
-                      <span className="text-[10px] text-slate-500 mt-2 font-mono font-bold">Rotation: {file.rotation}\u00b0 \u00b7 placeholder tile</span>
+                      <span className="text-[10px] text-slate-500 mt-2 font-mono font-bold">Rotation: {file.rotation}° · placeholder tile</span>
                     </div>
                     <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between">
                       <span className="text-[10px] text-slate-400 font-mono font-bold">Order #{idx + 1}</span>
-                      <button onClick={() => rotateFile(file.id)} className="flex items-center gap-1 text-xs font-bold text-[#C2410C] px-2.5 py-1 rounded-full bg-[#FFEDD5] border border-[#FDBA74]"><RotateCw className="w-3.5 h-3.5" /><span>Rotate +90\u00b0</span></button>
+                      <button onClick={() => rotateFile(file.id)} className="flex items-center gap-1 text-xs font-bold text-[#C2410C] px-2.5 py-1 rounded-full bg-[#FFEDD5] border border-[#FDBA74]"><RotateCw className="w-3.5 h-3.5" /><span>Rotate +90°</span></button>
                     </div>
                   </div>
                 ))}

@@ -1,5 +1,6 @@
 import { GUIDES as RAW_GUIDES, type GuideArticle } from './guides';
 import { COMPRESS_PDF_GUIDE } from './guidesCompress';
+import { PDF_TOOL_GUIDES } from './guidesPdfTools';
 
 function honest(text: string): string {
   return text
@@ -53,7 +54,7 @@ export function applyGuideFixes(guide: GuideArticle): GuideArticle {
   };
 }
 
-export const GUIDES = [...RAW_GUIDES, COMPRESS_PDF_GUIDE].map(applyGuideFixes);
+export const GUIDES = [...RAW_GUIDES, COMPRESS_PDF_GUIDE, ...PDF_TOOL_GUIDES].map(applyGuideFixes);
 
 export function getGuide(slug: string | undefined) {
   if (!slug) return undefined;

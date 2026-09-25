@@ -13,6 +13,9 @@ import { ToolArticle } from './components/tools/ToolArticle';
 const ResumeBuilderPage = lazy(() => import('./pages/tools/ResumeBuilderPage').then((m) => ({ default: m.ResumeBuilderPage })));
 const PdfSuitePage = lazy(() => import('./pages/tools/PdfSuitePage').then((m) => ({ default: m.PdfSuitePage })));
 const InTabPdfJobs = lazy(() => import('./pages/tools/InTabPdfJobs').then((m) => ({ default: m.InTabPdfJobs })));
+const PdfToImagesPage = lazy(() => import('./pages/tools/PdfToImagesPage').then((m) => ({ default: m.PdfToImagesPage })));
+const OrganizePdfPage = lazy(() => import('./pages/tools/OrganizePdfPage').then((m) => ({ default: m.OrganizePdfPage })));
+const ProtectPdfPage = lazy(() => import('./pages/tools/ProtectPdfPage').then((m) => ({ default: m.ProtectPdfPage })));
 const FileConverterPage = lazy(() => import('./pages/tools/FileConverterPage').then((m) => ({ default: m.FileConverterPage })));
 const ImageOptimizerPage = lazy(() => import('./pages/tools/ImageOptimizerPage').then((m) => ({ default: m.ImageOptimizerPage })));
 const CurrencyCryptoPage = lazy(() => import('./pages/tools/CurrencyCryptoPage').then((m) => ({ default: m.CurrencyCryptoPage })));
@@ -72,6 +75,9 @@ export default function App() {
                 <Route path="/compress-pdf" element={<WithArticle slug="compress-pdf"><InTabPdfJobs job="compress" /></WithArticle>} />
                 <Route path="/jpg-to-pdf" element={<WithArticle slug="jpg-to-pdf"><InTabPdfJobs job="jpg" /></WithArticle>} />
                 <Route path="/page-numbers" element={<WithArticle slug="page-numbers"><InTabPdfJobs job="numbers" /></WithArticle>} />
+                <Route path="/pdf-to-jpg" element={<WithArticle slug="pdf-to-jpg"><PdfToImagesPage /></WithArticle>} />
+                <Route path="/organize-pdf" element={<WithArticle slug="organize-pdf"><OrganizePdfPage /></WithArticle>} />
+                <Route path="/password-protect-pdf" element={<WithArticle slug="password-protect-pdf"><ProtectPdfPage /></WithArticle>} />
                 <Route path="/file-converter" element={<WithArticle slug="file-converter"><FileConverterPage /></WithArticle>} />
                 <Route path="/image-optimizer" element={<WithArticle slug="image-optimizer"><ImageOptimizerPage /></WithArticle>} />
                 <Route path="/currency-crypto" element={<WithArticle slug="currency-crypto"><CurrencyCryptoPage /></WithArticle>} />
