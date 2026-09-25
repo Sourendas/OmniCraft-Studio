@@ -1,10 +1,12 @@
 import type { ToolArticle } from './toolArticles';
+import { MORE_PDF_TOOL_ARTICLES } from './toolArticlesPdfMore';
 
 export type ToolArticleWithGuides = ToolArticle & {
   guides?: { slug: string; label: string }[];
 };
 
 export const PDF_TOOL_ARTICLES: Record<string, ToolArticleWithGuides> = {
+  ...MORE_PDF_TOOL_ARTICLES,
   'merge-pdf': {
     slug: 'merge-pdf',
     title: 'Merge PDF — combine files into one PDF in this tab',
@@ -111,28 +113,30 @@ export const PDF_TOOL_ARTICLES: Record<string, ToolArticleWithGuides> = {
     slug: 'page-numbers',
     title: 'Add page numbers — number PDF pages in this tab',
     lede:
-      'Pick a starting number and one or more PDFs. pdf-lib draws a small number at the bottom centre of every page in this browser tab and downloads the result as page-numbers.pdf. If you add several files, they are combined into one numbered PDF.',
+      'Pick a starting number, a position, and a format, then choose one or more PDFs. pdf-lib draws the number on every page in this browser tab and downloads the result as page-numbers.pdf. If you add several files, they are combined into one numbered PDF.',
     forWho: [
       'Anyone who needs simple page numbers on a report or application packet.',
       'People numbering a merged packet that continues from an earlier section.',
     ],
     notFor: [
-      'Custom formats such as Page 3 of 10, Roman numerals, or corner placement.',
+      'Roman numerals, custom fonts, or free placement anywhere on the page.',
       'Encrypted PDFs, which often fail.',
     ],
     steps: [
       { title: 'Set Start at', body: 'Type the first number to print. The default is 1.' },
+      { title: 'Pick position and format', body: 'Choose bottom centre, bottom right, or top centre, and a format of 1, 1 / N, or Page 1 of N. N is the last number printed.' },
       { title: 'Choose PDF files', body: 'Press Choose PDF files. With several files, pages are combined in the order the file picker returns and numbering continues across them.' },
       { title: 'Download and check', body: 'The file downloads as page-numbers.pdf. Check that the numbers do not cover existing footer text.' },
     ],
     limits: [
-      'Numbers are 10 pt Helvetica in dark grey, centred near the bottom edge. Position and style are fixed.',
+      'Numbers are 10 pt Helvetica in dark grey, 18 pt from the page edge. Size and colour are fixed.',
       'A number can overlap content that already sits at the bottom of a page.',
       'Rotated pages may show the number in an unexpected spot.',
     ],
     faq: [
       { q: 'Are my PDFs uploaded?', a: 'No. Numbers are drawn in this tab.' },
       { q: 'Can I skip the cover page?', a: 'Not here. Split off the cover in PDF Suite, number the rest, then merge them again.' },
+      { q: 'Can I number only some pages?', a: 'Not in this version. Every page of the files you choose gets a number.' },
       { q: 'Does it change my original file?', a: 'No. You download a new PDF.' },
     ],
     guides: [
