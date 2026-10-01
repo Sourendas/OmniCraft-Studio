@@ -5,32 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Guides | FileTools Kit</title>
   <link rel="canonical" href="https://www.filetoolskit.com/guides.html" />
-  <meta name="description" content="How-to guides for merge, split, compress, PDF to JPG, organize, password protect, images, resume, QR, and hashes. FileTools Kit, Bengaluru." />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}li{margin:0.45rem 0}</style>
+  <meta name="description" content="Practical guides for merge, split, compress, images, resume PDFs, QR codes, and hashes. Written by Souren Das, Bengaluru. No file-upload API." />
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}li{margin:.55rem 0}</style>
 </head>
 <body>
 <main>
-  <p><a href="/">FileTools Kit</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/contact.html">Contact</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+  <p><a href="/">FileTools Kit</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/contact.html">Contact</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/cookie-policy.html">Cookies</a></p>
   <h1>Guides</h1>
-  <p>These pages explain how each job works in this browser tab. FileTools Kit does not run an upload API that receives your documents. Operator: Souren Das, Bengaluru, India. support@filetoolskit.com</p>
-  <h2>PDF</h2>
+  <p>These articles explain how each job works in this browser tab, including the cases where it will not work. They are written by Souren Das in Bengaluru for the tools on this site. FileTools Kit does not run an upload API that receives your documents. Questions: support@filetoolskit.com.</p>
+  <p>If you only needed the tool, the links inside each guide open it. If a PDF is encrypted, huge, or signed, read <a href="/guides/when-browser-pdf-tools-fail.html">when browser PDF tools fail</a> before you try a site that asks you to upload.</p>
+  <h2>All guides</h2>
   <ul>
-    <li><a href="/guides/merge-pdf-in-browser.html">Merge PDF files in the browser</a></li>
-    <li><a href="/guides/split-pdf-pages.html">Split a PDF by page range</a></li>
-    <li><a href="/guides/compress-pdf-in-browser.html">Compress a PDF (light rewrite, not a server optimizer)</a></li>
-    <li><a href="/guides/pdf-to-jpg-in-browser.html">Turn PDF pages into JPG images</a></li>
-    <li><a href="/guides/organize-pdf-pages-in-browser.html">Reorder or delete PDF pages</a></li>
-    <li><a href="/guides/password-protect-pdf-in-browser.html">Password-protect a PDF</a></li>
-    <li><a href="/guides/build-resume-pdf.html">Build a resume PDF</a></li>
+    <li><a href="/guides/merge-pdf-in-browser.html">Merge PDF files in the browser</a> — Combine a cover letter, resume, and certificates. Page copy with pdf-lib, not an upload.</li>
+    <li><a href="/guides/split-pdf-pages.html">Split a PDF by page range</a> — Copy pages such as 2-4 or 1-3,5. The original file is not rewritten.</li>
+    <li><a href="/guides/compress-pdf-in-browser.html">Compress a PDF in the tab</a> — A light object-stream rewrite. Not a server optimizer, and scans may not shrink.</li>
+    <li><a href="/guides/pdf-to-jpg-in-browser.html">Turn PDF pages into JPG</a> — Rasterize pages for a form that wants images. No OCR.</li>
+    <li><a href="/guides/jpg-to-pdf-in-browser.html">Put JPG and PNG scans into one PDF</a> — Stack photos in list order. Shrink images first if a portal caps size.</li>
+    <li><a href="/guides/organize-pdf-pages-in-browser.html">Reorder or delete PDF pages</a> — Move pages, drop blanks, download a new file.</li>
+    <li><a href="/guides/password-protect-pdf-in-browser.html">Password-protect a PDF</a> — What an open password does here, and why you must test it in another reader.</li>
+    <li><a href="/guides/page-numbers-pdf.html">Add page numbers</a> — Stamp a simple page label after you merge, not before.</li>
+    <li><a href="/guides/convert-images-png-jpg-webp.html">Convert PNG, JPG, and WebP</a> — Canvas re-encode in the tab. HEIC and AVIF are not a pipeline.</li>
+    <li><a href="/guides/compress-images-in-browser.html">Compress images</a> — Scale and re-save. No guaranteed percent.</li>
+    <li><a href="/guides/build-resume-pdf.html">Build a resume PDF</a> — Form, layouts, and a local keyword overlap that is not an employer ATS.</li>
+    <li><a href="/guides/resume-pdf-checklist.html">Resume PDF checklist</a> — Pre-send checks: selectable text, no sample copy, filename, packet order.</li>
+    <li><a href="/guides/create-qr-code.html">Create a QR code</a> — PNG or SVG in the tab. No short link and no scan analytics.</li>
+    <li><a href="/guides/hash-text-sha256.html">Hash text with SHA-256</a> — Web Crypto in the tab. A hash is not encryption.</li>
+    <li><a href="/guides/what-stays-in-the-tab.html">What stays in this tab</a> — What is processed locally, what the host can still see, what ads do not receive.</li>
+    <li><a href="/guides/when-browser-pdf-tools-fail.html">When browser PDF tools fail</a> — Encryption, memory, signatures, scans, and when to stop.</li>
+    <li><a href="/guides/jpg-png-webp-which-to-send.html">JPG, PNG, or WebP</a> — Which file to send for email, WhatsApp, and upload forms.</li>
+    <li><a href="/guides/watermark-versus-password.html">Watermark vs password vs redaction</a> — A stamp is not a lock, and this site does not redact.</li>
   </ul>
-  <h2>Images, QR, and developer</h2>
-  <ul>
-    <li><a href="/guides/convert-images-png-jpg-webp.html">Convert PNG, JPG, and WebP</a></li>
-    <li><a href="/guides/compress-images-in-browser.html">Compress images</a></li>
-    <li><a href="/guides/create-qr-code.html">Create a QR code</a></li>
-    <li><a href="/guides/hash-text-sha256.html">Hash text with SHA-256</a></li>
-    <li><a href="/guides/what-stays-in-the-tab.html">What “files stay in this tab” means</a></li>
-  </ul>
+  <h2>About these pages</h2>
+  <p>Each guide states the library in use (pdf-lib, canvas, or Web Crypto), the steps, and the limits: no OCR, no guaranteed compress percent, no employer ATS, no redaction. Last updated 1 October 2026. Corrections: support@filetoolskit.com.</p>
 </main>
 </body>
 </html>
