@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>Build a resume PDF in your browser | FileTools Kit</title>
-<link rel="canonical" href="https://www.filetoolskit.com/guides/build-resume-pdf" />
-<style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem;background:#fff;border-radius:24px}a{color:#C2410C}</style></head>
-<body><main>
-<p><a href="/guides.html">Guides</a></p>
-<h1>Build a resume PDF in your browser</h1>
-<p>Resume Builder is a form plus twelve layouts. You type name, work, education, and skills, pick a layout, and download a PDF built in this tab with jsPDF. FileTools Kit does not submit that PDF to an employer.</p>
-<ol><li>Start with your name and the role you want.</li><li>Add work history with dates and outcomes.</li><li>List skills that appear in the posting.</li><li>Try more than one layout. Layouts change spacing, not content.</li><li>Download and check that nothing is cut at the page edge.</li></ol>
-<p>If the page shows a match score, that score is local keyword overlap. It is not an employer ATS.</p>
-<p><a href="/resume-builder">Open Resume Builder</a></p>
-<p>Souren Das, Bengaluru. 19 September 2026.</p>
-</main></body></html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Build a resume PDF in your browser | FileTools Kit</title>
+  <meta name="description" content="Fill a form, pick a layout, download a PDF. The match percentage is local keyword overlap, not an employer ATS." />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/build-resume-pdf.html" />
+  <meta name="author" content="Souren Das" />
+  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.7}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.35rem 2rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h1{line-height:1.25;font-size:1.85rem}h2{margin-top:1.7rem;font-size:1.25rem}.meta{color:#475569;font-size:.92rem}nav{font-size:.92rem}ul,ol{padding-left:1.2rem}li{margin:.35rem 0}.note{background:#FFF7ED;border:1px solid #FDBA74;border-radius:16px;padding:.85rem 1rem;margin:1rem 0}</style>
+</head>
+<body>
+<main>
+  <nav><a href="/">FileTools Kit</a> · <a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/contact.html">Contact</a></nav>
+  <h1>Build a resume PDF in your browser</h1>
+  <p class="meta">Last updated: 1 October 2026 · Written by Souren Das, FileTools Kit, Bengaluru. These notes describe the tools on this site, including what they cannot do.</p>
+  <p>The Resume Builder is a form, a preview, several layouts, and a PDF download in this tab. You can paste a job description and see a keyword-overlap percentage. That percentage is not Greenhouse, Lever, Workday, Naukri’s parser, or any employer system. It counts whether words in a short local list appear in both the pasted text and your form.</p>
+  <div class="note">Sample copy on first load is fiction. Replace it. Use an email you monitor. A draft may stay in this browser under a localStorage key. Clearing site data deletes that draft. FileTools Kit does not have your CV on a server.</div>
+  <h2>Steps</h2>
+  <ol>
+    <li>Open <a href="/resume-builder">Resume Builder</a> and replace the sample: name, title, contact, summary, roles, education, skills.</li>
+    <li>Keep dates in one format. Do not invent metrics. A bullet you cannot explain in an interview does not belong.</li>
+    <li>Optional: paste the target job text. Missing terms are a hint, not a verdict. Stuffing the keyword list into a skills block reads badly and can still fail a human.</li>
+    <li>Pick a layout that stays on one page if you can. Export PDF. Reopen it and confirm text is selectable, not a photo of text.</li>
+    <li>Rename the file, for example <em>Souren-Das-Resume.pdf</em>. Merge a cover letter only if the employer asked for one packet.</li>
+  </ol>
+  <h2>What this is not</h2>
+  <ul>
+    <li>Not an applicant-tracking system and not a prediction of interviews.</li>
+    <li>Not a generative model. Local rewrite helpers are templates.</li>
+    <li>Not a LinkedIn import and not a custom-font uploader.</li>
+    <li>Not a visa or background-check form.</li>
+  </ul>
+  <h2>Before you send it in India</h2>
+  <p>Naukri, LinkedIn, and company portals each parse differently. A clean single-column PDF with real text is the safe default. Avoid text inside images. Put the phone number you will answer. If a portal asks you to paste fields separately, do that; do not assume the PDF import mapped dates correctly. After export, use PDF Suite only if you must attach certificates. Do not merge ID scans unless the employer asked.</p>
+  <p>See also the <a href="/guides/resume-pdf-checklist.html">checklist before you send</a>.</p>
+  <h2>Layout choices that survive a portal</h2>
+  <p>Single column beats a two-column design when a portal’s importer reads left to right and mixes the sidebar into the dates. The builder’s plainer layouts are the ones I would send to a company career page. A designed layout is fine as a PDF a human opens, and riskier as the only file a parser sees.</p>
+  <p>Contact line: city is enough. A full street address is rarely needed on a first CV. Put the role title in the same words the job used, if they are true. The local overlap score will light up those words; a human still has to believe the bullets.</p>
+  <p>After download, search the PDF for the sample company name from the placeholder. If it is still there, you have not replaced the fiction. That single check catches more bad sends than the percentage.</p>
+  <p><a href="/resume-builder">Open Resume Builder</a> · <a href="/guides/merge-pdf-in-browser.html">Merge a packet</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+  <h2>Related</h2>
+  <p><a href="/guides.html">All guides</a> · <a href="/about.html">Who operates this site</a> · <a href="/privacy.html">Privacy</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/contact.html">Contact</a></p>
+</main>
+</body>
+</html>
