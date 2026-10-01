@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Put JPG and PNG scans into one PDF | FileTools Kit</title>
+<meta name="description" content="Stack photos of a form into a single PDF in the tab. No upload API." />
+<link rel="canonical" href="https://www.filetoolskit.com/guides/jpg-to-pdf-in-browser.html" />
+<meta name="author" content="Souren Das" />
+<style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.7}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.35rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}</style>
+</head>
+<body><main>
+<p><a href="/">FileTools Kit</a> · <a href="/guides.html">All guides</a> · <a href="/about.html">About</a></p>
+<h1>Put JPG and PNG scans into one PDF</h1>
+<p>Last updated: 1 October 2026 · Souren Das, FileTools Kit, Bengaluru.</p>
+<p>You photographed a form, one page per picture, and the office wants a PDF. JPG to PDF places each image on its own page and downloads one file. The work runs in this tab with pdf-lib. The photos are not uploaded to FileTools Kit.</p>
+<h2>Order is the whole job</h2>
+<p>The PDF follows the list order. Put page one first. A sideways photo stays sideways unless you rotate it first. This job does not auto-crop to the paper.</p>
+<p>Page size follows the images. A mix of portrait phone photos and a wide screenshot produces mixed page sizes. Crop and rotate before you build the PDF if someone will print it.</p>
+<h2>Steps</h2>
+<ol>
+<li>Open <a href="/jpg-to-pdf">JPG to PDF</a>.</li>
+<li>Add JPG or PNG files the browser can decode. HEIC from some phones will not decode in every browser. Export JPEG from the phone gallery first.</li>
+<li>Reorder. Put the signature page where the reader expects it.</li>
+<li>Download and open the PDF. Check that each photo is a full page.</li>
+</ol>
+<h2>Size</h2>
+<p>This step does not recompress aggressively. If a portal caps file size, shrink the photos in the image optimizer first, then build the PDF. In-tab PDF compress does not downsample images the way a server optimizer does.</p>
+<p><a href="/jpg-to-pdf">Open JPG to PDF</a> · <a href="/guides/compress-images-in-browser.html">Shrink photos first</a></p>
+</main></body></html>
