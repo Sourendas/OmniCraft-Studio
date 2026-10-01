@@ -1,7 +1,19 @@
 {
   "redirects": [
     { "source": "/privacy-policy", "destination": "/privacy", "permanent": true },
-    { "source": "/terms-of-service", "destination": "/terms", "permanent": true }
+    { "source": "/terms-of-service", "destination": "/terms", "permanent": true },
+    { "source": "/guides/merge-pdf-in-browser", "destination": "/guides/merge-pdf-in-browser.html", "permanent": true },
+    { "source": "/guides/split-pdf-pages", "destination": "/guides/split-pdf-pages.html", "permanent": true },
+    { "source": "/guides/compress-pdf-in-browser", "destination": "/guides/compress-pdf-in-browser.html", "permanent": true },
+    { "source": "/guides/pdf-to-jpg-in-browser", "destination": "/guides/pdf-to-jpg-in-browser.html", "permanent": true },
+    { "source": "/guides/organize-pdf-pages-in-browser", "destination": "/guides/organize-pdf-pages-in-browser.html", "permanent": true },
+    { "source": "/guides/password-protect-pdf-in-browser", "destination": "/guides/password-protect-pdf-in-browser.html", "permanent": true },
+    { "source": "/guides/convert-images-png-jpg-webp", "destination": "/guides/convert-images-png-jpg-webp.html", "permanent": true },
+    { "source": "/guides/compress-images-in-browser", "destination": "/guides/compress-images-in-browser.html", "permanent": true },
+    { "source": "/guides/build-resume-pdf", "destination": "/guides/build-resume-pdf.html", "permanent": true },
+    { "source": "/guides/create-qr-code", "destination": "/guides/create-qr-code.html", "permanent": true },
+    { "source": "/guides/what-stays-in-the-tab", "destination": "/guides/what-stays-in-the-tab.html", "permanent": true },
+    { "source": "/guides/hash-text-sha256", "destination": "/guides/hash-text-sha256.html", "permanent": true }
   ],
   "headers": [
     {

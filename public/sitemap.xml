@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.filetoolskit.com/</loc></url>
-  <url><loc>https://www.filetoolskit.com/about</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/merge-pdf-in-browser</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/compress-pdf-in-browser</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/pdf-to-jpg-in-browser</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/organize-pdf-pages-in-browser</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/password-protect-pdf-in-browser</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/split-pdf-pages</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/convert-images-png-jpg-webp</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/compress-images-in-browser</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/build-resume-pdf</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/create-qr-code</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/what-stays-in-the-tab</loc></url>
-  <url><loc>https://www.filetoolskit.com/guides/hash-text-sha256</loc></url>
-  <url><loc>https://www.filetoolskit.com/privacy</loc></url>
-  <url><loc>https://www.filetoolskit.com/terms</loc></url>
-  <url><loc>https://www.filetoolskit.com/cookie-policy</loc></url>
-  <url><loc>https://www.filetoolskit.com/disclaimer</loc></url>
-  <url><loc>https://www.filetoolskit.com/contact</loc></url>
+  <url><loc>https://www.filetoolskit.com/about.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/merge-pdf-in-browser.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/split-pdf-pages.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/compress-pdf-in-browser.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/pdf-to-jpg-in-browser.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/organize-pdf-pages-in-browser.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/password-protect-pdf-in-browser.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/convert-images-png-jpg-webp.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/compress-images-in-browser.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/build-resume-pdf.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/create-qr-code.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/what-stays-in-the-tab.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/guides/hash-text-sha256.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/privacy.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/terms.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/cookie-policy.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/disclaimer.html</loc></url>
+  <url><loc>https://www.filetoolskit.com/contact.html</loc></url>
   <url><loc>https://www.filetoolskit.com/resume-builder</loc></url>
   <url><loc>https://www.filetoolskit.com/pdf-suite</loc></url>
+  <url><loc>https://www.filetoolskit.com/merge-pdf</loc></url>
+  <url><loc>https://www.filetoolskit.com/split-pdf</loc></url>
   <url><loc>https://www.filetoolskit.com/compress-pdf</loc></url>
+  <url><loc>https://www.filetoolskit.com/jpg-to-pdf</loc></url>
   <url><loc>https://www.filetoolskit.com/pdf-to-jpg</loc></url>
   <url><loc>https://www.filetoolskit.com/organize-pdf</loc></url>
   <url><loc>https://www.filetoolskit.com/password-protect-pdf</loc></url>
+  <url><loc>https://www.filetoolskit.com/page-numbers</loc></url>
   <url><loc>https://www.filetoolskit.com/file-converter</loc></url>
   <url><loc>https://www.filetoolskit.com/image-optimizer</loc></url>
-  <url><loc>https://www.filetoolskit.com/currency-crypto</loc></url>
-  <url><loc>https://www.filetoolskit.com/dev-tools</loc></url>
   <url><loc>https://www.filetoolskit.com/qr-generator</loc></url>
-  <url><loc>https://www.filetoolskit.com/social-studio</loc></url>
-  <url><loc>https://www.filetoolskit.com/health-calc</loc></url>
-  <url><loc>https://www.filetoolskit.com/markdown-editor</loc></url>
-  <url><loc>https://www.filetoolskit.com/svg-editor</loc></url>
-  <url><loc>https://www.filetoolskit.com/text-diff</loc></url>
+  <url><loc>https://www.filetoolskit.com/dev-tools</loc></url>
 </urlset>
