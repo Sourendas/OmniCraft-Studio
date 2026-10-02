@@ -1,7 +1,14 @@
 {
   "redirects": [
-    {"source": "/privacy-policy", "destination": "/privacy", "permanent": true},
-    {"source": "/terms-of-service", "destination": "/terms", "permanent": true},
+    {"source": "/privacy-policy", "destination": "/privacy.html", "permanent": true},
+    {"source": "/terms-of-service", "destination": "/terms.html", "permanent": true},
+    {"source": "/about", "destination": "/about.html", "permanent": true},
+    {"source": "/guides", "destination": "/guides.html", "permanent": true},
+    {"source": "/privacy", "destination": "/privacy.html", "permanent": true},
+    {"source": "/terms", "destination": "/terms.html", "permanent": true},
+    {"source": "/contact", "destination": "/contact.html", "permanent": true},
+    {"source": "/cookie-policy", "destination": "/cookie-policy.html", "permanent": true},
+    {"source": "/disclaimer", "destination": "/disclaimer.html", "permanent": true},
     {"source": "/guides/merge-pdf-in-browser", "destination": "/guides/merge-pdf-in-browser.html", "permanent": true},
     {"source": "/guides/split-pdf-pages", "destination": "/guides/split-pdf-pages.html", "permanent": true},
     {"source": "/guides/compress-pdf-in-browser", "destination": "/guides/compress-pdf-in-browser.html", "permanent": true},
