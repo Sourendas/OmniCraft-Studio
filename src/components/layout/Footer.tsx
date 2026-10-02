@@ -35,6 +35,9 @@ export const Footer: React.FC = () => {
           <a href="https://www.directree.io" target="_blank" rel="noopener noreferrer" title="Verified on directree">
             <img src="https://www.directree.io/badge/directree-badge-lightmode.svg" alt="Verified on directree" width={200} height={37} />
           </a>
+          <a href="https://tools.launchllama.co?utm_source=badge&utm_medium=referral" target="_blank" rel="noopener noreferrer">
+            <img src="https://tools.launchllama.co/featured-badge.png?v=2" alt="Featured on Launch Llama Tools" width={200} height={52} />
+          </a>
         </div>
         <div className="space-y-2">
           <h4 className="font-black text-[#1C1917] text-xs uppercase">Document</h4>
