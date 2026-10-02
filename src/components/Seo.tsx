@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { SITE, seoForPath, websiteJsonLd } from '../lib/seo';
+import { SITE, SEO_PAGES, TOOL_PATHS, breadcrumbJsonLd, organizationWebSiteJsonLd, pageName, seoForPath, softwareApplicationJsonLd } from '../lib/seo';
 import { getGuide } from '../data/honestGuides';
 
 function upsertMeta(attr: 'name' | 'property', key: string, content: string) {
@@ -19,7 +19,7 @@ export const Seo: React.FC = () => {
 
   useEffect(() => {
     let page = seoForPath(pathname);
-    let jsonLd: unknown = pathname === '/' ? websiteJsonLd() : null;
+    let howTo: unknown = null;
 
     const slug = pathname.startsWith('/guides/') ? pathname.slice('/guides/'.length) : '';
     const guide = slug ? getGuide(slug) : undefined;
@@ -29,21 +29,23 @@ export const Seo: React.FC = () => {
         title: `${guide.title} | FileTools Kit`,
         description: guide.summary
       };
-      jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'HowTo',
-        name: guide.title,
-        description: guide.summary,
-        inLanguage: 'en',
-        dateModified: guide.updated,
-        author: { '@type': 'Person', name: 'Souren Das' },
-        step: guide.steps.map((s, i) => ({
-          '@type': 'HowToStep',
-          position: i + 1,
-          name: s.title,
-          text: s.body
-        }))
-      };
+      if (guide.steps.length > 0) {
+        howTo = {
+          '@context': 'https://schema.org',
+          '@type': 'HowTo',
+          name: guide.title,
+          description: guide.summary,
+          inLanguage: 'en',
+          dateModified: guide.updated,
+          author: { '@type': 'Person', name: 'Souren Das' },
+          step: guide.steps.map((s, i) => ({
+            '@type': 'HowToStep',
+            position: i + 1,
+            name: s.title,
+            text: s.body
+          }))
+        };
+      }
     }
 
     document.title = page.title;
@@ -66,14 +68,41 @@ export const Seo: React.FC = () => {
     }
     link.href = `${SITE}${page.path}`;
 
-    const id = 'ftk-jsonld';
-    document.getElementById(id)?.remove();
-    if (jsonLd) {
-      const script = document.createElement('script');
+    const upsertJsonLd = (id: string, data: unknown) => {
+      const existing = document.getElementById(id);
+      if (!data) {
+        existing?.remove();
+        return;
+      }
+      const script = (existing as HTMLScriptElement | null) ?? document.createElement('script');
       script.type = 'application/ld+json';
       script.id = id;
-      script.text = JSON.stringify(jsonLd);
-      document.head.appendChild(script);
+      script.text = JSON.stringify(data);
+      if (!existing) document.head.appendChild(script);
+    };
+
+    document.getElementById('ftk-jsonld')?.remove();
+    upsertJsonLd('ftk-site', organizationWebSiteJsonLd());
+
+    const known = pathname === '/' || Boolean(SEO_PAGES[pathname]) || Boolean(guide);
+    if (!known || pathname === '/') {
+      upsertJsonLd('ftk-breadcrumb', null);
+      upsertJsonLd('ftk-software', null);
+      upsertJsonLd('ftk-howto', null);
+    } else {
+      const name = pageName(page.title);
+      const url = `${SITE}${page.path}`;
+      const crumbs = [{name: 'FileTools Kit', url: `${SITE}/`}];
+      if (page.path.startsWith('/guides/')) {
+        crumbs.push({name: 'Guides', url: `${SITE}/guides.html`});
+      }
+      crumbs.push({name, url});
+      upsertJsonLd('ftk-breadcrumb', breadcrumbJsonLd(crumbs));
+      upsertJsonLd(
+        'ftk-software',
+        TOOL_PATHS.has(page.path) ? softwareApplicationJsonLd(name, page.description, url) : null,
+      );
+      upsertJsonLd('ftk-howto', howTo);
     }
   }, [pathname]);
 
