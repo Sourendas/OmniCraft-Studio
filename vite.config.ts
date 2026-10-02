@@ -1,3 +1,4 @@
+import {spawnSync} from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
@@ -184,6 +185,13 @@ function routeShells(): Plugin {
         const dir = path.join(dist, route.slice(1));
         fs.mkdirSync(dir, {recursive: true});
         fs.writeFileSync(path.join(dir, 'index.html'), out);
+      }
+      const injector = path.resolve(__dirname, 'scripts/inject-schema.mjs');
+      if (fs.existsSync(injector)) {
+        const result = spawnSync(process.execPath, [injector], {stdio: 'inherit'});
+        if (result.status !== 0) {
+          throw new Error('inject-schema failed');
+        }
       }
     },
   };
