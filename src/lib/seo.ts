@@ -181,40 +181,105 @@ export function seoForPath(pathname: string): SeoPage {
   };
 }
 
-export function websiteJsonLd() {
+export const TOOL_PATHS = new Set<string>([
+  '/resume-builder',
+  '/pdf-suite',
+  '/merge-pdf',
+  '/split-pdf',
+  '/jpg-to-pdf',
+  '/page-numbers',
+  '/pdf-to-jpg',
+  '/organize-pdf',
+  '/password-protect-pdf',
+  '/compress-pdf',
+  '/file-converter',
+  '/image-optimizer',
+  '/qr-generator',
+  '/dev-tools',
+  '/markdown-editor',
+  '/svg-editor',
+  '/text-diff',
+  '/social-studio',
+  '/health-calc',
+  '/currency-crypto',
+]);
+
+export function pageName(title: string) {
+  return title.replace(/\s*\|\s*FileTools Kit\s*$/, '').trim();
+}
+
+export function organizationWebSiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'WebSite',
-        '@id': `${SITE}/#website`,
-        url: SITE,
+        '@type': 'Organization',
+        '@id': `${SITE}/#organization`,
         name: SITE_NAME,
-        description: 'Free PDF, image, resume, and file tools that run in your browser.',
-        inLanguage: 'en',
-        publisher: { '@id': `${SITE}/#person` }
+        url: SITE,
+        logo: `${SITE}/logo.jpg`,
+        email: 'support@filetoolskit.com',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Bengaluru',
+          addressRegion: 'Karnataka',
+          addressCountry: 'IN',
+        },
+        founder: {'@id': `${SITE}/#souren-das'},
       },
       {
         '@type': 'Person',
-        '@id': `${SITE}/#person`,
+        '@id': `${SITE}/#souren-das`,
         name: OPERATOR,
-        url: `${SITE}/about`,
         email: 'mailto:support@filetoolskit.com',
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Bengaluru',
           addressRegion: 'Karnataka',
-          addressCountry: 'IN'
-        }
+          addressCountry: 'IN',
+        },
       },
       {
-        '@type': 'SoftwareApplication',
+        '@type': 'WebSite',
+        '@id': `${SITE}/#website`,
+        url: SITE,
         name: SITE_NAME,
-        applicationCategory: 'UtilitiesApplication',
-        operatingSystem: 'Web browser',
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-        url: SITE
-      }
-    ]
+        description:
+          'Merge PDFs, convert images, build a resume PDF, and more in this tab. Free tools operated by Souren Das in Bengaluru. No file-upload API.',
+        inLanguage: 'en',
+        publisher: {'@id': `${SITE}/#organization'},
+      },
+    ],
+  };
+}
+
+export function websiteJsonLd() {
+  return organizationWebSiteJsonLd();
+}
+
+export function breadcrumbJsonLd(items: {name: string; url: string}[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+export function softwareApplicationJsonLd(name: string, description: string, url: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name,
+    description,
+    url,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Web browser',
+    isAccessibleForFree: true,
+    provider: {'@id': `${SITE}/#organization'},
   };
 }
