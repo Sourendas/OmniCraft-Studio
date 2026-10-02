@@ -4,27 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to merge PDF files in your browser | FileTools Kit</title>
-  <link rel="canonical" href="https://www.filetoolskit.com/guides/merge-pdf-in-browser" />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.6}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}</style>
+  <meta name="description" content="Combine a cover sheet, resume, and certificates into one PDF in this tab. Page copy with pdf-lib. No upload API. Encrypted files often fail." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/merge-pdf-in-browser.html" />
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a></p>
+  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
   <h1>How to merge PDF files in your browser</h1>
-  <p>Merging PDFs is a common chore: a cover sheet, an appendix, and a form that need to travel as one file. FileTools Kit does that merge in the tab you already have open. The PDF Suite reads each file with the browser File API, copies pages into a new document with pdf-lib, and lets you download the result. FileTools Kit does not run an upload API that receives those PDFs.</p>
-  <p>Last updated: 3 September 2026 · Souren Das, FileTools Kit, Bengaluru</p>
-  <h2>When to use this tool</h2>
-  <p>Use merge when you have two or more PDFs and want one file to send, print, or archive.</p>
-  <p>Skip merge if you only need a subset of pages — that is split. Skip it if the PDFs are password-protected; encrypted files often fail in the browser.</p>
-  <h2>Step-by-step</h2>
-  <ol>
-    <li><strong>Open the PDF Suite.</strong> From the home page, open PDF Suite.</li>
-    <li><strong>Drop or pick the PDFs.</strong> The browser stores them as File objects in this tab.</li>
-    <li><strong>Order the files.</strong> Merged output follows the list order.</li>
-    <li><strong>Merge and download.</strong> The tool builds a new PDF in memory.</li>
-    <li><strong>Optional watermark.</strong> Default text is CONFIDENTIAL. That is overlay text, not encryption.</li>
-  </ol>
-  <p><a href="/pdf-suite">Open PDF Suite</a></p>
+  
+<p>Merging is the job of putting a cover sheet, an appendix, and a form into one file a portal will accept. FileTools Kit does that copy in the tab you already have open. The tool reads each PDF with the browser File API, copies pages into a new document with pdf-lib, and offers a download. It does not run an upload API that receives those PDFs.</p>
+<h2>When to merge</h2>
+<p>Merge when you have two or more PDFs and the receiver asked for one attachment. A common case is a job application: cover letter, resume, then certificates, in that order. Merged output follows the list order, so set the order before you click.</p>
+<p>Do not merge if you only need a subset of pages. That is split. Do not merge if the files are password-protected. Encrypted PDFs often fail in the browser. Unlock them in a reader you trust, then merge the unlocked copies.</p>
+<h2>Steps</h2>
+<ol>
+<li>Open <a href="/merge-pdf">Merge PDF</a> or the <a href="/pdf-suite">PDF Suite</a>.</li>
+<li>Drop or pick the PDFs. The browser stores them as File objects in this tab.</li>
+<li>Order the files. The download follows that list.</li>
+<li>Merge and download. The new file is built in memory. The originals on disk are not overwritten.</li>
+<li>Optional watermark. Default text is CONFIDENTIAL. That is overlay text, not encryption and not redaction.</li>
+</ol>
+<h2>What fails</h2>
+<p>A signed PDF may lose a valid signature after any rewrite. A scan that is one huge image per page can stall the tab. If that happens, merge in smaller batches, then merge the batches. A reload drops the in-memory files. Downloads you already saved stay in your downloads folder.</p>
+<p>Page numbers stamped before a merge will be wrong if each source started at 1. Number the combined file after, with <a href="/page-numbers">page numbers</a>.</p>
+<p><a href="/merge-pdf">Open Merge PDF</a></p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
 </main>
 </body>
 </html>

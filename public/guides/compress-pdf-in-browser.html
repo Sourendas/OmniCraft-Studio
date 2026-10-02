@@ -1,2 +1,35 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Compress a PDF in the browser | FileTools Kit</title><link rel="canonical" href="https://www.filetoolskit.com/guides/compress-pdf-in-browser.html" /><meta name="description" content="Compress a PDF in the browser without a server optimizer. FileTools Kit, Souren Das, Bengaluru." /><style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.7}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border-radius:24px}a{color:#C2410C}</style></head><body><main><p><a href="/">Home</a> · <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p><h1>Compress a PDF in the browser, without pretending it always shrinks</h1><p>Compress PDF on FileTools Kit is a light rewrite. The page copies pages into a new document and saves them with object streams. That can shrink some files. Image-heavy scans often barely change. This is not a server optimizer that recompresses every embedded photo.</p><p>I state the limit on the page because a tool that promises a tiny file and then returns the same scan is worse than a tool that tells you what it did. Keep the original until you have compared sizes.</p><h2>When a light rewrite is enough</h2><p>Use it when a PDF was saved with unused objects, or when you want a clean copy without uploading the file. Do not use it when the only reason the file is large is a stack of phone photos already saved as tight JPEGs.</p><h2>Step by step</h2><ol><li>Open Compress PDF.</li><li>Choose one PDF. Encrypted files often fail.</li><li>Download the result and compare the file size to the original.</li><li>If the size barely moved and you needed a smaller photo, use Image Optimizer on the pictures first, then build a new PDF from those images.</li></ol><p>This page will not OCR a scan, repair a corrupt file, or turn the PDF into Word. FileTools Kit does not run an upload API for the PDF you pick here.</p><p><a href="/compress-pdf">Open Compress PDF</a></p><p>Written by Souren Das, Bengaluru. 1 October 2026. support@filetoolskit.com</p></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to compress a PDF in the browser | FileTools Kit</title>
+  <meta name="description" content="Rewrite a PDF in this tab and compare size before and after. Not a server optimizer. Scans that are already JPEG often do not shrink." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/compress-pdf-in-browser.html" />
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
+</head>
+<body>
+<main>
+  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <h1>How to compress a PDF in the browser</h1>
+  
+<p>Compress PDF rewrites the document in this tab and shows the size before and after. It is a structural rewrite, not a server that downsamples every image to a promised percent. FileTools Kit does not receive the file.</p>
+<h2>When it helps</h2>
+<p>Text-heavy files sometimes shrink, because unused structure can be rewritten. A phone scan that is already a JPEG inside the PDF often does not. If the number barely moves, the file was already compact. Running it again will not invent a smaller picture.</p>
+<p>If a portal rejects the upload for size, shrink the source images in <a href="/image-optimizer">Image Optimizer</a>, then build the PDF again with <a href="/jpg-to-pdf">JPG to PDF</a>. That path usually beats a second pass on the PDF.</p>
+<h2>Steps</h2>
+<ol>
+<li>Open <a href="/compress-pdf">Compress PDF</a>.</li>
+<li>Pick the file. Keep the original somewhere else.</li>
+<li>Read the before-and-after sizes. Download only if the new file is smaller and the pages still look right.</li>
+<li>Open the download. Check the first page and a page with a photo or a signature.</li>
+</ol>
+<h2>Limits</h2>
+<p>No guaranteed percent. A digital signature may not survive the rewrite. Encrypted files often fail. This is not redaction. Hidden text can remain even if a page looks smaller.</p>
+<p><a href="/compress-pdf">Open Compress PDF</a></p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+</main>
+</body>
+</html>

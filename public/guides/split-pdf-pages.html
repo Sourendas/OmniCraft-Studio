@@ -4,25 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to split a PDF by page range | FileTools Kit</title>
-  <link rel="canonical" href="https://www.filetoolskit.com/guides/split-pdf-pages" />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}</style>
+  <meta name="description" content="Copy pages such as 2-4 or 1-3,5 into a new PDF. The original is not rewritten. Runs in this tab. No upload API." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/split-pdf-pages.html" />
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/">Home</a> · <a href="/guides.html">Guides</a></p>
-  <h1>How to split a PDF by page range in your browser</h1>
-  <p>Split is the other half of merge. You have one long PDF and you only need pages 3–7, or page 1 plus page 12. FileTools Kit PDF Suite reads the first file in the list with the browser File API, copies the pages you name into a new document with pdf-lib, and starts a download. The original file on disk is not rewritten.</p>
-  <p>FileTools Kit does not run an upload API that stores that PDF. Encrypted files often fail in the browser.</p>
-  <h2>When to use split</h2>
-  <p>Use split to extract a certificate from a scanned bundle or send only the appendix a clerk asked for. Do not use split to redact words on a page you keep. Do not use it on a password-protected file.</p>
-  <h2>Step-by-step</h2>
-  <ol>
-    <li>Open PDF Suite and add the PDF. Split uses the first file in the list.</li>
-    <li>Open Split / Range and type a 1-based range such as 1-3,5.</li>
-    <li>Export and open the download. Check the first and last page you expected.</li>
-  </ol>
-  <p><a href="/pdf-suite">Open PDF Suite</a></p>
-  <p>Operator: Souren Das, Bengaluru. support@filetoolskit.com. 19 September 2026.</p>
+  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <h1>How to split a PDF by page range</h1>
+  
+<p>Split is the opposite of merge. You name the pages you want, and the tool copies those pages into a new PDF. The file you picked is not rewritten on disk. FileTools Kit does this with pdf-lib in the tab. There is no upload step.</p>
+<h2>How ranges work</h2>
+<p>A range like 1-3,5 keeps pages 1, 2, 3, and 5. Numbers are the order of pages in the file, not a label printed in the footer. If a scan was saved with a cover as page 1, the signature you want may be page 4 even if the footer says 3.</p>
+<p>Use split when an office asked for the signature page only, or when one download mixed two documents. If you need to reorder rather than drop pages, use <a href="/organize-pdf">Organize PDF</a>.</p>
+<h2>Steps</h2>
+<ol>
+<li>Open <a href="/split-pdf">Split PDF</a>.</li>
+<li>Pick one PDF. Encrypted files often fail. Unlock them first.</li>
+<li>Type the range. Check the page count the tool shows against the file you opened.</li>
+<li>Download the new PDF and open it before you send it.</li>
+</ol>
+<h2>What this will not do</h2>
+<p>It will not OCR a scan, redact a sentence, or remove a password. It will not split by heading. If the tab stalls on a very large scan, extract a smaller range first.</p>
+<p><a href="/split-pdf">Open Split PDF</a></p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
 </main>
 </body>
 </html>

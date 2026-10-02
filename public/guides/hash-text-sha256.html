@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>Hash text with SHA-256 in the browser | FileTools Kit</title>
-<link rel="canonical" href="https://www.filetoolskit.com/guides/hash-text-sha256" />
-<style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem;background:#fff;border-radius:24px}a{color:#C2410C}</style></head>
-<body><main>
-<p><a href="/guides.html">Guides</a></p>
-<h1>Hash text with SHA-256 in the browser</h1>
-<p>Dev Tools can hash a string with the Web Crypto API in this tab and return a hex digest. FileTools Kit does not send that string to a hashing server we operate.</p>
-<p>SHA-256 is a one-way digest. Base64 is encoding, not encryption. Do not treat a single browser hash as a password-storage design.</p>
-<ol><li>Open Dev Tools.</li><li>Paste the input. Keep secrets off shared screens.</li><li>Run SHA-256 and copy the hex output.</li></ol>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to hash text with SHA-256 in the browser | FileTools Kit</title>
+  <meta name="description" content="Hash a string with Web Crypto in this tab and copy the hex digest. Base64 is not encryption. The string is not sent to a hashing server." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/hash-text-sha256.html" />
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
+</head>
+<body>
+<main>
+  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <h1>How to hash text with SHA-256 in the browser</h1>
+  
+<p>Dev Tools can hash a string with the Web Crypto API in this tab and return a hex digest. FileTools Kit does not send that string to a hashing server. Use it to compare a line you already have with a digest someone published. It is not a password store.</p>
+<h2>Hash versus encoding</h2>
+<p>SHA-256 is a one-way digest. You cannot turn the hex back into the text. Base64 is encoding. Anyone can decode Base64. Do not treat either one as encryption, and do not paste a live password on a shared screen. This page does not offer MD5.</p>
+<p>A single browser hash is not a design for storing passwords. Password storage needs a slow hash and a salt, which this tool does not set up.</p>
+<h2>Steps</h2>
+<ol>
+<li>Open <a href="/dev-tools">Dev Tools</a>.</li>
+<li>Paste the input. A trailing space changes the digest.</li>
+<li>Run SHA-256 and copy the hex output.</li>
+<li>Compare it with the digest you were given. A mismatch means the text is not the same, not that the tool "failed".</li>
+</ol>
 <p><a href="/dev-tools">Open Dev Tools</a></p>
-<p>Souren Das, Bengaluru. 19 September 2026.</p>
-</main></body></html>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+</main>
+</body>
+</html>

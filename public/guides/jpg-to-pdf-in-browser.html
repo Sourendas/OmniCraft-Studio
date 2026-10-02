@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Put JPG and PNG scans into one PDF | FileTools Kit</title>
-<meta name="description" content="Stack photos of a form into a single PDF in the tab. No upload API." />
-<link rel="canonical" href="https://www.filetoolskit.com/guides/jpg-to-pdf-in-browser.html" />
-<meta name="author" content="Souren Das" />
-<style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.7}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.35rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to put JPG and PNG scans into one PDF | FileTools Kit</title>
+  <meta name="description" content="Stack JPEG or PNG images into one PDF, one page per image, in this tab. No upload. No OCR. HEIC is not a pipeline here." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/jpg-to-pdf-in-browser.html" />
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
 </head>
-<body><main>
-<p><a href="/">FileTools Kit</a> · <a href="/guides.html">All guides</a> · <a href="/about.html">About</a></p>
-<h1>Put JPG and PNG scans into one PDF</h1>
-<p>Last updated: 1 October 2026 · Souren Das, FileTools Kit, Bengaluru.</p>
-<p>You photographed a form, one page per picture, and the office wants a PDF. JPG to PDF places each image on its own page and downloads one file. The work runs in this tab with pdf-lib. The photos are not uploaded to FileTools Kit.</p>
-<h2>Order is the whole job</h2>
-<p>The PDF follows the list order. Put page one first. A sideways photo stays sideways unless you rotate it first. This job does not auto-crop to the paper.</p>
-<p>Page size follows the images. A mix of portrait phone photos and a wide screenshot produces mixed page sizes. Crop and rotate before you build the PDF if someone will print it.</p>
+<body>
+<main>
+  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <h1>How to put JPG and PNG scans into one PDF</h1>
+  
+<p>A rent receipt, an ID photo, and a signed form often start as images. JPG to PDF places each image on its own page, in the order you set, and downloads one PDF. The photos stay in this tab. There is no account and no upload API.</p>
+<h2>Before you start</h2>
+<p>Export HEIC from a newer iPhone as JPEG first. This page does not convert HEIC. Very large photos make a heavy PDF. If a portal caps the upload, shrink the images in <a href="/image-optimizer">Image Optimizer</a> before you build the PDF.</p>
+<p>The PDF is a picture of each image. Text in the photo is not selectable. No OCR runs here. If the receiver needs selectable text, this export will not create it.</p>
 <h2>Steps</h2>
 <ol>
 <li>Open <a href="/jpg-to-pdf">JPG to PDF</a>.</li>
-<li>Add JPG or PNG files the browser can decode. HEIC from some phones will not decode in every browser. Export JPEG from the phone gallery first.</li>
-<li>Reorder. Put the signature page where the reader expects it.</li>
-<li>Download and open the PDF. Check that each photo is a full page.</li>
+<li>Add the images in the order the form asked for.</li>
+<li>Build and download. Open the PDF and check rotation. A sideways photo stays sideways unless you rotate it first.</li>
 </ol>
-<h2>Size</h2>
-<p>This step does not recompress aggressively. If a portal caps file size, shrink the photos in the image optimizer first, then build the PDF. In-tab PDF compress does not downsample images the way a server optimizer does.</p>
-<p><a href="/jpg-to-pdf">Open JPG to PDF</a> · <a href="/guides/compress-images-in-browser.html">Shrink photos first</a></p>
-</main></body></html>
+<p><a href="/jpg-to-pdf">Open JPG to PDF</a></p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+</main>
+</body>
+</html>
