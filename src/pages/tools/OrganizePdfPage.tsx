@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { degrees, PDFDocument } from 'pdf-lib';
+// pdf-lib is loaded on demand, so the page itself opens without it.
+const loadPdfLib = () => import('pdf-lib');
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCw, ShieldCheck, Trash2 } from 'lucide-react';
 import { downloadBlob } from '../../lib/utils';
 import { isPasswordError, openPdf, renderPageToCanvas } from '../../lib/pdfRender';
@@ -116,6 +117,7 @@ export const OrganizePdfPage: React.FC = () => {
     setBusy(true);
     setStatus('Building the new PDF in this tab...');
     try {
+      const { PDFDocument, degrees } = await loadPdfLib();
       const src = await PDFDocument.load(await file.arrayBuffer());
       const out = await PDFDocument.create();
       const copied = await out.copyPages(src, pages.map((p) => p.source - 1));

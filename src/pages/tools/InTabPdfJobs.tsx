@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
+import type { PDFDocument as PdfLibDocument } from 'pdf-lib';
+// pdf-lib is loaded on demand, so the page itself opens without it.
+const loadPdfLib = () => import('pdf-lib');
 import { downloadBlob } from '../../lib/utils';
 import { ArrowLeft, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -56,6 +58,7 @@ export const InTabPdfJobs: React.FC<{ job: Job }> = ({ job }) => {
     setBusy(true);
     setStatus('Rewriting PDF in this tab...');
     try {
+      const { PDFDocument } = await loadPdfLib();
       const buf = await file.arrayBuffer();
       const doc = await PDFDocument.load(buf);
       const out = await PDFDocument.create();
@@ -79,6 +82,7 @@ export const InTabPdfJobs: React.FC<{ job: Job }> = ({ job }) => {
     setBusy(true);
     setStatus('Building PDF from images...');
     try {
+      const { PDFDocument } = await loadPdfLib();
       const pdf = await PDFDocument.create();
       for (const file of list) {
         const bytes = new Uint8Array(await file.arrayBuffer());
@@ -105,11 +109,12 @@ export const InTabPdfJobs: React.FC<{ job: Job }> = ({ job }) => {
     setBusy(true);
     setStatus('Adding page numbers...');
     try {
+      const { PDFDocument, StandardFonts, rgb } = await loadPdfLib();
       const out = await PDFDocument.create();
       const font = await out.embedFont(StandardFonts.Helvetica);
       const size = 10;
       const margin = 18;
-      const docs: PDFDocument[] = [];
+      const docs: PdfLibDocument[] = [];
       for (const file of list) {
         docs.push(await PDFDocument.load(await file.arrayBuffer()));
       }
