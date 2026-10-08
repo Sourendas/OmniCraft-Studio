@@ -7,7 +7,9 @@
   <meta name="description" content="Stamp a page label after you merge or reorder. Formats are 1, 1 / N, or Page 1 of N. The tool counts file pages, not printed footer numbers." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/page-numbers-pdf.html" />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
 </head>
 <body>
 <main>
@@ -16,7 +18,7 @@
   
 <p>Page Numbers draws a label on each page from a starting number you choose. Formats are a plain number, 1 / N, or Page 1 of N, at the top or bottom. The stamp is added with pdf-lib in this tab. The PDF is not uploaded.</p>
 <h2>When to number</h2>
-<p>Number the file after you merge, split, or reorder. If you number first and then move pages, the labels lie. The tool does not read numbers already printed in a scan. It counts pages in the file. If a cover should be unnumbered, start at the page you want and accept that the tool labels the pages you include.</p>
+<p>Number the file after you merge, split, or reorder. If you number first and then move pages, the labels lie. The tool does not read numbers already printed in a scan. It counts pages in the file. If a cover should stay unnumbered, see the start number note below.</p>
 <h2>Steps</h2>
 <ol>
 <li>Finish merge or organize first.</li>
@@ -24,9 +26,21 @@
 <li>Choose the start number and the corner.</li>
 <li>Download and check the first and last page. A label can sit on top of a footer. If it collides, pick the other edge and export again.</li>
 </ol>
+<h2>The settings</h2>
+<p>Position has three choices: bottom centre, bottom right, or top centre. The label is 10 point grey Helvetica, placed 18 points (about 6 mm) from the edge, which sits inside the margin most printers leave. The format is a plain number (3), a fraction (3 / 12), or words (Page 3 of 12). In the last two, the second number is the last label on the run, not the count of pages, so if you start at 5 on a 10-page file the last page reads 14 / 14.</p>
+<p>The start number is the label on the first page. It cannot go below 1. If the cover should carry no number, the clean way is to split the cover off with <a href="/split-pdf">Split PDF</a>, number the rest, and merge the cover back in front with <a href="/merge-pdf">Merge PDF</a>.</p>
+<h2>More than one file</h2>
+<p>You can pick several PDFs at once. The tool joins them in the order the browser hands them over, numbers the whole run, and downloads one file named page-numbers.pdf. That order is usually the order you selected, but not always. If order matters, merge first where you can see the list, then number the merged file.</p>
+<h2>What it does not do</h2>
+<p>The number is drawn on top of the page. It does not move existing content and it does not remove an old number printed in a footer. On a scan with a dark band at the bottom, grey text can be hard to read, so try top centre. The tool also does not set the PDF's internal page labels, so the page box in your reader still counts from 1.</p>
 <p><a href="/page-numbers">Open Page Numbers</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
 </main>
 </body>
 </html>
