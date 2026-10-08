@@ -33,8 +33,8 @@ export const MORE_PDF_TOOL_ARTICLES: Record<string, ArticleWithGuides> = {
       { q: 'Why is the text not selectable in the image?', a: 'An image is a picture of the page. Keep the PDF if you need to copy text.' },
     ],
     guides: [
-      { slug: 'pdf-to-jpg-in-browser', label: 'How to turn PDF pages into JPG or PNG images' },
-      { slug: 'compress-images-in-browser', label: 'How to compress images for email or a website' },
+      { slug: 'pdf-to-jpg-in-browser', label: 'How to turn PDF pages into JPG or PNG' },
+      { slug: 'compress-images-in-browser', label: 'How to compress images in the browser' },
     ],
   },
   'organize-pdf': {
@@ -69,7 +69,7 @@ export const MORE_PDF_TOOL_ARTICLES: Record<string, ArticleWithGuides> = {
     ],
     guides: [
       { slug: 'organize-pdf-pages-in-browser', label: 'How to reorder, rotate, and delete PDF pages' },
-      { slug: 'merge-pdf-in-browser', label: 'How to merge 20 PDFs in your browser' },
+      { slug: 'merge-pdf-in-browser', label: 'How to merge PDF files in your browser' },
     ],
   },
   'password-protect-pdf': {
@@ -103,7 +103,7 @@ export const MORE_PDF_TOOL_ARTICLES: Record<string, ArticleWithGuides> = {
       { q: 'I forgot the password. Can you open it?', a: 'No. Nobody at FileTools Kit can recover it. Use your unprotected original.' },
     ],
     guides: [
-      { slug: 'password-protect-pdf-in-browser', label: 'How to password protect a PDF in your browser' },
+      { slug: 'password-protect-pdf-in-browser', label: 'How to password-protect a PDF in the browser' },
       { slug: 'what-stays-in-the-tab', label: 'What stays in the tab' },
     ],
   },

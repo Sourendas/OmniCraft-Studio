@@ -27,7 +27,7 @@ export const PDF_TOOL_ARTICLES: Record<string, ToolArticleWithGuides> = {
       { title: 'Check the result', body: 'Open the download and check the first, a middle, and the last page before you send it.' },
     ],
     limits: [
-      'Preview tiles are placeholders, not rendered pages.',
+      'File cards preview page 1 only. Open the download to check every page.',
       'There is no drag-to-reorder. Order comes from the list.',
       'Pages keep their source sizes, so mixed A4 and Letter files stay mixed.',
       'Document-level extras such as bookmarks may not carry over.',
@@ -38,7 +38,7 @@ export const PDF_TOOL_ARTICLES: Record<string, ToolArticleWithGuides> = {
       { q: 'Does merging reduce quality?', a: 'No. Pages are copied as they are, not re-rendered.' },
     ],
     guides: [
-      { slug: 'merge-pdf-in-browser', label: 'How to merge 20 PDFs in your browser' },
+      { slug: 'merge-pdf-in-browser', label: 'How to merge PDF files in your browser' },
       { slug: 'what-stays-in-the-tab', label: 'What stays in the tab' },
     ],
   },
@@ -72,7 +72,7 @@ export const PDF_TOOL_ARTICLES: Record<string, ToolArticleWithGuides> = {
       { q: 'Why did I get fewer pages than I typed?', a: 'Numbers above the page count, or text that is not a number, are skipped.' },
     ],
     guides: [
-      { slug: 'split-pdf-pages', label: 'How to extract pages 2–4 from a PDF' },
+      { slug: 'split-pdf-pages', label: 'How to split a PDF by page range' },
       { slug: 'what-stays-in-the-tab', label: 'What stays in the tab' },
     ],
   },
@@ -105,8 +105,8 @@ export const PDF_TOOL_ARTICLES: Record<string, ToolArticleWithGuides> = {
       { q: 'What if a file is not JPEG or PNG?', a: 'The build stops with a message. Convert it with File Converter and try again.' },
     ],
     guides: [
-      { slug: 'compress-images-in-browser', label: 'How to compress images for email or a website' },
-      { slug: 'convert-images-png-jpg-webp', label: 'How to convert JPG, PNG, and WebP' },
+      { slug: 'compress-images-in-browser', label: 'How to compress images in the browser' },
+      { slug: 'convert-images-png-jpg-webp', label: 'How to convert PNG, JPG, and WebP' },
     ],
   },
   'page-numbers': {
@@ -140,8 +140,8 @@ export const PDF_TOOL_ARTICLES: Record<string, ToolArticleWithGuides> = {
       { q: 'Does it change my original file?', a: 'No. You download a new PDF.' },
     ],
     guides: [
-      { slug: 'merge-pdf-in-browser', label: 'How to merge 20 PDFs in your browser' },
-      { slug: 'split-pdf-pages', label: 'How to extract pages 2–4 from a PDF' },
+      { slug: 'merge-pdf-in-browser', label: 'How to merge PDF files in your browser' },
+      { slug: 'split-pdf-pages', label: 'How to split a PDF by page range' },
     ],
   },
   'compress-pdf': {
@@ -175,8 +175,8 @@ export const PDF_TOOL_ARTICLES: Record<string, ToolArticleWithGuides> = {
       { q: 'Will the text still be selectable?', a: 'Yes. Pages are copied, not turned into pictures.' },
     ],
     guides: [
-      { slug: 'compress-pdf-in-browser', label: 'How to compress a PDF in your browser' },
-      { slug: 'compress-images-in-browser', label: 'How to compress images for email or a website' },
+      { slug: 'compress-pdf-in-browser', label: 'How to compress a PDF in the browser' },
+      { slug: 'compress-images-in-browser', label: 'How to compress images in the browser' },
     ],
   },
 };
