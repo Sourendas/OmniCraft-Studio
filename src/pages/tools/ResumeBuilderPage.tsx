@@ -192,7 +192,7 @@ export const ResumeBuilderPage: React.FC = () => {
 
           <section className="rounded-3xl bg-white border border-slate-200 p-5">
             <h2 className="text-xs font-black uppercase tracking-wider text-[#C2410C] mb-2">Summary</h2>
-            <textarea rows={5} className={field} value={data.summary} onChange={(e) => patch({ summary: e.target.value })} />
+            <textarea rows={5} className={field} aria-label="Summary" value={data.summary} onChange={(e) => patch({ summary: e.target.value })} />
           </section>
 
           <section className="space-y-3">
@@ -219,7 +219,7 @@ export const ResumeBuilderPage: React.FC = () => {
                 </label>
                 {exp.bullets.map((b, i) => (
                   <div key={i} className="flex gap-2 items-start">
-                    <textarea rows={2} className={field} value={b} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => { if (x.id !== exp.id) return x; const bullets = [...x.bullets]; bullets[i] = e.target.value; return { ...x, bullets }; }) }))} />
+                    <textarea rows={2} className={field} aria-label={`Bullet ${i + 1} for ${exp.position || 'this role'}`} value={b} onChange={(e) => setData((p) => ({ ...p, experience: p.experience.map((x) => { if (x.id !== exp.id) return x; const bullets = [...x.bullets]; bullets[i] = e.target.value; return { ...x, bullets }; }) }))} />
                     <button type="button" onClick={() => rewriteBullet(exp.id, i, b)} className="text-[10px] font-bold text-[#C2410C] shrink-0 pt-2">Rewrite</button>
                     <button type="button" onClick={() => setData((p) => ({ ...p, experience: p.experience.map((x) => (x.id === exp.id ? { ...x, bullets: x.bullets.filter((_, j) => j !== i) } : x)) }))} className="pt-2" aria-label="Remove bullet"><Trash2 className="w-3.5 h-3.5 text-slate-400" /></button>
                   </div>
@@ -259,7 +259,7 @@ export const ResumeBuilderPage: React.FC = () => {
               <h2 className="text-xs font-black uppercase tracking-wider text-[#C2410C]">Keyword overlap (optional)</h2>
               <span className="text-sm font-black text-[#C2410C]">{overlap.score}%</span>
             </div>
-            <textarea rows={5} className={field} placeholder="Paste a job description to see local keyword overlap" value={data.targetJobDescription} onChange={(e) => patch({ targetJobDescription: e.target.value })} />
+            <textarea rows={5} className={field} aria-label="Job description" placeholder="Paste a job description to see local keyword overlap" value={data.targetJobDescription} onChange={(e) => patch({ targetJobDescription: e.target.value })} />
             <p className="text-[11px] text-slate-500 font-medium">{overlap.matched.length} matched · {overlap.missing.length} missing. Not an employer ATS.</p>
           </section>
 
