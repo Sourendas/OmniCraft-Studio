@@ -4,17 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to create a QR code and export PNG or SVG | FileTools Kit</title>
-  <meta name="description" content="Encode a URL or short text and export PNG or SVG in this tab. No short-link is hosted here. No scan analytics." />
+  <meta name="description" content="Make a QR code for a link, Wi-Fi network, contact card, email, or text and export PNG or SVG in this tab. No short-link and no scan analytics." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/create-qr-code.html" />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
 </head>
 <body>
 <main>
   <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
   <h1>How to create a QR code and export PNG or SVG</h1>
   
-<p>QR Generator encodes a URL or a short line and exports PNG or SVG. The code is drawn in this tab. FileTools Kit does not host a redirect behind it and does not count scans. The code points at the address you typed, nothing else.</p>
+<p>QR Generator encodes a link, Wi-Fi details, a contact card, an email address, or a short line of text, and exports PNG or SVG. The code is drawn in this tab. FileTools Kit does not host a redirect behind it and does not count scans. The code points at the address you typed, nothing else.</p>
+<figure><img src="/guides/img/qr.png" alt="Screenshot of the FileTools Kit QR Generator with a website URL code" width="1280" height="800" loading="lazy" decoding="async" style="max-width:100%;height:auto"><figcaption>The QR Generator page. Pick a type at the top, then set colors, error correction, and margin.</figcaption></figure>
 <h2>Before you print</h2>
 <p>Use a URL you have already opened in a browser. A long payload makes a dense code that a phone camera misses. If the address changes later, a printed code still points at the old one. SVG is the better export for a print shop. PNG is enough for a slide.</p>
 <p>Leave a quiet margin around the code. A logo in the middle is not added here. If you need one, export SVG and edit it in <a href="/svg-editor">SVG Studio</a>, then scan again. A broken scan after a logo is common.</p>
@@ -25,9 +28,18 @@
 <li>Export SVG for print or PNG for a deck.</li>
 <li>Scan the export with your own phone before you print a stack.</li>
 </ol>
+<h2>What each type puts in the code</h2>
+<p>A URL is stored as typed. Wi-Fi stores the network name, the password, and the security type in the format phone cameras read, so the phone offers to join the network. Characters such as a semicolon, comma, colon, or quote in the name or password are escaped as that format requires. A vCard stores a name, phone number, email, and organisation, and the phone offers to save the contact. Email Draft stores a mailto link with your address and the subject Contact. Text stores the words and nothing else.</p>
+<h2>Error correction, colors, and margin</h2>
+<p>Error correction decides how much of the code can be damaged and still scan: about 7% at L, 15% at M, 25% at Q, and 30% at H. H is the default and suits print, where a fold or a smudge is likely. Higher levels make a denser code, so for a long payload on a small sticker, M can scan better. Keep a dark foreground on a light background. Inverted or low-contrast colors fail on some scanners. Leave the margin at 2 or more, because scanners need that quiet border to find the code.</p>
 <p><a href="/qr-generator">Open QR Generator</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
 </main>
 </body>
 </html>

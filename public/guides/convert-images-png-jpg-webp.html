@@ -7,14 +7,18 @@
   <meta name="description" content="Re-encode PNG, JPEG, or WebP via canvas in this tab. Not HEIC, video, or a quality boost. No upload API." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/convert-images-png-jpg-webp.html" />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
 </head>
 <body>
 <main>
   <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
   <h1>How to convert PNG, JPG, and WebP</h1>
   
-<p>File Converter re-encodes a PNG, JPEG, or WebP through the canvas in this tab and downloads the result. It is the right tool when a form named a format and you have a different one. It is not a pipeline for video, audio, or HEIC, and it cannot add detail that was not in the source.</p>
+<p>File Converter re-encodes a PNG, JPEG, or WebP through the canvas in this tab and downloads the result. It is the right tool when a form named a format and you have a different one. It does not handle video or HEIC, and it cannot add detail that was not in the source.</p>
+<figure><img src="/guides/img/convert.png" alt="Screenshot of the FileTools Kit File Converter drop zone" width="1280" height="800" loading="lazy" decoding="async" style="max-width:100%;height:auto"><figcaption>The File Converter page. Drop images, audio, or a DOCX and pick the output per file.</figcaption></figure>
+
 <h2>Which format</h2>
 <p>PNG keeps a flat graphic and a screenshot with sharp text. JPEG is smaller for a photo and is the format most email forms still accept. WebP is a good middle when the site says it accepts WebP. Converting a JPEG to PNG will not make the photo sharper. It often makes the file larger.</p>
 <h2>Steps</h2>
@@ -24,9 +28,18 @@
 <li>Download and open it. Check a face or a line of text, not only the file size.</li>
 </ol>
 <p>If the file is still too big after the format change, resize it in <a href="/image-optimizer">Image Optimizer</a>.</p>
+<h2>What changes in the file</h2>
+<p>JPEG and WebP exports are saved at quality 0.92, which looks the same as the source to most eyes but is still lossy. PNG is lossless. Transparent areas turn white in a JPEG, because JPEG has no transparency, so keep PNG or WebP for a logo on a clear background. Camera metadata such as the capture date and GPS location is not copied into the new file. That is useful before you post a photo, and a problem if you needed the date.</p>
+<h2>Other files the page handles</h2>
+<p>The same page decodes audio your browser can play and saves it as WAV, a format almost every editor opens. WAV is uncompressed, so a three-minute song can come out at 30 MB or more. It also pulls the text out of a Word .docx and saves it as .txt, or as a basic PDF with the text only. Images, tables, and fonts from the Word file are not kept. TXT, HTML, and Markdown files can be saved as plain text.</p>
 <p><a href="/file-converter">Open File Converter</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
 </main>
 </body>
 </html>
