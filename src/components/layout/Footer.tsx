@@ -31,9 +31,6 @@ export const Footer: React.FC = () => {
           <Link to="/"><BrandLockup compact /></Link>
           <p className="text-xs font-medium">Free PDF, image, and text tools that run in your browser. Built and operated by Souren Das, Bengaluru, India.</p>
           <p className="text-[11px]"><a className="text-[#C2410C] underline font-bold" href="mailto:support@filetoolskit.com">support@filetoolskit.com</a></p>
-          <a href="https://www.directree.io" target="_blank" rel="noopener noreferrer" title="Verified on directree">
-            <img src="https://www.directree.io/badge/directree-badge-lightmode.svg" alt="Verified on directree" width={200} height={37} loading="lazy" decoding="async" />
-          </a>
         </div>
         <div className="space-y-2">
           <h2 className="font-black text-[#1C1917] text-xs uppercase">PDF tools</h2>
