@@ -26,18 +26,12 @@ const HealthCalcPage = lazy(() => import('./pages/tools/HealthCalcPage').then((m
 const MarkdownEditorPage = lazy(() => import('./pages/tools/MarkdownEditorPage').then((m) => ({ default: m.MarkdownEditorPage })));
 const SvgStudioPage = lazy(() => import('./pages/tools/SvgStudioPage').then((m) => ({ default: m.SvgStudioPage })));
 const TextDiffPage = lazy(() => import('./pages/tools/TextDiffPage').then((m) => ({ default: m.TextDiffPage })));
-const AboutPage = lazy(() => import('./pages/About').then((m) => ({ default: m.AboutPage })));
-const GuidesPage = lazy(() => import('./pages/Guides').then((m) => ({ default: m.GuidesPage })));
 const GuideArticlePage = lazy(() => import('./pages/guides/GuideArticle').then((m) => ({ default: m.GuideArticlePage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
-const PrivacyPolicyPage = lazy(() => import('./pages/legal/LegalPages').then((m) => ({ default: m.PrivacyPolicyPage })));
-const TermsPage = lazy(() => import('./pages/legal/LegalPages').then((m) => ({ default: m.TermsPage })));
-const CookiePolicyPage = lazy(() => import('./pages/legal/LegalPages').then((m) => ({ default: m.CookiePolicyPage })));
-const DisclaimerPage = lazy(() => import('./pages/legal/LegalPages').then((m) => ({ default: m.DisclaimerPage })));
-const ContactPage = lazy(() => import('./pages/legal/LegalPages').then((m) => ({ default: m.ContactPage })));
+const StaticDocPage = lazy(() => import('./pages/StaticDocPage').then((m) => ({ default: m.StaticDocPage })));
 
 const RouteFallback = () => (
-  <div className="max-w-lg mx-auto px-4 py-16 text-center text-sm font-medium text-slate-600">Loading...</div>
+  <div className="min-h-[100vh] max-w-lg mx-auto px-4 py-16 text-center text-sm font-medium text-slate-600">Loading...</div>
 );
 
 const WithArticle = ({ slug, children }: { slug: string; children: React.ReactNode }) => (
@@ -88,15 +82,15 @@ export default function App() {
                 <Route path="/markdown-editor" element={<WithArticle slug="markdown-editor"><MarkdownEditorPage /></WithArticle>} />
                 <Route path="/svg-editor" element={<WithArticle slug="svg-studio"><SvgStudioPage /></WithArticle>} />
                 <Route path="/text-diff" element={<WithArticle slug="text-diff"><TextDiffPage /></WithArticle>} />
-                <Route path="/privacy" element={<PrivacyPolicyPage />} />
+                <Route path="/privacy" element={<StaticDocPage src="/privacy.html" />} />
                 <Route path="/privacy-policy" element={<Navigate replace to="/privacy" />} />
-                <Route path="/terms" element={<TermsPage />} />
+                <Route path="/terms" element={<StaticDocPage src="/terms.html" />} />
                 <Route path="/terms-of-service" element={<Navigate replace to="/terms" />} />
-                <Route path="/cookie-policy" element={<CookiePolicyPage />} />
-                <Route path="/disclaimer" element={<DisclaimerPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/guides" element={<GuidesPage />} />
+                <Route path="/cookie-policy" element={<StaticDocPage src="/cookie-policy.html" />} />
+                <Route path="/disclaimer" element={<StaticDocPage src="/disclaimer.html" />} />
+                <Route path="/contact" element={<StaticDocPage src="/contact.html" />} />
+                <Route path="/about" element={<StaticDocPage src="/about.html" />} />
+                <Route path="/guides" element={<StaticDocPage src="/guides.html" />} />
                 <Route path="/guides/:slug" element={<GuideArticlePage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

@@ -7,7 +7,9 @@
   <meta name="description" content="Rewrite a PDF in this tab and compare size before and after. Not a server optimizer. Scans that are already JPEG often do not shrink." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/compress-pdf-in-browser.html" />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
 </head>
 <body>
 <main>
@@ -22,14 +24,22 @@
 <ol>
 <li>Open <a href="/compress-pdf">Compress PDF</a>.</li>
 <li>Pick the file. Keep the original somewhere else.</li>
-<li>Read the before-and-after sizes. Download only if the new file is smaller and the pages still look right.</li>
+<li>The new file downloads as compressed.pdf and the page shows the size before and after. Keep it only if it is smaller and the pages still look right.</li>
 <li>Open the download. Check the first page and a page with a photo or a signature.</li>
 </ol>
+<h2>What the rewrite does</h2>
+<p>The tool copies every page into a fresh document with pdf-lib and saves it with object streams, which packs the file's internal structure more tightly. It does not re-encode images, lower resolution, or remove fonts. That is why the result is honest but modest. Bookmarks (the outline in a reader's side panel) are not carried into the new file, and form fields may not survive either, so check before you send a form.</p>
+<p>A file exported many times by different apps, or saved by an old scanner app, may shrink noticeably. A PDF that a modern tool already optimized may come out the same size or slightly bigger. The page downloads the result and shows both sizes, so you can see the difference at a glance. If the new file is not smaller, delete it and keep the original.</p>
 <h2>Limits</h2>
 <p>No guaranteed percent. A digital signature may not survive the rewrite. Encrypted files often fail. This is not redaction. Hidden text can remain even if a page looks smaller.</p>
 <p><a href="/compress-pdf">Open Compress PDF</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
 </main>
 </body>
 </html>

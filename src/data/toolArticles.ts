@@ -28,7 +28,7 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
     steps: [
       { title: 'Open PDF Suite', body: 'From the home page choose PDF Suite. Until you pick files, nothing leaves your computer except the request that loaded this website.' },
       { title: 'Add every PDF', body: 'Drop or pick the files. If one does not appear, it may not be a PDF, it may be corrupt, or it may be encrypted.' },
-      { title: 'Order and rotate', body: 'Move files so the list matches the packet you want. Rotate sideways scans. Rotation is applied on export.' },
+      { title: 'Check the order and rotate', body: 'Files are merged in the order they appear in the list, which is the order you added them. To change it, remove a file and add it again. Rotate sideways scans. Rotation is applied on export.' },
       { title: 'Merge, split, or watermark', body: 'Merge copies pages into one file. Split uses a 1-based range on the first file (example: 1-3,5). Watermark draws overlay text; it is not a password.' },
       { title: 'Download and check', body: 'Open the download in a reader. Check the first page, a middle page, and the last page before you send it.' },
     ],
@@ -73,29 +73,30 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
   },
   'file-converter': {
     slug: 'file-converter',
-    title: 'File Converter — change image formats in the browser',
+    title: 'File Converter — images, audio, and DOCX text in the browser',
     lede:
-      'File Converter reads an image you choose, draws it to a canvas, and exports another format such as PNG, JPEG, or WebP. The conversion happens in this tab. It is not a server transcoder for video, Office documents, or archives.',
+      'File Converter handles three kinds of file in this tab. Images (PNG, JPEG, WebP, and other types your browser can open) are drawn to a canvas and saved as PNG, JPEG, or WebP. Audio your browser can play is decoded and saved as an uncompressed WAV. A DOCX, TXT, HTML, or Markdown file can be saved as plain text, and a DOCX can also become a simple text-only PDF. Nothing is sent to a FileTools Kit server.',
     forWho: [
-      'Anyone who has a PNG and needs a JPEG for email size.',
-      'Anyone who needs WebP for a web page from a local photo.',
+      'Anyone who has a PNG and needs a JPEG for email size, or WebP for a web page.',
+      'Someone who needs the words out of a Word file, or a WAV for an editor that will not open the original audio.',
     ],
     notFor: [
-      'DOCX to PDF, video, or audio. Those formats are not handled here.',
-      'RAW camera files that the browser cannot decode.',
+      'Video, HEIC from newer iPhones in most browsers, or RAW camera files.',
+      'Keeping a Word layout. The DOCX to PDF path keeps the text only: no images, tables, fonts, or headers.',
     ],
     steps: [
-      { title: 'Choose the image', body: 'Pick a file the browser can display. If the preview is blank, the type is unsupported.' },
-      { title: 'Pick the output format', body: 'JPEG is smaller and lossy. PNG keeps sharp edges. WebP is often smaller than JPEG at a similar look.' },
-      { title: 'Download', body: 'Save the result and open it. Compare it next to the original before you delete anything.' },
+      { title: 'Add the files', body: 'Drop or pick one or more files. The page picks a default output: WebP for images, WAV for audio, PDF for a DOCX, and TXT for other text files. Files it cannot convert are marked Unsupported.' },
+      { title: 'Pick the output format', body: 'Change the format per file. JPEG is smaller and lossy, PNG keeps sharp edges and transparency, WebP is usually smallest. JPEG output gets a white background where the image was transparent.' },
+      { title: 'Convert and download', body: 'Convert, then open the result next to the original before you delete anything.' },
     ],
     limits: [
-      'Quality sliders change file size and artifacts. JPEG 100 is not a lossless copy of a PNG.',
-      'Transparency in PNG can become a solid background in JPEG.',
+      'Image exports use quality 0.92. A JPEG saved again is not a lossless copy.',
+      'WAV files are large because they are uncompressed.',
+      'Image metadata such as camera details and GPS is not copied into the new file.',
     ],
     faq: [
       { q: 'Does the original change on disk?', a: 'No. You download a new file. The source stays where you picked it.' },
-      { q: 'Can I convert a PDF here?', a: 'Use PDF Suite for PDF page work. This page is for bitmap images.' },
+      { q: 'Can I convert a PDF here?', a: 'No. Use PDF to JPG to turn pages into images, or PDF Suite for page work.' },
     ],
   },
   'image-optimizer': {
@@ -134,7 +135,7 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
     notFor: ['Trading, tax filings, or payroll. Use a live rate source your bank accepts.'],
     steps: [
       { title: 'Enter an amount', body: 'Type the number you want to convert.' },
-      { title: 'Read the example rate', body: 'Treat it as a placeholder. Replace it in your own notes with a rate from your bank if you need accuracy.' },
+      { title: 'Read the example rate', body: 'Treat it as an example only. Replace it in your own notes with a rate from your bank if you need accuracy.' },
       { title: 'Do not treat the result as a quote', body: 'Screenshots from this page are not a contract.' },
     ],
     limits: ['Rates on this page can be days or weeks out of date.', 'Crypto rows are examples only.'],
@@ -145,9 +146,9 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
   },
   'dev-tools': {
     slug: 'dev-tools',
-    title: 'Dev Tools — hash, encode, and inspect text locally',
+    title: 'Dev Tools — JSON and CSV, regex, Base64, and hashes in the tab',
     lede:
-      'Dev Tools hashes text with the Web Crypto API, encodes or decodes Base64, and runs small format helpers in this tab. Use it when you need a SHA-256 digest or a quick encode without pasting secrets into a stranger’s server form.',
+      'Dev Tools has five small helpers that run in this tab: flat JSON to CSV and back, a SQL line-break formatter, a JavaScript regex tester, Base64 encode and decode of UTF-8 text, and SHA-1, SHA-256, SHA-384, and SHA-512 hashes through the Web Crypto API. Use it when you need a digest or a quick conversion without pasting text into a stranger’s server form.',
     forWho: ['Developers checking a checksum or encoding a string.'],
     notFor: [
       'Password storage design. Hashing a password once in a browser tab is not a full auth system.',
@@ -166,9 +167,9 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
   },
   'qr-generator': {
     slug: 'qr-generator',
-    title: 'QR Generator — encode a URL or line of text',
+    title: 'QR Generator — links, Wi-Fi, contact cards, and text',
     lede:
-      'QR Generator turns a URL or short string into a scannable code and lets you export PNG or SVG. The pixels are drawn in this tab. FileTools Kit does not host a redirect short-link behind the code.',
+      'QR Generator turns a URL, Wi-Fi details, a contact card, an email address, or a short line of text into a scannable code, and exports PNG or SVG. You can change colors, margin, and error correction. The code is drawn in this tab. FileTools Kit does not host a redirect short-link behind the code.',
     forWho: ['People putting a menu URL, Wi-Fi note, or portfolio link on a flyer.'],
     notFor: ['Payment QR schemes that need a licensed provider.', 'Very long documents. QR density rises and cheap cameras fail.'],
     steps: [
@@ -184,33 +185,53 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
   },
   'social-studio': {
     slug: 'social-studio',
-    title: 'Social Studio — resize a canvas for common post sizes',
+    title: 'Social Studio — Unicode text styles and length checks for posts and bios',
     lede:
-      'Social Studio is a local canvas helper for common social image sizes. You add text or an image and export a PNG. It is not a scheduler, analytics suite, or publisher that posts to any network.',
-    forWho: ['Someone who needs a 1080×1080 or story-sized PNG quickly.'],
-    notFor: ['Managing accounts, captions calendars, or ads manager work.'],
-    steps: [
-      { title: 'Pick a size', body: 'Square, portrait, and landscape presets match common feed frames.' },
-      { title: 'Add your words or image', body: 'Keep text large enough to read on a phone.' },
-      { title: 'Export PNG', body: 'Download and preview on your phone before you post elsewhere.' },
+      'Social Studio turns a line you type into Unicode letter styles such as bold sans, italic serif, double-struck, circled, and monospace, and shows how long the text is against common limits for X, Instagram and TikTok bios, LinkedIn, and Threads. It is a copy helper. It does not post anywhere and it does not schedule anything.',
+    forWho: ['Someone writing a short bio or caption who wants a styled name or heading to paste into an app.'],
+    notFor: [
+      'Long paragraphs. Screen readers often read styled Unicode letter by letter or skip it, so keep styles to a word or two.',
+      'Account management, scheduling, or analytics.',
     ],
-    limits: ['Platforms crop previews differently. Always check the live preview on that app.', 'This page does not upload the PNG to Instagram, X, or LinkedIn.'],
-    faq: [{ q: 'Will this post for me?', a: 'No. You download a file and post it yourself.' }],
+    steps: [
+      { title: 'Type your text', body: 'Start with the plain words. The styles are generated from that one input.' },
+      { title: 'Check the length meters', body: 'Each meter counts characters against a common limit. Apps count some symbols differently, so leave a little room.' },
+      { title: 'Copy a style', body: 'Press copy on the style you want and paste it into the app. Check how it looks on your phone before you publish.' },
+    ],
+    limits: [
+      'Styled letters are separate Unicode symbols, not a font. Search inside an app may not match them to plain words.',
+      'Some older phones show empty boxes for rare symbols.',
+      'Starter hooks are a fixed list shipped with the page, not generated for you.',
+    ],
+    faq: [
+      { q: 'Will this post for me?', a: 'No. You copy the text and post it yourself.' },
+      { q: 'Is the text sent anywhere?', a: 'No. The styles are computed in this tab. Ordinary website logs only show that the page loaded.' },
+    ],
   },
   'health-calc': {
     slug: 'health-calc',
-    title: 'Health calculator — numbers only, not medical advice',
+    title: 'Health calculator — calorie and macro estimates, not medical advice',
     lede:
-      'Health Calculator runs simple formulas such as BMI from height and weight you type. The result is arithmetic. It is not a diagnosis, prescription, or a substitute for a clinician.',
-    forWho: ['People who want a BMI or similar figure from numbers they already know.'],
-    notFor: ['Treatment decisions, eating-disorder recovery planning, or anyone told by a clinician to ignore BMI.'],
-    steps: [
-      { title: 'Enter height and weight', body: 'Use the units shown on the form. Mixing cm and inches will produce a wrong number.' },
-      { title: 'Read the figure', body: 'BMI is weight divided by height squared. Categories are general labels, not a full health exam.' },
-      { title: 'Talk to a professional for decisions', body: 'If the number worries you, use a qualified clinician, not this page.' },
+      'Health Calculator estimates resting energy (BMR) with the Mifflin-St Jeor formula, multiplies it by an activity level to get daily energy (TDEE), adjusts for a cut, maintain, or bulk goal, and splits the target into protein, carbs, and fat. It also shows BMI. Every figure is arithmetic on the numbers you type. It is not a diagnosis or a diet plan from a clinician.',
+    forWho: ['Adults who want a rough starting estimate for daily calories and macros from height, weight, age, and activity.'],
+    notFor: [
+      'Children, pregnancy, eating-disorder recovery, or any medical condition that changes energy needs.',
+      'Anyone told by a clinician to follow a specific plan.',
     ],
-    limits: ['BMI ignores muscle mass, bone density, and many conditions.', 'No data from this form is sent to a medical record we operate, because we do not operate one.'],
-    faq: [{ q: 'Is this medical advice?', a: 'No. See the site disclaimer. Do not start or stop treatment from this calculator.' }],
+    steps: [
+      { title: 'Pick metric or imperial', body: 'Enter height, weight, age, and sex in the units shown. Mixed units give a wrong number.' },
+      { title: 'Choose activity and goal', body: 'Activity levels are broad bands. Most people overestimate theirs. A cut subtracts 500 kcal from TDEE and a bulk adds 350.' },
+      { title: 'Read or export the estimate', body: 'The result card shows BMR, TDEE, target intake, and macro grams. Export estimate PDF saves the same numbers as a file in this tab.' },
+    ],
+    limits: [
+      'Mifflin-St Jeor is a population formula. Real needs can differ by hundreds of calories.',
+      'BMI ignores muscle mass, bone density, and body shape.',
+      'Nothing typed here is sent to a medical record, because FileTools Kit does not operate one.',
+    ],
+    faq: [
+      { q: 'Is this medical advice?', a: 'No. See the site disclaimer. Do not start or stop treatment from this calculator.' },
+      { q: 'Why does my result differ from another site?', a: 'Calculators use different formulas, activity multipliers, and goal adjustments. Treat any single number as a rough start.' },
+    ],
   },
   'markdown-editor': {
     slug: 'markdown-editor',

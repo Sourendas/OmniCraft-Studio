@@ -7,7 +7,9 @@
   <meta name="description" content="Resize and recompress a photo in this tab before email or a form. Keep the original. No guaranteed percent. JPEG and WebP are usually lossy." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/compress-images-in-browser.html" />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
 </head>
 <body>
 <main>
@@ -18,17 +20,26 @@
 <h2>What to change first</h2>
 <p>Resize first if the photo is 4000 pixels wide and the form only displays 1200. Quality second. JPEG and WebP are usually lossy. A second pass on an already-small JPEG mostly adds blur. PNG screenshots often shrink more from resizing than from a quality slider.</p>
 <p>Keep the original. The download is the file you send. The source stays where you picked it until you delete it.</p>
+<figure><img src="/guides/img/compress.png" alt="Screenshot of the FileTools Kit image compressor with quality, scaling, and format controls" width="1280" height="800" loading="lazy" decoding="async" style="max-width:100%;height:auto"><figcaption>The image compressor page. Quality, scaling, and format apply to every image in the list.</figcaption></figure>
 <h2>Steps</h2>
 <ol>
 <li>Open <a href="/image-optimizer">Image Optimizer</a>.</li>
-<li>Pick one image. HEIC should be exported as JPEG on the phone first.</li>
-<li>Lower the long edge, then the quality, and read the new size.</li>
+<li>Pick one or more images. HEIC should be exported as JPEG on the phone first.</li>
+<li>Lower Dimensions Scaling first, then Visual Quality, and read the new size on each row.</li>
 <li>Download and open it. If text in a screenshot is muddy, raise quality or keep PNG.</li>
 </ol>
+<h2>The three controls</h2>
+<p>Visual Quality runs from 10 to 95 percent and starts at 75. Dimensions Scaling runs from 25 to 100 percent of the original width and height. Output Format is WebP, JPEG, or PNG. WebP is the default because it is usually the smallest. PNG ignores the quality slider, because PNG is lossless, so a PNG only gets smaller when you scale it down. Every image re-saves when you move a control, and each row shows the old and new size.</p>
+<p>Scaling usually saves more than quality because the pixel count drops with the square of the scale. At 50 percent, a 4000 by 3000 photo becomes 2000 by 1500, a quarter of the pixels and still plenty for email or a form. If a new file comes out larger than the original, which happens with a JPEG that was already small, send the original.</p>
 <p>Format choice is covered in <a href="/guides/jpg-png-webp-which-to-send.html">JPG, PNG, or WebP</a>.</p>
 <p><a href="/image-optimizer">Open Image Optimizer</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
 </main>
 </body>
 </html>

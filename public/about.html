@@ -6,23 +6,39 @@
   <title>About | FileTools Kit</title>
   <link rel="canonical" href="https://www.filetoolskit.com/about.html" />
   <meta name="description" content="FileTools Kit is operated by Souren Das in Bengaluru. In-browser PDF, image, and resume tools. No file-upload API." />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.7}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.35rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.6rem}</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.7}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.35rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.6rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
 </head>
 <body>
 <main>
   <p><a href="/">FileTools Kit</a> · <a href="/guides.html">Guides</a> · <a href="/privacy.html">Privacy</a> · <a href="/contact.html">Contact</a> · <a href="/disclaimer.html">Disclaimer</a></p>
   <h1>About FileTools Kit</h1>
   <p>FileTools Kit is a free set of browser tools for ordinary file jobs: merge or split a PDF, turn scans into a PDF, shrink a photo, export a resume, make a QR code, hash a line of text. I built it so those jobs do not require an account or an upload to a processing server I operate.</p>
-  <p>Operator: Souren Das, Bengaluru, Karnataka, India. Product email support@filetoolskit.com. Privacy email privacy@filetoolskit.com. There is no phone line and no ticket portal.</p>
+  <p>Operator: Souren Das, Bengaluru, Karnataka, India. Email support@filetoolskit.com for product questions and privacy requests. There is no phone line and no ticket portal.</p>
   <h2>Why it is shaped this way</h2>
   <p>Many “free PDF” sites ask you to upload a document to a machine you do not control, then put the download behind an account. This project is the opposite shape. The page is a web app. The file you pick stays in the tab as a File object. pdf-lib, jsPDF, the canvas API, and Web Crypto do the work on your device. That choice has limits. Encrypted PDFs often fail. In-tab compress does not downsample scans the way a server optimizer advertises. Those limits are written on the <a href="/guides.html">guides</a>, not hidden under a percent claim.</p>
   <h2>Who writes the guides</h2>
-  <p>I write them. They describe this site’s tools: steps, a worked case, and what the button will not do. They are not copied from another PDF brand. If a sentence is wrong, email support@filetoolskit.com with the page URL. The date on each guide is the last edit, currently 1 October 2026 for this set.</p>
+  <p>I write them. They describe this site’s tools: steps, a worked case, and what the button will not do. They are not copied from another PDF brand. If a sentence is wrong, email support@filetoolskit.com with the page URL. Each guide shows the date of its last edit.</p>
   <p>The resume match percentage is a local word overlap. It is not an employer ATS. Health figures on the calculator are arithmetic, not medical advice. Currency figures are static examples, not a bank quote. Those lines are also in the <a href="/disclaimer.html">disclaimer</a>.</p>
+  <h2>The tools</h2>
+  <ul>
+    <li><a href="/pdf-suite">PDF Suite</a>, <a href="/merge-pdf">Merge PDF</a>, and <a href="/split-pdf">Split PDF</a>: combine files, pull a page range, rotate, add a text watermark.</li>
+    <li><a href="/compress-pdf">Compress PDF</a>, <a href="/organize-pdf">Organize pages</a>, <a href="/page-numbers">Page numbers</a>, and <a href="/password-protect-pdf">Password protect</a>: rewrite, reorder, number, or encrypt a PDF.</li>
+    <li><a href="/jpg-to-pdf">JPG to PDF</a> and <a href="/pdf-to-jpg">PDF to JPG</a>: turn photos into a PDF, or PDF pages into images.</li>
+    <li><a href="/image-optimizer">Image Optimizer</a> and <a href="/file-converter">File Converter</a>: shrink a photo, switch between PNG, JPEG, and WebP, save audio as WAV, or pull the text out of a Word file.</li>
+    <li><a href="/resume-builder">Resume Builder</a>: a form that exports a resume PDF in one of twelve layouts.</li>
+    <li><a href="/qr-generator">QR Generator</a>, <a href="/dev-tools">Dev Tools</a>, <a href="/markdown-editor">Markdown Editor</a>, <a href="/svg-editor">SVG Studio</a>, and <a href="/text-diff">Text Diff</a>: small jobs for links, hashes, notes, icons, and drafts.</li>
+    <li><a href="/social-studio">Social Studio</a>, <a href="/health-calc">Health Calculator</a>, and the <a href="/currency-crypto">currency worksheet</a>: text styles for bios, calorie estimates, and example-rate sums.</li>
+  </ul>
   <h2>Ads</h2>
   <p>The tools are free. Google AdSense Auto ads (publisher pub-4409273905876536, listed in <a href="/ads.txt">ads.txt</a>) support hosting. Ads do not receive your PDF or image bytes from our servers, because those files are not uploaded to us. Cookies and ad measurement are described in the <a href="/privacy.html">privacy policy</a> and <a href="/cookie-policy.html">cookie policy</a>.</p>
   <h2>What this site is not</h2>
   <p>It is not a law firm, a clinic, a bank, or a recruitment agency. It does not store your documents for you. A reload drops the in-memory file. Downloads you saved stay in your downloads folder. It does not OCR, truly redact, or guarantee a digital signature will survive a rewrite.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
 </main>
 </body>
 </html>

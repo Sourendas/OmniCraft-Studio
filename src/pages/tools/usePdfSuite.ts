@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent } from 'react';
-import { PDFDocument, rgb, degrees, StandardFonts } from 'pdf-lib';
+// pdf-lib is loaded on demand, so the page itself opens without it.
+const loadPdfLib = () => import('pdf-lib');
 import { downloadBlob } from '../../lib/utils';
 
 export interface PdfFileItem {
@@ -30,6 +31,7 @@ export function usePdfSuite() {
     setIsProcessing(true);
     setStatusMessage('Generating sample document...');
     try {
+      const { PDFDocument, rgb } = await loadPdfLib();
       const pdfDoc = await PDFDocument.create();
       const page1 = pdfDoc.addPage([600, 400]);
       page1.drawText('FileTools Kit PDF', { x: 50, y: 320, size: 20, color: rgb(0.918, 0.345, 0.047) });
@@ -62,6 +64,7 @@ export function usePdfSuite() {
     setIsProcessing(true);
     setStatusMessage('Reading PDF in this tab...');
     try {
+      const { PDFDocument } = await loadPdfLib();
       const newItems: PdfFileItem[] = [];
       for (let i = 0; i < uploaded.length; i++) {
         const file = uploaded[i];
@@ -88,6 +91,7 @@ export function usePdfSuite() {
     setIsProcessing(true);
     setStatusMessage('Merging PDF pages in this tab...');
     try {
+      const { PDFDocument, degrees } = await loadPdfLib();
       const mergedPdf = await PDFDocument.create();
       for (const item of files) {
         const doc = await PDFDocument.load(item.arrayBuffer);
@@ -132,6 +136,7 @@ export function usePdfSuite() {
     setIsProcessing(true);
     setStatusMessage('Extracting selected pages...');
     try {
+      const { PDFDocument } = await loadPdfLib();
       const source = files[0];
       const pageNumbers = parsePageRange(splitRange, source.pageCount);
       if (pageNumbers.length === 0) {
@@ -158,6 +163,7 @@ export function usePdfSuite() {
     setIsProcessing(true);
     setStatusMessage('Building watermarked PDF...');
     try {
+      const { PDFDocument, StandardFonts, rgb, degrees } = await loadPdfLib();
       const outputPdf = await PDFDocument.create();
       const helveticaFont = await outputPdf.embedFont(StandardFonts.HelveticaBold);
       outputPdf.setTitle(metaTitle);

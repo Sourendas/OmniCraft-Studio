@@ -21,7 +21,7 @@ export const TOOLS_DATA: ToolItem[] = [
     name: 'PDF Suite',
     category: 'Document & Career',
     description: 'Merge, rotate, split by page range, add a text watermark, and edit metadata in the browser.',
-    detailedDescription: 'Load PDFs in this tab with pdf-lib. Merge, rotate, split by page list (e.g. 1-3,5), add a text watermark, and set metadata on export. Preview tiles are placeholders, not rendered PDF pages. No encryption or redaction.',
+    detailedDescription: 'Load PDFs in this tab with pdf-lib. Merge, rotate, split by page list (e.g. 1-3,5), add a text watermark, and set metadata on export. Each file card shows a preview of page 1. No encryption or redaction.',
     route: '/pdf-suite',
     iconName: 'Layers',
     badge: 'Free',
@@ -192,7 +192,7 @@ export const FAQ_DATA: FaqItem[] = [
   {
     category: 'Pricing',
     question: 'Is anything paid?',
-    answer: 'No. All 12 tools are free in the browser. There is no checkout and no subscription on this site. The site is supported by Google AdSense ads.'
+    answer: 'No. Every tool on the site is free in the browser. There is no checkout and no subscription on this site. The site is supported by Google AdSense ads.'
   },
   {
     category: 'Commercial use',
@@ -207,7 +207,7 @@ export const FAQ_DATA: FaqItem[] = [
   {
     category: 'Contact',
     question: 'How do I reach you?',
-    answer: 'Email support@filetoolskit.com or privacy@filetoolskit.com. Operator: Souren Das, Bengaluru, India. There is no phone line or ticket portal.'
+    answer: 'Email support@filetoolskit.com for questions, bug reports, and privacy requests. Operator: Souren Das, Bengaluru, India. There is no phone line or ticket portal.'
   },
   {
     category: 'Advertising',

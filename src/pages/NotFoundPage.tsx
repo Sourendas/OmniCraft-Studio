@@ -1,20 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Compass, Layers, FileText, Minimize2, QrCode } from 'lucide-react';
 
+function setRobots(content: string) {
+  let el = document.head.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+  if (!el) {
+    el = document.createElement('meta');
+    el.name = 'robots';
+    document.head.appendChild(el);
+  }
+  el.content = content;
+}
+
 export const NotFoundPage: React.FC = () => {
+  // Unknown URLs must not be indexed as thin duplicates (soft 404). Direct
+  // visits get a real 404 status from Vercel via dist/404.html; this covers
+  // in-app navigation too.
+  useEffect(() => {
+    document.title = 'Page not found | FileTools Kit';
+    setRobots('noindex,follow');
+    // Seo recreates the canonical link on the next route change.
+    document.head.querySelector('link[rel="canonical"]')?.remove();
+    return () => setRobots('index,follow');
+  }, []);
+
   return (
     <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
       <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFEDD5] border border-[#FDBA74] text-xs font-black text-[#C2410C] mb-4">
         <Compass className="w-4 h-4 text-[#EA580C]" />
-        <span>HTTP 404 • Page not found</span>
+        <span>HTTP 404 · Page not found</span>
       </div>
 
       <h1 className="text-4xl sm:text-5xl font-black text-[#0A2540] tracking-tight mb-3">
-        Page Not Found
+        Page not found
       </h1>
       <p className="text-sm sm:text-base text-slate-600 max-w-md mx-auto mb-8 font-medium">
-        That URL does not exist. Try one of the tools below.
+        That URL does not exist on FileTools Kit. It may have moved, or the link had a typo. Try one of the tools below or read the guides.
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-3 mb-10">

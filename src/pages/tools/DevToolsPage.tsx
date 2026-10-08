@@ -120,9 +120,17 @@ export const DevToolsPage: React.FC = () => {
   const [base64Text, setBase64Text] = useState('FileTools Kit browser suite');
   const [base64Encoded, setBase64Encoded] = useState('');
 
+  // Standard Base64 of the UTF-8 bytes, so the output matches `base64` on the
+  // command line and other tools. (The old version percent-encoded first, which
+  // turned every space into %20 before encoding.)
   const handleBase64Encode = () => {
     try {
-      setBase64Encoded(btoa(encodeURIComponent(base64Text)));
+      const bytes = new TextEncoder().encode(base64Text);
+      let binary = '';
+      bytes.forEach((b) => {
+        binary += String.fromCharCode(b);
+      });
+      setBase64Encoded(btoa(binary));
     } catch (e) {
       setBase64Encoded('Encoding error');
     }
@@ -130,9 +138,11 @@ export const DevToolsPage: React.FC = () => {
 
   const handleBase64Decode = () => {
     try {
-      setBase64Text(decodeURIComponent(atob(base64Encoded)));
+      const binary = atob(base64Encoded.replace(/\s+/g, ''));
+      const bytes = Uint8Array.from(binary, (c) => c.charCodeAt(0));
+      setBase64Text(new TextDecoder('utf-8', { fatal: true }).decode(bytes));
     } catch (e) {
-      setBase64Text('Invalid base64 string');
+      setBase64Text('Invalid Base64, or the bytes are not UTF-8 text');
     }
   };
 
@@ -174,7 +184,7 @@ export const DevToolsPage: React.FC = () => {
             <Terminal className="w-7 h-7 text-[#C2410C]" />
             Developer Powerstation
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1">
             JSON/CSV (flat objects), SQL keyword line-breaks, regex tester, Base64, SHA hashes.
           </p>
         </div>
@@ -185,7 +195,7 @@ export const DevToolsPage: React.FC = () => {
           { id: 'json-csv' as const, label: 'JSON / CSV', icon: FileJson },
           { id: 'sql' as const, label: 'SQL line-breaks', icon: Database },
           { id: 'regex' as const, label: 'RegEx Live Tester', icon: Code },
-          { id: 'base64' as const, label: 'Base64 & URL', icon: Lock },
+          { id: 'base64' as const, label: 'Base64', icon: Lock },
           { id: 'hashes' as const, label: 'Hash Generator', icon: Hash }
         ].map((tab) => {
           const Icon = tab.icon;
@@ -196,7 +206,7 @@ export const DevToolsPage: React.FC = () => {
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                 activeTab === tab.id
                   ? 'bg-[#FFEDD5] text-[#C2410C] border border-[#FDBA74] shadow-sm'
-                  : 'bg-white text-slate-400 hover:text-[#0A2540] border border-slate-200'
+                  : 'bg-white text-slate-600 hover:text-[#0A2540] border border-slate-200'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -209,24 +219,24 @@ export const DevToolsPage: React.FC = () => {
       {activeTab === 'json-csv' && (
         <div className="space-y-6">
           {jsonCsvError && (
-            <div className="p-3 rounded-xl bg-rose-950/60 border border-rose-800 text-xs text-rose-300">
+            <div role="alert" className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-800 font-bold">
               {jsonCsvError}
             </div>
           )}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs text-slate-300">
-                <span className="font-bold">JSON Input / Output</span>
+              <div className="flex items-center justify-between text-xs text-slate-700">
+                <label htmlFor="dev-json" className="font-bold">JSON Input / Output</label>
                 <button onClick={convertJsonToCsv} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Convert JSON to CSV</button>
               </div>
-              <textarea rows={12} value={jsonInput} onChange={(e) => setJsonInput(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
+              <textarea id="dev-json" rows={12} value={jsonInput} onChange={(e) => setJsonInput(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
             </div>
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs text-slate-300">
-                <span className="font-bold">CSV Input / Output</span>
+              <div className="flex items-center justify-between text-xs text-slate-700">
+                <label htmlFor="dev-csv" className="font-bold">CSV Input / Output</label>
                 <button onClick={convertCsvToJson} className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200">Convert CSV to JSON</button>
               </div>
-              <textarea rows={12} value={csvOutput} onChange={(e) => setCsvOutput(e.target.value)} placeholder="Click Convert JSON to CSV or paste CSV here..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
+              <textarea id="dev-csv" rows={12} value={csvOutput} onChange={(e) => setCsvOutput(e.target.value)} placeholder="Click Convert JSON to CSV or paste CSV here..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
             </div>
           </div>
         </div>
@@ -235,21 +245,21 @@ export const DevToolsPage: React.FC = () => {
       {activeTab === 'sql' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-slate-300">
-              <span className="font-bold">Raw SQL Query</span>
+            <div className="flex items-center justify-between text-xs text-slate-700">
+              <label htmlFor="dev-sql" className="font-bold">Raw SQL Query</label>
               <button onClick={formatSql} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Insert line breaks</button>
             </div>
-            <textarea rows={12} value={sqlInput} onChange={(e) => setSqlInput(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
+            <textarea id="dev-sql" rows={12} value={sqlInput} onChange={(e) => setSqlInput(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
           </div>
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-slate-300">
-              <span className="font-bold">Beautified SQL Result</span>
+            <div className="flex items-center justify-between text-xs text-slate-700">
+              <label htmlFor="dev-sql-out" className="font-bold">SQL with line breaks</label>
               <button onClick={() => copyToClipboard(sqlOutput, 'sql')} className="text-xs text-[#C2410C] hover:text-[#EA580C] flex items-center gap-1">
                 {copiedKey === 'sql' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>Copy</span>
               </button>
             </div>
-            <textarea rows={12} readOnly value={sqlOutput} placeholder="Formatted output appears here..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#C2410C] font-mono" />
+            <textarea id="dev-sql-out" rows={12} readOnly value={sqlOutput} placeholder="Formatted output appears here..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#C2410C] font-mono" />
           </div>
         </div>
       )}
@@ -258,17 +268,17 @@ export const DevToolsPage: React.FC = () => {
         <div className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
             <div className="sm:col-span-9">
-              <label className="block text-xs font-bold text-slate-300 mb-1">Regular Expression Pattern</label>
-              <input type="text" value={regexPattern} onChange={(e) => setRegexPattern(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs font-mono text-[#C2410C] focus:outline-none focus:border-[#EA580C]" />
+              <label htmlFor="dev-re" className="block text-xs font-bold text-slate-700 mb-1">Regular Expression Pattern</label>
+              <input id="dev-re" type="text" value={regexPattern} onChange={(e) => setRegexPattern(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs font-mono text-[#C2410C] focus:outline-none focus:border-[#EA580C]" />
             </div>
             <div className="sm:col-span-3">
-              <label className="block text-xs font-bold text-slate-300 mb-1">Flags (e.g. g, i, m)</label>
-              <input type="text" value={regexFlags} onChange={(e) => setRegexFlags(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs font-mono text-[#0A2540]" />
+              <label htmlFor="dev-flags" className="block text-xs font-bold text-slate-700 mb-1">Flags (e.g. g, i, m)</label>
+              <input id="dev-flags" type="text" value={regexFlags} onChange={(e) => setRegexFlags(e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs font-mono text-[#0A2540]" />
             </div>
           </div>
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1">Test String Content</label>
-            <textarea rows={5} value={regexTestString} onChange={(e) => setRegexTestString(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C]" />
+            <label htmlFor="dev-re-test" className="block text-xs font-bold text-slate-700 mb-1">Test String Content</label>
+            <textarea id="dev-re-test" rows={5} value={regexTestString} onChange={(e) => setRegexTestString(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C]" />
           </div>
           <div className="rounded-2xl bg-white border border-slate-200 p-4 space-y-3">
             <div className="flex items-center justify-between">
@@ -279,7 +289,7 @@ export const DevToolsPage: React.FC = () => {
                 <div key={idx} className="p-3 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs font-mono">
                   <div className="text-[#C2410C] font-bold">Match #{idx + 1}: "{m.full}" (Index: {m.index})</div>
                   {m.groups.length > 0 && (
-                    <div className="text-slate-400 text-[11px] mt-1">Groups: {m.groups.map((g, gi) => `$${gi + 1}: "${g}"`).join('  |  ')}</div>
+                    <div className="text-slate-500 text-[11px] mt-1">Groups: {m.groups.map((g, gi) => `$${gi + 1}: "${g}"`).join('  |  ')}</div>
                   )}
                 </div>
               ))}
@@ -291,18 +301,18 @@ export const DevToolsPage: React.FC = () => {
       {activeTab === 'base64' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-slate-300">
-              <span className="font-bold">Decoded Plain Text</span>
+            <div className="flex items-center justify-between text-xs text-slate-700">
+              <label htmlFor="dev-b64-text" className="font-bold">Plain text (UTF-8)</label>
               <button onClick={handleBase64Encode} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Encode to Base64</button>
             </div>
-            <textarea rows={8} value={base64Text} onChange={(e) => setBase64Text(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono" />
+            <textarea id="dev-b64-text" rows={8} value={base64Text} onChange={(e) => setBase64Text(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono" />
           </div>
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-slate-300">
-              <span className="font-bold">Base64 Encoded Output</span>
+            <div className="flex items-center justify-between text-xs text-slate-700">
+              <label htmlFor="dev-b64" className="font-bold">Base64</label>
               <button onClick={handleBase64Decode} className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200">Decode from Base64</button>
             </div>
-            <textarea rows={8} value={base64Encoded} onChange={(e) => setBase64Encoded(e.target.value)} placeholder="Base64 output..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#C2410C] font-mono" />
+            <textarea id="dev-b64" rows={8} value={base64Encoded} onChange={(e) => setBase64Encoded(e.target.value)} placeholder="Base64 output..." className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#C2410C] font-mono" />
           </div>
         </div>
       )}
@@ -310,9 +320,9 @@ export const DevToolsPage: React.FC = () => {
       {activeTab === 'hashes' && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <label className="block text-xs font-bold text-slate-300">Input String for Cryptographic Hashing</label>
+            <label htmlFor="dev-hash" className="block text-xs font-bold text-slate-700">Text to hash (UTF-8)</label>
             <div className="flex gap-2">
-              <input type="text" value={hashInput} onChange={(e) => setHashInput(e.target.value)} className="flex-1 px-4 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono" />
+              <input id="dev-hash" type="text" value={hashInput} onChange={(e) => setHashInput(e.target.value)} className="flex-1 px-4 py-2.5 rounded-xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono" />
               <button onClick={computeHashes} className="px-5 py-2.5 rounded-xl bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs shrink-0">Generate hashes</button>
             </div>
           </div>
@@ -321,9 +331,9 @@ export const DevToolsPage: React.FC = () => {
               <div key={algo} className="p-4 rounded-2xl bg-white border border-slate-200 flex items-center justify-between gap-4">
                 <div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FFEDD5] text-[#C2410C] border border-[#FDBA74] uppercase">{algo}</span>
-                  <p className="text-xs font-mono text-slate-300 break-all mt-1.5">{String(hashVal)}</p>
+                  <p className="text-xs font-mono text-slate-700 break-all mt-1.5">{String(hashVal)}</p>
                 </div>
-                <button onClick={() => copyToClipboard(String(hashVal), algo)} className="text-slate-400 hover:text-[#C2410C] p-2 shrink-0">
+                <button onClick={() => copyToClipboard(String(hashVal), algo)} className="text-slate-500 hover:text-[#C2410C] p-2 shrink-0" aria-label={`Copy ${algo}`}>
                   {copiedKey === algo ? <Check className="w-4 h-4 text-emerald-700" /> : <Copy className="w-4 h-4" />}
                 </button>
               </div>

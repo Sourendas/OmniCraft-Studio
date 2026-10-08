@@ -64,3 +64,31 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #EA580C;
 }
+
+/* Accessibility: text contrast. Light slate greys and the bright orange failed
+   WCAG AA (4.5:1) for small text on white and cream backgrounds. These values
+   keep the same look a shade darker. */
+@theme {
+  --color-slate-400: #5b6779;
+  --color-slate-500: #556274;
+}
+
+.text-\[\#EA580C\] {
+  color: #c2410c;
+}
+
+.bg-\[\#EA580C\].text-white {
+  background-color: #c2410c;
+}
+
+/* Leftovers from an earlier dark theme: very light slate text on white cards. */
+.text-slate-300 {
+  color: #475569;
+}
+
+/* ...but keep it light where it sits on the dark navy panels. */
+.bg-\[\#0A2540\] .text-slate-300,
+.from-\[\#0A2540\] .text-slate-300,
+.text-slate-300.bg-\[\#0A2540\] {
+  color: #cbd5e1;
+}

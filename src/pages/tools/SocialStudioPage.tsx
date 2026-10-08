@@ -15,51 +15,29 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Unicode transformation maps
+// Unicode transformation maps. Letters and digits map by code point offset
+// into the Mathematical Alphanumeric Symbols block; a few letters live in
+// Letterlike Symbols and are listed as exceptions.
+const mapAlnum = (upper: number, lower: number, digit: number | null, exceptions: Record<string, string> = {}) =>
+  (text: string) =>
+    Array.from(text).map((c) => {
+      if (exceptions[c]) return exceptions[c];
+      const code = c.codePointAt(0) ?? 0;
+      if (c >= 'A' && c <= 'Z') return String.fromCodePoint(upper + code - 65);
+      if (c >= 'a' && c <= 'z') return String.fromCodePoint(lower + code - 97);
+      if (digit !== null && c >= '0' && c <= '9') return String.fromCodePoint(digit + code - 48);
+      return c;
+    }).join('');
+
 const UNICODE_STYLES = [
-  {
-    name: 'Bold Sans',
-    transform: (text: string) => {
-      const normal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      const bold = '𝗪b𝗬𝗭𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝗎𝗏𝗐𝗑𝗒𝗓𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗';
-      return text.split('').map(c => {
-        const i = normal.indexOf(c);
-        return i !== -1 ? bold.slice(i * 2, i * 2 + 2) || c : c;
-      }).join('');
-    }
-  },
-  {
-    name: 'Italic Serif',
-    transform: (text: string) => {
-      const normal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      const italic = '𝑎b𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋';
-      return text.split('').map(c => {
-        const i = normal.indexOf(c);
-        return i !== -1 ? italic.slice(i * 2, i * 2 + 2) || c : c;
-      }).join('');
-    }
-  },
-  {
-    name: 'Gothic / Fraktur',
-    transform: (text: string) => {
-      const normal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      const gothic = '𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅';
-      return text.split('').map(c => {
-        const i = normal.indexOf(c);
-        return i !== -1 ? gothic.slice(i * 2, i * 2 + 2) || c : c;
-      }).join('');
-    }
-  },
+  { name: 'Bold Sans', transform: mapAlnum(0x1d5d4, 0x1d5ee, 0x1d7ec) },
+  { name: 'Italic Serif', transform: mapAlnum(0x1d434, 0x1d44e, null, { h: '\u210e' }) },
+  { name: 'Gothic / Fraktur', transform: mapAlnum(0x1d56c, 0x1d586, null) },
   {
     name: 'Double-Struck / Outline',
-    transform: (text: string) => {
-      const normal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      const ds = '𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡';
-      return text.split('').map(c => {
-        const i = normal.indexOf(c);
-        return i !== -1 ? ds.slice(i * 2, i * 2 + 2) || c : c;
-      }).join('');
-    }
+    transform: mapAlnum(0x1d538, 0x1d552, 0x1d7d8, {
+      C: '\u2102', H: '\u210d', N: '\u2115', P: '\u2119', Q: '\u211a', R: '\u211d', Z: '\u2124',
+    }),
   },
   {
     name: 'Circled / Bubble',
@@ -72,17 +50,7 @@ const UNICODE_STYLES = [
       }).join('');
     }
   },
-  {
-    name: 'Monospace Code',
-    transform: (text: string) => {
-      const normal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      const mono = '𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿';
-      return text.split('').map(c => {
-        const i = normal.indexOf(c);
-        return i !== -1 ? mono.slice(i * 2, i * 2 + 2) || c : c;
-      }).join('');
-    }
-  },
+  { name: 'Monospace Code', transform: mapAlnum(0x1d670, 0x1d68a, 0x1d7f6) },
   {
     name: 'Small Caps',
     transform: (text: string) => {

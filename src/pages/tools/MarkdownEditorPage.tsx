@@ -25,7 +25,7 @@ import {
   ShieldCheck,
   Columns
 } from 'lucide-react';
-const SAMPLE_MARKDOWN = `# FileTools Kit notes
+const SAMPLE_MARKDOWN = `## FileTools Kit notes
 
 > File tools run in your browser. This sample is just Markdown.
 
@@ -201,19 +201,19 @@ export const MarkdownEditorPage: React.FC = () => {
       {/* Metrics Bar */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
         <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
-          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Words</span>
+          <span className="text-[10px] font-mono font-bold text-slate-500 uppercase block">Words</span>
           <span className="text-lg font-black text-[#0A2540] font-mono">{stats.words}</span>
         </div>
         <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
-          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Characters</span>
+          <span className="text-[10px] font-mono font-bold text-slate-500 uppercase block">Characters</span>
           <span className="text-lg font-black text-[#0A2540] font-mono">{stats.chars}</span>
         </div>
         <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
-          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Lines</span>
+          <span className="text-[10px] font-mono font-bold text-slate-500 uppercase block">Lines</span>
           <span className="text-lg font-black text-[#0A2540] font-mono">{stats.lines}</span>
         </div>
         <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
-          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Est. Read Time</span>
+          <span className="text-[10px] font-mono font-bold text-slate-500 uppercase block">Est. Read Time</span>
           <span className="text-lg font-black text-[#007A82] font-mono">{stats.readingTimeMinutes} min</span>
         </div>
       </div>
@@ -362,10 +362,11 @@ export const MarkdownEditorPage: React.FC = () => {
                 <Edit3 className="w-4 h-4 text-[#00A3AD]" />
                 <span>Raw Markdown Source</span>
               </div>
-              <span className="text-[11px] font-mono text-slate-400">Live Auto-Saving to Memory</span>
+              <span className="text-[11px] font-mono text-slate-500">Kept in this tab only</span>
             </div>
             <textarea
               id="markdown-textarea"
+              aria-label="Markdown source"
               value={markdown}
               onChange={(e) => setMarkdown(e.target.value)}
               rows={24}

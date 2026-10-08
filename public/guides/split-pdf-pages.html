@@ -7,7 +7,9 @@
   <meta name="description" content="Copy pages such as 2-4 or 1-3,5 into a new PDF. The original is not rewritten. Runs in this tab. No upload API." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/split-pdf-pages.html" />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
 </head>
 <body>
 <main>
@@ -21,15 +23,23 @@
 <h2>Steps</h2>
 <ol>
 <li>Open <a href="/split-pdf">Split PDF</a>.</li>
-<li>Pick one PDF. Encrypted files often fail. Unlock them first.</li>
+<li>Pick the PDF. Split uses the first file in the list, so remove any others you loaded. Encrypted files often fail. Unlock them first.</li>
 <li>Type the range. Check the page count the tool shows against the file you opened.</li>
 <li>Download the new PDF and open it before you send it.</li>
 </ol>
+<h2>Range details</h2>
+<p>Commas separate parts and a hyphen marks a run, so 2-4,7,9-10 keeps six pages. Pages are always exported in file order, and a page listed twice appears once, so 5,1-3 gives pages 1, 2, 3, and 5. Numbers past the end of the file are ignored. If nothing valid is left, the page says so instead of downloading an empty file. The download is named split-pages.pdf.</p>
+<p>To cut one file into several parts, run split once per part: 1-4, then 5-9, then 10-12, and rename each download as you go.</p>
 <h2>What this will not do</h2>
 <p>It will not OCR a scan, redact a sentence, or remove a password. It will not split by heading. If the tab stalls on a very large scan, extract a smaller range first.</p>
 <p><a href="/split-pdf">Open Split PDF</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
 </main>
 </body>
 </html>

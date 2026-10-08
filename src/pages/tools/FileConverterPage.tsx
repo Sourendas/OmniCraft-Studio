@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { AdBanner } from '../../components/layout/AdBanner';
 import { downloadBlob, formatBytes } from '../../lib/utils';
-import mammoth from 'mammoth';
-import { jsPDF } from 'jspdf';
+// mammoth and jsPDF are loaded on demand: only DOCX conversions need them.
+const loadMammoth = () => import('mammoth').then((m) => m.default ?? m);
 import { 
   RefreshCw, 
   Upload, 
@@ -35,16 +35,11 @@ export const FileConverterPage: React.FC = () => {
   const getFileType = (file: File): 'image' | 'audio' | 'document' | 'other' => {
     if (file.type.startsWith('image/')) return 'image';
     if (file.type.startsWith('audio/')) return 'audio';
-    if (
-      file.type.includes('document') ||
-      file.type.includes('word') ||
-      file.name.endsWith('.docx') ||
-      file.name.endsWith('.txt') ||
-      file.name.endsWith('.html') ||
-      file.name.endsWith('.md')
-    ) {
-      return 'document';
-    }
+    // Only DOCX and plain-text formats have a working path here. Spreadsheets,
+    // slides, ODT, and legacy .doc files would come out as unreadable bytes.
+    const name = file.name.toLowerCase();
+    if (name.endsWith('.docx')) return 'document';
+    if (['.txt', '.md', '.markdown', '.html', '.htm'].some((ext) => name.endsWith(ext))) return 'document';
     return 'other';
   };
 
@@ -68,7 +63,8 @@ export const FileConverterPage: React.FC = () => {
         name: f.name,
         size: f.size,
         type: fType,
-        targetFormat: getDefaultTarget(fType),
+        // Only a DOCX has a PDF path; other documents export as plain text.
+        targetFormat: fType === 'document' && !f.name.toLowerCase().endsWith('.docx') ? 'txt' : getDefaultTarget(fType),
         status: 'idle',
         progress: 0
       });
@@ -123,9 +119,11 @@ export const FileConverterPage: React.FC = () => {
           };
           img.src = url;
         });
-      } else if (type === 'document' && file.name.endsWith('.docx') && targetFormat === 'pdf') {
+      } else if (type === 'document' && file.name.toLowerCase().endsWith('.docx') && targetFormat === 'pdf') {
         const arrayBuffer = await file.arrayBuffer();
+        const mammoth = await loadMammoth();
         const { value: rawText } = await mammoth.extractRawText({ arrayBuffer });
+        const { jsPDF } = await import('jspdf');
         const doc = new jsPDF({ unit: 'pt', format: 'letter' });
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(10);
@@ -143,8 +141,9 @@ export const FileConverterPage: React.FC = () => {
         });
         convertedBlob = doc.output('blob');
       } else if (type === 'document' && targetFormat === 'txt') {
-        if (file.name.endsWith('.docx')) {
+        if (file.name.toLowerCase().endsWith('.docx')) {
           const arrayBuffer = await file.arrayBuffer();
+          const mammoth = await loadMammoth();
           const { value: rawText } = await mammoth.extractRawText({ arrayBuffer });
           convertedBlob = new Blob([rawText], { type: 'text/plain;charset=utf-8' });
         } else {
@@ -227,7 +226,7 @@ export const FileConverterPage: React.FC = () => {
   const handleConvertAll = async () => {
     setIsConvertingAll(true);
     for (const item of files) {
-      if (item.status !== 'completed') {
+      if (item.status !== 'completed' && item.type !== 'other') {
         await convertFile(item);
       }
     }
@@ -254,7 +253,7 @@ export const FileConverterPage: React.FC = () => {
           </p>
           <p className="text-xs text-slate-500 mt-2 font-medium">
             Guide:{' '}
-            <Link to="/guides/convert-images-png-jpg-webp" className="text-[#C2410C] font-black underline underline-offset-2">convert JPG / PNG / WebP for the job</Link>
+            <Link to="/guides/convert-images-png-jpg-webp" className="text-[#C2410C] font-black underline underline-offset-2">how to convert PNG, JPG, and WebP</Link>
           </p>
         </div>
         {files.length > 0 && (
@@ -272,12 +271,12 @@ export const FileConverterPage: React.FC = () => {
       </div>
       <div className="my-8 space-y-6">
         <div className="relative rounded-3xl border-2 border-dashed border-[#FDBA74] hover:border-[#EA580C] bg-white p-8 sm:p-10 text-center shadow-[0_4px_20px_rgba(10,37,64,0.03)] transition-all">
-          <input type="file" multiple onChange={handleFileUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+          <input type="file" multiple onChange={handleFileUpload} aria-label="Choose files to convert" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
           <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#FFEDD5] border border-[#FDBA74] flex items-center justify-center">
             <Upload className="w-7 h-7 text-[#EA580C]" />
           </div>
-          <h3 className="text-base font-black text-[#0A2540] mb-1">Drop your Images, Audio, or Documents here</h3>
-          <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">PNG, JPG, WebP, MP3/WAV (decode → WAV), DOCX, TXT. Unsupported types are rejected.</p>
+          <h2 className="text-base font-black text-[#0A2540] mb-1">Drop your Images, Audio, or Documents here</h2>
+          <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">PNG, JPG, WebP, MP3/WAV (decode → WAV), DOCX, TXT, Markdown, HTML. Other types are marked Unsupported.</p>
         </div>
         {files.length > 0 && (
           <div className="space-y-3">
@@ -296,14 +295,16 @@ export const FileConverterPage: React.FC = () => {
                       {item.type === 'other' && <FileCode className="w-5 h-5 text-slate-600" />}
                     </div>
                     <div className="min-w-0">
-                      <h4 className="text-xs font-black text-[#0A2540] truncate max-w-[200px] sm:max-w-[260px]">{item.name}</h4>
+                      <h3 className="text-xs font-black text-[#0A2540] truncate max-w-[200px] sm:max-w-[260px]">{item.name}</h3>
                       <p className="text-[10px] text-slate-500 font-mono font-medium">{formatBytes(item.size)} • {item.type.toUpperCase()}</p>
+                      {item.status === 'error' && <p role="status" className="text-[10px] text-rose-700 font-bold">Could not convert this file. It may be damaged or in a format this browser cannot read.</p>}
                     </div>
                   </div>
                   <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
                     <div className="flex items-center gap-1.5 text-xs">
                       <span className="text-slate-500 font-bold">Convert to:</span>
                       <select
+                        aria-label={`Output format for ${item.name}`}
                         value={item.targetFormat}
                         onChange={(e) => {
                           const val = e.target.value;
@@ -313,7 +314,7 @@ export const FileConverterPage: React.FC = () => {
                       >
                         {item.type === 'image' && (<><option value="webp">WEBP</option><option value="png">PNG</option><option value="jpg">JPG</option></>)}
                         {item.type === 'audio' && (<><option value="wav">WAV</option></>)}
-                        {item.type === 'document' && (<><option value="pdf">PDF</option><option value="txt">TXT</option></>)}
+                        {item.type === 'document' && (<>{item.name.toLowerCase().endsWith('.docx') && <option value="pdf">PDF</option>}<option value="txt">TXT</option></>)}
                         {item.type === 'other' && (<><option value="">Unsupported</option></>)}
                       </select>
                     </div>

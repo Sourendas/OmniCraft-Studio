@@ -1,99 +1,34 @@
 import React from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { getGuide } from '../../data/honestGuides';
+import { useParams } from 'react-router-dom';
+import { NotFoundPage } from '../NotFoundPage';
+import { StaticDocPage } from '../StaticDocPage';
+
+// Each guide is a plain HTML file in /public/guides. Search engines and direct
+// visits get that file. Inside the app we show the same file, so there is one
+// copy of every guide.
+const STATIC_GUIDES = new Set([
+  'build-resume-pdf',
+  'compress-images-in-browser',
+  'compress-pdf-in-browser',
+  'convert-images-png-jpg-webp',
+  'create-qr-code',
+  'hash-text-sha256',
+  'jpg-png-webp-which-to-send',
+  'jpg-to-pdf-in-browser',
+  'merge-pdf-in-browser',
+  'organize-pdf-pages-in-browser',
+  'page-numbers-pdf',
+  'password-protect-pdf-in-browser',
+  'pdf-to-jpg-in-browser',
+  'resume-pdf-checklist',
+  'split-pdf-pages',
+  'watermark-versus-password',
+  'what-stays-in-the-tab',
+  'when-browser-pdf-tools-fail',
+]);
 
 export const GuideArticlePage: React.FC = () => {
   const { slug } = useParams();
-  const guide = getGuide(slug);
-  if (!guide) return <Navigate to="/guides" replace />;
-  return (
-    <article className="relative z-10 max-w-3xl mx-auto px-4 py-12">
-      <Link to="/guides" className="inline-flex items-center gap-1.5 text-xs font-black text-[#C2410C] mb-6">
-        <ArrowLeft className="w-3.5 h-3.5" /> All guides
-      </Link>
-      <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 space-y-6 text-sm text-slate-700 leading-relaxed">
-        <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] text-pretty">{guide.title}</h1>
-        <p className="text-base">{guide.intro}</p>
-        <p className="text-xs text-slate-500">Last updated: {guide.updated} · Souren Das, FileTools Kit, Bengaluru · About {guide.wordCount} words</p>
-
-        {guide.figures.map((f) => (
-          <figure key={f.src} className="rounded-3xl overflow-hidden border border-slate-200 bg-[#FFF7ED]">
-            <img src={f.src} alt={f.alt} className="w-full h-auto" width={960} height={540} />
-            <figcaption className="px-4 py-3 text-xs text-slate-600 font-medium">{f.caption}</figcaption>
-          </figure>
-        ))}
-
-        {guide.lead.map((p) => (
-          <p key={p.slice(0, 48)}>{p}</p>
-        ))}
-
-        <h2 className="text-lg font-black text-[#0A2540]">When to use this tool</h2>
-        {guide.whenToUse.map((p) => (
-          <p key={p.slice(0, 40)}>{p}</p>
-        ))}
-
-        <h2 className="text-lg font-black text-[#0A2540]">Step-by-step</h2>
-        <ol className="list-decimal pl-5 space-y-3">
-          {guide.steps.map((s) => (
-            <li key={s.title}>
-              <strong>{s.title}.</strong> {s.body}
-            </li>
-          ))}
-        </ol>
-
-        {guide.sections.map((sec) => (
-          <section key={sec.heading} className="space-y-3">
-            <h2 className="text-lg font-black text-[#0A2540]">{sec.heading}</h2>
-            {sec.paragraphs.map((p) => (
-              <p key={p.slice(0, 48)}>{p}</p>
-            ))}
-          </section>
-        ))}
-
-        <h2 className="text-lg font-black text-[#0A2540]">What the tool cannot do</h2>
-        <ul className="list-disc pl-5 space-y-1">
-          {guide.cannot.map((c) => (
-            <li key={c.slice(0, 40)}>{c}</li>
-          ))}
-        </ul>
-
-        <h2 className="text-lg font-black text-[#0A2540]">Privacy</h2>
-        {guide.privacy.map((p) => (
-          <p key={p.slice(0, 40)}>{p}</p>
-        ))}
-        <p>
-          Files you open in a tool are not uploaded to FileTools Kit. Vercel still serves this page. Google AdSense may show ads. Read the{' '}
-          <Link className="text-[#C2410C] underline font-bold" to="/privacy">privacy policy</Link>
-          {' '}and{' '}
-          <Link className="text-[#C2410C] underline font-bold" to="/cookie-policy">cookie policy</Link>.
-        </p>
-
-        <h2 className="text-lg font-black text-[#0A2540]">Related</h2>
-        <p className="text-xs text-slate-500 font-medium">{guide.notes.join(' ')}</p>
-        {guide.relatedGuides && guide.relatedGuides.length > 0 && (
-          <ul className="flex flex-wrap gap-2">
-            {guide.relatedGuides.map((g) => (
-              <li key={g.slug}>
-                <Link
-                  to={`/guides/${g.slug}`}
-                  className="inline-flex px-3 py-1.5 rounded-full border border-orange-200 bg-[#FFF7ED] text-xs font-black text-[#C2410C]"
-                >
-                  {g.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-        <div className="flex flex-wrap gap-3 pt-2">
-          <Link to={guide.toolRoute} className="px-5 py-2.5 rounded-full bg-[#EA580C] text-white text-xs font-black">
-            {guide.toolLabel}
-          </Link>
-          <Link to="/guides" className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-black">
-            Back to guides
-          </Link>
-        </div>
-      </div>
-    </article>
-  );
+  if (!slug || !STATIC_GUIDES.has(slug)) return <NotFoundPage />;
+  return <StaticDocPage src={`/guides/${slug}.html`} back={{ to: '/guides', label: 'All guides' }} />;
 };

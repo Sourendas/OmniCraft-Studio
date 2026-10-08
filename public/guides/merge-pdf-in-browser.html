@@ -7,7 +7,9 @@
   <meta name="description" content="Combine a cover sheet, resume, and certificates into one PDF in this tab. Page copy with pdf-lib. No upload API. Encrypted files often fail." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/merge-pdf-in-browser.html" />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
 </head>
 <body>
 <main>
@@ -16,22 +18,30 @@
   
 <p>Merging is the job of putting a cover sheet, an appendix, and a form into one file a portal will accept. FileTools Kit does that copy in the tab you already have open. The tool reads each PDF with the browser File API, copies pages into a new document with pdf-lib, and offers a download. It does not run an upload API that receives those PDFs.</p>
 <h2>When to merge</h2>
-<p>Merge when you have two or more PDFs and the receiver asked for one attachment. A common case is a job application: cover letter, resume, then certificates, in that order. Merged output follows the list order, so set the order before you click.</p>
+<p>Merge when you have two or more PDFs and the receiver asked for one attachment. A common case is a job application: cover letter, resume, then certificates, in that order. The merged file follows the list, and the list is the order you added files, so add them in the order the receiver expects.</p>
 <p>Do not merge if you only need a subset of pages. That is split. Do not merge if the files are password-protected. Encrypted PDFs often fail in the browser. Unlock them in a reader you trust, then merge the unlocked copies.</p>
 <h2>Steps</h2>
 <ol>
 <li>Open <a href="/merge-pdf">Merge PDF</a> or the <a href="/pdf-suite">PDF Suite</a>.</li>
 <li>Drop or pick the PDFs. The browser stores them as File objects in this tab.</li>
-<li>Order the files. The download follows that list.</li>
-<li>Merge and download. The new file is built in memory. The originals on disk are not overwritten.</li>
+<li>Check the order. There is no drag-to-reorder in the suite. To move a file to the end, remove it and add it again. Each card shows page 1 and the page count, which helps you spot the wrong file.</li>
+<li>Press Merge PDFs. The new file is built in memory and downloads as merged.pdf. The originals on disk are not overwritten.</li>
 <li>Optional watermark. Default text is CONFIDENTIAL. That is overlay text, not encryption and not redaction.</li>
 </ol>
+<h2>Rotate, watermark, and document details</h2>
+<p>The rotate button on a file card turns every page of that file 90 degrees clockwise per click, and the rotation is applied when you merge. Use it for a scan that came in sideways. To rotate single pages, use <a href="/organize-pdf">Organize PDF</a> instead.</p>
+<p>Export annotated PDF merges the same list and also stamps the watermark text diagonally across the middle of every page, in orange, at the opacity and size you set (30% and 36 point by default). It also writes the title, author, subject, and keywords from the Metadata tab into the file. The starting values are generic, such as the author FileTools Kit, so change them to your own details before you export. If you leave the watermark text empty, the export only merges and sets the details. The download is annotated.pdf.</p>
 <h2>What fails</h2>
 <p>A signed PDF may lose a valid signature after any rewrite. A scan that is one huge image per page can stall the tab. If that happens, merge in smaller batches, then merge the batches. A reload drops the in-memory files. Downloads you already saved stay in your downloads folder.</p>
 <p>Page numbers stamped before a merge will be wrong if each source started at 1. Number the combined file after, with <a href="/page-numbers">page numbers</a>.</p>
 <p><a href="/merge-pdf">Open Merge PDF</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
 </main>
 </body>
 </html>

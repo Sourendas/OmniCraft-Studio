@@ -7,7 +7,7 @@ export const HomeExplainer: React.FC = () => {
       <article className="rounded-3xl bg-white border border-orange-100 p-6 sm:p-10 space-y-4 text-sm sm:text-[15px] leading-relaxed text-stone-700">
         <h2 className="text-2xl font-black text-[#1C1917] tracking-tight">What FileTools Kit is</h2>
         <p>
-          FileTools Kit is a free website with twelve utilities: PDF merge and split, a resume PDF form, image convert and compress, a QR exporter, an SVG editor, a Markdown preview, a text diff, developer hashes, a social-size canvas, a health arithmetic page, and a currency worksheet. Souren Das operates the site from Bengaluru, India.
+          FileTools Kit is a free website of in-browser utilities: PDF merge, split, compress, organize, page numbers, password protection, and conversion to and from images; a resume PDF form; image convert and compress; a QR exporter; an SVG editor; a Markdown preview; a text diff; developer hashes; Unicode text styles for social bios; a calorie and macro estimator; and a currency worksheet. Souren Das operates the site from Bengaluru, India.
         </p>
         <p>
           The point of the site is narrow. You already have a file or a short piece of text. You need a download — a merged PDF, a smaller JPEG, a resume PDF, a QR PNG — without creating an account. The tools use libraries such as pdf-lib, jsPDF, Web Crypto, and the canvas API inside this browser tab. FileTools Kit does not run a processing server that receives those documents.
