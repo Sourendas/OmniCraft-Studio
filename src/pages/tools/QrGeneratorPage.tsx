@@ -41,15 +41,19 @@ export const QrGeneratorPage: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [svgString, setSvgString] = useState<string>('');
 
+  // Wi-Fi QR fields must escape \ ; , : and " with a backslash, or phones
+  // misread a password that contains them.
+  const wifiEscape = (v: string) => v.replace(/([\\;,:"])/g, '\\$1');
+
   // Compute final payload string based on active type
   const qrPayload = React.useMemo(() => {
     switch (qrType) {
       case 'url':
         return urlValue.startsWith('http') ? urlValue : `https://${urlValue}`;
       case 'wifi':
-        return `WIFI:T:${wifiType};S:${wifiSsid};P:${wifiPass};;`;
+        return `WIFI:T:${wifiType};S:${wifiEscape(wifiSsid)};P:${wifiEscape(wifiPass)};;`;
       case 'vcard':
-        return `BEGIN:VCARD\nVERSION:3.0\nN:${vcardName}\nORG:${vcardOrg}\nTEL:${vcardPhone}\nEMAIL:${vcardEmail}\nEND:VCARD`;
+        return `BEGIN:VCARD\nVERSION:3.0\nN:${vcardName}\nFN:${vcardName}\nORG:${vcardOrg}\nTEL:${vcardPhone}\nEMAIL:${vcardEmail}\nEND:VCARD`;
       case 'email':
         return `mailto:${vcardEmail}?subject=Contact`;
       default:
@@ -136,7 +140,7 @@ export const QrGeneratorPage: React.FC = () => {
           </p>
           <p className="text-xs text-slate-500 mt-2 font-medium">
             Guide:{' '}
-            <Link to="/guides/create-qr-code" className="text-[#C2410C] font-black underline underline-offset-2">create a Wi-Fi or link QR code</Link>
+            <Link to="/guides/create-qr-code" className="text-[#C2410C] font-black underline underline-offset-2">how to create a QR code and export PNG or SVG</Link>
           </p>
         </div>
 
@@ -192,8 +196,9 @@ export const QrGeneratorPage: React.FC = () => {
           <div className="p-6 rounded-3xl bg-white border border-slate-200 space-y-4 backdrop-blur-xl">
             {qrType === 'url' && (
               <div>
-                <label className="block text-xs font-bold text-slate-600 mb-1">Target Website URL</label>
+                <label htmlFor="qr-url" className="block text-xs font-bold text-slate-600 mb-1">Target Website URL</label>
                 <input
+                  id="qr-url"
                   type="url"
                   value={urlValue}
                   onChange={(e) => setUrlValue(e.target.value)}
@@ -206,8 +211,9 @@ export const QrGeneratorPage: React.FC = () => {
             {qrType === 'wifi' && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div className="sm:col-span-2">
-                  <label className="block text-slate-600 mb-1">Network SSID Name</label>
+                  <label htmlFor="qr-ssid" className="block text-slate-600 mb-1">Network SSID Name</label>
                   <input
+                    id="qr-ssid"
                     type="text"
                     value={wifiSsid}
                     onChange={(e) => setWifiSsid(e.target.value)}
@@ -215,8 +221,9 @@ export const QrGeneratorPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-600 mb-1">Password</label>
+                  <label htmlFor="qr-wifi-pass" className="block text-slate-600 mb-1">Password</label>
                   <input
+                    id="qr-wifi-pass"
                     type="text"
                     value={wifiPass}
                     onChange={(e) => setWifiPass(e.target.value)}
@@ -224,8 +231,9 @@ export const QrGeneratorPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-600 mb-1">Encryption Protocol</label>
+                  <label htmlFor="qr-wifi-type" className="block text-slate-600 mb-1">Encryption Protocol</label>
                   <select
+                    id="qr-wifi-type"
                     value={wifiType}
                     onChange={(e) => setWifiType(e.target.value)}
                     className="w-full px-3 py-2 rounded-xl bg-[#FFF7ED] border border-slate-200 text-[#0A2540]"
@@ -241,8 +249,9 @@ export const QrGeneratorPage: React.FC = () => {
             {qrType === 'vcard' && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div>
-                  <label className="block text-slate-600 mb-1">Full Name</label>
+                  <label htmlFor="qr-name" className="block text-slate-600 mb-1">Full Name</label>
                   <input
+                    id="qr-name"
                     type="text"
                     value={vcardName}
                     onChange={(e) => setVcardName(e.target.value)}
@@ -250,8 +259,9 @@ export const QrGeneratorPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-600 mb-1">Company / Org</label>
+                  <label htmlFor="qr-org" className="block text-slate-600 mb-1">Company / Org</label>
                   <input
+                    id="qr-org"
                     type="text"
                     value={vcardOrg}
                     onChange={(e) => setVcardOrg(e.target.value)}
@@ -259,8 +269,9 @@ export const QrGeneratorPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-600 mb-1">Phone</label>
+                  <label htmlFor="qr-phone" className="block text-slate-600 mb-1">Phone</label>
                   <input
+                    id="qr-phone"
                     type="text"
                     value={vcardPhone}
                     onChange={(e) => setVcardPhone(e.target.value)}
@@ -268,8 +279,9 @@ export const QrGeneratorPage: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-600 mb-1">Email</label>
+                  <label htmlFor="qr-email" className="block text-slate-600 mb-1">Email</label>
                   <input
+                    id="qr-email"
                     type="email"
                     value={vcardEmail}
                     onChange={(e) => setVcardEmail(e.target.value)}
@@ -281,8 +293,9 @@ export const QrGeneratorPage: React.FC = () => {
 
             {qrType === 'text' && (
               <div>
-                <label className="block text-xs font-bold text-slate-600 mb-1">Text Content</label>
+                <label htmlFor="qr-text" className="block text-xs font-bold text-slate-600 mb-1">Text Content</label>
                 <textarea
+                  id="qr-text"
                   rows={4}
                   value={plainText}
                   onChange={(e) => setPlainText(e.target.value)}
@@ -294,16 +307,17 @@ export const QrGeneratorPage: React.FC = () => {
 
           {/* Color & Aesthetic Parameters */}
           <div className="p-6 rounded-3xl bg-white border border-slate-200 space-y-4 backdrop-blur-xl">
-            <h3 className="text-xs font-bold text-[#0A2540] uppercase tracking-wider flex items-center gap-2">
+            <h2 className="text-xs font-bold text-[#0A2540] uppercase tracking-wider flex items-center gap-2">
               <Palette className="w-4 h-4 text-[#EA580C]" />
               <span>Palette & Error Correction</span>
-            </h3>
+            </h2>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
               <div>
-                <label className="block text-slate-600 mb-1">Foreground</label>
+                <label htmlFor="qr-fg" className="block text-slate-600 mb-1">Foreground</label>
                 <div className="flex items-center gap-2">
                   <input
+                    id="qr-fg"
                     type="color"
                     value={fgColor}
                     onChange={(e) => setFgColor(e.target.value)}
@@ -314,9 +328,10 @@ export const QrGeneratorPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-600 mb-1">Background</label>
+                <label htmlFor="qr-bg" className="block text-slate-600 mb-1">Background</label>
                 <div className="flex items-center gap-2">
                   <input
+                    id="qr-bg"
                     type="color"
                     value={bgColor}
                     onChange={(e) => setBgColor(e.target.value)}
@@ -327,8 +342,9 @@ export const QrGeneratorPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-600 mb-1">Error Correction</label>
+                <label htmlFor="qr-ecc" className="block text-slate-600 mb-1">Error Correction</label>
                 <select
+                  id="qr-ecc"
                   value={eccLevel}
                   onChange={(e) => setEccLevel(e.target.value as any)}
                   className="w-full px-2 py-1.5 rounded-lg bg-[#FFF7ED] border border-slate-200 text-[#0A2540]"
@@ -341,8 +357,9 @@ export const QrGeneratorPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-slate-600 mb-1">Quiet Margin</label>
+                <label htmlFor="qr-margin" className="block text-slate-600 mb-1">Quiet Margin</label>
                 <input
+                  id="qr-margin"
                   type="number"
                   min="0"
                   max="6"
@@ -359,10 +376,10 @@ export const QrGeneratorPage: React.FC = () => {
         <div className="lg:col-span-5 space-y-6">
           <div className="rounded-3xl bg-white border border-slate-200 p-8 flex flex-col items-center justify-center text-center shadow-2xl shadow-sm">
             <div className="p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 shadow-xl mb-4">
-              <canvas ref={canvasRef} className="rounded-lg max-w-full" />
+              <canvas ref={canvasRef} role="img" aria-label="QR code preview" className="rounded-lg max-w-full" />
             </div>
 
-            <div className="text-xs text-slate-400 font-mono mt-2">
+            <div className="text-xs text-slate-500 font-mono mt-2">
               Payload: {qrPayload.length} characters
             </div>
 
