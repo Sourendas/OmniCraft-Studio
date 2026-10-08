@@ -7,26 +7,37 @@
   <meta name="description" content="Stack JPEG or PNG images into one PDF, one page per image, in this tab. No upload. No OCR. HEIC is not a pipeline here." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/jpg-to-pdf-in-browser.html" />
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
 </head>
 <body>
 <main>
   <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
   <h1>How to put JPG and PNG scans into one PDF</h1>
   
-<p>A rent receipt, an ID photo, and a signed form often start as images. JPG to PDF places each image on its own page, in the order you set, and downloads one PDF. The photos stay in this tab. There is no account and no upload API.</p>
+<p>A rent receipt, an ID photo, and a signed form often start as images. JPG to PDF places each image on its own page and downloads one PDF. The photos stay in this tab. There is no account and no upload API.</p>
 <h2>Before you start</h2>
 <p>Export HEIC from a newer iPhone as JPEG first. This page does not convert HEIC. Very large photos make a heavy PDF. If a portal caps the upload, shrink the images in <a href="/image-optimizer">Image Optimizer</a> before you build the PDF.</p>
 <p>The PDF is a picture of each image. Text in the photo is not selectable. No OCR runs here. If the receiver needs selectable text, this export will not create it.</p>
 <h2>Steps</h2>
 <ol>
 <li>Open <a href="/jpg-to-pdf">JPG to PDF</a>.</li>
-<li>Add the images in the order the form asked for.</li>
+<li>Pick the JPEG or PNG images. Pages follow the order the browser hands the files over, which is usually the order you selected. If order matters, name the files 01, 02, 03 first.</li>
 <li>Build and download. Open the PDF and check rotation. A sideways photo stays sideways unless you rotate it first.</li>
 </ol>
+<h2>Page size and output</h2>
+<p>Each image becomes one page the size of the image, one point per pixel. A 1200 by 1600 photo makes a large page, but readers scale it to fit the screen, and a print dialog's fit-to-page option handles paper. The download is named images.pdf. Rename it before you send it, for example rent-receipts-may.pdf, so the receiver knows what it is.</p>
+<h2>Sideways photos</h2>
+<p>Phones often save a photo as stored pixels plus a rotation flag that the gallery app respects. This tool places the stored pixels as they are, so a photo that looks upright in your gallery can come out sideways. If that happens, rotate the photo in the gallery and save it again before you build the PDF, or fix the page afterwards in <a href="/organize-pdf">Organize PDF</a>.</p>
 <p><a href="/jpg-to-pdf">Open JPG to PDF</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 2 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
 </main>
 </body>
 </html>
