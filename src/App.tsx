@@ -26,13 +26,12 @@ const HealthCalcPage = lazy(() => import('./pages/tools/HealthCalcPage').then((m
 const MarkdownEditorPage = lazy(() => import('./pages/tools/MarkdownEditorPage').then((m) => ({ default: m.MarkdownEditorPage })));
 const SvgStudioPage = lazy(() => import('./pages/tools/SvgStudioPage').then((m) => ({ default: m.SvgStudioPage })));
 const TextDiffPage = lazy(() => import('./pages/tools/TextDiffPage').then((m) => ({ default: m.TextDiffPage })));
-const GuidesPage = lazy(() => import('./pages/Guides').then((m) => ({ default: m.GuidesPage })));
 const GuideArticlePage = lazy(() => import('./pages/guides/GuideArticle').then((m) => ({ default: m.GuideArticlePage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
 const StaticDocPage = lazy(() => import('./pages/StaticDocPage').then((m) => ({ default: m.StaticDocPage })));
 
 const RouteFallback = () => (
-  <div className="max-w-lg mx-auto px-4 py-16 text-center text-sm font-medium text-slate-600">Loading...</div>
+  <div className="min-h-[100vh] max-w-lg mx-auto px-4 py-16 text-center text-sm font-medium text-slate-600">Loading...</div>
 );
 
 const WithArticle = ({ slug, children }: { slug: string; children: React.ReactNode }) => (
@@ -91,7 +90,7 @@ export default function App() {
                 <Route path="/disclaimer" element={<StaticDocPage src="/disclaimer.html" />} />
                 <Route path="/contact" element={<StaticDocPage src="/contact.html" />} />
                 <Route path="/about" element={<StaticDocPage src="/about.html" />} />
-                <Route path="/guides" element={<GuidesPage />} />
+                <Route path="/guides" element={<StaticDocPage src="/guides.html" />} />
                 <Route path="/guides/:slug" element={<GuideArticlePage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

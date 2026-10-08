@@ -25,7 +25,7 @@ export const Seo: React.FC = () => {
     const guide = slug ? getGuide(slug) : undefined;
     if (guide) {
       page = {
-        path: `/guides/${guide.slug}`,
+        path: `/guides/${guide.slug}.html`,
         title: `${guide.title} | FileTools Kit`,
         description: guide.summary
       };
