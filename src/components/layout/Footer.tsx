@@ -10,34 +10,33 @@ export const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <Lock className="w-4 h-4 text-[#C2410C] mt-0.5" />
-            <div><h4 className="font-black text-[#1C1917] text-xs mb-0.5">Files processed in the browser</h4><p className="text-[11px]">No FileTools Kit server receives your documents.</p></div>
+            <div><h2 className="font-black text-[#1C1917] text-xs mb-0.5">Files processed in the browser</h2><p className="text-[11px]">No FileTools Kit server receives your documents.</p></div>
           </div>
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <ShieldCheck className="w-4 h-4 text-[#C2410C] mt-0.5" />
-            <div><h4 className="font-black text-[#1C1917] text-xs mb-0.5">Supported by ads</h4><p className="text-[11px]">Google AdSense may display ads. Files stay in this tab. See Privacy and Cookies.</p></div>
+            <div><h2 className="font-black text-[#1C1917] text-xs mb-0.5">Supported by ads</h2><p className="text-[11px]">Google AdSense may display ads. Files stay in this tab. See Privacy and Cookies.</p></div>
           </div>
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <Cpu className="w-4 h-4 text-emerald-700 mt-0.5" />
-            <div><h4 className="font-black text-[#1C1917] text-xs mb-0.5">Canvas and Web APIs</h4><p className="text-[11px]">Processing happens in this tab.</p></div>
+            <div><h2 className="font-black text-[#1C1917] text-xs mb-0.5">Canvas and Web APIs</h2><p className="text-[11px]">Processing happens in this tab.</p></div>
           </div>
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <HardDrive className="w-4 h-4 text-[#C2410C] mt-0.5" />
-            <div><h4 className="font-black text-[#1C1917] text-xs mb-0.5">No account needed</h4><p className="text-[11px]">No sign-up. Files you download belong to you.</p></div>
+            <div><h2 className="font-black text-[#1C1917] text-xs mb-0.5">No account needed</h2><p className="text-[11px]">No sign-up. Files you download belong to you.</p></div>
           </div>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-8">
         <div className="md:col-span-2 space-y-3">
-          <Link to="/" aria-label="FileTools Kit home"><BrandLockup compact /></Link>
+          <Link to="/"><BrandLockup compact /></Link>
           <p className="text-xs font-medium">Free PDF, image, and text tools that run in your browser. Built and operated by Souren Das, Bengaluru, India.</p>
           <p className="text-[11px]"><a className="text-[#C2410C] underline font-bold" href="mailto:support@filetoolskit.com">support@filetoolskit.com</a></p>
-          <p className="text-[11px]"><a className="text-[#C2410C] underline font-bold" href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a></p>
           <a href="https://www.directree.io" target="_blank" rel="noopener noreferrer" title="Verified on directree">
-            <img src="https://www.directree.io/badge/directree-badge-lightmode.svg" alt="Verified on directree" width={200} height={37} />
+            <img src="https://www.directree.io/badge/directree-badge-lightmode.svg" alt="Verified on directree" width={200} height={37} loading="lazy" decoding="async" />
           </a>
         </div>
         <div className="space-y-2">
-          <h4 className="font-black text-[#1C1917] text-xs uppercase">PDF tools</h4>
+          <h2 className="font-black text-[#1C1917] text-xs uppercase">PDF tools</h2>
           <ul className="space-y-2">
             <li><Link to="/merge-pdf" className="font-bold hover:text-[#EA580C]">Merge PDF</Link></li>
             <li><Link to="/split-pdf" className="font-bold hover:text-[#EA580C]">Split PDF</Link></li>
@@ -50,7 +49,7 @@ export const Footer: React.FC = () => {
           </ul>
         </div>
         <div className="space-y-2">
-          <h4 className="font-black text-[#1C1917] text-xs uppercase">Document</h4>
+          <h2 className="font-black text-[#1C1917] text-xs uppercase">Document</h2>
           <ul className="space-y-2">
             <li><Link to="/resume-builder" className="font-bold hover:text-[#EA580C]">Resume Builder</Link></li>
             <li><Link to="/pdf-suite" className="font-bold hover:text-[#EA580C]">PDF Suite</Link></li>
@@ -60,7 +59,7 @@ export const Footer: React.FC = () => {
           </ul>
         </div>
         <div className="space-y-2">
-          <h4 className="font-black text-[#1C1917] text-xs uppercase">Media and dev</h4>
+          <h2 className="font-black text-[#1C1917] text-xs uppercase">Media and dev</h2>
           <ul className="space-y-2">
             <li><Link to="/file-converter" className="font-bold hover:text-[#EA580C]">File Converter</Link></li>
             <li><Link to="/image-optimizer" className="font-bold hover:text-[#EA580C]">Image Optimizer</Link></li>
@@ -72,7 +71,7 @@ export const Footer: React.FC = () => {
           </ul>
         </div>
         <div className="space-y-2">
-          <h4 className="font-black text-[#1C1917] text-xs uppercase">Site</h4>
+          <h2 className="font-black text-[#1C1917] text-xs uppercase">Site</h2>
           <ul className="space-y-2">
             <li><Link to="/#tools-grid" className="font-bold hover:text-[#EA580C]">Tools</Link></li>
             <li><Link to="/about" className="font-bold hover:text-[#EA580C]">About</Link></li>

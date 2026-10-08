@@ -26,7 +26,7 @@ export const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 w-full min-w-0 border-b border-orange-100 bg-white/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2 min-w-0">
-        <Link to="/" className="min-w-0 shrink group" aria-label="FileTools Kit home">
+        <Link to="/" className="min-w-0 shrink group">
           <BrandLockup />
         </Link>
         <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-stone-600">
