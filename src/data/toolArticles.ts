@@ -28,7 +28,7 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
     steps: [
       { title: 'Open PDF Suite', body: 'From the home page choose PDF Suite. Until you pick files, nothing leaves your computer except the request that loaded this website.' },
       { title: 'Add every PDF', body: 'Drop or pick the files. If one does not appear, it may not be a PDF, it may be corrupt, or it may be encrypted.' },
-      { title: 'Order and rotate', body: 'Move files so the list matches the packet you want. Rotate sideways scans. Rotation is applied on export.' },
+      { title: 'Check the order and rotate', body: 'Files are merged in the order they appear in the list, which is the order you added them. To change it, remove a file and add it again. Rotate sideways scans. Rotation is applied on export.' },
       { title: 'Merge, split, or watermark', body: 'Merge copies pages into one file. Split uses a 1-based range on the first file (example: 1-3,5). Watermark draws overlay text; it is not a password.' },
       { title: 'Download and check', body: 'Open the download in a reader. Check the first page, a middle page, and the last page before you send it.' },
     ],
@@ -73,29 +73,30 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
   },
   'file-converter': {
     slug: 'file-converter',
-    title: 'File Converter — change image formats in the browser',
+    title: 'File Converter — images, audio, and DOCX text in the browser',
     lede:
-      'File Converter reads an image you choose, draws it to a canvas, and exports another format such as PNG, JPEG, or WebP. The conversion happens in this tab. It is not a server transcoder for video, Office documents, or archives.',
+      'File Converter handles three kinds of file in this tab. Images (PNG, JPEG, WebP, and other types your browser can open) are drawn to a canvas and saved as PNG, JPEG, or WebP. Audio your browser can play is decoded and saved as an uncompressed WAV. A DOCX, TXT, HTML, or Markdown file can be saved as plain text, and a DOCX can also become a simple text-only PDF. Nothing is sent to a FileTools Kit server.',
     forWho: [
-      'Anyone who has a PNG and needs a JPEG for email size.',
-      'Anyone who needs WebP for a web page from a local photo.',
+      'Anyone who has a PNG and needs a JPEG for email size, or WebP for a web page.',
+      'Someone who needs the words out of a Word file, or a WAV for an editor that will not open the original audio.',
     ],
     notFor: [
-      'DOCX to PDF, video, or audio. Those formats are not handled here.',
-      'RAW camera files that the browser cannot decode.',
+      'Video, HEIC from newer iPhones in most browsers, or RAW camera files.',
+      'Keeping a Word layout. The DOCX to PDF path keeps the text only: no images, tables, fonts, or headers.',
     ],
     steps: [
-      { title: 'Choose the image', body: 'Pick a file the browser can display. If the preview is blank, the type is unsupported.' },
-      { title: 'Pick the output format', body: 'JPEG is smaller and lossy. PNG keeps sharp edges. WebP is often smaller than JPEG at a similar look.' },
-      { title: 'Download', body: 'Save the result and open it. Compare it next to the original before you delete anything.' },
+      { title: 'Add the files', body: 'Drop or pick one or more files. The page picks a default output: WebP for images, WAV for audio, PDF for a DOCX, and TXT for other text files. Files it cannot convert are marked Unsupported.' },
+      { title: 'Pick the output format', body: 'Change the format per file. JPEG is smaller and lossy, PNG keeps sharp edges and transparency, WebP is usually smallest. JPEG output gets a white background where the image was transparent.' },
+      { title: 'Convert and download', body: 'Convert, then open the result next to the original before you delete anything.' },
     ],
     limits: [
-      'Quality sliders change file size and artifacts. JPEG 100 is not a lossless copy of a PNG.',
-      'Transparency in PNG can become a solid background in JPEG.',
+      'Image exports use quality 0.92. A JPEG saved again is not a lossless copy.',
+      'WAV files are large because they are uncompressed.',
+      'Image metadata such as camera details and GPS is not copied into the new file.',
     ],
     faq: [
       { q: 'Does the original change on disk?', a: 'No. You download a new file. The source stays where you picked it.' },
-      { q: 'Can I convert a PDF here?', a: 'Use PDF Suite for PDF page work. This page is for bitmap images.' },
+      { q: 'Can I convert a PDF here?', a: 'No. Use PDF to JPG to turn pages into images, or PDF Suite for page work.' },
     ],
   },
   'image-optimizer': {
@@ -134,7 +135,7 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
     notFor: ['Trading, tax filings, or payroll. Use a live rate source your bank accepts.'],
     steps: [
       { title: 'Enter an amount', body: 'Type the number you want to convert.' },
-      { title: 'Read the example rate', body: 'Treat it as a placeholder. Replace it in your own notes with a rate from your bank if you need accuracy.' },
+      { title: 'Read the example rate', body: 'Treat it as an example only. Replace it in your own notes with a rate from your bank if you need accuracy.' },
       { title: 'Do not treat the result as a quote', body: 'Screenshots from this page are not a contract.' },
     ],
     limits: ['Rates on this page can be days or weeks out of date.', 'Crypto rows are examples only.'],
@@ -145,9 +146,9 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
   },
   'dev-tools': {
     slug: 'dev-tools',
-    title: 'Dev Tools — hash, encode, and inspect text locally',
+    title: 'Dev Tools — JSON and CSV, regex, Base64, and hashes in the tab',
     lede:
-      'Dev Tools hashes text with the Web Crypto API, encodes or decodes Base64, and runs small format helpers in this tab. Use it when you need a SHA-256 digest or a quick encode without pasting secrets into a stranger’s server form.',
+      'Dev Tools has five small helpers that run in this tab: flat JSON to CSV and back, a SQL line-break formatter, a JavaScript regex tester, Base64 encode and decode of UTF-8 text, and SHA-1, SHA-256, SHA-384, and SHA-512 hashes through the Web Crypto API. Use it when you need a digest or a quick conversion without pasting text into a stranger’s server form.',
     forWho: ['Developers checking a checksum or encoding a string.'],
     notFor: [
       'Password storage design. Hashing a password once in a browser tab is not a full auth system.',
@@ -166,9 +167,9 @@ export const TOOL_ARTICLES: Record<string, ToolArticle> = {
   },
   'qr-generator': {
     slug: 'qr-generator',
-    title: 'QR Generator — encode a URL or line of text',
+    title: 'QR Generator — links, Wi-Fi, contact cards, and text',
     lede:
-      'QR Generator turns a URL or short string into a scannable code and lets you export PNG or SVG. The pixels are drawn in this tab. FileTools Kit does not host a redirect short-link behind the code.',
+      'QR Generator turns a URL, Wi-Fi details, a contact card, an email address, or a short line of text into a scannable code, and exports PNG or SVG. You can change colors, margin, and error correction. The code is drawn in this tab. FileTools Kit does not host a redirect short-link behind the code.',
     forWho: ['People putting a menu URL, Wi-Fi note, or portfolio link on a flyer.'],
     notFor: ['Payment QR schemes that need a licensed provider.', 'Very long documents. QR density rises and cheap cameras fail.'],
     steps: [
