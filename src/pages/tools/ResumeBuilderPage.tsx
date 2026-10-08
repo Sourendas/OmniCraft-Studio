@@ -260,7 +260,7 @@ export const ResumeBuilderPage: React.FC = () => {
               <span className="text-sm font-black text-[#C2410C]">{overlap.score}%</span>
             </div>
             <textarea rows={5} className={field} placeholder="Paste a job description to see local keyword overlap" value={data.targetJobDescription} onChange={(e) => patch({ targetJobDescription: e.target.value })} />
-            <p className="text-[11px] text-slate-500 font-medium">{overlap.matched.length} matched \u00b7 {overlap.missing.length} missing. Not an employer ATS.</p>
+            <p className="text-[11px] text-slate-500 font-medium">{overlap.matched.length} matched · {overlap.missing.length} missing. Not an employer ATS.</p>
           </section>
 
           <button type="button" onClick={handleDownload} className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#EA580C] to-[#C2410C] text-white text-sm font-black min-h-12">
