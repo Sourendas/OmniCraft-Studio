@@ -4,9 +4,12 @@ import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import {defineConfig, type Plugin} from 'vite';
+import {SEO_PAGES} from './src/lib/seo';
 
 const SITE = 'https://www.filetoolskit.com';
 
+// Titles and descriptions come from SEO_PAGES in src/lib/seo.ts when a route has
+// an entry there, so the raw HTML matches what the app sets after it loads.
 type Shell = {title: string; description: string; h1: string; paragraphs: string[]};
 
 const shells: Record<string, Shell> = {
@@ -22,11 +25,11 @@ const shells: Record<string, Shell> = {
   },
   '/merge-pdf': {
     title: 'Merge PDF files into one in your browser | FileTools Kit',
-    description: 'Combine PDFs in the order you choose. pdf-lib copies pages in this tab. No upload API. Encrypted files often fail. Free tool by Souren Das, Bengaluru.',
+    description: 'Combine PDFs in the order you add them. pdf-lib copies pages in this tab. No upload API. Encrypted files often fail. Free tool by Souren Das, Bengaluru.',
     h1: 'Merge PDF files into one in your browser',
     paragraphs: [
-      'Merge PDF stacks two or more PDFs into one download. You set the order. The tool copies pages into a new document with pdf-lib and leaves the originals on disk untouched. Nothing is posted to a FileTools Kit processing server.',
-      'A typical job is a cover letter, a resume, and a certificate that a form wants as one attachment. Put the cover first. If a page is sideways, rotate it before you merge, or use Organize PDF after. Encrypted files usually fail here. A watermark is optional overlay text, not a password.',
+      'Merge PDF stacks two or more PDFs into one download, in the order the files appear in the list. The tool copies pages into a new document with pdf-lib and leaves the originals on disk untouched. Nothing is posted to a FileTools Kit processing server.',
+      'A typical job is a cover letter, a resume, and a certificate that a form wants as one attachment. Add the cover first. If a page is sideways, rotate it before you merge, or use Organize PDF after. Encrypted files usually fail here. A watermark is optional overlay text, not a password.',
       'Large packs can run out of tab memory. If the browser tab stalls, merge in smaller batches and then merge those results. Guide: how to merge PDF files in your browser.',
     ],
   },
@@ -55,7 +58,7 @@ const shells: Record<string, Shell> = {
     description: 'Turn JPEG or PNG images into a PDF with one page per image. Built in this tab. Photos are not uploaded.',
     h1: 'Convert JPG and PNG images to a PDF in your browser',
     paragraphs: [
-      'JPG to PDF places each image on its own page, in the order you set, and downloads one PDF. The photos stay in this tab. There is no upload step and no account.',
+      'JPG to PDF places each image on its own page, in the order the file picker returns them, and downloads one PDF. The photos stay in this tab. There is no upload step and no account.',
       'Use it for rent receipts, ID scans, or whiteboard photos that a form will only accept as PDF. HEIC from a newer iPhone is not a pipeline here; export JPEG from the phone first. Very large photos make a heavy PDF. Shrink them in Image Optimizer if a portal caps the upload.',
       'The PDF is a picture of each image. Text in the photo is not selectable unless it already was. No OCR runs on this page.',
     ],
@@ -111,11 +114,11 @@ const shells: Record<string, Shell> = {
     ],
   },
   '/file-converter': {
-    title: 'Convert JPG, PNG, and WebP in your browser | FileTools Kit',
-    description: 'Change PNG, JPEG, or WebP via canvas in this tab. Not a DOCX, video, or audio suite. No upload API.',
-    h1: 'Convert JPG, PNG, and WebP in your browser',
+    title: 'Convert images, audio, and DOCX files in your browser | FileTools Kit',
+    description: 'Convert PNG, JPEG, and WebP images, decode audio to WAV, and turn a DOCX into plain text or a simple text PDF in this tab. No upload API.',
+    h1: 'Convert images, audio, and DOCX files in your browser',
     paragraphs: [
-      'File Converter re-encodes a PNG, JPEG, or WebP through the canvas in this tab and downloads the result. It is not a pipeline for video, audio, or HEIC. A DOCX can be read toward text or a simple PDF where the page says so. It will not preserve every Word layout.',
+      'File Converter re-encodes a PNG, JPEG, or WebP through the canvas in this tab, decodes audio your browser can play into a WAV file, and reads a DOCX into plain text or a simple text-only PDF. It does not handle video or HEIC, and a DOCX export keeps the words, not the Word layout, images, or tables.',
       'Pick the format the receiver asked for. PNG keeps a flat graphic sharper. JPEG is smaller for a photo. WebP is a good middle when the site accepts it. Converting does not add quality that was not in the source.',
       'The image stays in the tab. A reload clears it. There is no account.',
     ],
@@ -135,17 +138,17 @@ const shells: Record<string, Shell> = {
     description: 'Encode a URL or short text and export PNG or SVG in this tab. No short-link is hosted here. No scan analytics.',
     h1: 'Create a QR code in your browser',
     paragraphs: [
-      'QR Generator encodes a URL or a short line and exports PNG or SVG. The code is drawn in this tab. FileTools Kit does not host a redirect behind it and does not count scans.',
+      'QR Generator encodes a URL, Wi-Fi details, a contact card (vCard), an email address, or a short line of text, and exports PNG or SVG. The code is drawn in this tab. FileTools Kit does not host a redirect behind it and does not count scans.',
       'Use a URL you have already opened. A long payload makes a dense code that a phone camera misses. If the address changes later, a printed code still points at the old one. SVG is the better export for a print shop. PNG is enough for a slide.',
       'Scan the export with your own phone before you print a stack of flyers.',
     ],
   },
   '/dev-tools': {
-    title: 'Hash and encode text locally | FileTools Kit',
-    description: 'SHA-256 via Web Crypto in this tab. Base64 is not encryption. The string is not sent to a hashing server.',
-    h1: 'Hash and encode text in your browser',
+    title: 'Convert JSON and CSV, test regex, and hash text in your browser | FileTools Kit',
+    description: 'Convert flat JSON to CSV and back, format SQL, test JavaScript regex, encode Base64, and make SHA hashes in this tab. No MD5.',
+    h1: 'Developer text tools in your browser',
     paragraphs: [
-      'Dev Tools hashes text with Web Crypto and can encode or decode Base64 in this tab. The string is not posted to a FileTools Kit hashing server. SHA-256 is a one-way digest. Base64 is encoding, not a lock.',
+      'Dev Tools has five small helpers: flat JSON to CSV and back, a SQL keyword formatter, a JavaScript regex tester, Base64 encode and decode, and SHA-1, SHA-256, SHA-384, and SHA-512 hashes through Web Crypto. Everything runs in this tab. The text is not posted to a FileTools Kit server. Base64 is encoding, not a lock.',
       'Use a hash to compare a line you already have, not as a password store. This page does not offer MD5. Do not paste a live password on a shared screen.',
       'The result is hex you can copy. A reload clears the box. Operator: Souren Das, Bengaluru.',
     ],
@@ -163,8 +166,8 @@ if (fs.existsSync(extraShellsPath)) {
 }
 
 // Matches the whole boot block. The block contains a nested pill div, so the
-// match must run to the closing div that sits right before the inline script.
-const BOOT_RE = /<div id="boot">[\s\S]*?<\/div>\s*(?=<script>)/;
+// match must run to the closing div that sits right before the noscript note.
+const BOOT_RE = /<div id="boot">[\s\S]*?<\/div>\s*(?=<noscript>)/;
 
 function notFoundHtml(html: string) {
   const boot = '<div class="pill">HTTP 404</div><h1>Page not found</h1><p>That URL does not exist on FileTools Kit. It may have moved, or the link had a typo.</p><p><a href="/">All tools</a> · <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a></p>';
@@ -190,7 +193,9 @@ function routeShells(): Plugin {
       const indexPath = path.join(dist, 'index.html');
       if (!fs.existsSync(indexPath)) return;
       const html = fs.readFileSync(indexPath, 'utf8');
-      for (const [route, page] of Object.entries(shells)) {
+      for (const [route, shell] of Object.entries(shells)) {
+        const seo = SEO_PAGES[route];
+        const page = seo ? {...shell, title: seo.title, description: seo.description} : shell;
         let out = html
           .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(page.title)}</title>`)
           .replace(
@@ -205,6 +210,16 @@ function routeShells(): Plugin {
         const dir = path.join(dist, route.slice(1));
         fs.mkdirSync(dir, {recursive: true});
         fs.writeFileSync(path.join(dir, 'index.html'), out);
+      }
+      // Keep the home page title and description in step with SEO_PAGES too.
+      const home = SEO_PAGES['/'];
+      if (home) {
+        fs.writeFileSync(
+          indexPath,
+          html
+            .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(home.title)}</title>`)
+            .replace(/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${esc(home.description)}" />`),
+        );
       }
       // Vercel serves dist/404.html with a real 404 status for unknown paths.
       fs.writeFileSync(path.join(dist, '404.html'), notFoundHtml(html));
@@ -228,12 +243,20 @@ export default defineConfig(() => {
       },
     },
     build: {
-      sourcemap: false,
+      // The repository is public; source maps help debugging and Lighthouse.
+      sourcemap: true,
       rollupOptions: {
         output: {
           manualChunks(id: string) {
+            // Keep Vite's preload helper and CommonJS shims out of the pdf chunk.
+            // jsPDF uses dynamic imports, so without this the entry imports the
+            // helper from the 1.4 MB pdf chunk and every page preloads it.
+            if (id.includes('vite/preload-helper') || id.includes('commonjsHelpers') || id.includes('vite/modulepreload-polyfill')) return 'vite-runtime';
             if (!id.includes('node_modules')) return;
-            if (id.includes('pdf-lib') || id.includes('jspdf')) return 'pdf';
+            // The encryption fork is only used on the password page; keep it apart.
+            if (id.includes('@cantoo/pdf-lib')) return 'pdf-lib-encrypt';
+            if (id.includes('/pdf-lib/') || id.includes('@pdf-lib/')) return 'pdf-lib';
+            if (id.includes('jspdf')) return 'jspdf';
             if (id.includes('motion')) return 'motion';
             if (id.includes('react-dom') || id.includes('/react/')) return 'react';
           },
