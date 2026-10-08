@@ -17,12 +17,12 @@
   <p>“Files stay in this tab” means the PDF, image, or resume you pick is read as a browser File object and processed by JavaScript on your device. FileTools Kit does not run an upload API that receives those bytes. Closing the tab drops the in-memory copy. It does not delete a download you already saved.</p>
   <h2>What still leaves the device</h2>
   <p>Loading the website does. The host (Vercel) can see IP address, user agent, URL, referrer, and time, the way any HTTPS host can. Vercel Web Analytics may record a page view and route. That is not your PDF. Google AdSense may set cookies and measure ads. The publisher id is in <a href="/ads.txt">ads.txt</a> (pub-4409273905876536). Ad code does not receive file bytes from our servers, because we do not have those bytes.</p>
-  <p>Fonts and some images on the marketing pages may load from a third party (Google Fonts, Unsplash). That is a request for the asset, not an upload of your document. Details are in the <a href="/privacy.html">privacy policy</a> and <a href="/cookie-policy.html">cookie policy</a>.</p>
+  <p>A few assets load from third parties: Google AdSense scripts and ads, and the two directory badge images in the footer (directree.io and launchllama.co). Those are requests for the asset, not an upload of your document. Details are in the <a href="/privacy.html">privacy policy</a> and <a href="/cookie-policy.html">cookie policy</a>.</p>
   <h2>What stays local</h2>
   <ul>
     <li>The File objects for PDFs and images, until you close or reload the tab.</li>
     <li>An optional resume draft in localStorage (ftk_resume_v1) if you used the builder and did not clear site data.</li>
-    <li>UI preferences and optional experiment keys (ftk_ab_*).</li>
+    <li>Layout-test keys (ftk_ab_*): a random ID and which page variant you saw. They are not sent to us.</li>
   </ul>
   <h2>What this sentence does not mean</h2>
   <p>It does not mean the site is invisible. It does not mean a download is encrypted on your disk. It does not mean other sites you then upload the result to will keep it private. It does not mean encrypted PDFs will open. It does not mean health numbers or currency examples are professional advice.</p>
