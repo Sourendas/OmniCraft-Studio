@@ -22,19 +22,32 @@ export const Footer: React.FC = () => {
           </div>
           <div className="flex items-start gap-3 p-4 rounded-3xl bg-white border border-slate-200">
             <HardDrive className="w-4 h-4 text-[#C2410C] mt-0.5" />
-            <div><h4 className="font-black text-[#1C1917] text-xs mb-0.5">Active client build</h4><p className="text-[11px]">Generated files belong to you.</p></div>
+            <div><h4 className="font-black text-[#1C1917] text-xs mb-0.5">No account needed</h4><p className="text-[11px]">No sign-up. Files you download belong to you.</p></div>
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-5 gap-8">
+      <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-8">
         <div className="md:col-span-2 space-y-3">
           <Link to="/" aria-label="FileTools Kit home"><BrandLockup compact /></Link>
-          <p className="text-xs font-medium">12 in-browser tools. Operated by Souren Das, Bengaluru, India.</p>
+          <p className="text-xs font-medium">Free PDF, image, and text tools that run in your browser. Built and operated by Souren Das, Bengaluru, India.</p>
           <p className="text-[11px]"><a className="text-[#C2410C] underline font-bold" href="mailto:support@filetoolskit.com">support@filetoolskit.com</a></p>
           <p className="text-[11px]"><a className="text-[#C2410C] underline font-bold" href="mailto:privacy@filetoolskit.com">privacy@filetoolskit.com</a></p>
           <a href="https://www.directree.io" target="_blank" rel="noopener noreferrer" title="Verified on directree">
             <img src="https://www.directree.io/badge/directree-badge-lightmode.svg" alt="Verified on directree" width={200} height={37} />
           </a>
+        </div>
+        <div className="space-y-2">
+          <h4 className="font-black text-[#1C1917] text-xs uppercase">PDF tools</h4>
+          <ul className="space-y-2">
+            <li><Link to="/merge-pdf" className="font-bold hover:text-[#EA580C]">Merge PDF</Link></li>
+            <li><Link to="/split-pdf" className="font-bold hover:text-[#EA580C]">Split PDF</Link></li>
+            <li><Link to="/compress-pdf" className="font-bold hover:text-[#EA580C]">Compress PDF</Link></li>
+            <li><Link to="/organize-pdf" className="font-bold hover:text-[#EA580C]">Organize pages</Link></li>
+            <li><Link to="/jpg-to-pdf" className="font-bold hover:text-[#EA580C]">JPG to PDF</Link></li>
+            <li><Link to="/pdf-to-jpg" className="font-bold hover:text-[#EA580C]">PDF to JPG</Link></li>
+            <li><Link to="/page-numbers" className="font-bold hover:text-[#EA580C]">Page numbers</Link></li>
+            <li><Link to="/password-protect-pdf" className="font-bold hover:text-[#EA580C]">Password protect</Link></li>
+          </ul>
         </div>
         <div className="space-y-2">
           <h4 className="font-black text-[#1C1917] text-xs uppercase">Document</h4>

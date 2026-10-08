@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { getGuide } from '../../data/honestGuides';
+import { NotFoundPage } from '../NotFoundPage';
 
 export const GuideArticlePage: React.FC = () => {
   const { slug } = useParams();
   const guide = getGuide(slug);
-  if (!guide) return <Navigate to="/guides" replace />;
+  if (!guide) return <NotFoundPage />;
   return (
     <article className="relative z-10 max-w-3xl mx-auto px-4 py-12">
       <Link to="/guides" className="inline-flex items-center gap-1.5 text-xs font-black text-[#C2410C] mb-6">

@@ -5,11 +5,8 @@ interface AdBannerProps {
   className?: string;
 }
 
-export const AdBanner: React.FC<AdBannerProps> = ({ type, className = '' }) => {
-  return (
-    <div id={`site-note-${type}`} className={`w-full max-w-[560px] mx-auto rounded-3xl bg-[#FFEDD5]/60 border border-[#FDBA74] p-4 my-6 text-center ${className}`}>
-      <p className="text-xs font-black text-[#1C1917]">FileTools Kit</p>
-      <p className="text-[11px] text-slate-600 mt-1 font-medium">Tools run in this tab. No paid upgrade on this site.</p>
-    </div>
-  );
-};
+// Ads are placed by Google AdSense Auto ads from the script in index.html.
+// This slot used to render a filler "site note" box where a manual ad unit
+// would sit. Filler boxes read as empty sections to reviewers, so the slot
+// renders nothing until a real ad unit is configured here.
+export const AdBanner: React.FC<AdBannerProps> = () => null;
