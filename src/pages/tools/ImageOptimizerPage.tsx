@@ -153,7 +153,7 @@ export const ImageOptimizerPage: React.FC = () => {
           </p>
           <p className="text-xs text-slate-500 mt-2 font-medium">
             Guide:{' '}
-            <Link to="/guides/compress-images-in-browser" className="text-[#C2410C] font-black underline underline-offset-2">compress images for email or a website</Link>
+            <Link to="/guides/compress-images-in-browser" className="text-[#C2410C] font-black underline underline-offset-2">how to compress images in the browser</Link>
           </p>
         </div>
         {images.length > 0 && (
@@ -167,15 +167,15 @@ export const ImageOptimizerPage: React.FC = () => {
         <div className="my-6 p-4 rounded-3xl bg-white border border-slate-200 shadow-2xs flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-6">
             <div>
-              <span className="text-[10px] text-slate-400 uppercase font-mono font-bold">Original Total</span>
+              <span className="text-[10px] text-slate-500 uppercase font-mono font-bold">Original Total</span>
               <div className="text-sm font-bold text-slate-700">{formatBytes(totalOriginal)}</div>
             </div>
             <div>
-              <span className="text-[10px] text-slate-400 uppercase font-mono font-bold">Compressed Total</span>
+              <span className="text-[10px] text-slate-500 uppercase font-mono font-bold">Compressed Total</span>
               <div className="text-sm font-bold text-emerald-600">{formatBytes(totalCompressed)}</div>
             </div>
             <div>
-              <span className="text-[10px] text-slate-400 uppercase font-mono font-bold">Net Bandwidth Saved</span>
+              <span className="text-[10px] text-slate-500 uppercase font-mono font-bold">Net Bandwidth Saved</span>
               <div className="text-sm font-black text-[#C2410C]">{totalSavings}% Less Data</div>
             </div>
           </div>
@@ -185,24 +185,24 @@ export const ImageOptimizerPage: React.FC = () => {
       <div className="my-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-4 space-y-6">
           <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-2xs space-y-5">
-            <h3 className="text-xs font-black text-[#0A2540] uppercase tracking-wider flex items-center gap-2">
+            <h2 className="text-xs font-black text-[#0A2540] uppercase tracking-wider flex items-center gap-2">
               <Sliders className="w-4 h-4 text-[#EA580C]" />
               <span>Compression Tuning</span>
-            </h3>
+            </h2>
             <div>
               <div className="flex justify-between text-xs text-slate-700 mb-1.5 font-bold">
                 <span>Visual Quality</span>
                 <span className="font-mono text-[#C2410C]">{Math.round(quality * 100)}%</span>
               </div>
-              <input type="range" min="0.1" max="0.95" step="0.05" value={quality} onChange={(e) => { const val = parseFloat(e.target.value); setQuality(val); recompressAll(val, scalePercent, format); }} className="w-full accent-[#EA580C] cursor-pointer" />
-              <div className="flex justify-between text-[10px] text-slate-500 mt-1"><span>Maximum Savings (10%)</span><span>Lossless Quality (95%)</span></div>
+              <input type="range" aria-label="Visual quality" min="0.1" max="0.95" step="0.05" value={quality} onChange={(e) => { const val = parseFloat(e.target.value); setQuality(val); recompressAll(val, scalePercent, format); }} className="w-full accent-[#EA580C] cursor-pointer" />
+              <div className="flex justify-between text-[10px] text-slate-500 mt-1"><span>Maximum Savings (10%)</span><span>Highest quality (95%)</span></div>
             </div>
             <div>
               <div className="flex justify-between text-xs text-slate-700 mb-1.5 font-bold">
                 <span>Dimensions Scaling</span>
                 <span className="font-mono text-[#C2410C]">{scalePercent}%</span>
               </div>
-              <input type="range" min="25" max="100" step="5" value={scalePercent} onChange={(e) => { const val = parseInt(e.target.value); setScalePercent(val); recompressAll(quality, val, format); }} className="w-full accent-[#EA580C] cursor-pointer" />
+              <input type="range" aria-label="Resolution scale" min="25" max="100" step="5" value={scalePercent} onChange={(e) => { const val = parseInt(e.target.value); setScalePercent(val); recompressAll(quality, val, format); }} className="w-full accent-[#EA580C] cursor-pointer" />
             </div>
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-2">Output Format</label>
@@ -217,11 +217,11 @@ export const ImageOptimizerPage: React.FC = () => {
         </div>
         <div className="lg:col-span-8 space-y-6">
           <div className="relative rounded-3xl border-2 border-dashed border-[#FDBA74] hover:border-[#EA580C] bg-white p-8 text-center shadow-[0_4px_20px_rgba(10,37,64,0.03)] transition-all">
-            <input type="file" accept="image/*" multiple onChange={handleUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+            <input type="file" accept="image/*" multiple onChange={handleUpload} aria-label="Choose images to compress" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
             <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#FFEDD5] border border-[#FDBA74] flex items-center justify-center">
               <Upload className="w-7 h-7 text-[#EA580C]" />
             </div>
-            <h3 className="text-base font-black text-[#0A2540] mb-1">Select or Drop Images to Compress</h3>
+            <h2 className="text-base font-black text-[#0A2540] mb-1">Select or Drop Images to Compress</h2>
             <p className="text-xs text-slate-600 max-w-md mx-auto font-medium">PNG, JPG, WebP. Quality and scale sliders; download each file.</p>
           </div>
           {images.length > 0 && (
@@ -233,13 +233,13 @@ export const ImageOptimizerPage: React.FC = () => {
                       <img src={item.compressedDataUrl} alt="Optimized Preview" className="max-h-full max-w-full object-contain" />
                       <span className="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300 font-mono">-{item.savingsPercentage}%</span>
                     </div>
-                    <h4 className="text-xs font-black text-[#0A2540] truncate" title={item.name}>{item.name}</h4>
+                    <h3 className="text-xs font-black text-[#0A2540] truncate" title={item.name}>{item.name}</h3>
                     <div className="flex items-center justify-between text-[11px] text-slate-500 mt-1 font-mono font-medium">
                       <span>{formatBytes(item.originalSize)}</span><span>→</span><span className="text-emerald-600 font-bold">{formatBytes(item.compressedSize)}</span>
                     </div>
                   </div>
                   <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-[10px] text-slate-400 font-mono">{item.width}x{item.height}px</span>
+                    <span className="text-[10px] text-slate-500 font-mono">{item.width}x{item.height}px</span>
                     <button onClick={() => { const ext = format === 'image/webp' ? 'webp' : format === 'image/jpeg' ? 'jpg' : 'png'; downloadBlob(item.compressedBlob, `${item.name.replace(/\.[^/.]+$/, '')}_opt.${ext}`); }} className="flex items-center gap-1.5 text-xs font-bold text-[#C2410C] hover:text-[#EA580C] px-3 py-1.5 rounded-xl bg-[#FFEDD5] hover:bg-[#FED7AA] border border-[#FDBA74] transition-all cursor-pointer">
                       <Download className="w-3.5 h-3.5" /><span>Save</span>
                     </button>
