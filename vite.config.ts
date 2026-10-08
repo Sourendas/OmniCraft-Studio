@@ -153,7 +153,27 @@ const shells: Record<string, Shell> = {
 };
 
 function esc(s: string) {
-  return s.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>').replace(/"/g, '"');
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// Shells for the smaller tools live in a JSON file so this config stays small.
+const extraShellsPath = path.resolve(__dirname, 'scripts/route-shells-extra.json');
+if (fs.existsSync(extraShellsPath)) {
+  Object.assign(shells, JSON.parse(fs.readFileSync(extraShellsPath, 'utf8')) as Record<string, Shell>);
+}
+
+// Matches the whole boot block. The block contains a nested pill div, so the
+// match must run to the closing div that sits right before the inline script.
+const BOOT_RE = /<div id="boot">[\s\S]*?<\/div>\s*(?=<script>)/;
+
+function notFoundHtml(html: string) {
+  const boot = '<div class="pill">HTTP 404</div><h1>Page not found</h1><p>That URL does not exist on FileTools Kit. It may have moved, or the link had a typo.</p><p><a href="/">All tools</a> · <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a></p>';
+  return html
+    .replace(/<title>[\s\S]*?<\/title>/, '<title>Page not found | FileTools Kit</title>')
+    .replace(/<meta name="description" content="[^"]*"\s*\/?>/, '<meta name="description" content="This page does not exist on FileTools Kit." />')
+    .replace(/<meta name="robots" content="[^"]*"\s*\/?>/, '<meta name="robots" content="noindex,follow" />')
+    .replace(/\s*<link rel="canonical" href="[^"]*"\s*\/?>/, '')
+    .replace(BOOT_RE, `<div id="boot">${boot}</div>\n    `);
 }
 
 function bootHtml(route: string, page: Shell) {
@@ -181,11 +201,13 @@ function routeShells(): Plugin {
             /<link rel="canonical" href="[^"]*"\s*\/?>/,
             `<link rel="canonical" href="${SITE}${route}" />`,
           );
-        out = out.replace(/<div id="boot">[\s\S]*?<\/div>/, `<div id="boot">${bootHtml(route, page)}</div>`);
+        out = out.replace(BOOT_RE, `<div id="boot">${bootHtml(route, page)}</div>\n    `);
         const dir = path.join(dist, route.slice(1));
         fs.mkdirSync(dir, {recursive: true});
         fs.writeFileSync(path.join(dir, 'index.html'), out);
       }
+      // Vercel serves dist/404.html with a real 404 status for unknown paths.
+      fs.writeFileSync(path.join(dist, '404.html'), notFoundHtml(html));
       const injector = path.resolve(__dirname, 'scripts/inject-schema.mjs');
       if (fs.existsSync(injector)) {
         const result = spawnSync(process.execPath, [injector], {stdio: 'inherit'});

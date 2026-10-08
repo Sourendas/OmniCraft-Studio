@@ -1,5 +1,6 @@
 {
   "redirects": [
+    {"source": "/favicon.ico", "destination": "/favicon.svg", "permanent": true},
     {"source": "/privacy-policy", "destination": "/privacy.html", "permanent": true},
     {"source": "/terms-of-service", "destination": "/terms.html", "permanent": true},
     {"source": "/about", "destination": "/about.html", "permanent": true},
@@ -30,6 +31,5 @@
   ],
   "headers": [
     {"source": "/tools/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]}
-  ],
-  "rewrites": [{"source": "/(.*)", "destination": "/index.html"}]
+  ]
 }

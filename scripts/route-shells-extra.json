@@ -1,0 +1,62 @@
+{
+  "/markdown-editor": {
+    "title": "Write and preview Markdown in your browser | FileTools Kit",
+    "description": "Write Markdown with a live preview, download a .md file, or copy the HTML. Runs in this tab. Refreshing can clear unsaved text.",
+    "h1": "Write and preview Markdown in your browser",
+    "paragraphs": [
+      "Markdown Editor is a split view. You type Markdown on the left and see the formatted preview on the right. When the draft is ready you can download it as a .md file or copy the rendered HTML into another tool.",
+      "Use it for a README, release notes, or a note with headings, lists, links, and code blocks. The parser is simple. It is not a full CommonMark engine, so some GitHub-flavored extras may render differently.",
+      "The text lives in this tab. There is no FileTools Kit document account, and a refresh can clear unsaved work, so download the .md file before you close the page."
+    ]
+  },
+  "/svg-editor": {
+    "title": "Edit SVG colors and export PNG or JSX | FileTools Kit",
+    "description": "Paste SVG markup, change stroke and fill, then download SVG or PNG, or copy minified SVG and a React JSX component. Runs in this tab.",
+    "h1": "Edit SVG colors and export PNG or JSX",
+    "paragraphs": [
+      "SVG Studio takes SVG markup you paste and shows a live preview. You can change stroke and fill colors, then download the SVG, export a PNG at a larger scale, copy a minified SVG, or copy a ready React JSX component.",
+      "It suits icons and small logos that need a color change or a PNG for a slide. It is not a drawing suite and it does not trace a photo into vectors. Start from real SVG markup.",
+      "Treat SVG from unknown sources as untrusted markup. Keep a copy of the original file, and open the export in a browser to confirm it before you ship it."
+    ]
+  },
+  "/text-diff": {
+    "title": "Compare two texts and export a patch | FileTools Kit",
+    "description": "Paste an original and a changed text, see insertions and deletions side by side, and copy or download a unified .patch file. Runs in this tab.",
+    "h1": "Compare two texts and export a patch",
+    "paragraphs": [
+      "Text Diff compares an original and a changed version and marks what was added and removed. You can copy the result as a unified patch or download it as a .patch file.",
+      "Use it to check what changed between two drafts of a policy, a cover letter, or a config snippet. A moved paragraph can show up as a delete plus an insert. Whitespace-only changes can look noisy, so normalize line endings if the result looks messy.",
+      "Both texts stay in this tab. Refreshing clears the boxes. There is no account history, so copy the version you want to keep."
+    ]
+  },
+  "/social-studio": {
+    "title": "Unicode text styles and length checks for social posts | FileTools Kit",
+    "description": "Turn a line into bold, italic, double-struck, circled, or monospace Unicode text and check length against common post and bio limits. Copy and paste.",
+    "h1": "Unicode text styles and length checks for social posts",
+    "paragraphs": [
+      "Social Studio turns the words you type into Unicode letter styles you can copy into a bio or caption, and shows character counts against common limits for X, Instagram and TikTok bios, LinkedIn, and Threads.",
+      "Styled letters are separate Unicode symbols, not a font. Screen readers often read them badly and app search may not match them, so keep a style to a name or a short heading.",
+      "Nothing is posted for you and nothing is sent to a FileTools Kit server. The starter hooks on the page are a fixed list shipped with the page."
+    ]
+  },
+  "/health-calc": {
+    "title": "Estimate calories, macros, and TDEE | FileTools Kit",
+    "description": "Estimate BMR with Mifflin-St Jeor, daily energy with an activity factor, and macro grams for a goal. Arithmetic only, not medical advice.",
+    "h1": "Estimate calories, macros, and TDEE",
+    "paragraphs": [
+      "Health Calculator estimates resting energy (BMR) with the Mifflin-St Jeor formula, multiplies it by an activity level to get daily energy (TDEE), and adjusts the target for a cut, maintain, or bulk goal. It splits the target into protein, carbs, and fat, and shows BMI.",
+      "Every figure is arithmetic on the numbers you type. Real needs can differ by hundreds of calories. It is not a diagnosis, not a diet plan, and not a substitute for a clinician. Read the disclaimer before you treat a number as a plan.",
+      "The inputs stay in this tab. Export estimate PDF saves the same numbers as a file on your device."
+    ]
+  },
+  "/currency-crypto": {
+    "title": "Currency worksheet with example rates, not a live feed | FileTools Kit",
+    "description": "Multiply an amount by a rate on a worksheet. Rates are static examples bundled with the page, not a live market or a bank quote.",
+    "h1": "Currency worksheet with example rates, not a live feed",
+    "paragraphs": [
+      "The currency worksheet multiplies an amount by a rate and lays out a hypothetical transfer fee so you can see how a fee changes what the recipient gets. The rates shipped with the page are fixed examples, not a live feed.",
+      "Use it to rough out a comparison before you ask your bank or a licensed remittance service for the real quote. Do not use it for trading, tax filings, or payroll.",
+      "Crypto rows are examples too. Nothing on this page is investment advice, and a screenshot of it is not a quote."
+    ]
+  }
+}
