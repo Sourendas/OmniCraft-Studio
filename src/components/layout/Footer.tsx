@@ -73,6 +73,8 @@ export const Footer: React.FC = () => {
             <li><Link to="/#tools-grid" className="font-bold hover:text-[#EA580C]">Tools</Link></li>
             <li><Link to="/about" className="font-bold hover:text-[#EA580C]">About</Link></li>
             <li><Link to="/guides" className="font-bold hover:text-[#EA580C]">Guides</Link></li>
+            <li><Link to="/whats-new" className="font-bold hover:text-[#EA580C]">What's new</Link></li>
+            <li><Link to="/how-we-test" className="font-bold hover:text-[#EA580C]">How we test</Link></li>
             <li><Link to="/privacy" className="font-bold hover:text-[#EA580C]">Privacy</Link></li>
             <li><Link to="/terms" className="font-bold hover:text-[#EA580C]">Terms</Link></li>
             <li><Link to="/cookie-policy" className="font-bold hover:text-[#EA580C]">Cookie policy</Link></li>
