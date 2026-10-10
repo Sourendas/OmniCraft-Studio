@@ -72,30 +72,30 @@ export const CurrencyCryptoPage: React.FC = () => {
 
     return [
       {
-        provider: 'Traditional Bank Wire',
+        provider: 'Example: bank wire',
         feePercent: '3.8% + $35 wire fee',
         feeAmount: `$${(amountNum * 0.038 + 35).toFixed(2)}`,
         recipientGets: `${(targetVal * 0.945).toFixed(2)} ${toCurrency}`,
-        speed: '3 - 5 business days',
-        badge: 'Expensive / Slow',
+        speed: 'Varies, often several business days',
+        badge: 'Higher fee example',
         badgeColor: 'bg-rose-50 text-rose-700 border-rose-200'
       },
       {
-        provider: 'Wise / Peer-to-Peer Transfer',
-        feePercent: '0.45% mid-market spread',
+        provider: 'Example: online money-transfer service',
+        feePercent: '0.45% fee + small fixed fee (example)',
         feeAmount: `$${(amountNum * 0.0045 + 1.2).toFixed(2)}`,
         recipientGets: `${(targetVal * 0.993).toFixed(2)} ${toCurrency}`,
-        speed: 'Instant - 4 hours',
-        badge: 'Recommended Fiat',
+        speed: 'Varies, minutes to days',
+        badge: 'Lower fee example',
         badgeColor: 'bg-cyan-950/60 text-[#007A82] border-cyan-800/60'
       },
       {
-        provider: 'Crypto Settlement (USDT / SOL)',
-        feePercent: '0.01% blockchain gas fee',
+        provider: 'Example: stablecoin transfer',
+        feePercent: 'Network fee + exchange spreads (example)',
         feeAmount: `$0.05 - $0.80`,
         recipientGets: `${(targetVal * 0.999).toFixed(2)} ${toCurrency}`,
-        speed: '~ 400 milliseconds',
-        badge: 'Fastest & Lowest Cost',
+        speed: 'Varies by network and exchange',
+        badge: 'Cash-out costs not shown',
         badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200'
       }
     ];
@@ -134,12 +134,12 @@ export const CurrencyCryptoPage: React.FC = () => {
             <Coins className="w-7 h-7 text-blue-400" />
             Reference FX worksheet
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1">
             Static example rates (not live). Hypothetical remittance fees. Not investment advice.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
+        <div className="flex items-center gap-2 text-xs text-slate-500 font-mono">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           <span>Example rate: {lastUpdated}</span>
         </div>
@@ -154,7 +154,7 @@ export const CurrencyCryptoPage: React.FC = () => {
         <div className="lg:col-span-6 space-y-6">
           <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 space-y-6">
             <div>
-              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
                 Send Amount
               </label>
               <div className="relative flex items-center">
@@ -206,7 +206,7 @@ export const CurrencyCryptoPage: React.FC = () => {
 
             {/* Destination Currency */}
             <div>
-              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
                 Converted Recipient Value
               </label>
               <div className="relative flex items-center">
@@ -325,17 +325,17 @@ export const CurrencyCryptoPage: React.FC = () => {
                   </span>
                 </div>
                 <h4 className="text-sm font-bold text-[#0A2540] mb-2">{r.provider}</h4>
-                <div className="space-y-2 text-xs text-slate-300">
+                <div className="space-y-2 text-xs text-slate-700">
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Estimated Fee:</span>
+                    <span className="text-slate-500">Estimated Fee:</span>
                     <span className="font-mono text-rose-600 font-bold">{r.feeAmount}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Recipient Receives:</span>
+                    <span className="text-slate-500">Recipient Receives:</span>
                     <span className="font-mono text-emerald-700 font-bold">{r.recipientGets}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Transfer Duration:</span>
+                    <span className="text-slate-500">Transfer Duration:</span>
                     <span className="text-[#0A2540]">{r.speed}</span>
                   </div>
                 </div>
