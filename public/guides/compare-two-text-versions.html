@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to compare two versions of a text and see what changed | FileTools Kit</title>
+  <meta name="description" content="Paste two drafts or config files and see every added and removed line. Ignore case or spacing, and export a patch file. Runs in your browser." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/compare-two-text-versions.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Text, code, and data</p>
+  <h1>How to compare two versions of a text and see what changed</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Someone sends back "a few small edits" to a contract, a policy, or a config file, and you need to know exactly what changed. Reading both versions side by side is slow and you will miss things. A diff tool compares the two texts for you and marks every line that was added or removed. This guide explains how line comparison works, how to use <a href="/text-diff">Text Diff</a>, and how to get useful results from prose as well as code.</p>
+
+<h2>When a diff helps</h2>
+<ul>
+<li>Checking what a colleague changed in a draft before you approve it.</li>
+<li>Comparing two versions of a configuration file before you deploy one.</li>
+<li>Seeing what changed between two exports of a list, such as two versions of a product catalogue.</li>
+<li>Confirming that a long key, hash, or ID you were sent matches the one you expected.</li>
+<li>Producing a patch file a developer can apply with git.</li>
+</ul>
+<p>If both versions are Word documents and you have Word, its built-in Compare feature shows formatting changes too. A text diff only sees the words.</p>
+
+<h2>How line comparison works</h2>
+<p>Text Diff uses the jsdiff library, which finds the smallest set of added and removed lines that turns the old text into the new one. It works line by line. If one word in a line changes, that whole line is shown as removed from the old version and added in the new one. This is how git and most code review tools show changes, and it is very clear for code, lists, and anything with one item per line.</p>
+<p>For prose, it means a long paragraph written as one line will show as one big change even if a single comma moved. The trick in the next section fixes that.</p>
+
+<h2>Step by step</h2>
+<ol>
+<li>Open <a href="/text-diff">Text Diff</a>. It starts with two sample JSON snippets so you can see the result immediately.</li>
+<li>Paste the older version into <strong>Original Text (Before)</strong> and the newer version into <strong>Modified Text (After)</strong>.</li>
+<li>Read the counters at the top: <strong>Added Lines</strong>, <strong>Removed Lines</strong>, <strong>Unchanged</strong>, the change in characters and words, and a match status that says Identical or Differences Found.</li>
+<li>Scroll to the result. In <strong>Side-by-Side View</strong>, every line is listed in order in one column: removed lines are shaded red and marked with a minus, added lines are shaded green and marked with a plus, and unchanged lines are plain.</li>
+<li>Switch to <strong>Unified Git Patch</strong> to see the same changes in the standard patch format, with @@ markers showing where each change sits.</li>
+<li>Press <strong>Copy Unified Patch</strong> or <strong>Download .patch</strong> to share the result. The download is named filetoolskit-diff.patch.</li>
+</ol>
+<p>If you pasted the versions the wrong way round, press <strong>Swap Panes</strong>.</p>
+
+<h2>Options that reduce noise</h2>
+<ul>
+<li><strong>Ignore Whitespace</strong> treats lines that differ only in spaces or tabs as the same. Useful when someone re-indented code or an editor added trailing spaces.</li>
+<li><strong>Ignore Case</strong> treats upper and lower case as the same. Useful for lists of names or keywords typed inconsistently.</li>
+</ul>
+<p>Both options only change how lines are compared. The text on screen keeps its original case and spacing. The patch is always built from the raw text, so it still includes whitespace and case changes.</p>
+
+<h2>Comparing prose: one sentence per line</h2>
+<p>For articles, policies, and letters, put each sentence on its own line in both versions before comparing. Most text editors can do this with find and replace: replace ". " (full stop and space) with a full stop and a line break. Then each changed sentence shows up on its own, and unchanged sentences stay unmarked. This turns a diff of a long paragraph from "everything changed" into "these two sentences changed".</p>
+<p>If you are comparing text copied from PDFs, line breaks often fall in different places in the two copies. Join the lines into paragraphs first, then split by sentence.</p>
+
+<h2>Common problems</h2>
+<ul>
+<li><strong>Every line shows as changed.</strong> The two texts likely use different line endings (Windows and Mac/Linux) or one has trailing spaces on every line. Turn on Ignore Whitespace. If that does not help, paste both through a plain text editor first.</li>
+<li><strong>A small edit shows as a big change.</strong> The text is one long line. Split it by sentence as above.</li>
+<li><strong>Moved paragraphs.</strong> A diff shows a moved block as removed in one place and added in another. That is expected; look for the same text in both.</li>
+<li><strong>Formatting changes are invisible.</strong> Bold, colours, and fonts are not part of plain text. Use your word processor's compare feature for those.</li>
+<li><strong>Very large files feel slow.</strong> Comparing tens of thousands of lines takes noticeably longer in a browser. Compare the relevant section only.</li>
+</ul>
+
+<h2>Reading a unified patch</h2>
+<p>A patch starts with two header lines naming the old and new files. Each block of changes starts with a line like @@ -3,4 +3,6 @@, which means "starting at line 3, four lines from the old file become six lines in the new one". Lines starting with - were removed, lines starting with + were added, and lines starting with a space are context. Developers can apply this file to the original with git apply or patch.</p>
+
+<h2>Privacy</h2>
+<p>Contracts and configs often hold confidential terms, passwords, or keys. Text Diff runs in your browser tab; the text is not sent to FileTools Kit and is not saved. Still, remove live passwords and keys before pasting them anywhere, and be careful on a shared screen.</p>
+
+<h2>FAQ</h2>
+<h3>Does it highlight the exact word that changed?</h3>
+<p>No. Changes are shown per line. Split long lines into sentences to narrow it down.</p>
+<h3>Can I compare PDF or Word files directly?</h3>
+<p>No. Copy the text out and paste it in. To get text from a DOCX file, export it as TXT with <a href="/file-converter">File Converter</a>.</p>
+<h3>Can I compare more than two versions?</h3>
+<p>Compare them in pairs: version 1 with 2, then 2 with 3.</p>
+<h3>Is the comparison order important?</h3>
+<p>Yes. Put the older text in Original Text (Before). Otherwise additions show as removals.</p>
+<p>Related guides: <a href="/guides/json-formatting-explained.html">JSON formatting explained</a>, <a href="/guides/markdown-basics.html">Markdown basics</a>, <a href="/guides/hash-text-sha256.html">hash text with SHA-256</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>
