@@ -4,48 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Build a resume PDF in your browser | FileTools Kit</title>
-  <meta name="description" content="Fill a form, pick a layout, download a PDF. The match percentage is local keyword overlap, not an employer ATS." />
+  <meta name="description" content="Fill a form, pick one of 12 layouts, and download a text-based PDF. What the keyword overlap and Rewrite helpers really do, and what to check before sending." />
+  <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/build-resume-pdf.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <meta name="author" content="Souren Das" />
-  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.7}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.35rem 2rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h1{line-height:1.25;font-size:1.85rem}h2{margin-top:1.7rem;font-size:1.25rem}.meta{color:#475569;font-size:.92rem}nav{font-size:.92rem}ul,ol{padding-left:1.2rem}li{margin:.35rem 0}.note{background:#FFF7ED;border:1px solid #FDBA74;border-radius:16px;padding:.85rem 1rem;margin:1rem 0}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <nav><a href="/">FileTools Kit</a> · <a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/contact.html">Contact</a></nav>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Resumes and job applications</p>
   <h1>Build a resume PDF in your browser</h1>
-  <p class="meta">Last updated: 1 October 2026 · Written by Souren Das, FileTools Kit, Bengaluru. These notes describe the tools on this site, including what they cannot do.</p>
-  <p>The Resume Builder is a form, a preview, several layouts, and a PDF download in this tab. You can paste a job description and see a keyword-overlap percentage. That percentage is not Greenhouse, Lever, Workday, Naukri’s parser, or any employer system. It counts whether words in a short local list appear in both the pasted text and your form.</p>
-  <div class="note">Sample copy on first load is fiction. Replace it. Use an email you monitor. A draft may stay in this browser under a localStorage key. Clearing site data deletes that draft. FileTools Kit does not have your CV on a server.</div>
-  <h2>Steps</h2>
-  <ol>
-    <li>Open <a href="/resume-builder">Resume Builder</a> and replace the sample: name, title, contact, summary, roles, education, skills.</li>
-    <li>Keep dates in one format. Do not invent metrics. A bullet you cannot explain in an interview does not belong.</li>
-    <li>Optional: paste the target job text. Missing terms are a hint, not a verdict. Stuffing the keyword list into a skills block reads badly and can still fail a human.</li>
-    <li>Pick a layout that stays on one page if you can. Export PDF. Reopen it and confirm text is selectable, not a photo of text.</li>
-    <li>Rename the file, for example <em>Souren-Das-Resume.pdf</em>. Merge a cover letter only if the employer asked for one packet.</li>
-  </ol>
-  <h2>What this is not</h2>
-  <ul>
-    <li>Not an applicant-tracking system and not a prediction of interviews.</li>
-    <li>Not a generative model. Local rewrite helpers are templates.</li>
-    <li>Not a LinkedIn import and not a custom-font uploader.</li>
-    <li>Not a visa or background-check form.</li>
-  </ul>
-  <h2>Before you send it in India</h2>
-  <p>Naukri, LinkedIn, and company portals each parse differently. A clean single-column PDF with real text is the safe default. Avoid text inside images. Put the phone number you will answer. If a portal asks you to paste fields separately, do that; do not assume the PDF import mapped dates correctly. After export, use PDF Suite only if you must attach certificates. Do not merge ID scans unless the employer asked.</p>
-  <p>See also the <a href="/guides/resume-pdf-checklist.html">checklist before you send</a>.</p>
-  <h2>Layout choices that survive a portal</h2>
-  <p>Single column beats a two-column design when a portal’s importer reads left to right and mixes the sidebar into the dates. The builder’s plainer layouts are the ones I would send to a company career page. A designed layout is fine as a PDF a human opens, and riskier as the only file a parser sees.</p>
-  <p>Contact line: city is enough. A full street address is rarely needed on a first CV. Put the role title in the same words the job used, if they are true. The local overlap score will light up those words; a human still has to believe the bullets.</p>
-  <p>After download, search the PDF for the sample company name from the placeholder. If it is still there, you have not replaced the fiction. That single check catches more bad sends than the percentage.</p>
-  <p><a href="/resume-builder">Open Resume Builder</a> · <a href="/guides/merge-pdf-in-browser.html">Merge a packet</a> · <a href="/disclaimer.html">Disclaimer</a></p>
-  <h2>Related</h2>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">Who operates this site</a> · <a href="/privacy.html">Privacy</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/contact.html">Contact</a></p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p><a href="/resume-builder">Resume Builder</a> is a form, a live preview, twelve layouts, and a PDF download, all in this tab. This guide explains how it works, what its two helpers (keyword overlap and Rewrite) actually do, and what to check before you send the file. It is not career coaching, and nothing here predicts interviews.</p>
+
+<h2>What you start with</h2>
+<p>The builder opens with a fictional sample so you can see a filled layout: a software engineer called Alex Mercer, with roles at Vanguard Cloud Systems and Apex Digital Labs, a Berkeley degree, and US cities. None of it is real and all of it must go. Replace every field, including the sample bullets, before you download. If you come back later, the builder loads the draft you saved instead of the sample.</p>
+
+<h2>Steps</h2>
+<ol>
+<li>Open <a href="/resume-builder">Resume Builder</a>.</li>
+<li>Fill Full name, Job title, and the Contact fields: Email, Phone, Location, and optionally LinkedIn, GitHub, and Website. Use an email you check and a phone you answer.</li>
+<li>Write the Summary: two or three lines on what you do and what you want next.</li>
+<li>Under Experience, edit each role, or add one with the plus button. Each role has a company, position, dates, location, and bullets; Add bullet adds a line and Remove deletes a role.</li>
+<li>Fill Education, then Skills (comma separated) and Certifications (comma separated).</li>
+<li>Pick a layout in the template picker and check the preview. On a phone, switch between Editor and Preview at the top.</li>
+<li>Press Download PDF. The file is named from your name and the layout, for example Priya_Sharma_classic.pdf.</li>
+<li>Open the PDF, select a line of text to confirm it is real text, and read every line once more.</li>
+</ol>
+
+<h2>Choosing a layout</h2>
+<p>The twelve layouts are grouped as Traditional (Classic, Ivy, Elegant), Contemporary (Modern Teal, Teal Banner, Executive, Slate), and Layout (Sidebar, Timeline, Swiss, Editorial, Compact). Modern Teal is selected at first. For a company career portal or a job site that parses your file, pick a single-column layout such as Classic or Compact. Sidebar puts contact details and skills in a separate column; that reads well to a person but some importers read across columns and mix the sidebar into your dates. A designed layout is fine for a PDF a human opens; a plain one is safer when a parser sees it first.</p>
+<p>The PDF uses US Letter page size. Indian and most other employers open and print it without trouble; if someone needs A4 specifically, their print dialog's fit-to-page option handles it. If your content runs long, the builder continues onto a second page. Compact packs more onto one page.</p>
+
+<h2>What keyword overlap really measures</h2>
+<p>Paste a job description into Keyword overlap (optional) and the builder shows a percentage with matched and missing counts. It checks a short, fixed list of 15 software terms (such as React, TypeScript, Python, SQL, Docker, API, and testing): it finds which of those appear in the job text, then counts how many of them also appear in your title, summary, skills, and experience. That is all. It is not Greenhouse, Lever, Workday, Naukri's parser, or any employer system, and it is only meaningful for software roles. For a finance, design, or teaching job it will usually show 0%, which says nothing about your fit.</p>
+<p>Use the missing list as a reminder of a tool you really used and forgot to mention. Do not paste the job ad into your skills line; a human reader notices, and it can still fail.</p>
+
+<h2>What Rewrite does</h2>
+<p>The Rewrite button next to a bullet is a simple local helper, not a writing model. If the bullet already starts with a strong verb such as Built, Led, Migrated, or Reduced, it leaves it alone. Otherwise it removes openers like "Responsible for", "Worked on", or "Helped with" and puts one of Built, Led, Shipped, Improved, or Designed in front. Read the result: "Led the payroll migration" is wrong if you only helped. The facts and numbers in a bullet have to come from you.</p>
+
+<h2>Writing bullets that hold up</h2>
+<ul>
+<li>Start with what you did, then the result: "Reduced report generation time from 2 hours to 15 minutes by rewriting the SQL queries."</li>
+<li>Use numbers you can explain in an interview. Do not invent metrics.</li>
+<li>Keep dates in one format across all roles.</li>
+<li>Name tools and skills in the words the job ad uses, if they are true.</li>
+</ul>
+
+<h2>Before you send it in India</h2>
+<p>Naukri, LinkedIn, and company portals each parse differently. A clean single-column PDF with real text is the safe default. Avoid text inside images. City is enough for the address. If a portal asks you to fill fields separately, do it; do not assume its PDF import mapped your dates correctly. Merge certificates with <a href="/merge-pdf">Merge PDF</a> only if the employer asked for one packet, and do not attach ID scans unless asked. Freshers should also read <a href="/guides/ats-friendly-resume-for-freshers.html">resume format for freshers</a>.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Sending a file that still says Alex Mercer, Vanguard Cloud Systems, or Apex Digital Labs anywhere. Search the PDF for those names.</li>
+<li>Taking the overlap percentage as a verdict.</li>
+<li>Photographing the printed resume and sending JPGs; that throws away the text.</li>
+<li>Relying on the saved draft on a shared or office computer.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>Everything you type stays in this tab. A draft is saved in your browser's localStorage under ftk_resume_v1 so it survives a reload; clearing this site's data deletes it. FileTools Kit does not have your CV on a server. See <a href="/guides/what-stays-in-the-tab.html">what stays in the tab</a>.</p>
+
+<h2>FAQ</h2>
+<h3>Can I import from LinkedIn or upload my old CV?</h3>
+<p>No. Type or paste into the form.</p>
+<h3>Can I add a photo?</h3>
+<p>No. Most Indian private-sector and international employers do not need one.</p>
+<h3>Can I use custom fonts?</h3>
+<p>No. Each layout has fixed fonts that embed reliably.</p>
+<h3>Is the PDF ATS-friendly?</h3>
+<p>It is real, selectable text, which is what parsers need. A single-column layout is the safer choice.</p>
+<p>Related guides: <a href="/guides/resume-pdf-checklist.html">resume PDF checklist before you send</a>, <a href="/guides/ats-friendly-resume-for-freshers.html">ATS-friendly resume for freshers</a>, <a href="/guides/merge-pdf-in-browser.html">merge a packet</a>, <a href="/disclaimer.html">disclaimer</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>

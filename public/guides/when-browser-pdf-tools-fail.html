@@ -4,41 +4,73 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>When browser PDF tools fail | FileTools Kit</title>
-  <meta name="description" content="Encrypted files, huge scans, signatures, and forms: the cases where an in-tab PDF job should stop, and what to do instead." />
+  <meta name="description" content="Encrypted files, huge scans, signatures, forms, and odd PDFs: the cases where an in-tab PDF job should stop, the error you will see, and what to do instead." />
+  <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/when-browser-pdf-tools-fail.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <meta name="author" content="Souren Das" />
-  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.7}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.35rem 2rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h1{line-height:1.25;font-size:1.85rem}h2{margin-top:1.7rem;font-size:1.25rem}.meta{color:#475569;font-size:.92rem}nav{font-size:.92rem}ul,ol{padding-left:1.2rem}li{margin:.35rem 0}.note{background:#FFF7ED;border:1px solid #FDBA74;border-radius:16px;padding:.85rem 1rem;margin:1rem 0}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <nav><a href="/">FileTools Kit</a> · <a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/contact.html">Contact</a></nav>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
   <h1>When browser PDF tools fail</h1>
-  <p class="meta">Last updated: 1 October 2026 · Written by Souren Das, FileTools Kit, Bengaluru. These notes describe the tools on this site, including what they cannot do.</p>
-  <p>In-tab PDF tools fail in a handful of repeatable ways. This page is the list I use when a file opens in Adobe and does nothing useful in FileTools Kit. It is not a claim that a server uploader would succeed, only a map of the limits of pdf-lib and the canvas in a normal browser tab.</p>
-  <h2>Encryption</h2>
-  <p>If the PDF asks for a password, the suite often cannot read the page stream. ignoreEncryption is a best effort. It does not unlock every file. Remove the password in a reader you trust, export an unlocked copy, then run the job on that copy. Do not email the password to this site. There is nowhere to send it.</p>
-  <h2>Memory</h2>
-  <p>A phone tab will stall on a stack of camera scans. Merge or rasterize in batches. Close other tabs. If the tab crashes, the in-memory files are gone; the originals on disk are not, unless you overwrote them.</p>
-  <h2>Signatures and forms</h2>
-  <p>Copying pages can invalidate a digital signature even when the page looks the same. Form fields may survive a simple merge and may not survive a raster export. If you need a signed original intact, do not run it through a rewrite. Send the original and a separate attachment.</p>
-  <h2>Scans and OCR</h2>
-  <p>A photo of a page is not text. Split, merge, and compress will not make it searchable. PDF to JPG makes another picture. If a portal wants selectable text, you need OCR elsewhere, and you should know that product’s upload policy.</p>
-  <h2>Weird PDFs</h2>
-  <p>Some files use features pdf-lib does not implement. The practical workaround is to open the file in a reader and print to a new PDF, then retry. That flattens some problems and can also flatten things you wanted kept, such as layers. Check the new file.</p>
-  <h2>What I would not do</h2>
-  <p>I would not upload a passport or an unreleased contract to a random compress site to “see if it works.” If this tab cannot open it, use a desktop tool on the machine you already trust, or ask the sender for an unlocked export.</p>
-  <h2>A short decision list</h2>
-  <p>File asks for a password: stop, unlock elsewhere, retry. Tab fans the laptop: batch the job. Need searchable text: this site will not OCR. Need the signature to stay valid: do not rewrite. Need the file under a tiny cap and it is a scan: image optimizer, then JPG to PDF. Need true redaction: not here.</p>
-  <p>If you hit two of those at once, split the problem. Unlock first. Then shrink. Then send. Doing all three in one online uploader is how a sensitive file ends up on someone else’s disk for a job this tab could have done in pieces.</p>
-  <p>I would rather the button error than invent a success. An error means the original is still the file you have. A fake “compressed” download that is the same bytes with a new name wastes the afternoon.</p>
-  <p><a href="/guides/compress-pdf-in-browser.html">Compress limits</a> · <a href="/guides/what-stays-in-the-tab.html">What stays in the tab</a> · <a href="/pdf-suite">PDF Suite</a></p>
-  <h2>Related</h2>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">Who operates this site</a> · <a href="/privacy.html">Privacy</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/contact.html">Contact</a></p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>In-tab PDF tools fail in a handful of repeatable ways. This page is the list I use when a file opens fine in a PDF reader and does nothing useful in FileTools Kit. It is not a claim that a server uploader would succeed, only a map of the limits of pdf-lib, PDF.js, and the canvas in a normal browser tab, with the message you are likely to see and the fix for each.</p>
+
+<h2>Encryption</h2>
+<p>If the PDF asks for a password, or has restrictions set by its creator, the tools often cannot read or rebuild it. You may see messages such as "Merge failed", "Split failed. Encrypted PDFs may fail", "Could not compress that file. Encrypted PDFs often fail", or "Encrypted PDFs cannot be reorganized here." Password Protect refuses with "This PDF already has a password."</p>
+<p>Fix: open the file in a reader that can unlock it (you need the password), then save or print an unlocked copy, and run the job on that copy. Bank statements and e-filing documents are common examples. Do not email the password to this site; there is nowhere to send it.</p>
+
+<h2>Memory</h2>
+<p>Everything happens in the tab's memory. A stack of phone scans, each page a 4 MB image, can exhaust a phone browser or an older laptop. Symptoms: the page freezes, the fan spins, or the tab reloads by itself. Thumbnails in Organize PDF warn above 150 pages, and PDF to JPG warns above 50.</p>
+<p>Fix: work in batches. Split a long file into parts, process each, and merge them back. Close other heavy tabs. Use a lower resolution in PDF to JPG. If the tab crashes, the in-memory files are gone; the originals on disk are not, unless you overwrote them.</p>
+
+<h2>Signatures and forms</h2>
+<p>Copying pages into a new document invalidates a digital signature, even when the page looks identical, because the signature covers the exact bytes of the original file. Form fields may survive a simple merge and may not; they do not survive PDF to JPG, which makes pictures.</p>
+<p>Fix: if a signed original must stay valid, do not run it through any rewrite. Send it as is, as a separate attachment. Fill forms before merging, and check the merged file.</p>
+
+<h2>Scans and OCR</h2>
+<p>A photo of a page is not text. Split, merge, and compress will not make it searchable. PDF to JPG makes another picture. If a portal wants selectable text, you need OCR elsewhere, and you should know that product's upload policy before handing it a sensitive scan.</p>
+
+<h2>Size that will not come down</h2>
+<p>Compress PDF is a light structural rewrite. It does not recompress images, so a scanned PDF rarely shrinks. This is the most common "failure", and it is really a mismatch between job and tool.</p>
+<p>Fix: rebuild the scan from smaller images: <a href="/pdf-to-jpg">PDF to JPG</a> at Screen or Standard, shrink in <a href="/image-optimizer">Image Optimizer</a>, then <a href="/jpg-to-pdf">JPG to PDF</a>. Full steps in <a href="/guides/reduce-pdf-size-for-upload-portals.html">getting a PDF under 1 MB or 200 KB</a>.</p>
+
+<h2>Odd or damaged PDFs</h2>
+<p>Some files use features pdf-lib does not implement, or are slightly broken in ways a desktop reader quietly tolerates. You may see "Could not read that PDF" or a download that opens blank.</p>
+<p>Fix: open the file in a reader and print to a new PDF (the "Save as PDF" or "Microsoft Print to PDF" printer), then retry with the new file. That flattens many problems. It can also flatten things you wanted kept, such as layers, links, and form fields, so check the new file.</p>
+
+<h2>Things this site does not do at all</h2>
+<p>Some requests are not failures, just not offered: redaction, OCR, editing text inside a PDF, removing a password, converting PDF to Word, and filling forms. For these, use desktop software you trust. The <a href="/guides/watermark-versus-password.html">watermark, password, and redaction guide</a> explains why a black box is not redaction.</p>
+
+<h2>A short decision list</h2>
+<ul>
+<li>File asks for a password: stop, unlock elsewhere, retry.</li>
+<li>Tab freezes: batch the job.</li>
+<li>Need searchable text: this site will not OCR.</li>
+<li>Need the signature to stay valid: do not rewrite.</li>
+<li>Need the file under a tiny cap and it is a scan: Image Optimizer, then JPG to PDF.</li>
+<li>Need true redaction: not here.</li>
+</ul>
+<p>If you hit two at once, split the problem. Unlock first. Then shrink. Then send.</p>
+
+<h2>What I would not do</h2>
+<p>I would not upload a passport or an unreleased contract to a random compress site to see if it works. If this tab cannot open a file, use a desktop tool on a machine you already trust, or ask the sender for an unlocked export. I would also rather a button show an error than invent a success: an error means the original is still the file you have, while a fake "compressed" download that is the same bytes with a new name wastes an afternoon.</p>
+
+<h2>FAQ</h2>
+<h3>Will a reload fix a stuck job?</h3>
+<p>It clears the tab and everything loaded in it. Pick the files again, in smaller batches.</p>
+<h3>Does a different browser help?</h3>
+<p>Sometimes. Current Chrome, Edge, Firefox, and Safari all run these tools; a desktop browser has more memory than a phone.</p>
+<h3>How do I report a file that fails?</h3>
+<p>Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> with the tool, the browser, and the error text. Do not attach a sensitive document.</p>
+<p>Related guides: <a href="/guides/compress-pdf-in-browser.html">compress limits</a>, <a href="/guides/what-stays-in-the-tab.html">what stays in the tab</a>, <a href="/guides/merge-pdf-in-browser.html">merge PDF files</a>, <a href="/pdf-suite">PDF Suite</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>
