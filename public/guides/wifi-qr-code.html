@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to make a Wi-Fi QR code guests can scan | FileTools Kit</title>
+  <meta name="description" content="Create a QR code that joins a Wi-Fi network without typing the password. Security type, special characters, print size, and privacy." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/wifi-qr-code.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Images and graphics</p>
+  <h1>How to make a Wi-Fi QR code guests can scan</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Reading out a Wi-Fi password to every guest gets old quickly, especially when it is sixteen random characters printed on the back of a router. A Wi-Fi QR code lets anyone join by pointing a phone camera at it. This guide explains how these codes work, how to make one in <a href="/qr-generator">QR Generator</a>, how big to print it, and what to think about before you stick your password on a wall.</p>
+
+<h2>How a Wi-Fi QR code works</h2>
+<p>The code holds a short line of text in a format phones recognise, for example WIFI:T:WPA;S:HomeNetwork;P:mypassword;; where T is the security type, S is the network name (SSID), and P is the password. Current iPhone and Android camera apps read this and offer to join the network. Nothing is looked up online: the network name and password are inside the code itself.</p>
+<p>That has two consequences. The code works without internet, and it never expires. It also means anyone who can see the code can read the password, which matters for the privacy section below.</p>
+
+<h2>What you need before you start</h2>
+<ul>
+<li><strong>The exact network name.</strong> It is case-sensitive. "HomeWiFi" and "homewifi" are different networks. Copy it from your router's label or settings page.</li>
+<li><strong>The exact password.</strong> Also case-sensitive.</li>
+<li><strong>The security type.</strong> Almost every home and office network today uses WPA2 or WPA3. Check the router settings if unsure. Choose open only if the network truly has no password.</li>
+</ul>
+
+<h2>Step by step</h2>
+<ol>
+<li>Open <a href="/qr-generator">QR Generator</a> and choose <strong>Wi-Fi Network</strong>.</li>
+<li>Type the network name in <strong>Network SSID Name</strong>.</li>
+<li>Type the password in <strong>Password</strong>. The field shows the text openly so you can check it, so do this away from onlookers.</li>
+<li>Set <strong>Encryption Protocol</strong>. Choose <strong>WPA / WPA2 / WPA3</strong> for nearly all networks, <strong>WEP</strong> only for very old equipment, or <strong>Open (No Password)</strong> for networks without a password.</li>
+<li>Leave the colours dark on light. The default is navy on white, which scans well.</li>
+<li>Leave <strong>Error Correction</strong> at H unless your password is very long. H lets the code survive about 30 percent damage, which helps for a printed sign that may get scratched or partly covered.</li>
+<li>Keep <strong>Quiet Margin</strong> at 2 or more.</li>
+<li><strong>Test it now:</strong> point your phone's camera at the preview on screen. It should offer to join the network. Try a second phone if you have one, ideally one Android and one iPhone.</li>
+<li>Press <strong>Download PNG</strong> for screens and quick printing, or <strong>Vector SVG</strong> for sharp printing at any size.</li>
+</ol>
+
+<h3>Special characters in passwords</h3>
+<p>The Wi-Fi format uses semicolons, colons, commas, quotes, and backslashes as separators. If your password contains any of these, they must be "escaped" with a backslash or phones misread the password. QR Generator does this for you. You type the password exactly as it is, and the code contains the escaped version. Test it on a phone anyway.</p>
+
+<h2>Printing it</h2>
+<ul>
+<li><strong>Size:</strong> a code about 3 to 4 cm wide scans easily from a table card held in the hand. For a sign on a wall read from a metre or two away, go to 10 cm or larger. As a rough rule, the scanning distance can be about ten times the width of the code.</li>
+<li><strong>Use the SVG for print.</strong> It stays sharp at any size. The PNG is 320 pixels, fine for a small card but soft on a poster.</li>
+<li><strong>Add a line of text.</strong> Write the network name and "Scan to join Wi-Fi" next to the code, so people know what it is, and so anyone whose camera does not scan it can still join by hand.</li>
+<li><strong>Avoid glossy lamination under bright lights.</strong> Glare can stop a phone reading the code. Matte paper is easier.</li>
+</ul>
+
+<h2>Common problems and fixes</h2>
+<ul>
+<li><strong>The phone scans but fails to connect.</strong> Usually a typo in the network name or password, or the wrong security type. Check each against the router, including capital letters and spaces at the end.</li>
+<li><strong>The phone does not react at all.</strong> Some older Android phones need Google Lens or a QR app rather than the camera. Make sure the code has good contrast and a margin around it.</li>
+<li><strong>It worked yesterday but not today.</strong> Someone changed the Wi-Fi password, or the router's network name. Make a new code; printed codes cannot be edited.</li>
+<li><strong>Hidden networks.</strong> QR Generator does not set the hidden-network flag. If your network does not broadcast its name, some phones will not find it from the code. Join it manually instead.</li>
+<li><strong>5 GHz and 2.4 GHz with different names.</strong> Each name is a separate network and needs its own code.</li>
+</ul>
+
+<h2>Privacy and security</h2>
+<p>A Wi-Fi QR code is your password in a different form. Anyone who photographs it can read the password with any QR app. Think about where you put it:</p>
+<ul>
+<li>At home, a code inside the house, on the fridge or a card in a drawer, is fine for most people.</li>
+<li>For a shop, café, or office, use a separate guest network that cannot reach your own computers, printers, and cameras. Most routers offer a guest network setting. Put the guest network's code on display, never the main one.</li>
+<li>Change the guest password now and then and print a new code.</li>
+</ul>
+<p>QR Generator builds the code in your browser tab. The network name and password are not sent to FileTools Kit, and nothing is saved after you close the tab. The default text in the fields is example data; replace all of it.</p>
+
+<h2>FAQ</h2>
+<h3>Does the code need internet to work?</h3>
+<p>No. The details are inside the code. The phone only needs to be in range of the network.</p>
+<h3>Will it expire?</h3>
+<p>No. It keeps working until you change the network name or password.</p>
+<h3>Can I put my logo in the middle?</h3>
+<p>QR Generator does not add logos. Covering part of a code with a logo relies on error correction and can make it harder to scan.</p>
+<h3>Can I see who scanned it?</h3>
+<p>No. A Wi-Fi code has no tracking. Your router's admin page may list connected devices.</p>
+<p>Related guides: <a href="/guides/create-qr-code.html">how to create a QR code and export PNG or SVG</a>, <a href="/guides/svg-vs-png.html">SVG vs PNG</a>, <a href="/guides/what-stays-in-the-tab.html">what "files stay in this tab" means</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>
