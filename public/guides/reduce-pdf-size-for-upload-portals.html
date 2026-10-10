@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to get a PDF under 1 MB or 200 KB for an upload portal | FileTools Kit</title>
+  <meta name="description" content="Exam, job, and passport portals cap PDF size. What the in-tab compressor can and cannot shrink, and the image route that works for scans." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/reduce-pdf-size-for-upload-portals.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
+  <h1>How to get a PDF under 1 MB or 200 KB for an upload portal</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Most Indian exam, recruitment, scholarship, and passport portals cap the size of each upload. The notice usually says something like "PDF only, maximum 200 KB" or "not more than 1 MB". When your file is a little over, the upload button simply refuses it, often with no hint about what to change. This guide explains why some PDFs are large, what the FileTools Kit compressor can and cannot do about it, and the route that works for scanned documents.</p>
+<p>It is written for a common situation: a mark sheet or certificate scanned on a phone at full resolution, a deadline that evening, and a portal that wants a fraction of the size.</p>
+
+<h2>First, read the portal's rules</h2>
+<p>Before you change anything, find the exact rules in the official notification or the help text next to the upload field. Look for three things:</p>
+<ul>
+<li><strong>The size limit and its unit.</strong> 200 KB and 2 MB are very different targets. Some portals also set a minimum size.</li>
+<li><strong>The format.</strong> Some fields want PDF, others want JPG. Do not send a PDF where a JPG is asked for, even if it uploads.</li>
+<li><strong>Page or colour rules.</strong> Some notices ask for a single page, a specific orientation, or colour scans of originals. Follow those before you think about size.</li>
+</ul>
+<p>Limits differ between portals and change between years, so this guide does not list them. The notice for your application is the only reliable source.</p>
+
+<h2>Why the PDF is big in the first place</h2>
+<p>A PDF is a container. What makes it large is what is inside. Text and vector drawings are tiny: a ten-page typed report exported from Word or Google Docs is often well under 1 MB. Pictures are large. A scanned page is a picture of the paper, and a phone photo of a page at 12 megapixels has far more pixels than a portal needs to read it.</p>
+<p>So there are two kinds of oversized PDF:</p>
+<ul>
+<li><strong>Digital PDFs with wasted structure.</strong> Exported from software, mostly text, but saved with duplicate or inefficient internal objects. A re-save can trim these.</li>
+<li><strong>Scans and photos.</strong> Almost all the bytes are images. Only making the images smaller, by reducing pixels or JPEG quality, makes the file meaningfully smaller.</li>
+</ul>
+
+<h2>What Compress PDF on this site does</h2>
+<p>Be clear about this before you rely on it. <a href="/compress-pdf">Compress PDF</a> is a light rewrite. It copies every page into a new PDF with pdf-lib and saves it with object streams, which packs the internal structure more tightly. It does not recompress or downsample images. The status line shows the size before and after, for example "form.pdf: 412 KB -&gt; 371 KB. Light rewrite only." The new file downloads as compressed.pdf.</p>
+<p>That helps with the first kind of PDF. For a scan, expect little or no change, and sometimes the result is the same size. If the new file is not smaller, keep the original.</p>
+
+<h2>Route 1: a digital PDF slightly over the limit</h2>
+<ol>
+<li>Open <a href="/compress-pdf">Compress PDF</a> and press <strong>Choose a PDF to compress</strong>.</li>
+<li>Pick the file. It is processed in the tab and compressed.pdf downloads.</li>
+<li>Read the status line. If the new size is under the limit, open the file, check every page, and upload it.</li>
+<li>If it is still over, look at what is inside. A large photo or logo in the document is usually the cause. Re-export from the source program with smaller images if you can, because that keeps the text sharp and selectable.</li>
+</ol>
+
+<h2>Route 2: a scanned document (the one that usually works)</h2>
+<p>For scans, rebuild the PDF from smaller images. All three tools run in the same browser tab, and nothing is uploaded to FileTools Kit.</p>
+<ol>
+<li><strong>Turn the pages into images.</strong> Open <a href="/pdf-to-jpg">PDF to JPG</a>, press <strong>Choose a PDF</strong>, pick <strong>JPG (smaller)</strong> and <strong>Screen (108 DPI)</strong>, then press <strong>Export JPG</strong>. One page gives one image; several pages give a ZIP with the images numbered in page order. An A4 page at 108 DPI is roughly 890 by 1260 pixels, which is plenty for an officer to read printed text.</li>
+<li><strong>Shrink the images.</strong> Open <a href="/image-optimizer">Image Optimizer</a> and drop the JPGs onto <strong>Select or Drop Images to Compress</strong>. Set <strong>Output Format</strong> to <strong>JPEG</strong>. This matters: JPG to PDF accepts only JPEG and PNG, not WebP. Start with <strong>Visual Quality</strong> around 60 to 70 percent. If the total is still too high, lower <strong>Dimensions Scaling</strong> to 80 or 70 percent. Each card shows the new size, so you can see where you are.</li>
+<li><strong>Open one image at full size</strong> and check that small print, seals, and signatures are still readable. A file that fits but cannot be read can still get your application rejected.</li>
+<li><strong>Rebuild the PDF.</strong> Open <a href="/jpg-to-pdf">JPG to PDF</a>, press <strong>Choose JPEG or PNG files</strong>, and select the images. Pages follow the order the file picker returns, so keep the numbered names from step 1. The PDF downloads as images.pdf.</li>
+<li><strong>Check the final size</strong> in your file manager. A PDF built from images is only slightly larger than the images added together, so if the images total 180 KB, the PDF will be just over that.</li>
+</ol>
+<p>If you started with phone photos rather than a PDF, skip step 1 and start at step 2. The <a href="/guides/jpg-to-pdf-for-online-forms.html">phone photos to PDF guide</a> covers cropping and lighting.</p>
+
+<h2>Working backwards from a limit</h2>
+<p>Divide the limit by the number of pages to get a budget per page. For a 200 KB limit and two pages, aim for about 90 KB per image, which leaves room for the PDF wrapper. For a 1 MB limit and five pages, about 190 KB per page is safe. Text documents in black and white compress far better than colour photos of certificates with patterned backgrounds, so do the patterned page first and see how low it can go.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Converting to WebP before JPG to PDF.</strong> WebP is small but JPG to PDF will stop with "Use JPEG or PNG only." Choose JPEG in Image Optimizer.</li>
+<li><strong>Compressing the same JPEG again and again.</strong> Each round loses detail. Go back to the original images and use lower settings once.</li>
+<li><strong>Scaling too far.</strong> Below about 70 percent of a 108 DPI export, small text starts to blur. Lower quality before you lower scale further.</li>
+<li><strong>Uploading without opening.</strong> Always open the final PDF and look at every page. Check that no page is sideways and the order is right.</li>
+<li><strong>Merging unrelated documents.</strong> If the portal has separate fields for each certificate, upload separate files.</li>
+</ul>
+
+<h2>When this will not work</h2>
+<p>If the portal wants a very small file and the document has many pages of dense, coloured content, you may not reach the limit without losing readability. In that case, check whether the portal accepts a different format or a smaller set of pages, or rescan in black and white at a lower resolution. Desktop software with true image downsampling can also help, and your scanner app may have a "small" or "email" size option.</p>
+<p>Password-protected PDFs cannot be processed by these tools. Open the file with its password in your reader, save an unprotected copy, and start from that.</p>
+
+<h2>Privacy</h2>
+<p>Certificates and identity documents are sensitive. Every step in this guide runs in your browser tab with pdf-lib, PDF.js, and the canvas. FileTools Kit does not run an upload API for these files, and the page does not keep a copy after you close it. Use your own device rather than a shared computer at a cyber café if you can, and delete the intermediate images from your downloads folder when you finish.</p>
+
+<h2>FAQ</h2>
+<h3>Can I just type a target size, like 200 KB?</h3>
+<p>No. None of the tools here has a target-size box. You get there with the quality and scale controls, and the sizes are shown at each step.</p>
+<h3>Will the text in my rebuilt PDF be selectable?</h3>
+<p>No. The pages become pictures. For an upload portal that only needs to show the document, that is normally fine.</p>
+<h3>The portal says the file is corrupt. What now?</h3>
+<p>Open the PDF on your computer first. If it opens, the portal may dislike the file name: rename it with letters, numbers, and hyphens only, such as marksheet-10th.pdf, and try again.</p>
+<h3>Does reducing the size reduce the legal validity of a document?</h3>
+<p>The portal's rules decide what it accepts. Keep the original scan in case an officer asks for a clearer copy later.</p>
+<p>Related guides: <a href="/guides/jpg-to-pdf-for-online-forms.html">turn phone photos into a PDF for a form</a>, <a href="/guides/compress-pdf-in-browser.html">how the light PDF re-save works</a>, <a href="/guides/merge-scanned-documents.html">merge scanned documents</a>, <a href="/guides/when-browser-pdf-tools-fail.html">when browser PDF tools fail</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>
