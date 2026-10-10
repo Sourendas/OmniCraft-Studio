@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Base64 explained: what it is and what it is not | FileTools Kit</title>
+  <meta name="description" content="Why Base64 exists, why it makes data about a third larger, why it is not encryption, and how to encode or decode UTF-8 text in your browser." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/base64-explained.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Text, code, and data</p>
+  <h1>Base64 explained: what it is and what it is not</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Base64 turns up everywhere once you start looking: in email attachments, in data: URLs for small images, in API tokens, and in config files that store certificates. It looks like scrambled text, which leads many people to think it is a kind of encryption. It is not. This guide explains what Base64 is for, why it makes data larger, why it hides nothing, and how to encode and decode text in your browser with <a href="/dev-tools">Dev Tools</a>.</p>
+
+<h2>The problem Base64 solves</h2>
+<p>Computers store everything as bytes, values from 0 to 255. Many older systems, such as email and some text formats, were designed to carry only a safe set of printable characters. Raw bytes from an image or a file can include values those systems treat as control characters, line endings, or the end of a message, and the data gets corrupted.</p>
+<p>Base64 is a way to write any bytes using only 64 safe characters: A to Z, a to z, 0 to 9, plus + and /, with = used for padding at the end. Any system that can carry ordinary text can carry Base64, and the receiver decodes it back to the exact original bytes.</p>
+
+<h2>How it works, briefly</h2>
+<p>Base64 takes the input three bytes at a time. Three bytes are 24 bits. It splits those into four groups of 6 bits, and each 6-bit group (a number from 0 to 63) maps to one of the 64 characters. So every 3 bytes of input become 4 characters of output.</p>
+<p>That is why Base64 output is about a third larger than the input: 4 characters for every 3 bytes. When the input length is not a multiple of three, the output is padded with one or two = signs so the decoder knows where the data ends.</p>
+<p>For example, the word "Man" is three bytes and encodes to "TWFu". The word "Ma" is two bytes and encodes to "TWE=".</p>
+
+<h2>Why Base64 is not encryption</h2>
+<p>Encryption needs a secret key; without it, the data cannot be read. Base64 has no key. Anyone can decode it with any Base64 tool, including the one on this site, in a second. It is an encoding, like writing a word in a different alphabet.</p>
+<p>So never treat a Base64 string as protected. Common places where this matters:</p>
+<ul>
+<li><strong>HTTP Basic authentication</strong> sends username:password in Base64. It is only safe over HTTPS, which does the actual encrypting.</li>
+<li><strong>JSON Web Tokens (JWTs)</strong> are three Base64URL-encoded parts. The middle part, with user details, is readable by anyone who has the token. The signature only proves it was not altered.</li>
+<li><strong>Kubernetes secrets</strong> and some config files store values in Base64. That is to keep binary data intact, not to hide it.</li>
+</ul>
+<p>If you need to protect data, use real encryption. For a PDF, <a href="/password-protect-pdf">Password protect PDF</a> uses AES-256 with a password.</p>
+
+<h2>Encode and decode in Dev Tools</h2>
+<ol>
+<li>Open <a href="/dev-tools">Dev Tools</a> and choose the <strong>Base64</strong> tab.</li>
+<li>To encode, type or paste text into <strong>Plain text (UTF-8)</strong> and press <strong>Encode to Base64</strong>. The result appears in the <strong>Base64</strong> box.</li>
+<li>To decode, paste a Base64 string into the <strong>Base64</strong> box and press <strong>Decode from Base64</strong>. The text appears in the plain text box. Spaces and line breaks in the Base64 are ignored, so you can paste wrapped output from an email or a terminal.</li>
+<li>If the Base64 is broken, or decodes to bytes that are not valid UTF-8 text, the plain text box says "Invalid Base64, or the bytes are not UTF-8 text".</li>
+</ol>
+<p>The encoder works on the UTF-8 bytes of your text, so accented letters, Hindi, Tamil, and emoji encode and decode correctly, and the output matches the base64 command on Linux and macOS for the same text.</p>
+
+<h2>Base64 and Base64URL</h2>
+<p>Standard Base64 uses + and /, which have special meanings in web addresses. Base64URL, used in JWTs and some URLs, swaps them for - and _ and often drops the = padding. Dev Tools uses standard Base64. To decode a Base64URL string, replace - with + and _ with /, and add = signs until the length is a multiple of four.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Thinking it secures a password.</strong> It does not. See above.</li>
+<li><strong>Decoding a file as text.</strong> If the Base64 holds an image or a PDF, decoding to text fails or shows garbage. This tool handles text only.</li>
+<li><strong>Copying with missing characters.</strong> A Base64 string cut short by one character will not decode. Copy the full string, including any = at the end.</li>
+<li><strong>Using Base64 to shrink data.</strong> It always makes data bigger. To make files smaller, compress them.</li>
+<li><strong>Embedding large images as data: URLs.</strong> Base64 images in HTML or CSS are a third larger and cannot be cached separately. Keep this for tiny icons.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>Encoding and decoding run in your browser tab with the built-in TextEncoder and atob functions. Nothing is sent to FileTools Kit. Because Base64 is trivially reversible, treat any decoded token or credential as sensitive, and do not paste live secrets on a shared screen.</p>
+
+<h2>FAQ</h2>
+<h3>How much bigger does Base64 make data?</h3>
+<p>About 33 percent, plus up to two padding characters. Some systems add a line break every 76 characters, which adds a little more.</p>
+<h3>Can I encode an image here?</h3>
+<p>No. The Base64 tab works with text. Encoding files needs a tool that reads raw bytes.</p>
+<h3>Is Base64 the same as hashing?</h3>
+<p>No. A hash such as SHA-256 is one-way and cannot be reversed. Base64 is fully reversible. See <a href="/guides/hash-text-sha256.html">hash text with SHA-256</a>.</p>
+<h3>Why does my output differ from another tool?</h3>
+<p>Usually because the other tool encoded a different character set, added a trailing newline, or used Base64URL.</p>
+<p>Related guides: <a href="/guides/hash-text-sha256.html">hash text with SHA-256</a>, <a href="/guides/json-formatting-explained.html">JSON formatting explained</a>, <a href="/guides/watermark-versus-password.html">watermark, password, and redaction are different</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>
