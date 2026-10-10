@@ -4,40 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to compress images in the browser | FileTools Kit</title>
-  <meta name="description" content="Resize and recompress a photo in this tab before email or a form. Keep the original. No guaranteed percent. JPEG and WebP are usually lossy." />
+  <meta name="description" content="Resize and recompress photos and screenshots in this tab before email or a form. Which control to move first, size targets, and mistakes to avoid." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/compress-images-in-browser.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}figure{margin:1rem 0}figcaption{font-size:.85rem;color:#475569}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Images and graphics</p>
   <h1>How to compress images in the browser</h1>
-  
-<p>Image Optimizer resizes and recompresses a photo in this tab so an email or a form will take it. You set scale and quality and you can compare the size. There is no promised percent, because a screenshot and a camera photo do not shrink the same way. The image is not uploaded to a FileTools Kit server.</p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p><a href="/image-optimizer">Image Optimizer</a> resizes and recompresses photos and screenshots in this tab so an email, a chat, or an application form will take them. You set scale, quality, and format, and each row shows the size before and after. There is no promised percentage, because a screenshot and a camera photo do not shrink the same way. The images are not uploaded to a FileTools Kit server.</p>
+
+<h2>Why phone photos are so big</h2>
+<p>A current phone camera saves 12 to 50 megapixels, often 4000 by 3000 pixels or more, at high quality. That is far more than anyone needs to read a receipt or see a face in an email. A form that displays the photo at 400 pixels wide, or a portal that caps uploads at 200 KB, simply does not need those pixels. Compressing is mostly a matter of throwing away detail nobody will see.</p>
+
 <h2>What to change first</h2>
-<p>Resize first if the photo is 4000 pixels wide and the form only displays 1200. Quality second. JPEG and WebP are usually lossy. A second pass on an already-small JPEG mostly adds blur. PNG screenshots often shrink more from resizing than from a quality slider.</p>
-<p>Keep the original. The download is the file you send. The source stays where you picked it until you delete it.</p>
+<p>Resize first if the photo is 4000 pixels wide and the receiver will only display 1200. Quality second. JPEG and WebP are lossy formats, and a second pass on an already-small JPEG mostly adds blur without saving much. PNG screenshots shrink from resizing, not from a quality slider.</p>
+<p>Keep the original. The download is the file you send; the source stays where it was until you delete it yourself.</p>
 <figure><img src="/guides/img/compress.png" alt="Screenshot of the FileTools Kit image compressor with quality, scaling, and format controls" width="1280" height="800" loading="lazy" decoding="async" style="max-width:100%;height:auto"><figcaption>The image compressor page. Quality, scaling, and format apply to every image in the list.</figcaption></figure>
+
 <h2>Steps</h2>
 <ol>
 <li>Open <a href="/image-optimizer">Image Optimizer</a>.</li>
-<li>Pick one or more images. HEIC should be exported as JPEG on the phone first.</li>
+<li>Drop images on Select or Drop Images to Compress, or click it to browse. You can add several at once. Export HEIC photos as JPEG on the phone first.</li>
 <li>Lower Dimensions Scaling first, then Visual Quality, and read the new size on each row.</li>
-<li>Download and open it. If text in a screenshot is muddy, raise quality or keep PNG.</li>
+<li>Pick an Output Format: WebP (Best), JPEG, or PNG.</li>
+<li>Press Save on a row to download that image. The file is named after the original with _opt added, for example receipt_opt.jpg.</li>
+<li>Open the download and look at the part that matters, a face, a line of text, or a signature, at full size.</li>
 </ol>
-<h2>The three controls</h2>
-<p>Visual Quality runs from 10 to 95 percent and starts at 75. Dimensions Scaling runs from 25 to 100 percent of the original width and height. Output Format is WebP, JPEG, or PNG. WebP is the default because it is usually the smallest. PNG ignores the quality slider, because PNG is lossless, so a PNG only gets smaller when you scale it down. Every image re-saves when you move a control, and each row shows the old and new size.</p>
-<p>Scaling usually saves more than quality because the pixel count drops with the square of the scale. At 50 percent, a 4000 by 3000 photo becomes 2000 by 1500, a quarter of the pixels and still plenty for email or a form. If a new file comes out larger than the original, which happens with a JPEG that was already small, send the original.</p>
-<p>Format choice is covered in <a href="/guides/jpg-png-webp-which-to-send.html">JPG, PNG, or WebP</a>.</p>
-<p><a href="/image-optimizer">Open Image Optimizer</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+<h2>The three controls</h2>
+<p>Visual Quality runs from 10 percent (Maximum Savings) to 95 percent (Highest quality) and starts at 75. Dimensions Scaling runs from 25 to 100 percent of the original width and height. Output Format is WebP, JPEG, or PNG; WebP is the default because it is usually the smallest. PNG ignores the quality slider because PNG is lossless, so a PNG only gets smaller when you scale it down. Every image re-saves when you move a control, and the panel totals Original Total, Compressed Total, and Net Bandwidth Saved across the list.</p>
+<p>Scaling usually saves more than quality because the pixel count drops with the square of the scale. At 50 percent, a 4000 by 3000 photo becomes 2000 by 1500, a quarter of the pixels and still plenty for email or a form. If a new file comes out larger than the original, which happens with a JPEG that was already small, send the original.</p>
+
+<h2>Size targets that work</h2>
+<ul>
+<li><strong>Passport-style photo for a form capped at 20 to 50 KB:</strong> JPEG, scale until the photo is near the pixel size the form names, quality 60 to 75.</li>
+<li><strong>Document photo for a 200 KB cap:</strong> JPEG, long side around 1200 to 1600 pixels, quality around 60 to 70. Text should stay readable.</li>
+<li><strong>Email or chat:</strong> long side around 1600 to 2000 pixels, quality 75. Most photos land well under 1 MB.</li>
+<li><strong>Website images:</strong> WebP at the size the page displays, covered in <a href="/guides/webp-images-for-websites.html">compress images for a website</a>.</li>
+</ul>
+<p>Many Indian exam and job portals state both a size range in KB and pixel dimensions for photos and signatures. Read both lines of the notice; meeting the KB limit with the wrong dimensions can still be rejected.</p>
+
+<h2>Common mistakes and fixes</h2>
+<ul>
+<li><strong>Muddy text in a screenshot.</strong> Raise quality, or keep PNG and scale down instead.</li>
+<li><strong>Black background on a logo.</strong> Not here: JPEG has no transparency, so the tool fills transparent areas with white. Keep WebP or PNG if you need the transparency.</li>
+<li><strong>The portal refuses WebP.</strong> Many older forms only accept JPEG. Switch Output Format to JPEG.</li>
+<li><strong>The file grew.</strong> The original was already efficient. Send the original.</li>
+<li><strong>Compressing the same file again and again.</strong> Each lossy pass adds artefacts. Start from the original every time.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>Images are decoded and re-encoded on a canvas in this tab. Saving through the canvas also leaves camera metadata such as GPS location behind, which is useful before you post a photo publicly. FileTools Kit does not receive the images. See <a href="/guides/what-stays-in-the-tab.html">what stays in the tab</a>.</p>
+
+<h2>FAQ</h2>
+<h3>Can I set an exact KB target?</h3>
+<p>No. Move the sliders and read the size on the row. Scaling is the fastest way to land under a cap.</p>
+<h3>Is there a download-all button?</h3>
+<p>No. Each row has its own Save button.</p>
+<h3>Does it handle HEIC or AVIF?</h3>
+<p>Only if your browser can decode them, and most cannot decode HEIC. Export JPEG from the phone.</p>
+<h3>Will it straighten a sideways photo?</h3>
+<p>The canvas draws the photo the way your browser displays it, so a photo that looks upright in the browser is saved upright.</p>
+<p>Format choice is covered in <a href="/guides/jpg-png-webp-which-to-send.html">JPG, PNG, or WebP</a>. Related guides: <a href="/guides/convert-images-png-jpg-webp.html">convert PNG, JPG, and WebP</a>, <a href="/guides/reduce-pdf-size-for-upload-portals.html">get a PDF under 1 MB or 200 KB</a>, <a href="/guides/jpg-to-pdf-for-online-forms.html">phone photos to a PDF for a form</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>

@@ -4,40 +4,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to hash text with SHA-256 in the browser | FileTools Kit</title>
-  <meta name="description" content="Hash a string with Web Crypto in this tab and copy the hex digest. Base64 is not encryption. The string is not sent to a hashing server." />
+  <meta name="description" content="Hash a string with Web Crypto in this tab and compare the hex digest. Why digests differ, the abc test vector, and why a hash is not encryption." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/hash-text-sha256.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Text, code, and data</p>
   <h1>How to hash text with SHA-256 in the browser</h1>
-  
-<p>Dev Tools can hash a string with the Web Crypto API in this tab and return a hex digest. FileTools Kit does not send that string to a hashing server. Use it to compare a line you already have with a digest someone published. It is not a password store.</p>
-<h2>Hash versus encoding</h2>
-<p>SHA-256 is a one-way digest. You cannot turn the hex back into the text. Base64 is encoding. Anyone can decode Base64. Do not treat either one as encryption, and do not paste a live password on a shared screen. This page does not offer MD5.</p>
-<p>A single browser hash is not a design for storing passwords. Password storage needs a slow hash and a salt, which this tool does not set up.</p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>The Hash Generator tab in <a href="/dev-tools">Dev Tools</a> hashes a string with the browser's Web Crypto API and shows the hex digest. FileTools Kit does not send that string to a hashing server. Use it to compare a value you have with a digest someone published, to check that two pieces of text are identical, or to learn how hashing behaves. It is not a password store.</p>
+
+<h2>What a hash is</h2>
+<p>A cryptographic hash turns any input into a fixed-length fingerprint. SHA-256 always gives 256 bits, shown as 64 hexadecimal characters, whether the input is one letter or a whole book. Three properties make it useful: the same input always gives the same digest; changing a single character changes the digest completely; and you cannot work backwards from the digest to the input. That is why software sites publish SHA-256 checksums next to downloads, and why systems compare hashes instead of storing raw secrets.</p>
+
+<h2>Hash versus encoding versus encryption</h2>
+<p>SHA-256 is a one-way digest. You cannot turn the hex back into the text. Base64 is encoding: anyone can decode it, as the <a href="/guides/base64-explained.html">Base64 guide</a> shows. Encryption is reversible with a key. Do not treat a hash or Base64 as encryption, and do not paste a live password on a shared screen. This page does not offer MD5.</p>
+
 <h2>Steps</h2>
 <ol>
-<li>Open <a href="/dev-tools">Dev Tools</a>.</li>
-<li>Paste the input. A trailing space changes the digest.</li>
-<li>Press Generate. The page shows SHA-1, SHA-256, SHA-384, and SHA-512 together. Copy the SHA-256 line.</li>
-<li>Compare it with the digest you were given. A mismatch means the text is not the same, not that the tool "failed".</li>
+<li>Open <a href="/dev-tools">Dev Tools</a> and choose the Hash Generator tab.</li>
+<li>Replace the sample text in the box with your input. A trailing space or newline changes the digest.</li>
+<li>Press Generate hashes. The page shows SHA-1, SHA-256, SHA-384, and SHA-512 together.</li>
+<li>Copy the SHA-256 line.</li>
+<li>Compare it with the digest you were given, all 64 characters. A mismatch means the inputs are not the same, not that the tool failed.</li>
 </ol>
+
+<h2>Check the tool itself</h2>
+<p>Hash the three letters abc with nothing after them. SHA-256 should be:</p>
+<pre>ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</pre>
+<p>That value is the published test vector for SHA-256, so a match means the hashing is right and any other mismatch is in the input.</p>
+
 <h2>Why two digests differ</h2>
-<p>The text is encoded as UTF-8 before hashing, which is what most command-line tools and libraries do. A mismatch almost always comes from characters you cannot see: a trailing newline (the shell command echo adds one unless you use echo -n), Windows line endings versus Unix ones, a non-breaking space pasted from a web page, or curly quotes from a word processor. Check those before anything else.</p>
-<p>To test the page itself, hash the three letters abc with nothing after them. SHA-256 should start ba7816bf and end f20015ad. That value is the published test vector for SHA-256, so a match means the hashing is right and any other mismatch is in the input.</p>
+<p>The text is encoded as UTF-8 before hashing, which is what most command-line tools and libraries do. A mismatch almost always comes from characters you cannot see:</p>
+<ul>
+<li><strong>A trailing newline.</strong> The shell command echo adds one. Use echo -n "abc" | sha256sum on Linux, or printf.</li>
+<li><strong>Line endings.</strong> Windows uses CR LF, Unix uses LF. Text copied between systems can change.</li>
+<li><strong>A non-breaking space</strong> pasted from a web page looks like a space but is a different character.</li>
+<li><strong>Curly quotes</strong> from a word processor instead of straight quotes.</li>
+<li><strong>Case.</strong> Hex digests are case-insensitive to compare, but the input text is not: Hello and hello hash differently.</li>
+</ul>
+
 <h2>Reading the output</h2>
 <p>Output is lowercase hex. SHA-256 gives 64 characters, SHA-1 gives 40, SHA-384 gives 96, and SHA-512 gives 128. Compare the whole string, not the first few characters. SHA-1 is shown for checking old checksums. It is no longer considered safe against deliberate collisions, so do not choose it for anything new.</p>
-<p><a href="/dev-tools">Open Dev Tools</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+<h2>Worked example: confirming a value without resending it</h2>
+<p>Say a colleague set an API key in a server's configuration and you have the same key in your notes. You want to confirm they match without pasting the key into a chat. Each of you pastes the key into the Hash Generator, presses Generate hashes, and shares only the SHA-256 line. If the two 64-character strings match, the keys are identical. If they differ, one of you has a typo, an extra space, or an old key. The key itself never travelled. This only works for long, random values: for a short or guessable value, someone holding the hash can try likely inputs until one matches, so do not publish hashes of short secrets.</p>
+
+<h2>Text, not files</h2>
+<p>This tool hashes text you paste. It does not hash a file you download, such as an installer or an ISO image, so it cannot verify a download checksum directly. For that, use your operating system: sha256sum file on Linux, shasum -a 256 file on macOS, or Get-FileHash file in Windows PowerShell (it uses SHA-256 by default). Compare the result with the published value.</p>
+
+<h2>Why not to store passwords this way</h2>
+<p>SHA-256 is designed to be fast, which helps an attacker try billions of guesses. Password storage needs a deliberately slow algorithm with a unique salt per user, such as bcrypt, scrypt, or Argon2, run on the server. A single browser hash is not a password design. This tool is for comparison and learning.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Forgetting to replace the sample text before generating.</li>
+<li>Comparing only the first eight characters.</li>
+<li>Hashing a pasted line that carried an invisible newline.</li>
+<li>Expecting to reverse a hash to recover a value.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>Hashing runs with crypto.subtle in this tab. Nothing you type is sent to FileTools Kit. Even so, avoid pasting real passwords or API keys on a shared or screen-shared computer.</p>
+
+<h2>FAQ</h2>
+<h3>Can two different inputs have the same SHA-256?</h3>
+<p>In theory yes, but nobody has found such a pair. In practice, matching digests mean matching inputs.</p>
+<h3>Why no MD5?</h3>
+<p>MD5 is broken for security use, and Web Crypto does not provide it.</p>
+<h3>Does it support HMAC?</h3>
+<p>No. Only plain digests.</p>
+<p>Related guides: <a href="/guides/base64-explained.html">Base64 explained</a>, <a href="/guides/json-formatting-explained.html">JSON formatting explained</a>, <a href="/guides/compare-two-text-versions.html">compare two text versions</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>

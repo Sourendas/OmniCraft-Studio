@@ -4,30 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JPG, PNG, or WebP — which file to send | FileTools Kit</title>
-  <meta name="description" content="Choose JPEG for a photo, PNG for a screenshot with text, WebP when the site accepts it. Convert in the tab. No quality is added." />
+  <meta name="description" content="Choose JPEG for a photo, PNG for a screenshot with text, WebP when the site accepts it. How each format works, size examples, and how to convert in the tab." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/jpg-png-webp-which-to-send.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Images and graphics</p>
   <h1>JPG, PNG, or WebP — which file to send</h1>
-  
-<p>The format is a choice about the receiver, not a badge. FileTools Kit can re-encode PNG, JPEG, and WebP in the tab. It cannot make a blurry photo sharp by changing the extension.</p>
-<h2>A practical rule</h2>
-<p>Send JPEG for a camera photo, a receipt picture, or anything an old email form must accept. Send PNG for a screenshot, a logo, or a form where text must stay crisp. Send WebP when the site says it accepts WebP and you want a smaller photo than JPEG at a similar look. If the site does not list WebP, do not send it.</p>
-<p>Converting JPEG to PNG usually makes a larger file and does not restore detail. Converting PNG to JPEG makes a screenshot smaller and can blur small text. Resize before you drop quality.</p>
-<h2>What this site will not convert</h2>
-<p>HEIC and AVIF are not a pipeline here. Export JPEG from the phone. Video is not handled. Audio can only be saved as WAV, which is a different job. A PDF of images is a different job: <a href="/guides/jpg-to-pdf-in-browser.html">JPG to PDF</a>.</p>
-<p><a href="/file-converter">Open File Converter</a> · <a href="/image-optimizer">Open Image Optimizer</a></p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>The format is a choice about the receiver, not a badge of quality. The right file is the one they can open, at a size they accept, with the detail they need still visible. FileTools Kit can re-encode PNG, JPEG, and WebP in the tab. It cannot make a blurry photo sharp by changing the extension.</p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+<h2>A practical rule</h2>
+<p>Send JPEG for a camera photo, a receipt picture, or anything an old email form must accept. Send PNG for a screenshot, a logo, or a form where small text must stay crisp. Send WebP when the site says it accepts WebP and you want a smaller file than JPEG at a similar look. If the site does not list WebP, do not send it.</p>
+<p>Converting JPEG to PNG usually makes a larger file and does not restore detail. Converting PNG to JPEG makes a screenshot smaller and can blur small text. Resize before you drop quality.</p>
+
+<h2>How each format works, briefly</h2>
+<p><strong>JPEG</strong> (also written JPG; they are the same format) throws away detail the eye is least likely to notice, in small blocks. It is excellent for photos, where smooth gradients hide the loss. It struggles with sharp edges: text and lines get faint smudges around them. It has no transparency.</p>
+<p><strong>PNG</strong> is lossless: every pixel comes back exactly as saved. That makes it ideal for screenshots, diagrams, and logos with flat colour, and it supports transparency. For a photo, it makes files several times larger than JPEG with no visible benefit.</p>
+<p><strong>WebP</strong> is a newer format from Google that can work either way, lossy like JPEG or lossless like PNG, and supports transparency. At a similar look, a lossy WebP photo is usually smaller than the JPEG. All current major browsers display it, but plenty of older software, government portals, and some email workflows still do not accept it.</p>
+
+<h2>The same picture, three ways</h2>
+<p>As a rough guide to what you will see in practice: a phone photo of a room, resized to 1600 pixels wide, is often a few hundred KB as JPEG at quality 75, somewhat less as WebP at the same setting, and several MB as PNG. A screenshot of a settings page with mostly flat colour can be smaller as PNG than as a high-quality JPEG, and will look cleaner. Results depend on the image, which is why <a href="/image-optimizer">Image Optimizer</a> shows the size of every file instead of promising a percentage.</p>
+
+<h2>What forms and portals usually ask for</h2>
+<p>Most exam, job, and government portals in India ask for JPG or JPEG for photographs and signatures, with a size range in KB and often pixel dimensions, and PDF for documents. Few accept WebP or PNG for photos, even when the browser could show them. Read the notice for the exact format, size, and dimensions, and treat each line as a separate rule. Email attachments are more forgiving: any of the three formats opens on a current phone or computer, though older office software may still struggle with WebP.</p>
+
+<h2>Decision checklist</h2>
+<ol>
+<li><strong>Did the receiver name a format?</strong> Use it. A form that says JPG only means JPG.</li>
+<li><strong>Is it a photo?</strong> JPEG, or WebP if accepted.</li>
+<li><strong>Is it a screenshot, chart, or text?</strong> PNG, unless a size cap forces JPEG.</li>
+<li><strong>Does it need a transparent background?</strong> PNG or WebP. Never JPEG.</li>
+<li><strong>Is there a size cap?</strong> Resize first, then lower quality, then consider format.</li>
+<li><strong>Is it a logo for print or a website?</strong> Consider SVG; see <a href="/guides/svg-vs-png.html">SVG vs PNG</a>.</li>
+</ol>
+
+<h2>How to convert or shrink here</h2>
+<ol>
+<li>To change format only, open <a href="/file-converter">File Converter</a>, drop the image, choose JPG, PNG, or WEBP in Convert to:, press Convert, then Download.</li>
+<li>To change format and size together, open <a href="/image-optimizer">Image Optimizer</a>, choose the Output Format, lower Dimensions Scaling, adjust Visual Quality, and press Save on the row.</li>
+<li>Open the result and look at the important detail at full size before sending.</li>
+</ol>
+
+<h2>What this site will not convert</h2>
+<p>HEIC and AVIF are not a pipeline here; export JPEG from the phone. Video is not handled. Audio can only be saved as WAV, which is a different job. A PDF made of images is a different job too: <a href="/jpg-to-pdf">JPG to PDF</a> and <a href="/pdf-to-jpg">PDF to JPG</a>.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Renaming photo.png to photo.jpg. That changes the label, not the format.</li>
+<li>Sending WebP to a portal that lists JPG and PNG only.</li>
+<li>Saving a logo as JPEG and getting a white box around it.</li>
+<li>Converting a small, blurry JPEG to PNG hoping it will look better.</li>
+<li>Re-saving a JPEG many times. Each save loses a little more.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>Both converters run in this tab. Re-encoding through the canvas drops camera metadata such as GPS location from the new file, which is a small privacy win when sharing photos publicly. See <a href="/guides/what-stays-in-the-tab.html">what stays in the tab</a>.</p>
+
+<h2>FAQ</h2>
+<h3>Is JPG the same as JPEG?</h3>
+<p>Yes. Older Windows versions limited extensions to three letters, so .jpg stuck.</p>
+<h3>Does WhatsApp keep my format?</h3>
+<p>Photos sent as images are recompressed by the app. Send as a document if the exact file matters.</p>
+<h3>Is WebP safe to use on my own website?</h3>
+<p>Yes. Current browsers support it. See <a href="/guides/webp-images-for-websites.html">WebP for websites</a>.</p>
+<p>Related guides: <a href="/guides/convert-images-png-jpg-webp.html">convert PNG, JPG, and WebP</a>, <a href="/guides/compress-images-in-browser.html">compress images in the browser</a>, <a href="/guides/svg-vs-png.html">SVG vs PNG</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>

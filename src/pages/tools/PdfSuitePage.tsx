@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AdBanner } from '../../components/layout/AdBanner';
 import {
   Layers, Upload, RotateCw, Download, Trash2, Stamp, FileText, ArrowLeft, Split, Merge, ShieldCheck
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { usePdfSuite } from './usePdfSuite';
 import { PdfThumb } from '../../components/tools/PdfThumb';
 
+const HEADINGS: Record<string, { title: string; intro: string }> = {
+  '/merge-pdf': {
+    title: 'Merge PDF',
+    intro: 'Add PDFs in the order you want them, rotate any sideways file, then press Merge PDFs. Pages are copied in this tab with pdf-lib. Encrypted PDFs may fail.',
+  },
+  '/split-pdf': {
+    title: 'Split PDF',
+    intro: 'Load a PDF, type a page range such as 1-3,5 in the Split / Range tab, and export just those pages as a new PDF. Runs in this tab. Encrypted PDFs may fail.',
+  },
+};
+
 export const PdfSuitePage: React.FC = () => {
+  const { pathname } = useLocation();
+  const heading = HEADINGS[pathname.replace(/\/$/, '')];
   const {
     files, setFiles, activeTab, setActiveTab, isProcessing, statusMessage, setStatusMessage,
     watermarkText, setWatermarkText, watermarkOpacity, setWatermarkOpacity, watermarkSize, setWatermarkSize,
@@ -15,6 +28,10 @@ export const PdfSuitePage: React.FC = () => {
     splitRange, setSplitRange,
     loadDemoPdf, handleFileUpload, rotateFile, removeFile, handleMergeOnly, handleSplit, handleExportAnnotatedPdf,
   } = usePdfSuite();
+  const isSplitRoute = heading?.title === 'Split PDF';
+  useEffect(() => {
+    if (isSplitRoute) setActiveTab('split');
+  }, [isSplitRoute, setActiveTab]);
 
   return (
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -27,10 +44,10 @@ export const PdfSuitePage: React.FC = () => {
             <span>/</span><span>Documents</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540] flex items-center gap-2.5">
-            <Layers className="w-7 h-7 text-[#EA580C]" /> PDF Suite
+            <Layers className="w-7 h-7 text-[#EA580C]" /> {heading ? heading.title : 'PDF Suite'}
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
-            Merge, rotate, split by page range, add a text watermark, and edit metadata in this tab. Each file card shows its first page. Encrypted PDFs may fail.
+            {heading ? heading.intro : 'Merge, rotate, split by page range, add a text watermark, and edit metadata in this tab. Each file card shows its first page. Encrypted PDFs may fail.'}
           </p>
           <p className="text-xs text-slate-500 mt-2 font-medium">
             Guides:{' '}

@@ -4,40 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to reorder, rotate, and delete PDF pages | FileTools Kit</title>
-  <meta name="description" content="Use thumbnails to put a PDF in order, fix a sideways page, drop a blank, and export a new file in this tab." />
+  <meta name="description" content="Use page thumbnails to put a PDF in order, fix sideways pages, and drop blanks, then export a new file in this tab. Controls, limits, and FAQ." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/organize-pdf-pages-in-browser.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
   <h1>How to reorder, rotate, and delete PDF pages</h1>
-  
-<p>Organize PDF shows page thumbnails so you can drag a packet into the right order, rotate a sideways scan, or drop a blank page. Export writes a new PDF. The file you opened is not edited on disk. The work runs in this tab with no upload API.</p>
-<h2>Order of jobs</h2>
-<p>Reorder before you add page numbers. Numbers stamped first will be wrong after you move pages. If you only need a range and the rest can go, <a href="/split-pdf">Split PDF</a> is faster than deleting one page at a time.</p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p><a href="/organize-pdf">Organize PDF</a> shows every page as a thumbnail so you can put a packet in the right order, turn a sideways scan upright, or drop a blank page, and then export a new PDF. The file you opened is not edited on disk. The work runs in this tab, with no upload API.</p>
+
+<h2>When you need it</h2>
+<ul>
+<li>A double-sided scan came out as all fronts, then all backs, and the pages need interleaving.</li>
+<li>Two pages of a form were scanned upside down or sideways.</li>
+<li>A scanner added blank pages between documents.</li>
+<li>A merged packet has the appendix before the main document.</li>
+</ul>
+<p>If you only want a range and the rest can go, <a href="/split-pdf">Split PDF</a> is faster than deleting pages one by one. If whole files are in the wrong order, it is often easier to merge them again in the right order with <a href="/merge-pdf">Merge PDF</a>.</p>
+
 <h2>Steps</h2>
 <ol>
-<li>Open <a href="/organize-pdf">Organize PDF</a>.</li>
-<li>Wait for thumbnails. A long scan uses more tab memory because each page is drawn here.</li>
-<li>Drag a thumbnail to move it. Click thumbnails to select them, then use Rotate selected or Delete selected. Deleting removes the page from the download only. Your original remains until you delete it yourself.</li>
-<li>Export and open the new file before you send it.</li>
+<li>Open <a href="/organize-pdf">Organize PDF</a> and press Choose a PDF.</li>
+<li>Wait for the thumbnails. Each page is drawn in this tab, so a long scan takes a moment.</li>
+<li>Move pages. Drag a thumbnail to a new position, or use the arrow buttons under it to move it one place earlier or later.</li>
+<li>Fix orientation. The rotate button under a page turns that page; to turn several, click them to select and press Rotate selected.</li>
+<li>Remove pages. The bin under a page deletes it; or select several and press Delete selected.</li>
+<li>Press Export organized PDF. The button shows the page count, for example Export organized PDF (11 pages).</li>
+<li>Open the download and flip through it before you send it.</li>
 </ol>
-<p>Encrypted files often fail to open. If the tab slows, split the file first and organize the smaller part.</p>
-<h2>How the controls behave</h2>
-<p>Each click on Rotate selected turns the chosen pages 90 degrees clockwise, so a page that is upside down needs two clicks. Select all and Clear selection save clicking through a long file. Delete selected is disabled when every page is selected, because a PDF needs at least one page. The bar above the grid shows how many pages are left and how many are selected, which is a quick check before you export.</p>
-<p>The download is named after your file with -organized added, so report.pdf becomes report-organized.pdf. Rotation is saved as a page setting, the same way a desktop reader rotates a page, so the content is not redrawn or blurred.</p>
-<h2>Large files</h2>
-<p>Every thumbnail is drawn in this tab, so a 300-page scan takes a while and uses memory. Above 150 pages the tool warns you. On a phone or an older laptop, split the file into parts with <a href="/split-pdf">Split PDF</a>, organize each part, and merge them back with <a href="/merge-pdf">Merge PDF</a>.</p>
-<p><a href="/organize-pdf">Open Organize PDF</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+<h2>How the controls behave</h2>
+<p>Each rotate turns pages 90 degrees clockwise, so an upside-down page needs two presses and a page turned the wrong way needs three. Select all and Clear selection save clicking through a long file. Delete selected is disabled when every page is selected, and the single-page bin is disabled on the last remaining page, because a PDF needs at least one page. The bar above the grid shows how many pages are left and how many are selected, a quick check before export.</p>
+<p>The download is named after your file with -organized added, so report.pdf becomes report-organized.pdf. Rotation is saved as a page setting, the same way a desktop reader rotates a page, so the content is not redrawn or blurred. Deleting removes a page from the download only; your original still has it.</p>
+
+<h2>Order of jobs</h2>
+<p>Organize before you add page numbers. Numbers stamped first will be wrong once pages move. A sensible order for a messy packet is: merge the files, organize the pages, then number them with <a href="/page-numbers">Page Numbers</a>, and only then protect it with <a href="/password-protect-pdf">Password Protect</a> if needed, because an encrypted PDF cannot be organized here.</p>
+
+<h2>Interleaving a double-sided scan</h2>
+<p>A sheet feeder without duplex often gives fronts 1 to 5, then backs in reverse, 5 to 1. In the grid that looks like F1 F2 F3 F4 F5 B5 B4 B3 B2 B1. Drag B1 to sit after F1, B2 after F2, and so on. For long stacks, scan the backs in the right order if your scanner allows it, because dragging fifty pages by hand is slow and easy to get wrong.</p>
+
+<h2>A worked example</h2>
+<p>A six-page scan of a rental agreement comes out with pages 1 and 2 swapped, page 3 upside down, and a blank page 5 where the scanner picked up an empty sheet. In Organize PDF: drag the second thumbnail in front of the first, or press its move-earlier arrow once. Press the rotate button under page 3 twice. Press the bin under the blank page. The export button now reads Export organized PDF (5 pages). Export, open rental-agreement-organized.pdf, and check that every page reads upright and in order before you send it.</p>
+
+<h2>Large files</h2>
+<p>Every thumbnail is drawn in this tab, so a 300-page scan takes a while and uses memory. Above 150 pages the tool warns you. On a phone or an older laptop, split the file into parts with Split PDF, organize each part, and merge them back with Merge PDF.</p>
+
+<h2>Common mistakes and fixes</h2>
+<ul>
+<li><strong>Encrypted PDFs cannot be reorganized here.</strong> Save an unlocked copy in a reader you trust, then organize that.</li>
+<li><strong>Rotated the wrong pages.</strong> Selection stays on after Rotate selected. Press Clear selection before choosing the next group.</li>
+<li><strong>Thumbnails look fine but the export is sideways in another app.</strong> Rare, but some old viewers ignore page rotation. Open it in a current browser or reader.</li>
+<li><strong>Exported too early.</strong> Your original is untouched. Open it again and start over.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>The PDF is read with PDF.js for thumbnails and rebuilt with pdf-lib, both in this tab. FileTools Kit has no copy. See <a href="/guides/what-stays-in-the-tab.html">what stays in the tab</a>.</p>
+
+<h2>FAQ</h2>
+<h3>Can I organize several PDFs at once?</h3>
+<p>Merge them first, then organize the merged file.</p>
+<h3>Can I insert a blank page?</h3>
+<p>No. Only pages already in the file can be moved, turned, or removed.</p>
+<h3>Does it keep text selectable?</h3>
+<p>Yes. Pages are copied, not turned into images.</p>
+<h3>Does it keep bookmarks and form fields?</h3>
+<p>Bookmarks are not carried into the new file, and form fields may not be. Check before sending a form.</p>
+<p>Related guides: <a href="/guides/merge-scanned-documents.html">merge scanned documents</a>, <a href="/guides/split-pdf-pages.html">split a PDF by page range</a>, <a href="/guides/page-numbers-pdf.html">add page numbers</a>, <a href="/guides/when-browser-pdf-tools-fail.html">when browser PDF tools fail</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>

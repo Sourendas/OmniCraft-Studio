@@ -4,38 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to put JPG and PNG scans into one PDF | FileTools Kit</title>
-  <meta name="description" content="Stack JPEG or PNG images into one PDF, one page per image, in this tab. No upload. No OCR. HEIC is not a pipeline here." />
+  <meta name="description" content="Stack JPEG or PNG images into one PDF, one page per image, in this tab. Page order, page size, sideways photos, file size, and what it cannot do." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/jpg-to-pdf-in-browser.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
   <h1>How to put JPG and PNG scans into one PDF</h1>
-  
-<p>A rent receipt, an ID photo, and a signed form often start as images. JPG to PDF places each image on its own page and downloads one PDF. The photos stay in this tab. There is no account and no upload API.</p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>A rent receipt, an ID photo, and a signed form often start life as images on a phone. <a href="/jpg-to-pdf">JPG to PDF</a> places each image on its own page and downloads one PDF. The photos stay in this tab. There is no account and no upload API.</p>
+<p>This guide covers how the tool behaves. If you are starting from phone photos for an application form, the companion guide <a href="/guides/jpg-to-pdf-for-online-forms.html">turn phone photos of documents into a PDF for an online form</a> covers taking the photos, cropping, and size caps in more depth.</p>
+
+<h2>When to use it</h2>
+<ul>
+<li>A form wants one PDF and you have several photos or screenshots.</li>
+<li>A receiver cannot open image attachments but can open a PDF.</li>
+<li>You want a set of receipts or bills in a fixed order in one file for a claim.</li>
+<li>You exported pages as images and want them back as a PDF after editing them.</li>
+</ul>
+
 <h2>Before you start</h2>
-<p>Export HEIC from a newer iPhone as JPEG first. This page does not convert HEIC. Very large photos make a heavy PDF. If a portal caps the upload, shrink the images in <a href="/image-optimizer">Image Optimizer</a> before you build the PDF.</p>
-<p>The PDF is a picture of each image. Text in the photo is not selectable. No OCR runs here. If the receiver needs selectable text, this export will not create it.</p>
+<p>Only JPEG and PNG are accepted. A newer iPhone saves photos as HEIC, so export or share them as JPEG first (on iPhone, setting the camera format to Most Compatible saves JPEG from then on). WebP, GIF, and HEIC files are refused with the message Use JPEG or PNG only.</p>
+<p>Very large photos make a heavy PDF, because each photo goes in unchanged. If a portal caps the upload, shrink the images in <a href="/image-optimizer">Image Optimizer</a> first. The result is a picture of each page, so text in the photo is not selectable and no OCR runs here.</p>
+
 <h2>Steps</h2>
 <ol>
-<li>Open <a href="/jpg-to-pdf">JPG to PDF</a>.</li>
-<li>Pick the JPEG or PNG images. Pages follow the order the browser hands the files over, which is usually the order you selected. If order matters, name the files 01, 02, 03 first.</li>
-<li>Build and download. Open the PDF and check rotation. A sideways photo stays sideways unless you rotate it first.</li>
+<li>Name the files in the order you want, for example 01-form.jpg, 02-receipt.jpg, 03-id.png. This is the easiest way to control page order.</li>
+<li>Open <a href="/jpg-to-pdf">JPG to PDF</a> and press Choose JPEG or PNG files.</li>
+<li>Select all the images in one go. The PDF is built as soon as you confirm the picker, and images.pdf downloads. The page says, for example, Built a 3-page PDF.</li>
+<li>Open images.pdf. Check the page order and that no page is sideways.</li>
+<li>Rename it to something the receiver will understand, such as rent-receipts-may.pdf.</li>
 </ol>
-<h2>Page size and output</h2>
-<p>Each image becomes one page the size of the image, one point per pixel. A 1200 by 1600 photo makes a large page, but readers scale it to fit the screen, and a print dialog's fit-to-page option handles paper. The download is named images.pdf. Rename it before you send it, for example rent-receipts-may.pdf, so the receiver knows what it is.</p>
-<h2>Sideways photos</h2>
-<p>Phones often save a photo as stored pixels plus a rotation flag that the gallery app respects. This tool places the stored pixels as they are, so a photo that looks upright in your gallery can come out sideways. If that happens, rotate the photo in the gallery and save it again before you build the PDF, or fix the page afterwards in <a href="/organize-pdf">Organize PDF</a>.</p>
-<p><a href="/jpg-to-pdf">Open JPG to PDF</a></p>
+<p>Pages follow the order the browser hands the files over. That is usually the order you selected, and on most systems a multi-select in a sorted folder comes through in name order, which is why numbered names help. There is no reorder step on this page. If the order comes out wrong, fix it in <a href="/organize-pdf">Organize PDF</a> or rename the files and build again.</p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+<h2>Page size and output</h2>
+<p>Each image becomes one page the size of the image, one point per pixel, with no margin. A 1200 by 1600 photo makes a large page, but PDF readers scale it to fit the screen and a print dialog's fit-to-page option handles paper. Images of different shapes make pages of different shapes, which is normal for scans. There is no option to force A4 or add white borders.</p>
+<p>The file size is roughly the total of the images plus a small amount for the PDF structure, because JPEGs are embedded as they are. Twelve 3 MB phone photos make a PDF of about 36 MB. Shrinking to around 1600 pixels on the long side and quality 70 in Image Optimizer usually brings each page to a few hundred KB while keeping text readable.</p>
+
+<h2>Sideways photos</h2>
+<p>Phones often save a photo as stored pixels plus a rotation flag that the gallery app respects. This tool places the stored pixels as they are, so a photo that looks upright in your gallery can come out sideways. Three fixes, easiest first:</p>
+<ul>
+<li>Rotate the page afterwards in <a href="/organize-pdf">Organize PDF</a> with Rotate selected.</li>
+<li>Run the photos through <a href="/image-optimizer">Image Optimizer</a> first. It redraws each image the way the browser displays it, and saves a copy without the flag.</li>
+<li>Rotate the photo in the gallery and save it, then build the PDF again.</li>
+</ul>
+
+<h2>Common mistakes and fixes</h2>
+<ul>
+<li><strong>Only one page came out.</strong> You picked one file. Select all images together in the picker; picking again builds a new PDF rather than adding to the last one.</li>
+<li><strong>Use JPEG or PNG only.</strong> One of the files is HEIC, WebP, or misnamed. Convert it with <a href="/file-converter">File Converter</a> (WebP to JPG works there) or export it as JPEG.</li>
+<li><strong>The PDF is huge.</strong> Shrink the photos first, then build again.</li>
+<li><strong>Dark, tilted photos.</strong> The tool cannot straighten or brighten. Retake the photo flat, in daylight, with the page filling the frame.</li>
+<li><strong>PNG screenshots made a big file.</strong> PNG is lossless. Convert screenshots of photos to JPEG; keep PNG for screenshots of text.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>The images are read in this tab and the PDF is built there. Nothing is sent to a FileTools Kit server. That makes it a sensible choice for ID cards and bank documents, though the PDF you make is only as private as wherever you send it next. Details in <a href="/guides/what-stays-in-the-tab.html">what stays in the tab</a>.</p>
+
+<h2>FAQ</h2>
+<h3>Can I add more images to a PDF I already made?</h3>
+<p>Build a second PDF from the new images, then join the two with <a href="/merge-pdf">Merge PDF</a>.</p>
+<h3>Will the text in my photo be searchable?</h3>
+<p>No. The page is a picture. Searchable text needs OCR, which this site does not do.</p>
+<h3>Does it reduce image quality?</h3>
+<p>No. JPEG and PNG data are embedded unchanged. That is why the file can be large.</p>
+<h3>Can I make A4 pages?</h3>
+<p>Not here. Page size follows the image. Most portals accept that.</p>
+<p>Related guides: <a href="/guides/jpg-to-pdf-for-online-forms.html">phone photos to a PDF for an online form</a>, <a href="/guides/merge-scanned-documents.html">merge scanned documents</a>, <a href="/guides/reduce-pdf-size-for-upload-portals.html">get a PDF under 1 MB or 200 KB</a>, <a href="/guides/compress-images-in-browser.html">compress images in the browser</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>

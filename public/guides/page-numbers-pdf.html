@@ -4,41 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to add page numbers to a PDF | FileTools Kit</title>
-  <meta name="description" content="Stamp a page label after you merge or reorder. Formats are 1, 1 / N, or Page 1 of N. The tool counts file pages, not printed footer numbers." />
+  <meta name="description" content="Stamp page labels after you merge or reorder. Formats 1, 1 / N, or Page 1 of N, three positions, and a start number. Steps, limits, and fixes." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/page-numbers-pdf.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
   <h1>How to add page numbers to a PDF</h1>
-  
-<p>Page Numbers draws a label on each page from a starting number you choose. Formats are a plain number, 1 / N, or Page 1 of N, at the top or bottom. The stamp is added with pdf-lib in this tab. The PDF is not uploaded.</p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p><a href="/page-numbers">Page Numbers</a> draws a label on each page, counting up from a start number you choose. The label can be a plain number, 1 / N, or Page 1 of N, at the bottom centre, bottom right, or top centre. The stamp is added with pdf-lib in this tab, and the PDF is not uploaded.</p>
+
+<h2>Why number a PDF at all</h2>
+<p>Numbers let a reader say "see page 14" and find it. They show that nothing is missing from a packet, which is why offices like numbered annexures and why a court filing or a tender often requires them. They also help anyone who prints the file and drops the stack. If a document will be discussed, printed, or checked page by page, number it.</p>
+
 <h2>When to number</h2>
-<p>Number the file after you merge, split, or reorder. If you number first and then move pages, the labels lie. The tool does not read numbers already printed in a scan. It counts pages in the file. If a cover should stay unnumbered, see the start number note below.</p>
+<p>Number last. Merge, split, and reorder first, because the tool counts pages in the file as it is when you stamp it. If you number first and then move pages, the labels lie. The tool does not read numbers already printed in a scan; it only counts pages. If you will also password-protect the file, number before protecting, because an encrypted PDF cannot be stamped here.</p>
+
 <h2>Steps</h2>
 <ol>
-<li>Finish merge or organize first.</li>
-<li>Open <a href="/page-numbers">Page Numbers</a> and pick the combined PDF.</li>
-<li>Choose the start number and the corner.</li>
-<li>Download and check the first and last page. A label can sit on top of a footer. If it collides, pick the other edge and export again.</li>
+<li>Finish merging and organizing so the page order is final.</li>
+<li>Open <a href="/page-numbers">Page Numbers</a>.</li>
+<li>Set Start at. Leave it at 1 for most files.</li>
+<li>Choose a Position: Bottom centre, Bottom right, or Top centre.</li>
+<li>Choose a Format: 1, 1 / N, or Page 1 of N.</li>
+<li>Press Choose PDF files and pick the PDF. Numbering starts as soon as you confirm the picker, and page-numbers.pdf downloads. The page confirms the run, for example Numbered 12 page(s), 1 to 12.</li>
+<li>Open the download and check the first page, a middle page, and the last page.</li>
 </ol>
-<h2>The settings</h2>
-<p>Position has three choices: bottom centre, bottom right, or top centre. The label is 10 point grey Helvetica, placed 18 points (about 6 mm) from the edge, which sits inside the margin most printers leave. The format is a plain number (3), a fraction (3 / 12), or words (Page 3 of 12). In the last two, the second number is the last label on the run, not the count of pages, so if you start at 5 on a 10-page file the last page reads 14 / 14.</p>
-<p>The start number is the label on the first page. It cannot go below 1. If the cover should carry no number, the clean way is to split the cover off with <a href="/split-pdf">Split PDF</a>, number the rest, and merge the cover back in front with <a href="/merge-pdf">Merge PDF</a>.</p>
-<h2>More than one file</h2>
-<p>You can pick several PDFs at once. The tool joins them in the order the browser hands them over, numbers the whole run, and downloads one file named page-numbers.pdf. That order is usually the order you selected, but not always. If order matters, merge first where you can see the list, then number the merged file.</p>
-<h2>What it does not do</h2>
-<p>The number is drawn on top of the page. It does not move existing content and it does not remove an old number printed in a footer. On a scan with a dark band at the bottom, grey text can be hard to read, so try top centre. The tool also does not set the PDF's internal page labels, so the page box in your reader still counts from 1.</p>
-<p><a href="/page-numbers">Open Page Numbers</a></p>
+<p>Because the file is processed the moment you pick it, set Start at, Position, and Format before you choose the file. If you change your mind, change the settings and pick the original again.</p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+<h2>The settings in detail</h2>
+<p>The label is 10 point dark grey Helvetica, placed 18 points (about 6 mm) from the edge, which sits inside the margin most printers leave. In the 1 / N and Page 1 of N formats, the second number is the last label on the run, not the count of pages. If you start at 5 on a 10-page file, the pages read 5 / 14 through 14 / 14. That is what you want when a file continues a longer document, and odd when it does not, so leave Start at on 1 unless you mean it.</p>
+<p>Start at cannot go below 1. If the cover should carry no number, the clean way is to split the cover off with <a href="/split-pdf">Split PDF</a>, number the rest, and merge the cover back in front with <a href="/merge-pdf">Merge PDF</a>. The <a href="/guides/page-numbers-for-thesis.html">thesis guide</a> walks through that for a title page and front matter.</p>
+
+<h2>More than one file</h2>
+<p>You can pick several PDFs at once. The tool joins them in the order the browser hands them over, numbers the whole run, and downloads one file. That order is usually the order you selected, but not always. If order matters, merge first in Merge PDF, where you can see the list, then number the merged file.</p>
+
+<h2>Common mistakes and fixes</h2>
+<ul>
+<li><strong>The new number sits on top of an old printed footer number.</strong> Choose Top centre, or Bottom right if the old number is centred.</li>
+<li><strong>Grey number hard to read on a dark scan.</strong> Move it to the other edge, where the page is lighter.</li>
+<li><strong>A number runs along the side of a page.</strong> That page was rotated after it was created, for example with Organize PDF. The label is placed using the page's original orientation. Rotate the source scan upright before it becomes a PDF, or accept the side placement for that page.</li>
+<li><strong>Could not add page numbers.</strong> Encrypted PDFs often fail. Save an unlocked copy first.</li>
+<li><strong>Numbered twice.</strong> Running the tool on a file that already has its labels adds a second set. Start again from the unnumbered file.</li>
+</ul>
+
+<h2>What it does not do</h2>
+<p>The number is drawn on top of the page. It does not move existing content and it does not remove an old number printed in a footer. There are no Roman numerals, no custom text such as "Annexure A-1", and no choice of font, size, or colour. The tool also does not set the PDF's internal page labels, so the page box in your reader still counts from 1. Bookmarks and form fields from the source are not carried into the new file.</p>
+
+<h2>Privacy</h2>
+<p>The PDF is read and stamped in this tab. FileTools Kit has no copy. See <a href="/guides/what-stays-in-the-tab.html">what stays in the tab</a>.</p>
+
+<h2>FAQ</h2>
+<h3>Can I skip numbering the first page?</h3>
+<p>Not in one step. Split the first page off, number the rest from 2 (or 1), and merge the cover back.</p>
+<h3>Can I put numbers on the bottom left?</h3>
+<p>No. The three positions are bottom centre, bottom right, and top centre.</p>
+<h3>Is the number selectable text?</h3>
+<p>Yes. It is drawn as text, so it can be selected and searched.</p>
+<h3>Does the file get larger?</h3>
+<p>Only slightly. The font and the labels add a few kilobytes.</p>
+<p>Related guides: <a href="/guides/page-numbers-for-thesis.html">page numbers for a thesis or project report</a>, <a href="/guides/merge-pdf-in-browser.html">merge PDF files</a>, <a href="/guides/organize-pdf-pages-in-browser.html">reorder, rotate, and delete pages</a>, <a href="/guides/split-pdf-pages.html">split a PDF by page range</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>

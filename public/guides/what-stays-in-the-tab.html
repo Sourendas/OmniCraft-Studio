@@ -4,40 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>What “files stay in this tab” means | FileTools Kit</title>
-  <meta name="description" content="A plain account of what FileTools Kit processes locally, what the host can still see, and what ads do not receive." />
+  <meta name="description" content="A plain account of what FileTools Kit processes locally, what the host and ads can still see, what is stored in your browser, and how to check it yourself." />
+  <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/what-stays-in-the-tab.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <meta name="author" content="Souren Das" />
-  <style>body{font-family:ui-sans-serif,system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.7}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.35rem 2rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h1{line-height:1.25;font-size:1.85rem}h2{margin-top:1.7rem;font-size:1.25rem}.meta{color:#475569;font-size:.92rem}nav{font-size:.92rem}ul,ol{padding-left:1.2rem}li{margin:.35rem 0}.note{background:#FFF7ED;border:1px solid #FDBA74;border-radius:16px;padding:.85rem 1rem;margin:1rem 0}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <nav><a href="/">FileTools Kit</a> · <a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/contact.html">Contact</a></nav>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Privacy and how this site works</p>
   <h1>What “files stay in this tab” means</h1>
-  <p class="meta">Last updated: 1 October 2026 · Written by Souren Das, FileTools Kit, Bengaluru. These notes describe the tools on this site, including what they cannot do.</p>
-  <p>“Files stay in this tab” means the PDF, image, or resume you pick is read as a browser File object and processed by JavaScript on your device. FileTools Kit does not run an upload API that receives those bytes. Closing the tab drops the in-memory copy. It does not delete a download you already saved.</p>
-  <h2>What still leaves the device</h2>
-  <p>Loading the website does. The host (Vercel) can see IP address, user agent, URL, referrer, and time, the way any HTTPS host can. Vercel Web Analytics may record a page view and route. That is not your PDF. Google AdSense may set cookies and measure ads. The publisher id is in <a href="/ads.txt">ads.txt</a> (pub-4409273905876536). Ad code does not receive file bytes from our servers, because we do not have those bytes.</p>
-  <p>A few assets load from third parties: Google AdSense scripts and ads, and the two directory badge images in the footer (directree.io and launchllama.co). Those are requests for the asset, not an upload of your document. Details are in the <a href="/privacy.html">privacy policy</a> and <a href="/cookie-policy.html">cookie policy</a>.</p>
-  <h2>What stays local</h2>
-  <ul>
-    <li>The File objects for PDFs and images, until you close or reload the tab.</li>
-    <li>An optional resume draft in localStorage (ftk_resume_v1) if you used the builder and did not clear site data.</li>
-    <li>Layout-test keys (ftk_ab_*): a random ID and which page variant you saw. They are not sent to us.</li>
-  </ul>
-  <h2>What this sentence does not mean</h2>
-  <p>It does not mean the site is invisible. It does not mean a download is encrypted on your disk. It does not mean other sites you then upload the result to will keep it private. It does not mean encrypted PDFs will open. It does not mean health numbers or currency examples are professional advice.</p>
-  <p>Operator: Souren Das, Bengaluru. Questions: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
-  <h2>A reload is a wipe</h2>
-  <p>Refresh the tab and the File objects are gone. The download in your Downloads folder remains. People lose work by refreshing to “fix” a stall and then looking for the PDF in the page. It is not there. Pick the files again from disk.</p>
-  <p>Private browsing still processes locally, and it is more likely to drop the resume draft when the window closes. Do not rely on localStorage if you are on a shared computer. Export the PDF and take the file with you.</p>
-  <p>Extensions can still read the page. A password manager or a screenshot tool is outside this site’s control. “In this tab” is about our servers, not about every extension you installed.</p>
-  <h2>Related</h2>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">Who operates this site</a> · <a href="/privacy.html">Privacy</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/contact.html">Contact</a></p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Every tool page on FileTools Kit says some version of "files stay in this tab". This page explains exactly what that sentence covers, what it does not, and how you can check it yourself instead of taking my word for it.</p>
+<p>In short: the PDF, image, or resume you pick is read as a browser File object and processed by JavaScript on your device. FileTools Kit does not run an upload API that receives those bytes. Closing the tab drops the in-memory copy. It does not delete a download you already saved.</p>
+
+<h2>Why the site is built this way</h2>
+<p>Most online PDF and image tools upload your file to a server, process it there, and send it back. That works, but it means a stranger's computer holds your payslip or ID scan for a while, under a retention policy you have to trust. Modern browsers can do much of this work themselves: pdf-lib edits PDFs, PDF.js draws pages, the canvas re-encodes images, and Web Crypto hashes and encrypts. Doing the job in the tab removes the upload step entirely. The cost is that a phone or an old laptop has less memory than a server, which is why very large scans can stall here.</p>
+
+<h2>What happens tool by tool</h2>
+<ul>
+<li><strong>PDF tools</strong> (merge, split, compress, organize, page numbers, password, PDF to JPG): the file is read into memory, rebuilt with pdf-lib or drawn with PDF.js, and the result is handed to your browser as a download.</li>
+<li><strong>Image tools</strong> (Image Optimizer, File Converter, SVG Studio, Social Studio): images are drawn on a canvas and re-encoded locally.</li>
+<li><strong>Resume Builder:</strong> the form and the PDF are built in the tab, and a draft is saved in your browser's localStorage.</li>
+<li><strong>Text and data tools</strong> (Dev Tools, Markdown Editor, Text Diff): the text stays in the page.</li>
+<li><strong>Calculators:</strong> the health and currency calculators run on numbers in the page. The currency rates are reference values built into the page, not fetched live.</li>
+</ul>
+
+<h2>What still leaves the device</h2>
+<p>Loading the website does. The host, Vercel, can see your IP address, user agent, the URL, referrer, and time, the way any HTTPS host can. Vercel Web Analytics may record a page view and route. That is not your PDF. Google AdSense may set cookies and measure ads; the publisher ID is in <a href="/ads.txt">ads.txt</a> (pub-4409273905876536). Ad code does not receive file bytes from our servers, because we do not have those bytes.</p>
+<p>A few assets load from third parties: Google AdSense scripts and ads, and two directory badge images (directree.io and launchllama.co). Those are requests for the asset, not an upload of your document. Details are in the <a href="/privacy.html">privacy policy</a> and <a href="/cookie-policy.html">cookie policy</a>.</p>
+
+<h2>What stays in your browser</h2>
+<ul>
+<li>The File objects for PDFs and images, until you close or reload the tab.</li>
+<li>An optional resume draft in localStorage (ftk_resume_v1) if you used the builder and did not clear site data.</li>
+<li>Layout-test keys (ftk_ab_*): a random ID and which page variant you saw. They are not sent to us.</li>
+</ul>
+
+<h2>How to check it yourself</h2>
+<p>You do not have to trust this page. On a desktop browser:</p>
+<ol>
+<li>Open a tool, for example <a href="/merge-pdf">Merge PDF</a>.</li>
+<li>Open the developer tools (F12, or right-click and Inspect) and choose the Network tab.</li>
+<li>Load a PDF and run the job.</li>
+<li>Look through the requests that appear. You will see page assets, analytics, and ad requests, but no request that carries your PDF to a FileTools Kit endpoint. The request sizes give it away: a 5 MB upload would show up as a 5 MB request.</li>
+</ol>
+<p>A second check: open a tool page and run one small job so the tool’s code has loaded, then turn off Wi-Fi and run the job again on another file. The PDF and image tools keep working, because the work does not need the network once the page and its code are in the tab.</p>
+
+<h2>What this sentence does not mean</h2>
+<p>It does not mean the site is invisible. It does not mean a download is encrypted on your disk. It does not mean other sites you then upload the result to will keep it private. It does not mean encrypted PDFs will open. It does not mean health numbers or currency examples are professional advice.</p>
+
+<h2>A reload is a wipe</h2>
+<p>Refresh the tab and the File objects are gone. The download in your Downloads folder remains. People lose work by refreshing to "fix" a stall and then looking for the PDF in the page. It is not there. Pick the files again from disk.</p>
+<p>Private browsing still processes locally, and it is more likely to drop the resume draft when the window closes. Do not rely on localStorage on a shared computer; export the PDF and take it with you, and clear site data when you are done.</p>
+<p>Extensions can still read the page. A password manager, a grammar checker, or a screenshot tool is outside this site's control. "In this tab" is about our servers, not about every extension you installed.</p>
+
+<h2>FAQ</h2>
+<h3>Do you keep logs of my files?</h3>
+<p>There is nothing to log. The files never reach a FileTools Kit server.</p>
+<h3>Is it safe for Aadhaar or PAN scans?</h3>
+<p>The processing is local. What happens to the result depends on where you send it next.</p>
+<h3>How do I delete the resume draft?</h3>
+<p>Clear this site's data in your browser settings.</p>
+<p>Operator: Souren Das, Bengaluru. Questions: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>. Related: <a href="/guides/when-browser-pdf-tools-fail.html">when browser PDF tools fail</a>, <a href="/about.html">about this site</a>, <a href="/how-we-test.html">how tools are tested</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>
