@@ -68,11 +68,15 @@ export const TextDiffPage: React.FC = () => {
 
   // Compute Line Diff
   const lineDiffs = useMemo(() => {
-    const text1 = ignoreCase ? originalText.toLowerCase() : originalText;
-    const text2 = ignoreCase ? modifiedText.toLowerCase() : modifiedText;
-    return Diff.diffLines(text1, text2, {
-      ignoreWhitespace
-    });
+    // Normalise only for comparison, so the text on screen keeps its case and spacing.
+    if (!ignoreWhitespace && !ignoreCase) return Diff.diffLines(originalText, modifiedText);
+    const norm = (line: string) => {
+      const spaced = ignoreWhitespace ? line.trim().replace(/\s+/g, ' ') : line;
+      return ignoreCase ? spaced.toLowerCase() : spaced;
+    };
+    // jsdiff honours comparator for line diffs at runtime; its line typings omit it.
+    const options = { comparator: (a: string, b: string) => norm(a) === norm(b) } as unknown as Diff.DiffLinesOptionsNonabortable;
+    return Diff.diffLines(originalText, modifiedText, options);
   }, [originalText, modifiedText, ignoreWhitespace, ignoreCase]);
 
   // Compute Detailed Line-by-Line paired structures for Split View
@@ -217,7 +221,7 @@ export const TextDiffPage: React.FC = () => {
             Text Diff & Code Comparator
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 font-medium">
-            Side-by-side text and code comparator with line-by-line & character difference highlights, patch generation, and live diff metrics.
+            Compare two versions line by line, side by side or as a unified patch, with added and removed line counts. Runs in this tab.
           </p>
         </div>
 
