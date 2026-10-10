@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Turn phone photos of documents into a PDF for an online form | FileTools Kit</title>
+  <meta name="description" content="Photograph, crop, shrink, and combine document photos into one PDF an application form will accept. Steps, size limits, and mistakes to avoid." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/jpg-to-pdf-for-online-forms.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
+  <h1>Turn phone photos of documents into a PDF for an online form</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Many application forms ask for a single PDF of documents you only have on paper: an Aadhaar card, a mark sheet, a rent agreement, a medical certificate. The quickest scanner most people own is a phone camera. This guide walks through turning those photos into one PDF that a form will accept, using three tools that run in your browser, and the mistakes that cause a rejection.</p>
+
+<h2>When this is the right approach</h2>
+<p>Use this route when you have photos (JPEG or PNG) and the form wants a PDF. If you already have a PDF that is too large, read <a href="/guides/reduce-pdf-size-for-upload-portals.html">getting a PDF under 1 MB or 200 KB</a> instead. If the form wants a JPG, do not convert at all: just shrink the photo in <a href="/image-optimizer">Image Optimizer</a> and upload it directly.</p>
+
+<h2>Step 1: take photos that are easy to read</h2>
+<p>Good input saves more time than any setting later. A few habits make the difference:</p>
+<ul>
+<li>Put the document on a plain, dark surface so the edges are clear.</li>
+<li>Use daylight from a window, or a room light behind you. Avoid the flash, which leaves a bright patch on glossy paper and laminated cards.</li>
+<li>Hold the phone flat above the page, not at an angle, so the text is not stretched.</li>
+<li>Fill the frame with the page, then crop away the table in your phone's photo editor. A tighter crop means fewer wasted pixels.</li>
+<li>Photograph each page separately, front and back if the form asks for both sides of an ID card.</li>
+</ul>
+<p>On an iPhone, photos are often saved as HEIC. JPG to PDF accepts only JPEG and PNG, so set Settings &gt; Camera &gt; Formats to Most Compatible before you start, or share the photo as JPEG. On Android, photos are JPEG by default.</p>
+
+<h2>Step 2: name the files in order</h2>
+<p>JPG to PDF places pages in the order your browser's file picker returns them. That is usually alphabetical by file name, but it is not guaranteed on every device. Rename the photos 01-front.jpg, 02-back.jpg, 03-marksheet.jpg so the order is obvious and stable. The two-digit numbers keep 10 from sorting before 2.</p>
+
+<h2>Step 3: shrink the photos first</h2>
+<p>A phone photo is typically 3000 to 4000 pixels wide and 2 to 5 MB. JPG to PDF embeds each image as it is, so five such photos make a PDF of 10 MB or more. Shrink them first:</p>
+<ol>
+<li>Open <a href="/image-optimizer">Image Optimizer</a>.</li>
+<li>Drop all the photos on <strong>Select or Drop Images to Compress</strong>.</li>
+<li>Set <strong>Output Format</strong> to <strong>JPEG</strong>. WebP is smaller, but JPG to PDF will not accept it.</li>
+<li>Set <strong>Dimensions Scaling</strong> to about 40 percent for a full phone photo. That brings a 4000-pixel photo to about 1600 pixels, which is still sharp on screen and in print.</li>
+<li>Set <strong>Visual Quality</strong> to about 70 percent. Watch the size on each card and adjust.</li>
+<li>Press <strong>Download All</strong>. Your browser may ask once to allow several downloads. The files keep their names with _optimized added, so the order from step 2 survives.</li>
+</ol>
+<p>Open one of the results and zoom in on the smallest text. If you can read it comfortably, the setting is fine. If not, raise the scale a little.</p>
+<p>Image Optimizer redraws each photo on a canvas, and the browser applies the phone's rotation while doing that. This usually fixes photos that would otherwise appear sideways in the PDF.</p>
+
+<h2>Step 4: build the PDF</h2>
+<ol>
+<li>Open <a href="/jpg-to-pdf">JPG to PDF</a>.</li>
+<li>Press <strong>Choose JPEG or PNG files</strong> and select all the optimized images at once.</li>
+<li>The status line says "Built a 3-page PDF." or similar, and images.pdf downloads.</li>
+<li>Rename it to something the reviewer will understand, such as surname-documents.pdf.</li>
+</ol>
+<p>Each image becomes one page at its own pixel size. Pages are not forced to A4 and no margins are added. That is fine for upload portals, which display the page scaled to the screen. If you need to print the PDF on A4, the print dialog's "Fit to page" option handles it.</p>
+
+<h2>Step 5: check it before you upload</h2>
+<p>Open images.pdf and go through every page. Check the order, that nothing is sideways, and that every page is readable. If a page is in the wrong place or sideways, open <a href="/organize-pdf">Organize PDF</a>, move or rotate that page, and press <strong>Export organized PDF</strong>. If you added a page by mistake, delete it there too.</p>
+<p>Then check the size in your file manager against the form's limit. If it is still too big, go back to step 3 with lower quality or scale. Start from the original photos, not the already-compressed ones.</p>
+
+<h2>Common mistakes and how to fix them</h2>
+<ul>
+<li><strong>"Use JPEG or PNG only."</strong> One of the files is WebP, HEIC, or GIF. Convert it with <a href="/file-converter">File Converter</a> to JPG, or re-export from Image Optimizer as JPEG.</li>
+<li><strong>A page is sideways.</strong> The photo relied on rotation metadata. Run it through Image Optimizer first, or rotate the page in Organize PDF.</li>
+<li><strong>Pages are out of order.</strong> Rename the files with leading numbers and build again, or reorder in Organize PDF.</li>
+<li><strong>The PDF is huge.</strong> The photos were not shrunk. Do step 3.</li>
+<li><strong>The text is blurry.</strong> Scale was too low, or the photo was out of focus. Retake the photo; no tool can recover detail that was not captured.</li>
+<li><strong>The background is grey and the file is larger than expected.</strong> Shadows and paper texture take bytes. Better lighting and a tighter crop help more than a lower quality setting.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>Identity documents are exactly the files you should not hand to unknown servers. Image Optimizer, JPG to PDF, and Organize PDF all run in your browser tab. FileTools Kit does not run an upload API for these files. Image Optimizer's re-encoding also drops the photo's embedded location and camera details. When you are done, delete the intermediate copies from your phone's downloads and, if you used a shared computer, from that computer as well.</p>
+
+<h2>FAQ</h2>
+<h3>Can I put two photos on one page, like the front and back of an ID?</h3>
+<p>Not with JPG to PDF, which makes one page per image. Combine the two photos into one image first with your phone's collage or editing app, then build the PDF.</p>
+<h3>Can I make the pages A4?</h3>
+<p>No. Page size follows the image. Portals display it scaled, and printing with "Fit to page" fits it to A4.</p>
+<h3>Is a phone photo acceptable instead of a scan?</h3>
+<p>That depends on the form. Many accept clear photos; some ask for scans of originals. Check the notice.</p>
+<h3>Can I add a page later?</h3>
+<p>Yes. Make a PDF of the new page, then combine the two files in <a href="/merge-pdf">Merge PDF</a>.</p>
+<p>Related guides: <a href="/guides/merge-scanned-documents.html">merge scanned documents into one PDF</a>, <a href="/guides/reduce-pdf-size-for-upload-portals.html">get a PDF under a size limit</a>, <a href="/guides/jpg-to-pdf-in-browser.html">put JPG and PNG scans into one PDF</a>, <a href="/guides/organize-pdf-pages-in-browser.html">reorder, rotate, and delete pages</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>
