@@ -91,7 +91,14 @@ export const MarkdownEditorPage: React.FC = () => {
 
   // Convert markdown to clean HTML string for preview and export
   const renderedHtml = useMemo(() => {
-    let html = markdown
+    // Fenced code blocks are set aside first so the inline rules below do not
+    // turn * or _ inside code into formatting. They go back in at the end.
+    const codeBlocks: string[] = [];
+    const withoutCode = markdown.replace(/```([a-z]*)\n([\s\S]*?)```/gim, (_m, _lang: string, body: string) => {
+      codeBlocks.push(body.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'));
+      return `\n\n<pre data-code="${codeBlocks.length - 1}"></pre>\n\n`;
+    });
+    let html = withoutCode
       // Escape script tags
       .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
       // Headings
@@ -106,14 +113,16 @@ export const MarkdownEditorPage: React.FC = () => {
       .replace(/\*\*\*(.*?)\*\*\*/gim, '<strong><em>$1</em></strong>')
       .replace(/\*\*(.*?)\*\*/gim, '<strong class="font-black text-[#0A2540]">$1</strong>')
       .replace(/\*(.*?)\*/gim, '<em class="italic">$1</em>')
-      .replace(/~~(.*?)~~/gim, '<del class="line-through text-slate-400">$1</del>')
+      .replace(/~~(.*?)~~/gim, '<del class="line-through text-slate-500">$1</del>')
+      // Links (http and https only)
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)"]+)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[#007A82] underline font-bold">$1</a>')
       // Task lists
       .replace(/^- \[x\] (.*$)/gim, '<div class="flex items-center gap-2 my-1 text-xs sm:text-sm text-slate-700 font-medium"><input type="checkbox" checked disabled class="accent-[#00A3AD] rounded" /><span>$1</span></div>')
       .replace(/^- \[ \] (.*$)/gim, '<div class="flex items-center gap-2 my-1 text-xs sm:text-sm text-slate-700 font-medium"><input type="checkbox" disabled class="rounded" /><span>$1</span></div>')
       // Unordered List Items
       .replace(/^- (.*$)/gim, '<li class="ml-4 list-disc text-xs sm:text-sm text-slate-700 my-1">$1</li>')
-      // Code blocks (multi-line)
-      .replace(/```([a-z]*)\n([\s\S]*?)```/gim, '<pre class="p-4 my-4 rounded-2xl bg-[#0A2540] text-cyan-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>$2</code></pre>')
+      // Numbered list items
+      .replace(/^(\d+)\. (.*$)/gim, '<div class="ml-4 my-1 text-xs sm:text-sm text-slate-700"><span class="font-bold">$1.</span> $2</div>')
       // Inline code
       .replace(/`([^`]+)`/gim, '<code class="px-1.5 py-0.5 rounded-md bg-slate-100 font-mono text-[11px] text-[#007A82] font-bold border border-slate-200">$1</code>')
       // Tables (basic parse)
@@ -122,7 +131,14 @@ export const MarkdownEditorPage: React.FC = () => {
         const cells = match.split('|').filter(c => c.trim() !== '');
         const row = cells.map(c => `<td class="border border-slate-200 px-3 py-2 text-xs text-slate-700">${c.trim()}</td>`).join('');
         return `<tr class="hover:bg-slate-50">${row}</tr>`;
-      });
+      })
+      // Rows need a table around them, or the browser drops the cell markup.
+      .replace(/(?:<tr[\s\S]*?<\/tr>\s*)+/g, (rows) => `<table class="my-3 border-collapse">${rows.trim().replace(/<\/tr>\s+<tr/g, '</tr><tr')}</table>\n\n`)
+      // Text separated by a blank line becomes a paragraph; block elements stay as they are.
+      .split(/\n{2,}/)
+      .map((chunk) => (/^\s*<(h[1-6]|li|div|blockquote|hr|pre|table|p)\b/.test(chunk) || !chunk.trim() ? chunk : `<p class="my-2">${chunk}</p>`))
+      .join('\n')
+      .replace(/<pre data-code="(\d+)"><\/pre>/g, (_m, i: string) => `<pre class="p-4 my-4 rounded-2xl bg-[#0A2540] text-cyan-300 font-mono text-xs overflow-x-auto leading-relaxed"><code>${codeBlocks[Number(i)]}</code></pre>`);
 
     return html;
   }, [markdown]);
