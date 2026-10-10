@@ -55,6 +55,11 @@ export const ImageOptimizerPage: React.FC = () => {
           canvas.height = targetH;
           const ctx = canvas.getContext('2d');
           if (!ctx) return reject('No canvas context');
+          // JPEG has no transparency; paint white first so clear areas do not turn black.
+          if (fmt === 'image/jpeg') {
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, targetW, targetH);
+          }
           ctx.drawImage(img, 0, 0, targetW, targetH);
           canvas.toBlob(
             (blob) => {
