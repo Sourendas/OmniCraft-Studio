@@ -114,14 +114,14 @@ export const EXTRA_TEXT: Record<string, ToolArticleExtra> = {
       {
         heading: 'How the comparison works',
         paragraphs: [
-          "Paste the older version on the left and the newer one on the right. The comparison is line by line: a line that changed at all shows as one removed line and one added line. Side-by-Side View shows the two versions next to each other with removals and additions marked. Unified Git Patch shows the same changes in the standard patch format that git and code review tools read.",
+          "Paste the older version into Original Text (Before) and the newer one into Modified Text (After). The comparison is line by line: a line that changed at all shows as one removed line and one added line. Side-by-Side View lists every line in order in one column, with removed lines shaded red and marked with a minus and added lines shaded green and marked with a plus. Unified Git Patch shows the same changes in the standard patch format that git and code review tools read.",
           "Ignore Whitespace treats lines that differ only in spacing as the same. Ignore Case treats upper and lower case as the same. The text on screen keeps its original case and spacing either way. The counters show added, removed, and unchanged lines, plus how the word and character counts changed.",
         ],
       },
       {
         heading: 'Reading the result',
         paragraphs: [
-          "Removed lines appear only on the left and added lines only on the right. A line that was edited appears as a removal followed by an addition, so read the pair together to see the change. Unchanged lines give context. If almost every line shows as changed, the two texts probably use different line endings or one was re-wrapped; turn on Ignore Whitespace, or paste both through a plain text editor first.",
+          "A line that was edited appears as a red removal directly followed by a green addition, so read the pair together to see the change. Unchanged lines give context. If almost every line shows as changed, the two texts probably use different line endings or one was re-wrapped; turn on Ignore Whitespace, or paste both through a plain text editor first.",
         ],
       },
       {
