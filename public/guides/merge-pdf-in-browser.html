@@ -4,42 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to merge PDF files in your browser | FileTools Kit</title>
-  <meta name="description" content="Combine a cover sheet, resume, and certificates into one PDF in this tab. Page copy with pdf-lib. No upload API. Encrypted files often fail." />
+  <meta name="description" content="Combine a cover letter, resume, and certificates into one PDF in this tab. Order, rotation, file size, and what a merge can break. No upload API." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/merge-pdf-in-browser.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
   <h1>How to merge PDF files in your browser</h1>
-  
-<p>Merging is the job of putting a cover sheet, an appendix, and a form into one file a portal will accept. FileTools Kit does that copy in the tab you already have open. The tool reads each PDF with the browser File API, copies pages into a new document with pdf-lib, and offers a download. It does not run an upload API that receives those PDFs.</p>
-<h2>When to merge</h2>
-<p>Merge when you have two or more PDFs and the receiver asked for one attachment. A common case is a job application: cover letter, resume, then certificates, in that order. The merged file follows the list, and the list is the order you added files, so add them in the order the receiver expects.</p>
-<p>Do not merge if you only need a subset of pages. That is split. Do not merge if the files are password-protected. Encrypted PDFs often fail in the browser. Unlock them in a reader you trust, then merge the unlocked copies.</p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Merging is the job of putting a cover letter, a resume, and a few certificates into the single attachment a portal or an HR inbox asked for. <a href="/merge-pdf">Merge PDF</a> on FileTools Kit does that copy in the tab you already have open. It reads each PDF with the browser File API, copies the pages into a new document with pdf-lib, and offers a download. It does not run an upload API that receives those PDFs.</p>
+
+<h2>When to merge, and when not to</h2>
+<p>Merge when you have two or more PDFs and the receiver wants one file. Typical cases: a job application (cover letter, resume, then certificates), a reimbursement claim (form first, then bills), or a visa or admission packet where the checklist names an order. The merged file follows the list on the page, and the list is the order you added files.</p>
+<p>Do not merge when you only need some pages. That is <a href="/split-pdf">Split PDF</a>. Do not merge when you need to reorder single pages inside a file. That is <a href="/organize-pdf">Organize PDF</a>. And do not merge password-protected files here: the merge reads each file without a password, so an encrypted PDF usually fails. Unlock it in a reader you trust, save an unlocked copy, and merge that.</p>
+
 <h2>Steps</h2>
 <ol>
-<li>Open <a href="/merge-pdf">Merge PDF</a> or the <a href="/pdf-suite">PDF Suite</a>.</li>
-<li>Drop or pick the PDFs. The browser stores them as File objects in this tab.</li>
-<li>Check the order. There is no drag-to-reorder in the suite. To move a file to the end, remove it and add it again. Each card shows page 1 and the page count, which helps you spot the wrong file.</li>
-<li>Press Merge PDFs. The new file is built in memory and downloads as merged.pdf. The originals on disk are not overwritten.</li>
-<li>Optional watermark. Default text is CONFIDENTIAL. That is overlay text, not encryption and not redaction.</li>
+<li>Open <a href="/merge-pdf">Merge PDF</a>. It is the same page as the PDF Suite, opened for merging.</li>
+<li>Drop the PDFs on the dashed box or click it to browse. You can pick several at once and add more later. Each file becomes a card.</li>
+<li>Check the order. Each card shows Order #1, #2, and so on, a thumbnail of page 1, the page count, and the size in KB. There is no drag-to-reorder on this page. To move a file to the end, remove it with the bin icon and add it again.</li>
+<li>Fix sideways files. Rotate +90° on a card turns every page of that file a quarter turn clockwise. Press it twice for upside down.</li>
+<li>Press Merge PDFs above the cards. The file is built in memory and downloads as merged.pdf. Your originals on disk are not touched.</li>
+<li>Open merged.pdf and scroll through it. The cards only preview page 1 of each file, so the download is where you confirm the middle pages.</li>
 </ol>
-<h2>Rotate, watermark, and document details</h2>
-<p>The rotate button on a file card turns every page of that file 90 degrees clockwise per click, and the rotation is applied when you merge. Use it for a scan that came in sideways. To rotate single pages, use <a href="/organize-pdf">Organize PDF</a> instead.</p>
-<p>Export annotated PDF merges the same list and also stamps the watermark text diagonally across the middle of every page, in orange, at the opacity and size you set (30% and 36 point by default). It also writes the title, author, subject, and keywords from the Metadata tab into the file. The starting values are generic, such as the author FileTools Kit, so change them to your own details before you export. If you leave the watermark text empty, the export only merges and sets the details. The download is annotated.pdf.</p>
-<h2>What fails</h2>
-<p>A signed PDF may lose a valid signature after any rewrite. A scan that is one huge image per page can stall the tab. If that happens, merge in smaller batches, then merge the batches. A reload drops the in-memory files. Downloads you already saved stay in your downloads folder.</p>
-<p>Page numbers stamped before a merge will be wrong if each source started at 1. Number the combined file after, with <a href="/page-numbers">page numbers</a>.</p>
-<p><a href="/merge-pdf">Open Merge PDF</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+<h2>Getting the order right the first time</h2>
+<p>Because moving a file means removing and re-adding it, the quickest route is to add files in the final order. If you pick several files in one go, the browser decides the order it hands them over, which is usually the order you selected but not always. Two habits avoid surprises: add files one at a time in the order the receiver expects, or rename them first with a number prefix such as 01-cover-letter.pdf, 02-resume.pdf, 03-degree.pdf and add them together. Then glance at the Order numbers before you press Merge PDFs.</p>
+<p>If one file needs pages moved inside it, for example an appendix that came out of the scanner backwards, fix that file in <a href="/organize-pdf">Organize PDF</a> first and merge the organized copy.</p>
+
+<h2>Rotate, watermark, and document details</h2>
+<p>Rotation from the card is saved as a page setting when you merge, the same way a desktop reader rotates a page, so nothing is redrawn or blurred. To rotate one page out of twenty, use Organize PDF instead, because the card rotates the whole file.</p>
+<p>Export annotated PDF, at the top right, merges the same list and also stamps the Watermark text diagonally across the middle of every page in orange, at the Opacity and Font size you set (30% and 36 pt to start). It also writes the Title, Author, Subject, and Keywords from the Metadata tab into the file. The starting values are generic (Title: Processed document, Author: FileTools Kit), so change them to your own before you export, or leave the plain merge alone. If the watermark text is empty, the export merges and sets the details only. That download is annotated.pdf. A watermark is a visible label, not a lock and not redaction; see <a href="/guides/watermark-versus-password.html">watermark, password, and redaction</a>.</p>
+
+<h2>How big will the merged file be?</h2>
+<p>Roughly the sizes of the inputs added together, because the pages are copied as they are. Merging does not compress images. If three 900 KB scans must go to a portal with a 2 MB cap, merging gives you a file near 2.7 MB and the portal will still refuse it. Shrink first, then merge. The <a href="/guides/reduce-pdf-size-for-upload-portals.html">guide to getting a PDF under 1 MB or 200 KB</a> walks through the image route that actually reduces scans.</p>
+
+<h2>Common mistakes and fixes</h2>
+<ul>
+<li><strong>"Could not read that PDF."</strong> The file is usually encrypted or damaged. Open it in your reader. If it asks for a password, save an unlocked copy first.</li>
+<li><strong>Wrong file in the packet.</strong> Two downloads called scan.pdf look alike. Check the page count and thumbnail on each card before merging.</li>
+<li><strong>Page numbers that restart.</strong> If each source has its own printed numbers, the merged file will show 1, 2, 1, 2, 3. Number the merged file afterwards with <a href="/page-numbers">Page Numbers</a>.</li>
+<li><strong>The tab stalls on big scans.</strong> Each scan page can be a large image. Merge in batches of a few files, then merge the batches.</li>
+<li><strong>Refreshed the tab mid-way.</strong> A reload clears the cards. Downloads you already saved stay in your downloads folder.</li>
+</ul>
+
+<h2>What a merge can break</h2>
+<p>A digitally signed PDF loses a valid signature after any rewrite, even when the page looks the same. Send a signed original as its own attachment. Bookmarks in a reader's side panel are not carried into the merged file, and fillable form fields may not survive, so fill and flatten a form before you merge it if you can. Links between pages inside a source file may stop working.</p>
+
+<h2>Privacy</h2>
+<p>The PDFs are read into this tab's memory and the merged file is built there. FileTools Kit does not receive the bytes. The site itself still loads from Vercel and shows Google ads, which is explained in <a href="/guides/what-stays-in-the-tab.html">what "files stay in this tab" means</a>.</p>
+
+<h2>FAQ</h2>
+<h3>How many files can I merge?</h3>
+<p>There is no fixed count. The limit is your device's memory. A dozen text PDFs is easy. Fifty phone scans on an older phone may stall, so batch them.</p>
+<h3>Can I merge JPG photos with a PDF?</h3>
+<p>Not directly. Turn the photos into a PDF with <a href="/jpg-to-pdf">JPG to PDF</a>, then merge that PDF with the others.</p>
+<h3>Does the merged file keep selectable text?</h3>
+<p>Yes, if the sources had it. Pages are copied, not turned into pictures. A scan stays a picture of text.</p>
+<h3>Can I undo a merge?</h3>
+<p>Your originals are untouched. If you need parts back from merged.pdf, use <a href="/split-pdf">Split PDF</a> with the page range.</p>
+<p>Related guides: <a href="/guides/merge-scanned-documents.html">merge scanned documents into one PDF</a>, <a href="/guides/split-pdf-pages.html">split a PDF by page range</a>, <a href="/guides/page-numbers-pdf.html">add page numbers to a PDF</a>, <a href="/guides/when-browser-pdf-tools-fail.html">when browser PDF tools fail</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>

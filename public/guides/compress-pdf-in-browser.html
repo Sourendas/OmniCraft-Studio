@@ -4,40 +4,76 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to compress a PDF in the browser | FileTools Kit</title>
-  <meta name="description" content="Rewrite a PDF in this tab and compare size before and after. Not a server optimizer. Scans that are already JPEG often do not shrink." />
+  <meta name="description" content="Rewrite a PDF in this tab and compare size before and after. What the light rewrite can shrink, why scans often do not, and what to do instead." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/compress-pdf-in-browser.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
   <h1>How to compress a PDF in the browser</h1>
-  
-<p>Compress PDF rewrites the document in this tab and shows the size before and after. It is a structural rewrite, not a server that downsamples every image to a promised percent. FileTools Kit does not receive the file.</p>
-<h2>When it helps</h2>
-<p>Text-heavy files sometimes shrink, because unused structure can be rewritten. A phone scan that is already a JPEG inside the PDF often does not. If the number barely moves, the file was already compact. Running it again will not invent a smaller picture.</p>
-<p>If a portal rejects the upload for size, shrink the source images in <a href="/image-optimizer">Image Optimizer</a>, then build the PDF again with <a href="/jpg-to-pdf">JPG to PDF</a>. That path usually beats a second pass on the PDF.</p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p><a href="/compress-pdf">Compress PDF</a> rewrites the document in this tab and tells you the size before and after. It is a light structural rewrite, not a server that downsamples every image to a promised percentage. That difference matters, so this guide explains what the rewrite can and cannot shrink, and what to do when the number barely moves. FileTools Kit does not receive the file.</p>
+
+<h2>What the rewrite actually does</h2>
+<p>The tool loads the PDF with pdf-lib, copies every page into a fresh document, and saves it with object streams, which pack the file's internal bookkeeping more tightly. Leftover objects that the old file carried but no page uses are dropped along the way. It does not re-encode images, lower their resolution, remove fonts, or convert colour to greyscale. That is why the result is honest but modest.</p>
+
+<h2>When it helps, and when it will not</h2>
+<p>Files that often shrink: PDFs edited and re-saved many times, PDFs exported by older office or scanner apps, and files that were built by appending changes, where old versions of objects are still inside. These can carry a lot of dead weight, and a clean rewrite removes it.</p>
+<p>Files that usually do not shrink: a phone scan where every page is already a JPEG, a PDF a modern tool already optimised, and anything whose size is mostly photos. A 4 MB scan is 4 MB of pictures, and a structural rewrite leaves pictures alone. Sometimes the result is slightly larger than the original. Running it a second time will not change that.</p>
+
 <h2>Steps</h2>
 <ol>
 <li>Open <a href="/compress-pdf">Compress PDF</a>.</li>
-<li>Pick the file. Keep the original somewhere else.</li>
-<li>The new file downloads as compressed.pdf and the page shows the size before and after. Keep it only if it is smaller and the pages still look right.</li>
-<li>Open the download. Check the first page and a page with a photo or a signature.</li>
+<li>Press Choose a PDF to compress and pick the file. Keep the original where it is.</li>
+<li>The rewrite starts at once. compressed.pdf downloads and the page shows a line such as report.pdf: 812 KB -&gt; 604 KB. Light rewrite only.</li>
+<li>Compare the two numbers. Keep the new file only if it is smaller.</li>
+<li>Open compressed.pdf and check the first page, a page with a photo or a signature, and the last page.</li>
+<li>Rename it before you send it, for example rent-agreement-2026.pdf.</li>
 </ol>
-<h2>What the rewrite does</h2>
-<p>The tool copies every page into a fresh document with pdf-lib and saves it with object streams, which packs the file's internal structure more tightly. It does not re-encode images, lower resolution, or remove fonts. That is why the result is honest but modest. Bookmarks (the outline in a reader's side panel) are not carried into the new file, and form fields may not survive either, so check before you send a form.</p>
-<p>A file exported many times by different apps, or saved by an old scanner app, may shrink noticeably. A PDF that a modern tool already optimized may come out the same size or slightly bigger. The page downloads the result and shows both sizes, so you can see the difference at a glance. If the new file is not smaller, delete it and keep the original.</p>
-<h2>Limits</h2>
-<p>No guaranteed percent. A digital signature may not survive the rewrite. Encrypted files often fail. This is not redaction. Hidden text can remain even if a page looks smaller.</p>
-<p><a href="/compress-pdf">Open Compress PDF</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+<h2>If the number barely moves</h2>
+<p>For a scanned document that must go under a portal cap, the reliable route is to shrink the images, not the PDF wrapper:</p>
+<ol>
+<li>If you have the original photos or scans, open them in <a href="/image-optimizer">Image Optimizer</a>. If you only have the PDF, turn its pages into images with <a href="/pdf-to-jpg">PDF to JPG</a> at Standard or Screen resolution first.</li>
+<li>Set Output Format to JPEG, lower Dimensions Scaling until a page is around 1200 to 1600 pixels on its long side, and bring Visual Quality to about 60 to 70.</li>
+<li>Build the PDF again with <a href="/jpg-to-pdf">JPG to PDF</a> and check the size.</li>
+</ol>
+<p>The trade-off is that pages built from images have no selectable text. For a scan that never had any, nothing is lost. The full walkthrough, with targets for 1 MB and 200 KB caps, is in <a href="/guides/reduce-pdf-size-for-upload-portals.html">how to get a PDF under 1 MB or 200 KB</a>.</p>
+
+<h2>Common mistakes and fixes</h2>
+<ul>
+<li><strong>Sending the larger file.</strong> The download happens even when the result is bigger. Read the KB line and delete compressed.pdf if it lost.</li>
+<li><strong>Overwriting the original.</strong> Save compressed.pdf under a new name until you have checked it.</li>
+<li><strong>"Could not compress that file."</strong> Encrypted PDFs often fail. Save an unlocked copy in your reader first.</li>
+<li><strong>A form stopped being fillable.</strong> Form fields may not survive the page copy. Fill the form first, or send the original.</li>
+<li><strong>Expecting a percentage.</strong> There is no target slider here, because the tool does not touch image quality. Any site that promises 80% on every file is resampling images, which you can do yourself with the image route above while seeing the result.</li>
+</ul>
+
+<h2>What the rewrite can lose</h2>
+<p>Bookmarks in the reader's side panel are not carried over. A digital signature will not stay valid after the rewrite. Fillable fields may be lost. Page content, text, and images are copied as they are. This is also not redaction: hidden or covered text stays in the file.</p>
+
+<h2>Privacy</h2>
+<p>The PDF is read and rewritten in this tab's memory. There is no upload step, so this is a reasonable tool for documents you would rather not hand to an online compressor, such as payslips or ID scans. The page itself loads from Vercel and shows ads, which see a page visit, not your file. See <a href="/guides/what-stays-in-the-tab.html">what stays in the tab</a>.</p>
+
+<h2>FAQ</h2>
+<h3>Why did my PDF get bigger?</h3>
+<p>The original was already compact, and the rewrite added a little structure. Keep the original.</p>
+<h3>Does it reduce image quality?</h3>
+<p>No. Images are copied untouched. That is also why scans rarely shrink.</p>
+<h3>Can I compress several PDFs at once?</h3>
+<p>No, one file per run.</p>
+<h3>Is text still searchable afterwards?</h3>
+<p>Yes. Text stays text.</p>
+<p>Related guides: <a href="/guides/reduce-pdf-size-for-upload-portals.html">get a PDF under 1 MB or 200 KB</a>, <a href="/guides/compress-images-in-browser.html">compress images in the browser</a>, <a href="/guides/jpg-to-pdf-in-browser.html">put JPG and PNG scans into one PDF</a>, <a href="/guides/when-browser-pdf-tools-fail.html">when browser PDF tools fail</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>

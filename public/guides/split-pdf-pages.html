@@ -4,40 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to split a PDF by page range | FileTools Kit</title>
-  <meta name="description" content="Copy pages such as 2-4 or 1-3,5 into a new PDF. The original is not rewritten. Runs in this tab. No upload API." />
+  <meta name="description" content="Copy pages such as 2-4 or 1-3,5 into a new PDF. How ranges work, cutting one file into parts, and what split cannot do. Runs in this tab." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/split-pdf-pages.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
   <h1>How to split a PDF by page range</h1>
-  
-<p>Split is the opposite of merge. You name the pages you want, and the tool copies those pages into a new PDF. The file you picked is not rewritten on disk. FileTools Kit does this with pdf-lib in the tab. There is no upload step.</p>
-<h2>How ranges work</h2>
-<p>A range like 1-3,5 keeps pages 1, 2, 3, and 5. Numbers are the order of pages in the file, not a label printed in the footer. If a scan was saved with a cover as page 1, the signature you want may be page 4 even if the footer says 3.</p>
-<p>Use split when an office asked for the signature page only, or when one download mixed two documents. If you need to reorder rather than drop pages, use <a href="/organize-pdf">Organize PDF</a>.</p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Split is the opposite of merge. You name the pages you want, and <a href="/split-pdf">Split PDF</a> copies those pages into a new PDF. The file you picked is not rewritten on disk. FileTools Kit does this with pdf-lib in the tab, and there is no upload step.</p>
+
+<h2>When splitting is the right job</h2>
+<ul>
+<li>An office asked for the signed page only, not the whole 30-page agreement.</li>
+<li>A bank statement download covers six months and the form wants the last three.</li>
+<li>One scan session produced a single PDF holding two different documents, such as a degree certificate and a mark sheet, and a portal wants them as separate uploads.</li>
+<li>A long file is too heavy for a portal, and the receiver only needs part of it.</li>
+</ul>
+<p>If you want to keep every page but change the order, use <a href="/organize-pdf">Organize PDF</a>. If you want to drop one blank page from the middle of a file, Organize is also quicker, because you can see the thumbnails.</p>
+
 <h2>Steps</h2>
 <ol>
-<li>Open <a href="/split-pdf">Split PDF</a>.</li>
-<li>Pick the PDF. Split uses the first file in the list, so remove any others you loaded. Encrypted files often fail. Unlock them first.</li>
-<li>Type the range. Check the page count the tool shows against the file you opened.</li>
-<li>Download the new PDF and open it before you send it.</li>
+<li>Open <a href="/split-pdf">Split PDF</a>. The Split / Range tab is already selected on the right.</li>
+<li>Drop the PDF on the dashed box or click to browse. Split uses the first file in the list, so if you loaded others, remove them with the bin icon or press Clear All and start again.</li>
+<li>Read the page count on the file card, for example 12 page(s). That tells you the highest number you can use.</li>
+<li>Type the pages in Page range (first loaded file), for example 2-4 or 1-3,5.</li>
+<li>Press Export split PDF. The new file downloads as split-pages.pdf and a message confirms how many pages it took.</li>
+<li>Open the download and check the first and last page before you rename and send it.</li>
 </ol>
-<h2>Range details</h2>
-<p>Commas separate parts and a hyphen marks a run, so 2-4,7,9-10 keeps six pages. Pages are always exported in file order, and a page listed twice appears once, so 5,1-3 gives pages 1, 2, 3, and 5. Numbers past the end of the file are ignored. If nothing valid is left, the page says so instead of downloading an empty file. The download is named split-pages.pdf.</p>
-<p>To cut one file into several parts, run split once per part: 1-4, then 5-9, then 10-12, and rename each download as you go.</p>
-<h2>What this will not do</h2>
-<p>It will not OCR a scan, redact a sentence, or remove a password. It will not split by heading. If the tab stalls on a very large scan, extract a smaller range first.</p>
-<p><a href="/split-pdf">Open Split PDF</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+<h2>How ranges work</h2>
+<p>Commas separate parts and a hyphen marks a run, so 2-4,7,9-10 keeps six pages. Spaces are fine. The numbers are the order of pages in the file, starting at 1, not the numbers printed in a footer. If a scan has a cover as its first page, the page with footer number 3 is page 4 of the file. Your PDF reader shows the file position in its page box, which is the number to use.</p>
+<p>Pages always come out in file order, and a page listed twice appears once, so 5,1-3 gives pages 1, 2, 3, and 5, in that order. A backwards run such as 4-2 is read as 2-4. Numbers past the end of the file are ignored, so 10-99 on a 12-page file gives pages 10, 11, and 12. If nothing valid is left, the page tells you instead of downloading an empty file. When you need pages in a different order, split first and then fix the order in Organize PDF.</p>
+
+<h2>Cutting one file into several parts</h2>
+<p>Each export makes one file. To cut a 12-page file into three documents, run the split three times with 1-4, then 5-9, then 10-12. Every download is called split-pages.pdf, and browsers add (1), (2) to repeats, so rename each one as soon as it lands, for example degree-certificate.pdf and marksheet-sem1.pdf. Renaming as you go avoids sending the wrong part later.</p>
+
+<h2>A worked example</h2>
+<p>Say a college sends a 9-page PDF: page 1 is a covering letter, pages 2 and 3 are the provisional certificate, and pages 4 to 9 are semester mark sheets. A job portal wants the certificate and the final-year mark sheets (pages 8 and 9) as one upload. Type 2-3,8-9, export, and open the file: it should have four pages, certificate first. If the portal also caps size, check the file size before uploading and see the <a href="/guides/reduce-pdf-size-for-upload-portals.html">size guide</a> if it is too large.</p>
+
+<h2>Common mistakes and fixes</h2>
+<ul>
+<li><strong>The wrong pages came out.</strong> You used footer numbers. Count from the first page of the file instead.</li>
+<li><strong>It split the wrong document.</strong> Split always uses the first card. Clear the list and load only the file you want.</li>
+<li><strong>"Split failed."</strong> The file is often encrypted. Save an unlocked copy in your reader and try again.</li>
+<li><strong>The download is as big as the original.</strong> Large scanned pages stay large. Splitting removes pages, it does not shrink the ones you keep.</li>
+</ul>
+
+<h2>What split will not do</h2>
+<p>It will not OCR a scan, redact a sentence, or remove a password. It will not split by bookmarks or headings, and it does not cut every N pages automatically. Bookmarks and form fields from the source are not carried into the new file, and a digital signature on the original will not be valid in the extract. If the tab stalls on a very large scan, try a smaller range first.</p>
+
+<h2>Privacy</h2>
+<p>The PDF is read into this tab and the extract is built there. Nothing is sent to a FileTools Kit server. Closing the tab clears the loaded file; your download stays in your downloads folder. More detail in <a href="/guides/what-stays-in-the-tab.html">what stays in the tab</a>.</p>
+
+<h2>FAQ</h2>
+<h3>Can I extract a single page?</h3>
+<p>Yes. Type just that number, for example 4.</p>
+<h3>Is the text still selectable in the new file?</h3>
+<p>Yes, if it was selectable in the original. Pages are copied, not rendered as images.</p>
+<h3>How do I delete pages instead of choosing pages to keep?</h3>
+<p>Type the ranges you want to keep around the unwanted page. To drop page 5 from a 10-page file, type 1-4,6-10. Or delete it visually in Organize PDF.</p>
+<h3>Can I split several PDFs at once?</h3>
+<p>No. One file, one range per export.</p>
+<p>Related guides: <a href="/guides/merge-pdf-in-browser.html">merge PDF files</a>, <a href="/guides/organize-pdf-pages-in-browser.html">reorder, rotate, and delete PDF pages</a>, <a href="/guides/page-numbers-for-thesis.html">page numbers for a thesis</a>, <a href="/guides/when-browser-pdf-tools-fail.html">when browser PDF tools fail</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>
