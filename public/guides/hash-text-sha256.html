@@ -51,6 +51,9 @@
 <h2>Reading the output</h2>
 <p>Output is lowercase hex. SHA-256 gives 64 characters, SHA-1 gives 40, SHA-384 gives 96, and SHA-512 gives 128. Compare the whole string, not the first few characters. SHA-1 is shown for checking old checksums. It is no longer considered safe against deliberate collisions, so do not choose it for anything new.</p>
 
+<h2>Worked example: confirming a value without resending it</h2>
+<p>Say a colleague set an API key in a server's configuration and you have the same key in your notes. You want to confirm they match without pasting the key into a chat. Each of you pastes the key into the Hash Generator, presses Generate hashes, and shares only the SHA-256 line. If the two 64-character strings match, the keys are identical. If they differ, one of you has a typo, an extra space, or an old key. The key itself never travelled. This only works for long, random values: for a short or guessable value, someone holding the hash can try likely inputs until one matches, so do not publish hashes of short secrets.</p>
+
 <h2>Text, not files</h2>
 <p>This tool hashes text you paste. It does not hash a file you download, such as an installer or an ISO image, so it cannot verify a download checksum directly. For that, use your operating system: sha256sum file on Linux, shasum -a 256 file on macOS, or Get-FileHash file in Windows PowerShell (it uses SHA-256 by default). Compare the result with the published value.</p>
 
