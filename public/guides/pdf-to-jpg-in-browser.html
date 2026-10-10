@@ -4,40 +4,71 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How to turn PDF pages into JPG or PNG | FileTools Kit</title>
-  <meta name="description" content="Rasterize PDF pages to JPG or PNG in this tab and download one image or a ZIP. No OCR. Text in the image is not selectable." />
+  <meta name="description" content="Render PDF pages to JPG or PNG in this tab and download one image or a ZIP. Resolution choices, file names, size, and limits. No OCR." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.filetoolskit.com/guides/pdf-to-jpg-in-browser.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}.crumbs{font-size:.85rem}</style>
 </head>
 <body>
 <main>
-  <p><a href="/guides.html">All guides</a> · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a></p>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
   <h1>How to turn PDF pages into JPG or PNG</h1>
-  
-<p>Some forms want a photo of a page, not the PDF. PDF to JPG draws each page to an image with PDF.js in this tab and lets you download one picture or a ZIP. The PDF is not sent to a FileTools Kit server.</p>
-<h2>What you get</h2>
-<p>You get a picture. You cannot select the text in the JPG. This is not OCR and it will not recover words from a blurry scan. A higher scale makes a sharper image and a larger file. Export one page first and check it before you render a long document.</p>
-<p>Password-protected PDFs often will not open. Unlock them in a reader you trust, then render the unlocked copy.</p>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Some forms want a picture of a page, not the PDF: a profile photo upload that only takes JPG, a portal that asks for the signature page as an image, or a slide where you want one page of a report. <a href="/pdf-to-jpg">PDF to JPG</a> draws each page to an image with PDF.js in this tab and downloads one picture or a ZIP. The PDF is not sent to a FileTools Kit server.</p>
+
+<h2>When to convert, and when not to</h2>
+<p>Convert when the receiver only accepts images, when you want to post a page on social media or in a chat, when you need a page as a picture inside a slide or a document, or when you want to shrink a scanned PDF by rebuilding it from smaller images.</p>
+<p>Do not convert when the receiver accepts PDF. A PDF keeps selectable text and usually prints sharper. A JPG of a page is a photograph of it: you cannot select or search the words, and this is not OCR, so it will not recover text from a blurry scan.</p>
+
 <h2>Steps</h2>
 <ol>
-<li>Open <a href="/pdf-to-jpg">PDF to JPG</a>.</li>
-<li>Pick the PDF. The page range starts as every page, for example 1-12. Change it to the pages you need, such as 1-3,5.</li>
-<li>Choose JPG for a photo-like page or PNG for a flat form with sharp lines.</li>
-<li>Download and open the image. If a portal caps size, shrink the JPG in <a href="/image-optimizer">Image Optimizer</a>.</li>
+<li>Open <a href="/pdf-to-jpg">PDF to JPG</a> and press Choose a PDF.</li>
+<li>The page reads the file and shows the page count. The Pages box fills with every page, for example 1-12. Change it to the pages you need, such as 1 or 1-3,5.</li>
+<li>Pick a Format: JPG for photos and scans, PNG for flat forms with thin lines.</li>
+<li>Pick a Resolution: Screen, Standard, or Print. Standard is selected to start.</li>
+<li>Press Export JPG (or Export PNG). The page shows progress, such as Rendering page 2 of 3.</li>
+<li>Open the image or unzip the ZIP and check the result before you upload it.</li>
 </ol>
-<h2>Resolution and format</h2>
-<p>There are three sizes. Screen renders at 108 DPI, Standard at 144 DPI, and Print at 216 DPI. An A4 page comes out about 893 by 1263 pixels at Screen, 1191 by 1684 at Standard, and 1786 by 2526 at Print. Standard is enough for most upload forms. Print is for a page someone will print or zoom into, and it makes files roughly twice the size of Standard.</p>
-<p>JPG is saved at quality 0.9, which keeps text readable in a photo of a page. PNG is lossless and larger, and it is the better pick for a form with thin lines or a page you plan to edit later.</p>
-<h2>What you download</h2>
-<p>One page downloads as a single image. Two or more pages download as one ZIP named after the PDF, for example contract-jpg.zip, with one image per page inside. Unzip it before you upload, because most forms want the images, not the archive. A long document at Print size uses a lot of tab memory. If the tab slows, render in ranges of twenty or thirty pages.</p>
-<p><a href="/pdf-to-jpg">Open PDF to JPG</a></p>
 
-  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 8 October 2026. Corrections: <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a>.</p>
+<h2>Resolution and format</h2>
+<p>Screen renders at 108 DPI, Standard at 144 DPI, and Print at 216 DPI. An A4 page comes out about 893 by 1263 pixels at Screen, 1191 by 1684 at Standard, and 1786 by 2526 at Print. Standard is enough for most upload forms and for reading on a phone. Print is for a page someone will print or zoom into, and it makes files roughly twice the size of Standard. Screen is the one to choose when a form caps the image at 200 or 300 KB.</p>
+<p>JPG is saved at quality 0.9, which keeps text readable in a picture of a page. PNG is lossless and larger, and it is the better pick for a form with thin lines or a page you plan to edit later. For a page that is mostly a photo, JPG is far smaller at the same look.</p>
+
+<h2>What you download</h2>
+<p>One page downloads as a single image. Two or more pages download as one ZIP named after the PDF, for example contract-jpg.zip. Inside, each image is named after the PDF and its page number with zero padding, such as contract-page-01.jpg, contract-page-02.jpg, so they sort correctly in a file manager. Unzip before you upload: most forms want the images, not the archive. The status line shows the ZIP size when it is done.</p>
+
+<h2>Long documents</h2>
+<p>Every page is drawn in this tab, one after another. Above 50 pages the tool warns that large documents take a while and use a lot of memory. Print size on a long document can slow an older laptop or a phone. Render in ranges of twenty or thirty pages, such as 1-25 and then 26-50, and close other heavy tabs.</p>
+
+<h2>Common mistakes and fixes</h2>
+<ul>
+<li><strong>No valid pages in that range.</strong> The numbers are past the end of the file or mistyped. Use page positions from 1 to the count shown.</li>
+<li><strong>Could not render these pages.</strong> Try Screen or Standard, or a smaller range. A password-protected PDF often will not open; unlock it in a reader you trust first.</li>
+<li><strong>Image too big for the form.</strong> Pick Screen, or shrink the JPG in <a href="/image-optimizer">Image Optimizer</a> with a lower Visual Quality.</li>
+<li><strong>Blurry small print.</strong> Use Standard or Print rather than Screen, or PNG for line drawings.</li>
+<li><strong>Uploaded the ZIP.</strong> Unzip it first and upload the single page the form asked for.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>The PDF is read and drawn in this tab, and the images are packed into the ZIP there too. FileTools Kit has no server step for these files. See <a href="/guides/what-stays-in-the-tab.html">what stays in the tab</a>.</p>
+
+<h2>FAQ</h2>
+<h3>Can I turn the images back into a PDF?</h3>
+<p>Yes, with <a href="/jpg-to-pdf">JPG to PDF</a>. The new PDF will be image-only, without selectable text.</p>
+<h3>Why is the PNG so much larger than the JPG?</h3>
+<p>PNG keeps every pixel exactly. For scans and photos that costs a lot of space.</p>
+<h3>Can I choose a custom DPI?</h3>
+<p>No. The three presets cover screen, upload, and print use.</p>
+<h3>Does it keep links or form fields?</h3>
+<p>No. An image has none.</p>
+<p>Related guides: <a href="/guides/jpg-to-pdf-in-browser.html">put JPG and PNG scans into one PDF</a>, <a href="/guides/reduce-pdf-size-for-upload-portals.html">get a PDF under 1 MB or 200 KB</a>, <a href="/guides/jpg-png-webp-which-to-send.html">JPG, PNG, or WebP: which to send</a>, <a href="/guides/when-browser-pdf-tools-fail.html">when browser PDF tools fail</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>
