@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.filetoolskit.com/</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/about.html</loc><lastmod>2026-10-08</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/guides.html</loc><lastmod>2026-10-02</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/about.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides.html</loc><lastmod>2026-10-10</lastmod></url>
   <url><loc>https://www.filetoolskit.com/privacy.html</loc><lastmod>2026-10-08</lastmod></url>
   <url><loc>https://www.filetoolskit.com/terms.html</loc><lastmod>2026-10-08</lastmod></url>
   <url><loc>https://www.filetoolskit.com/cookie-policy.html</loc><lastmod>2026-10-08</lastmod></url>
   <url><loc>https://www.filetoolskit.com/disclaimer.html</loc><lastmod>2026-10-08</lastmod></url>
   <url><loc>https://www.filetoolskit.com/contact.html</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/whats-new.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/how-we-test.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/merge-scanned-documents.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/reduce-pdf-size-for-upload-portals.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/jpg-to-pdf-for-online-forms.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/page-numbers-for-thesis.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/webp-images-for-websites.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/svg-vs-png.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/wifi-qr-code.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/ats-friendly-resume-for-freshers.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/markdown-basics.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/compare-two-text-versions.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/json-formatting-explained.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/csv-to-json.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/base64-explained.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/bmi-what-it-means.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/guides/currency-conversion-basics.html</loc><lastmod>2026-10-10</lastmod></url>
   <url><loc>https://www.filetoolskit.com/guides/build-resume-pdf.html</loc><lastmod>2026-10-02</lastmod></url>
   <url><loc>https://www.filetoolskit.com/guides/compress-images-in-browser.html</loc><lastmod>2026-10-02</lastmod></url>
   <url><loc>https://www.filetoolskit.com/guides/compress-pdf-in-browser.html</loc><lastmod>2026-10-02</lastmod></url>
@@ -26,24 +43,24 @@
   <url><loc>https://www.filetoolskit.com/guides/watermark-versus-password.html</loc><lastmod>2026-10-02</lastmod></url>
   <url><loc>https://www.filetoolskit.com/guides/what-stays-in-the-tab.html</loc><lastmod>2026-10-08</lastmod></url>
   <url><loc>https://www.filetoolskit.com/guides/when-browser-pdf-tools-fail.html</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/resume-builder</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/pdf-suite</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/merge-pdf</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/split-pdf</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/compress-pdf</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/jpg-to-pdf</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/pdf-to-jpg</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/organize-pdf</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/password-protect-pdf</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/page-numbers</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/file-converter</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/image-optimizer</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/qr-generator</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/dev-tools</loc><lastmod>2026-10-02</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/markdown-editor</loc><lastmod>2026-10-08</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/svg-editor</loc><lastmod>2026-10-08</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/text-diff</loc><lastmod>2026-10-08</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/social-studio</loc><lastmod>2026-10-08</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/health-calc</loc><lastmod>2026-10-08</lastmod></url>
-  <url><loc>https://www.filetoolskit.com/currency-crypto</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/resume-builder</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/pdf-suite</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/merge-pdf</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/split-pdf</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/compress-pdf</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/jpg-to-pdf</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/pdf-to-jpg</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/organize-pdf</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/password-protect-pdf</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/page-numbers</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/file-converter</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/image-optimizer</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/qr-generator</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/dev-tools</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/markdown-editor</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/svg-editor</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/text-diff</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/social-studio</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/health-calc</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.filetoolskit.com/currency-crypto</loc><lastmod>2026-10-10</lastmod></url>
 </urlset>
