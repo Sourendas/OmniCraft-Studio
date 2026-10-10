@@ -2,10 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getToolArticle } from '../../data/toolArticles';
 import { PDF_TOOL_ARTICLES, type ToolArticleWithGuides } from '../../data/toolArticlesPdf';
+import { TOOL_ARTICLE_EXTRAS } from '../../data/toolArticlesExtra';
 
 export const ToolArticle: React.FC<{ slug: string }> = ({ slug }) => {
-  const article: ToolArticleWithGuides | undefined = getToolArticle(slug) ?? PDF_TOOL_ARTICLES[slug];
-  if (!article) return null;
+  const base: ToolArticleWithGuides | undefined = getToolArticle(slug) ?? PDF_TOOL_ARTICLES[slug];
+  if (!base) return null;
+  const extra = TOOL_ARTICLE_EXTRAS[slug];
+  const seen = new Set<string>();
+  const guides = [...(base.guides ?? []), ...(extra?.guides ?? [])].filter((g) => !seen.has(g.slug) && seen.add(g.slug));
+  const article = {
+    ...base,
+    steps: extra?.steps ?? base.steps,
+    limits: extra?.limits ?? base.limits,
+    faq: [...base.faq, ...(extra?.faq ?? [])],
+    guides,
+  };
 
   return (
     <article className="max-w-3xl mx-auto mt-12 mb-16 px-4 sm:px-6 text-[#0A2540]">
@@ -38,6 +49,24 @@ export const ToolArticle: React.FC<{ slug: string }> = ({ slug }) => {
             <li key={item}>{item}</li>
           ))}
         </ul>
+        {extra?.sections.map((section) => (
+          <section key={section.heading} className="space-y-3">
+            <h3 className="text-base font-black text-[#1C1917]">{section.heading}</h3>
+            {section.paragraphs.map((p) => (
+              <p key={p.slice(0, 40)}>{p}</p>
+            ))}
+          </section>
+        ))}
+        {extra && extra.tips.length > 0 && (
+          <>
+            <h3 className="text-base font-black text-[#1C1917]">Tips</h3>
+            <ul className="list-disc pl-5 space-y-1">
+              {extra.tips.map((tip) => (
+                <li key={tip}>{tip}</li>
+              ))}
+            </ul>
+          </>
+        )}
         <h3 className="text-base font-black text-[#1C1917]">Questions</h3>
         <dl className="space-y-3">
           {article.faq.map((item) => (

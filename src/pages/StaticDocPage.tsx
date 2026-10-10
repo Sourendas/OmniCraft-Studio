@@ -14,12 +14,16 @@ const IN_APP: Record<string, string> = {
   '/disclaimer.html': '/disclaimer',
   '/contact.html': '/contact',
   '/about.html': '/about',
+  '/guides.html': '/guides',
+  '/whats-new.html': '/whats-new',
+  '/how-we-test.html': '/how-we-test',
 };
 
 const prose =
   'rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 text-sm text-slate-700 leading-relaxed ' +
   '[&_h1]:text-3xl [&_h1]:font-black [&_h1]:text-[#0A2540] [&_h1]:mb-2 ' +
   '[&_h2]:text-lg [&_h2]:font-black [&_h2]:text-[#0A2540] [&_h2]:mt-6 [&_h2]:mb-2 ' +
+  '[&_h3]:text-base [&_h3]:font-black [&_h3]:text-[#0A2540] [&_h3]:mt-4 [&_h3]:mb-1 ' +
   '[&_p]:my-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:my-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:my-3 [&_li]:my-1 ' +
   '[&_figure]:my-5 [&_img]:rounded-2xl [&_img]:border [&_img]:border-slate-200 [&_img]:h-auto [&_img]:max-w-full ' +
   '[&_figcaption]:text-xs [&_figcaption]:text-slate-600 [&_figcaption]:mt-2 ' +
@@ -37,7 +41,7 @@ function applyHead(doc: Document) {
   if (canon && link) link.setAttribute('href', canon);
 }
 
-export const StaticDocPage: React.FC<{ src: string; back?: { to: string; label: string } }> = ({ src, back }) => {
+export const StaticDocPage: React.FC<{ src: string; back?: { to: string; label: string }; trail?: string }> = ({ src, back, trail }) => {
   const [html, setHtml] = useState<string | null>(null);
   const [failed, setFailed] = useState(false);
   const navigate = useNavigate();
@@ -89,9 +93,17 @@ export const StaticDocPage: React.FC<{ src: string; back?: { to: string; label: 
 
   return (
     <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
-      <Link to={back?.to ?? '/'} className="inline-flex items-center gap-1.5 text-xs font-black text-[#C2410C] mb-6">
-        <ArrowLeft className="w-3.5 h-3.5" /> {back?.label ?? 'Back to tools'}
-      </Link>
+      <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-xs font-bold text-slate-600 mb-6">
+        <Link to={back?.to ?? '/'} className="inline-flex items-center gap-1.5 font-black text-[#C2410C]">
+          <ArrowLeft className="w-3.5 h-3.5" /> {back?.label ?? 'Back to tools'}
+        </Link>
+        {trail && (
+          <>
+            <span aria-hidden="true">›</span>
+            <span>{trail}</span>
+          </>
+        )}
+      </nav>
       {html === null ? (
         <div className="rounded-3xl bg-white border border-slate-200 p-8 text-sm text-slate-600">Loading…</div>
       ) : (

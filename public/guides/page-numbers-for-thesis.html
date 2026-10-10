@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to add page numbers to a thesis or project report PDF | FileTools Kit</title>
+  <meta name="description" content="Number the chapters of a thesis while leaving the title page and front matter unnumbered, using split, page numbers, and merge in this tab." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/page-numbers-for-thesis.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
+  <h1>How to add page numbers to a thesis or project report PDF</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Most universities in India and elsewhere want the same thing from a thesis or project report: the title page and certificates unnumbered, and the chapters numbered from 1. Word processors can do this with section breaks, but that is fiddly, and sometimes all you have is the final PDF your lab partner exported. This guide shows how to number a finished PDF so that page 1 is where the first chapter starts, using tools that run in your browser.</p>
+
+<h2>Check your guidelines first</h2>
+<p>Your department's formatting guide decides where the number goes, what style it uses, and which pages carry one. Common rules include numbers centred at the bottom, Arabic numerals (1, 2, 3) from the first chapter, and lower-case Roman numerals (i, ii, iii) for the front matter. Read the guide before you start.</p>
+<p>Be aware of what the tool here can and cannot do. <a href="/page-numbers">Add page numbers</a> draws Arabic numbers in one of three positions: <strong>Bottom centre</strong>, <strong>Bottom right</strong>, or <strong>Top centre</strong>. It offers three formats: <strong>1</strong>, <strong>1 / N</strong>, and <strong>Page 1 of N</strong>. It numbers every page of the file you give it. It does not do Roman numerals, and it cannot skip pages within a file. The method below works around the skipping. If your guidelines require Roman numerals on the front matter, number the source document in Word or LaTeX instead.</p>
+
+<h2>If you still have the Word or Google Docs file</h2>
+<p>Numbering in the source is the cleanest option. Insert a section break after the front matter, unlink the footer of the chapter section from the previous one, and start numbering at 1 there. Then export to PDF. The rest of this guide is for when you only have the PDF, or when the source numbering keeps going wrong.</p>
+
+<h2>The method in four steps</h2>
+<p>The idea is simple: cut the PDF into the part that should not be numbered and the part that should, number the second part, and join them again.</p>
+<p>Say your thesis is 86 pages. Pages 1 to 8 are the title page, certificate, declaration, acknowledgements, abstract, and contents. Chapter 1 starts on page 9.</p>
+<ol>
+<li><strong>Split off the chapters.</strong> Open <a href="/split-pdf">Split PDF</a>, load the thesis, open the <strong>Split / Range</strong> tab, type <strong>9-86</strong>, and press <strong>Export split PDF</strong>. Rename the download from split-pages.pdf to chapters.pdf.</li>
+<li><strong>Split off the front matter.</strong> Back in Split PDF, with the same thesis loaded, type <strong>1-8</strong> and export again. Rename this one front.pdf.</li>
+<li><strong>Number the chapters.</strong> Open <a href="/page-numbers">Add page numbers</a>. Leave <strong>Start at</strong> at 1, choose the <strong>Position</strong> and <strong>Format</strong> your guidelines ask for, then press <strong>Choose PDF files</strong> and pick chapters.pdf. The numbered file downloads as page-numbers.pdf, and the status line confirms the range, for example "Numbered 78 page(s), 1 to 78."</li>
+<li><strong>Join the two parts.</strong> Open <a href="/merge-pdf">Merge PDF</a>, add front.pdf first and page-numbers.pdf second, and press <strong>Merge PDFs</strong>. The final thesis downloads as merged.pdf. Rename it to the name your department wants.</li>
+</ol>
+<p>Choose the options before you pick the file in step 3, because the numbering runs as soon as the file is chosen.</p>
+
+<h2>Variations</h2>
+<h3>Numbering from a page other than 1</h3>
+<p>Some reports count the front matter in the total but only print numbers from the introduction. In the example above that would mean the introduction shows 9. Set <strong>Start at</strong> to 9 in step 3.</p>
+<h3>Chapters in separate files</h3>
+<p>If each chapter is its own PDF, you can pick them all at once in step 3. The tool joins them and numbers them as one continuous run. Pages are taken in the order your browser's file picker returns the files, which is usually alphabetical, so name them 01-introduction.pdf, 02-literature.pdf, and so on. Open the result and check that chapter order is right.</p>
+<h3>Appendices without numbers</h3>
+<p>Split the appendices off as a third part and add it after page-numbers.pdf in the merge.</p>
+
+<h2>About the "of N" formats</h2>
+<p>In the <strong>1 / N</strong> and <strong>Page 1 of N</strong> formats, N is the last number printed, not the number of pages in your file. With Start at 1 on 78 pages, the last page reads Page 78 of 78, as you would expect. With Start at 9, the last page reads Page 86 of 86. A thesis normally uses the plain <strong>1</strong> format.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Numbering before the content is final.</strong> The numbers are drawn on the pages. If you add a figure later and pages shift, you have to redo the numbering from an un-numbered copy. Keep chapters.pdf without numbers so you can redo step 3.</li>
+<li><strong>Numbers overlapping an existing footer.</strong> If the PDF already has a footer, such as a running title, the new number may sit on top of it. The number is placed 18 points (about 6 mm) from the edge in 10-point Helvetica. Try <strong>Top centre</strong> instead, or remove the footer in the source.</li>
+<li><strong>Wrong page range in the split.</strong> The numbers you type are positions in the file, not printed page numbers. Open the PDF and check which file page the first chapter is on.</li>
+<li><strong>Table of contents does not match.</strong> If your contents page lists chapter 1 on page 1, the numbering above matches. If it lists page 9, use Start at 9. Check two or three entries against the final file.</li>
+<li><strong>Encrypted PDFs.</strong> If the PDF has a password, the tools stop with "Encrypted PDFs often fail." Save an unprotected copy first.</li>
+</ul>
+
+<h2>Final checks before submission</h2>
+<ul>
+<li>Open merged.pdf and confirm the title page has no number and chapter 1 starts at the right number.</li>
+<li>Jump to the last page and confirm the final number.</li>
+<li>Check a landscape page, if you have any. The number is centred on that page's own width.</li>
+<li>Check the file size against the submission portal's limit. Splitting, numbering, and merging copy pages without re-rendering them, so the size stays close to the original.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>Unpublished research is worth protecting. Split, page numbers, and merge all run in your browser tab with pdf-lib. FileTools Kit does not run an upload API for these files and does not keep copies.</p>
+
+<h2>FAQ</h2>
+<h3>Can I use Roman numerals for the front matter?</h3>
+<p>Not with this tool. It prints Arabic numbers only. Use your word processor's page number formatting for that.</p>
+<h3>Can I change the font size of the numbers?</h3>
+<p>No. The size is fixed at 10 points, which suits A4 and Letter pages.</p>
+<h3>Does this reduce the quality of my figures?</h3>
+<p>No. Pages are copied as they are. Only the number is added on top.</p>
+<h3>Can I remove numbers after adding them?</h3>
+<p>Not from the numbered file. Go back to the copy you saved without numbers.</p>
+<p>Related guides: <a href="/guides/page-numbers-pdf.html">add page numbers to a PDF</a>, <a href="/guides/split-pdf-pages.html">split a PDF by page range</a>, <a href="/guides/merge-pdf-in-browser.html">merge PDF files</a>, <a href="/guides/reduce-pdf-size-for-upload-portals.html">get a PDF under a size limit</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>

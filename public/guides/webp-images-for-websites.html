@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compress images for a website: WebP explained | FileTools Kit</title>
+  <meta name="description" content="What WebP is, when to use it over JPEG or PNG, how large a web image should be, and how to resize and convert images in your browser." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/webp-images-for-websites.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Images and graphics</p>
+  <h1>Compress images for a website: WebP explained</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Images are usually the heaviest part of a web page. A blog post with five phone photos straight from the camera can weigh 15 MB, which is slow on a mobile connection and costly for readers on limited data plans. This guide explains what WebP is, when to use it instead of JPEG or PNG, how large a web image actually needs to be, and how to resize and convert images in your browser with <a href="/image-optimizer">Image Optimizer</a>.</p>
+
+<h2>What WebP is</h2>
+<p>WebP is an image format Google introduced in 2010. It can store photos with lossy compression, like JPEG, and graphics with lossless compression and transparency, like PNG. For the same visual quality, a WebP photo is usually noticeably smaller than a JPEG. Google's own comparison study reported lossy WebP files roughly 25 to 34 percent smaller than JPEG at similar quality. Your results depend on the image, which is why Image Optimizer shows the actual size before and after rather than promising a figure.</p>
+<p>All current major browsers display WebP, including Chrome, Edge, Firefox, and Safari on iPhone and Mac. Most website builders and content systems now accept WebP uploads.</p>
+
+<h2>When to use which format</h2>
+<ul>
+<li><strong>WebP:</strong> the default choice for photos and most graphics on a modern website.</li>
+<li><strong>JPEG:</strong> when the destination does not accept WebP, such as some older content systems, email newsletters, or upload forms. Also when someone will download and edit the file in older software.</li>
+<li><strong>PNG:</strong> screenshots with small text, diagrams, and images where every pixel must be exact. PNG is lossless, so it is larger.</li>
+<li><strong>SVG:</strong> logos and icons that were drawn as vectors. They stay sharp at any size and are often tiny. See <a href="/guides/svg-vs-png.html">SVG vs PNG</a>.</li>
+</ul>
+
+<h2>How big should a web image be?</h2>
+<p>Size in pixels matters more than format. A photo from a modern phone is 4000 pixels wide or more. Most blog layouts show images at 700 to 1200 pixels wide. Sending 4000 pixels to show 1000 wastes about 94 percent of the pixels.</p>
+<p>A practical rule: make the image about the width it is displayed at, or up to twice that if you want it crisp on high-density phone and laptop screens. For a content column 800 pixels wide, 1200 to 1600 pixels is plenty. A full-width banner might need 1920 to 2400 pixels. A thumbnail in a card grid might need only 400 to 600.</p>
+<p>To find the display width, right-click the image on your site, choose Inspect, and look at its rendered size, or ask your theme's documentation.</p>
+
+<h2>Step by step with Image Optimizer</h2>
+<ol>
+<li>Open <a href="/image-optimizer">Image Optimizer</a>.</li>
+<li>Work out the scale. Divide the width you want by the image's current width. For a 4000-pixel photo you want at 1600 pixels, that is 1600 ÷ 4000 = 40 percent.</li>
+<li>Set <strong>Dimensions Scaling</strong> to that value. The slider goes from 100 down to 25 percent in steps of 5.</li>
+<li>Set <strong>Output Format</strong> to <strong>WebP (Best)</strong>.</li>
+<li>Leave <strong>Visual Quality</strong> at 75 percent to start.</li>
+<li>Drop your images on <strong>Select or Drop Images to Compress</strong>. Each card shows the original size, the new size, the saving, and the new pixel dimensions.</li>
+<li>Open a result and look at it at 100 percent zoom. Check faces, fine textures, and any text. If it looks good, try a lower quality; if you see blocky patches or smeared edges, go back up.</li>
+<li>Press <strong>Save</strong> on a single image or <strong>Download All</strong>.</li>
+</ol>
+<p>Changing a setting re-processes every image in the list from the original file, so you can try values freely without stacking losses.</p>
+
+<h2>Quality settings that usually work</h2>
+<p>For photos on a website, quality between 65 and 80 percent is usually indistinguishable from the original at normal viewing size. Hero images that fill the screen may deserve 80 or more. Background images behind text can go lower, around 55 to 65. These are starting points, not rules. Trust your eyes on your own images.</p>
+<p>The quality slider only affects WebP and JPEG. For PNG, only the scale changes the size.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Converting a tiny, already-compressed JPEG to WebP and expecting miracles.</strong> Re-encoding a heavily compressed image can even make it slightly bigger. Start from the best original you have.</li>
+<li><strong>Uploading the original "just in case".</strong> Many site builders resize images for display, but some still serve the original to some visitors. Upload the size you need.</li>
+<li><strong>Using WebP where it is not accepted.</strong> Some email clients and older systems will not show WebP. Use JPEG there.</li>
+<li><strong>Losing transparency.</strong> JPEG has no transparency, so transparent areas become white when you choose JPEG. Use WebP or PNG for logos with transparent backgrounds.</li>
+<li><strong>Forgetting alt text.</strong> Smaller files help speed; descriptive alt text helps people using screen readers and helps search engines understand the image. Add it in your site editor.</li>
+</ul>
+
+<h2>Beyond file size</h2>
+<p>Once your images are the right size and format, two other habits help page speed. Set width and height on images in your HTML (most builders do this for you) so the page does not jump while loading. And use lazy loading for images further down the page, which most modern themes enable by default with the loading="lazy" attribute. Image Optimizer does not do these for you; they are settings in your site.</p>
+
+<h2>Privacy</h2>
+<p>Image Optimizer decodes and re-encodes each image on a canvas in your browser tab. FileTools Kit does not run an upload API for these images. Re-encoding also strips embedded metadata such as camera model and GPS coordinates, which is useful before publishing photos taken at home.</p>
+
+<h2>FAQ</h2>
+<h3>Does WebP hurt SEO?</h3>
+<p>No. Search engines index WebP images. Faster pages are generally better for visitors, which is what search engines try to reward.</p>
+<h3>Should I convert all my old JPEGs?</h3>
+<p>Only if you have the originals. Converting an already compressed JPEG adds a second round of loss. For new uploads, start with WebP.</p>
+<h3>What about AVIF?</h3>
+<p>AVIF is a newer format that can be smaller still. Image Optimizer exports WebP, JPEG, and PNG only.</p>
+<h3>Why are my PNG screenshots still large?</h3>
+<p>PNG is lossless. Try WebP at 80 to 90 percent quality, which usually keeps text readable at a fraction of the size.</p>
+<p>Related guides: <a href="/guides/compress-images-in-browser.html">how to compress images in the browser</a>, <a href="/guides/jpg-png-webp-which-to-send.html">JPG, PNG, or WebP: which file to send</a>, <a href="/guides/convert-images-png-jpg-webp.html">convert PNG, JPG, and WebP</a>, <a href="/guides/svg-vs-png.html">SVG vs PNG</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>

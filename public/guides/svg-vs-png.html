@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SVG vs PNG: which image format to use | FileTools Kit</title>
+  <meta name="description" content="Vector versus raster, when an SVG is the right file, when a PNG is safer, and how to turn an SVG icon into a PNG in your browser." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/svg-vs-png.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Images and graphics</p>
+  <h1>SVG vs PNG: which image format to use</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>SVG and PNG both show up when you download a logo or an icon, and they look the same on screen. They are built completely differently, and picking the wrong one leads to blurry logos on big screens, files that a slide deck will not open, or icons that cannot be recoloured. This guide explains the difference and when to use each, and shows how to recolour an SVG icon and export a PNG in <a href="/svg-editor">SVG Studio</a>.</p>
+
+<h2>Vector and raster in one paragraph</h2>
+<p>A PNG is a raster image: a grid of coloured pixels. It has a fixed size, such as 512 by 512. Make it bigger and the pixels get stretched, so edges go soft or jagged. An SVG is a vector image: a text file of drawing instructions such as "draw a circle here, fill it orange". The device draws it fresh at whatever size it is shown, so it is sharp at 16 pixels and at 16 metres.</p>
+
+<h2>When SVG is the right choice</h2>
+<ul>
+<li><strong>Logos and icons on websites.</strong> One file looks sharp on every screen density, and a simple icon is often under 2 KB.</li>
+<li><strong>Print.</strong> Printers and designers prefer vectors for logos because they scale cleanly to any size.</li>
+<li><strong>Icons you need to recolour.</strong> Colours are text in the file, so they can be changed without redrawing.</li>
+<li><strong>Simple diagrams and charts</strong> that will be zoomed or printed.</li>
+</ul>
+
+<h2>When PNG is the safer choice</h2>
+<ul>
+<li><strong>Photos and screenshots.</strong> These are pixels by nature. An SVG cannot describe a photo efficiently.</li>
+<li><strong>Places that do not accept SVG.</strong> Many social networks, some presentation and document tools, and many upload forms want PNG or JPG.</li>
+<li><strong>Email.</strong> Many email clients do not display SVG images.</li>
+<li><strong>Untrusted sources.</strong> An SVG is code and can contain scripts or links. A PNG cannot. If you are publishing an image someone else sent you, a PNG is lower risk.</li>
+</ul>
+<p>A common setup is to keep the SVG as the master file and export PNGs at the sizes each platform needs.</p>
+
+<h2>Recolour an SVG icon and export a PNG</h2>
+<ol>
+<li>Open <a href="/svg-editor">SVG Studio</a>.</li>
+<li>Start from one of the preset icons, press <strong>Upload SVG</strong> to open your own file, or paste SVG markup into the code view.</li>
+<li>Pick a <strong>Stroke Color</strong> and a <strong>Fill Color</strong>, and set the <strong>Stroke Width</strong>. The preview updates as you go. Fill can stay transparent so outline icons remain outlines.</li>
+<li>Adjust <strong>Inner Padding</strong> and <strong>Rotation Angle</strong> if you need space around the icon or a different angle in the PNG.</li>
+<li>Choose a background. Pick <strong>Transparent</strong> if the PNG will sit on a coloured page or slide. The default is Cyan Glow.</li>
+<li>Press <strong>Export PNG</strong>. The PNG is 1024 by 1024 pixels, four times the 256-pixel preview, which is enough for slides, documents, and most social posts.</li>
+<li>Press <strong>Download SVG</strong> or <strong>Copy Minified SVG</strong> to keep the recoloured vector as well.</li>
+</ol>
+
+<h3>Why a colour change sometimes does nothing</h3>
+<p>SVG Studio changes the stroke, fill, and stroke-width attributes already written in the markup. Some icons set colours through a style attribute or a CSS class instead. Those are not changed. If that happens, edit the colour by hand in the code view: look for something like style="fill:#000" and replace the value.</p>
+<p>Rotation and padding apply to the preview and the PNG. The SVG download carries the colour and stroke changes only.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Saving a PNG as .svg.</strong> Renaming does not change the format. An SVG that contains only an embedded PNG is still a pixel image inside, and it will blur when scaled.</li>
+<li><strong>Exporting a small PNG and scaling it up.</strong> Export at the largest size you need. Scaling a PNG up always loses sharpness.</li>
+<li><strong>Using a PNG logo in print.</strong> Ask for the vector version (SVG, EPS, or PDF) from whoever made the logo.</li>
+<li><strong>Exporting with a coloured background by accident.</strong> Check the background setting before you export a PNG for a slide or a page with its own colour.</li>
+<li><strong>Pasting SVG from unknown websites into your own site.</strong> Check the markup for script tags and external links first. SVG Studio does not sanitise every possible feature.</li>
+</ul>
+
+<h2>File size compared</h2>
+<p>A simple icon as SVG is usually one or two kilobytes. The same icon as a 1024-pixel PNG might be 20 to 60 KB depending on colours and detail. For a complex illustration with many shapes and gradients, the SVG can become larger than a PNG. If an SVG is very large, a PNG or WebP at the display size may load faster.</p>
+
+<h2>Privacy</h2>
+<p>SVG Studio edits the markup and draws the PNG on a canvas in your browser tab. FileTools Kit does not run an upload API for these files. Your original file is not changed unless you save a download over it.</p>
+
+<h2>FAQ</h2>
+<h3>Can I convert a PNG to SVG here?</h3>
+<p>No. That needs tracing, which turns pixels into shapes. SVG Studio edits existing vector markup only. A dedicated vector tool such as Inkscape can trace simple images.</p>
+<h3>Can I use the SVG in a React project?</h3>
+<p>Yes. The React Component tab wraps the markup in a TypeScript JSX component with camelCase attributes.</p>
+<h3>What PNG size do I need for a favicon?</h3>
+<p>Browsers accept SVG favicons today. For a PNG fallback, 512 by 512 pixels covers most uses. Export at 1024 and shrink it with <a href="/image-optimizer">Image Optimizer</a> at 50 percent scale.</p>
+<h3>Is SVG good for photos?</h3>
+<p>No. Use JPEG or WebP for photos.</p>
+<p>Related guides: <a href="/guides/webp-images-for-websites.html">compress images for a website: WebP explained</a>, <a href="/guides/jpg-png-webp-which-to-send.html">JPG, PNG, or WebP: which file to send</a>, <a href="/guides/create-qr-code.html">create a QR code and export PNG or SVG</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>

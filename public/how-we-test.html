@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How FileTools Kit tools are tested | FileTools Kit</title>
+  <link rel="canonical" href="https://www.filetoolskit.com/how-we-test.html" />
+  <meta name="description" content="How each tool and guide on FileTools Kit is checked before it ships: real files, phone-width checks, reader tests, and corrections by email." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.7}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.35rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.6rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p><a href="/">FileTools Kit</a> · <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a></p>
+  <h1>How FileTools Kit tools and guides are tested</h1>
+  <p>This page explains what I check before a tool, a fix, or a guide goes live, and what happens when something turns out to be wrong. I am one person, so this is a practical routine rather than a lab. It is written down so you can judge how much to rely on the site.</p>
+
+  <h2>Before a tool or a fix ships</h2>
+  <ul>
+    <li><strong>Real files.</strong> PDF tools are run on several kinds of PDF: a text PDF exported from a word processor, a scanned PDF, a multi-page document with mixed page sizes, and a password-protected file to confirm it is refused with a clear message rather than failing silently.</li>
+    <li><strong>Open the output.</strong> Every download is opened in a second program, such as the browser's PDF viewer or an image viewer, to check that the pages, order, rotation, and text are what the tool says they will be.</li>
+    <li><strong>Phone width.</strong> Pages are checked at phone width as well as on a desktop, including that buttons can be reached and nothing runs off the screen.</li>
+    <li><strong>Edge cases.</strong> Empty inputs, very large inputs, and inputs in the wrong format, such as WebP where only JPEG or PNG is accepted, should give a plain message rather than a broken page.</li>
+    <li><strong>The production build.</strong> Changes are built with the same command the live site uses, and checked in a preview deployment before they are merged.</li>
+  </ul>
+
+  <h2>Before a guide is published</h2>
+  <ul>
+    <li><strong>Button names match the tool.</strong> Steps use the exact labels on the page, checked against the tool's source code.</li>
+    <li><strong>Claims are checked against the code.</strong> If a guide says a tool does something, the code has to do it. If a tool has a limit, such as no OCR, no target-size box, or no Roman numerals, the guide says so.</li>
+    <li><strong>No invented numbers.</strong> Guides do not quote compression percentages, user counts, or success rates I cannot show. Where a published figure is used, such as WHO BMI bands, the source is named.</li>
+    <li><strong>Health and money topics</strong> carry a clear note that they are general information, not medical or financial advice.</li>
+    <li><strong>A last-updated date</strong> appears on every guide and changes when the content changes.</li>
+  </ul>
+
+  <h2>What I do not test</h2>
+  <p>I cannot test every browser version, every phone, or every PDF ever made. Very old browsers, unusual PDF features such as digital signatures and forms, and very large files are the most likely to cause trouble. The guide <a href="/guides/when-browser-pdf-tools-fail.html">When browser PDF tools fail</a> lists the known cases.</p>
+
+  <h2>Corrections</h2>
+  <p>If a tool gives a wrong result or a guide does not match what you see, email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> with the page address, your browser and device, and what happened. Please describe the file rather than attaching a private document. Fixes are listed on the <a href="/whats-new.html">What's new</a> page with their date.</p>
+  <p>Last updated 10 October 2026. Souren Das, Bengaluru.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/how-we-test.html">How we test</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>

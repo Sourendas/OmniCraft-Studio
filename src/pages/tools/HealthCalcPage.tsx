@@ -42,9 +42,18 @@ export const HealthCalcPage: React.FC = () => {
 
   const bmi = useMemo(() => {
     const hMeters = currentHeightCm / 100;
-    if (hMeters <= 0) return 22;
+    if (hMeters <= 0 || currentWeightKg <= 0) return '0.0';
     return (currentWeightKg / (hMeters * hMeters)).toFixed(1);
   }, [currentWeightKg, currentHeightCm]);
+
+  const bmiCategory = useMemo(() => {
+    const v = Number(bmi);
+    if (!Number.isFinite(v) || v <= 0) return 'Enter height and weight';
+    if (v < 18.5) return 'Underweight (WHO adult band)';
+    if (v < 25) return 'Healthy range (WHO adult band)';
+    if (v < 30) return 'Overweight (WHO adult band)';
+    return 'Obesity (WHO adult band)';
+  }, [bmi]);
 
   const macros = useMemo(() => {
     let proteinRatio = 0.3;
@@ -204,13 +213,13 @@ export const HealthCalcPage: React.FC = () => {
         <div className="lg:col-span-7 space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="p-5 rounded-3xl bg-white border border-slate-200">
-              <span className="text-[10px] text-slate-400 uppercase font-mono">Basal Metabolic Rate</span>
-              <div className="text-xl font-black text-[#0A2540] mt-1">{bmr} <span className="text-xs text-slate-400 font-normal">kcal/d</span></div>
+              <span className="text-[10px] text-slate-500 uppercase font-mono">Basal Metabolic Rate</span>
+              <div className="text-xl font-black text-[#0A2540] mt-1">{bmr} <span className="text-xs text-slate-500 font-normal">kcal/d</span></div>
               <p className="text-[10px] text-slate-500 mt-1">Calories burned at resting baseline</p>
             </div>
             <div className="p-5 rounded-3xl bg-white border border-slate-200">
-              <span className="text-[10px] text-slate-400 uppercase font-mono">Maintenance TDEE</span>
-              <div className="text-xl font-extrabold text-[#00A3AD] mt-1">{tdee} <span className="text-xs text-slate-400 font-normal">kcal/d</span></div>
+              <span className="text-[10px] text-slate-500 uppercase font-mono">Maintenance TDEE</span>
+              <div className="text-xl font-extrabold text-[#00A3AD] mt-1">{tdee} <span className="text-xs text-slate-500 font-normal">kcal/d</span></div>
               <p className="text-[10px] text-slate-500 mt-1">Daily energy with activity factored</p>
             </div>
             <div className="p-5 rounded-3xl bg-rose-50 border border-rose-200">
@@ -218,6 +227,17 @@ export const HealthCalcPage: React.FC = () => {
               <div className="text-2xl font-black text-rose-600 mt-1">{targetCalories} <span className="text-xs text-rose-700 font-normal">kcal/d</span></div>
               <p className="text-[10px] text-rose-700 mt-1">Optimized for {goal.toUpperCase()}</p>
             </div>
+          </div>
+          <div className="p-5 rounded-3xl bg-white border border-slate-200">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <span className="text-[10px] text-slate-500 uppercase font-mono">Body Mass Index (BMI)</span>
+              <span className="text-xs font-bold text-slate-600">{bmiCategory}</span>
+            </div>
+            <div className="text-xl font-black text-[#0A2540] mt-1">{bmi} <span className="text-xs text-slate-500 font-normal">kg/m²</span></div>
+            <p className="text-[11px] text-slate-600 mt-2 leading-relaxed">
+              Weight in kg divided by height in metres squared. Adult WHO bands: under 18.5 underweight, 18.5 to 24.9 healthy range, 25 to 29.9 overweight, 30 and above obesity. Indian guidelines use lower cut-offs (overweight from 23, obesity from 25). BMI does not measure body fat and does not apply to children or pregnancy. Not medical advice.{' '}
+              <Link to="/guides/bmi-what-it-means" className="text-[#C2410C] font-bold underline">What BMI means</Link>
+            </p>
           </div>
           <div className="p-6 rounded-3xl bg-white border border-slate-200 space-y-4">
             <h3 className="text-xs font-bold text-[#0A2540] uppercase tracking-wider flex items-center gap-2">

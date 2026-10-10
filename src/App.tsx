@@ -91,6 +91,8 @@ export default function App() {
                 <Route path="/contact" element={<StaticDocPage src="/contact.html" />} />
                 <Route path="/about" element={<StaticDocPage src="/about.html" />} />
                 <Route path="/guides" element={<StaticDocPage src="/guides.html" />} />
+                <Route path="/whats-new" element={<StaticDocPage src="/whats-new.html" />} />
+                <Route path="/how-we-test" element={<StaticDocPage src="/how-we-test.html" />} />
                 <Route path="/guides/:slug" element={<GuideArticlePage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>

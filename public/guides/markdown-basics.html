@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Markdown basics: headings, lists, links, and tables | FileTools Kit</title>
+  <meta name="description" content="The Markdown you need for READMEs and notes, with a live preview in your browser, and the limits of a simple preview." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/markdown-basics.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Text, code, and data</p>
+  <h1>Markdown basics: headings, lists, links, and tables</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Markdown is a way of writing formatted text with ordinary characters. You type a # for a heading and wrap a word in two asterisks to make it bold, and a program turns that into a formatted page. It is used for README files on GitHub, notes apps such as Obsidian and Notion, documentation sites, and many chat and forum tools. This guide covers the syntax you will use every day, shows what the preview in <a href="/markdown-editor">Markdown Editor</a> understands, and points out where different Markdown engines disagree.</p>
+
+<h2>Why bother with Markdown</h2>
+<p>A Markdown file is plain text. It opens in any editor on any device, it works well with version control because changes are easy to compare line by line, and it does not lock you into one program. You can write a document once and turn it into HTML for a website or paste it into a tool that renders Markdown. For notes, project documentation, and changelogs, it is often quicker than a word processor once you know a dozen symbols.</p>
+
+<h2>The basics, with examples</h2>
+<h3>Headings</h3>
+<p>Start a line with one to three hash signs and a space. # is the biggest heading, ## the next, ### the next.</p>
+<pre><code># Project name
+## Installation
+### On Windows</code></pre>
+<p>The space after the hashes matters. #Installation without a space is plain text in most engines.</p>
+
+<h3>Paragraphs and line breaks</h3>
+<p>Leave a blank line between paragraphs. Lines next to each other without a blank line between them are joined into one paragraph. This surprises people at first, but it means you can wrap long lines in your editor without changing the output.</p>
+
+<h3>Bold, italic, and strikethrough</h3>
+<pre><code>**bold**   *italic*   ***bold italic***   ~~struck out~~</code></pre>
+<p>Many engines also accept underscores for italics, like _this_. The preview in Markdown Editor only uses asterisks, so prefer asterisks if you want the same result everywhere.</p>
+
+<h3>Lists</h3>
+<p>Start each item with a dash and a space for bullets, or a number, full stop, and space for numbered lists. Task lists use - [ ] for an open item and - [x] for a done one.</p>
+<pre><code>- Milk
+- Eggs
+
+1. Unzip the file
+2. Run the installer
+
+- [x] Write draft
+- [ ] Send for review</code></pre>
+
+<h3>Links</h3>
+<pre><code>[FileTools Kit](https://www.filetoolskit.com)</code></pre>
+<p>The text in square brackets is what the reader sees; the address in round brackets is where it goes. No space between the brackets.</p>
+
+<h3>Quotes and rules</h3>
+<p>Start a line with &gt; and a space for a quote. Three dashes on a line on their own make a horizontal rule.</p>
+
+<h3>Code</h3>
+<p>Wrap a short piece of code in single backticks: `npm install`. For several lines, put three backticks on the line before and after. Inside a code block, symbols such as * and # are shown as they are, not treated as formatting.</p>
+<pre><code>```
+git clone https://example.com/repo.git
+cd repo
+```</code></pre>
+
+<h3>Tables</h3>
+<p>Separate cells with pipes, and put a row of dashes under the header row.</p>
+<pre><code>| Tool | Runs in |
+| --- | --- |
+| Merge PDF | Browser |
+| Text Diff | Browser |</code></pre>
+<p>Cells do not have to line up in your source. Lining them up just makes the text easier to read.</p>
+
+<h2>Writing in Markdown Editor</h2>
+<ol>
+<li>Open <a href="/markdown-editor">Markdown Editor</a>. It opens with sample text you can read and then replace.</li>
+<li>Type in the editor pane. The preview updates as you type in <strong>Split View</strong>. Use <strong>Editor Only</strong> to focus on writing or <strong>Preview Only</strong> to read the result full width.</li>
+<li>Select some text and use the toolbar to wrap it in syntax for headings, bold, italic, strikethrough, lists, task boxes, quotes, code blocks, and links. This is handy until the symbols become habit.</li>
+<li>Watch the counters for words, characters, lines, and an estimated reading time at 200 words per minute.</li>
+<li>When you are done, press <strong>Download .md</strong> to save the file, <strong>Copy Markdown</strong> to paste the source somewhere else, or <strong>Copy HTML</strong> to paste the formatted result into a site builder or email tool.</li>
+</ol>
+<p>The text lives only in this tab. Refreshing or closing it clears your work, so download or copy before you leave.</p>
+
+<h2>Where the preview differs from GitHub</h2>
+<p>The preview here is a lightweight renderer for everyday Markdown, not a full CommonMark or GitHub engine. Knowing the differences saves confusion:</p>
+<ul>
+<li>Bullets must start with a dash. GitHub also accepts * and +.</li>
+<li>Italics use asterisks only.</li>
+<li>Nested lists, footnotes, and images are not rendered.</li>
+<li>Links must start with http:// or https://. Relative links are left as text.</li>
+<li>Table header rows look the same as other rows.</li>
+<li>Numbered lists keep the numbers you typed. Some engines renumber them.</li>
+</ul>
+<p>If something renders oddly here but you need it on GitHub, check it in GitHub's own preview before you commit.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>No blank line before a list.</strong> Some engines treat the list as part of the previous paragraph. Always leave a blank line before and after lists, tables, and code blocks.</li>
+<li><strong>Missing space after # or -.</strong> The symbol is then shown as text.</li>
+<li><strong>Unclosed backticks or asterisks.</strong> One stray * can italicise the rest of a line. Check the preview.</li>
+<li><strong>Tabs versus spaces.</strong> Indentation rules differ between engines. Use spaces.</li>
+<li><strong>Special characters you want to show.</strong> To show a literal * or #, put it inside backticks.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>Markdown Editor runs entirely in your browser tab. The text is not sent to FileTools Kit and is not saved on a server or in your browser storage. That also means there is no recovery if you close the tab, so save your work.</p>
+
+<h2>FAQ</h2>
+<h3>What file extension should I use?</h3>
+<p>.md is standard. Download .md uses it.</p>
+<h3>Can I open an existing .md file?</h3>
+<p>Open it in any text editor, copy the contents, and paste them into Markdown Editor.</p>
+<h3>Is Markdown the same everywhere?</h3>
+<p>The basics are. Extras such as tables, task lists, and footnotes depend on the engine. GitHub Flavored Markdown and CommonMark are the two most common specifications.</p>
+<h3>Can I write a README here?</h3>
+<p>Yes. Write it, press Download .md, rename the file README.md, and add it to your repository.</p>
+<p>Related guides: <a href="/guides/compare-two-text-versions.html">compare two versions of a text</a>, <a href="/guides/json-formatting-explained.html">JSON formatting explained</a>, <a href="/guides/what-stays-in-the-tab.html">what "files stay in this tab" means</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>

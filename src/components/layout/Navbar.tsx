@@ -29,7 +29,7 @@ export const Navbar: React.FC = () => {
         <Link to="/" className="min-w-0 shrink group">
           <BrandLockup />
         </Link>
-        <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-stone-600">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-semibold text-stone-600">
           <div className="relative">
             <button onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)} onMouseEnter={() => setToolsDropdownOpen(true)} className="flex items-center gap-1.5 hover:text-[#EA580C] font-bold text-stone-800">
               <span>Tools</span>
@@ -48,6 +48,7 @@ export const Navbar: React.FC = () => {
           </div>
           <Link to="/about" className="hover:text-[#EA580C] font-bold text-stone-800">About</Link>
           <Link to="/guides" className="hover:text-[#EA580C] font-bold text-stone-800">Guides</Link>
+          <Link to="/whats-new" className="hover:text-[#EA580C] font-bold text-stone-800">What's new</Link>
           <Link to="/privacy" className="hover:text-[#EA580C] font-bold text-stone-800">Privacy</Link>
           <a href={isHome ? '#faq' : '/#faq'} className="hover:text-[#EA580C] font-bold text-stone-800">FAQ</a>
           <Link to="/contact" className="hover:text-[#EA580C] font-bold text-stone-800">Contact</Link>
@@ -70,6 +71,7 @@ export const Navbar: React.FC = () => {
           </div>
           <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold py-2 px-3">About</Link>
           <Link to="/guides" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold py-2 px-3">Guides</Link>
+          <Link to="/whats-new" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold py-2 px-3">What's new</Link>
           <Link to="/privacy" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold py-2 px-3">Privacy</Link>
           <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold py-2 px-3">Contact</Link>
         </div>

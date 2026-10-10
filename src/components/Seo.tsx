@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { SITE, SEO_PAGES, TOOL_PATHS, breadcrumbJsonLd, organizationWebSiteJsonLd, pageName, seoForPath, softwareApplicationJsonLd } from '../lib/seo';
 import { getGuide } from '../data/honestGuides';
+import { CATALOG_SEO } from '../data/guideCatalog';
 
 function upsertMeta(attr: 'name' | 'property', key: string, content: string) {
   const sel = `meta[${attr}="${key}"]`;
@@ -18,7 +19,8 @@ export const Seo: React.FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    let page = seoForPath(pathname);
+    // Guides and pages added in October 2026 keep their SEO entries in guideCatalog.ts.
+    let page = CATALOG_SEO[pathname] ?? seoForPath(pathname);
     let howTo: unknown = null;
 
     const slug = pathname.startsWith('/guides/') ? pathname.slice('/guides/'.length) : '';
@@ -84,7 +86,7 @@ export const Seo: React.FC = () => {
     document.getElementById('ftk-jsonld')?.remove();
     upsertJsonLd('ftk-site', organizationWebSiteJsonLd());
 
-    const known = pathname === '/' || Boolean(SEO_PAGES[pathname]) || Boolean(guide);
+    const known = pathname === '/' || Boolean(SEO_PAGES[pathname]) || Boolean(CATALOG_SEO[pathname]) || Boolean(guide);
     if (!known || pathname === '/') {
       upsertJsonLd('ftk-breadcrumb', null);
       upsertJsonLd('ftk-software', null);

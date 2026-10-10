@@ -7,7 +7,7 @@
   <link rel="canonical" href="https://www.filetoolskit.com/guides.html" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
-  <meta name="description" content="Practical guides for merge, split, compress, images, resume PDFs, QR codes, and hashes. Written by Souren Das, Bengaluru. No file-upload API." />
+  <meta name="description" content="Guides for PDF, image, resume, text, data, and calculator tasks, grouped by topic. Written by Souren Das, Bengaluru. No file-upload API." />
   <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:46rem;margin:1.5rem auto 3rem;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}li{margin:.55rem 0}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}</style>
 </head>
 <body>
@@ -16,32 +16,64 @@
   <h1>Guides</h1>
   <p>These articles explain how each job works in this browser tab, including the cases where it will not work. They are written by Souren Das in Bengaluru for the tools on this site. FileTools Kit does not run an upload API that receives your documents. Questions: support@filetoolskit.com.</p>
   <p>If you only needed the tool, the links inside each guide open it. If a PDF is encrypted, huge, or signed, read <a href="/guides/when-browser-pdf-tools-fail.html">when browser PDF tools fail</a> before you try a site that asks you to upload.</p>
-  <h2>All guides</h2>
+    <p><strong>Jump to:</strong> <a href="#pdf">PDF documents</a> · <a href="#images">Images and graphics</a> · <a href="#resume">Resumes and job applications</a> · <a href="#text-data">Text, code, and data</a> · <a href="#calculators">Everyday calculators</a> · <a href="#site">Privacy and how this site works</a></p>
+  <p>33 guides, last reviewed 10 October 2026. Guides marked new were added in October 2026. The <a href="/whats-new.html">What's new</a> page lists every dated change to the site, and <a href="/how-we-test.html">How we test</a> explains how each guide is checked against the tool.</p>
+  <h2 id="pdf">PDF documents</h2>
   <ul>
-    <li><a href="/guides/merge-pdf-in-browser.html">Merge PDF files in the browser</a> — Combine a cover letter, resume, and certificates. Page copy with pdf-lib, not an upload.</li>
-    <li><a href="/guides/split-pdf-pages.html">Split a PDF by page range</a> — Copy pages such as 2-4 or 1-3,5. The original file is not rewritten.</li>
-    <li><a href="/guides/compress-pdf-in-browser.html">Compress a PDF in the tab</a> — A light object-stream rewrite. Not a server optimizer, and scans may not shrink.</li>
-    <li><a href="/guides/pdf-to-jpg-in-browser.html">Turn PDF pages into JPG</a> — Rasterize pages for a form that wants images. No OCR.</li>
-    <li><a href="/guides/jpg-to-pdf-in-browser.html">Put JPG and PNG scans into one PDF</a> — One page per image. Shrink images first if a portal caps size.</li>
-    <li><a href="/guides/organize-pdf-pages-in-browser.html">Reorder or delete PDF pages</a> — Move pages, drop blanks, download a new file.</li>
-    <li><a href="/guides/password-protect-pdf-in-browser.html">Password-protect a PDF</a> — What an open password does here, and why you must test it in another reader.</li>
-    <li><a href="/guides/page-numbers-pdf.html">Add page numbers</a> — Stamp a simple page label after you merge, not before.</li>
-    <li><a href="/guides/convert-images-png-jpg-webp.html">Convert PNG, JPG, and WebP</a> — Canvas re-encode in the tab. HEIC and AVIF are not a pipeline.</li>
-    <li><a href="/guides/compress-images-in-browser.html">Compress images</a> — Scale and re-save. No guaranteed percent.</li>
-    <li><a href="/guides/build-resume-pdf.html">Build a resume PDF</a> — Form, layouts, and a local keyword overlap that is not an employer ATS.</li>
-    <li><a href="/guides/resume-pdf-checklist.html">Resume PDF checklist</a> — Pre-send checks: selectable text, no sample copy, filename, packet order.</li>
-    <li><a href="/guides/create-qr-code.html">Create a QR code</a> — PNG or SVG in the tab. No short link and no scan analytics.</li>
-    <li><a href="/guides/hash-text-sha256.html">Hash text with SHA-256</a> — Web Crypto in the tab. A hash is not encryption.</li>
-    <li><a href="/guides/what-stays-in-the-tab.html">What stays in this tab</a> — What is processed locally, what the host can still see, what ads do not receive.</li>
+    <li><a href="/guides/merge-pdf-in-browser.html">How to merge PDF files in your browser</a> — Combine a cover letter, resume, and certificates. Page copy with pdf-lib, not an upload.</li>
+    <li><a href="/guides/merge-scanned-documents.html">How to merge scanned documents into one PDF</a> <strong>(new)</strong> — Combine scanned pages from a phone, a scanner, and older PDFs into one file in the right order, with sideways pages fixed. Runs in your browser.</li>
+    <li><a href="/guides/split-pdf-pages.html">How to split a PDF by page range</a> — Copy pages such as 2-4 or 1-3,5. The original file is not rewritten.</li>
+    <li><a href="/guides/compress-pdf-in-browser.html">How to compress a PDF in the browser</a> — A light object-stream rewrite. Not a server optimizer, and scans may not shrink.</li>
+    <li><a href="/guides/reduce-pdf-size-for-upload-portals.html">How to get a PDF under 1 MB or 200 KB for an upload portal</a> <strong>(new)</strong> — Exam, job, and passport portals cap PDF size. What the in-tab compressor can and cannot shrink, and the image route that works for scans.</li>
+    <li><a href="/guides/jpg-to-pdf-in-browser.html">How to put JPG and PNG scans into one PDF</a> — One page per image. Shrink images first if a portal caps size.</li>
+    <li><a href="/guides/jpg-to-pdf-for-online-forms.html">Turn phone photos of documents into a PDF for an online form</a> <strong>(new)</strong> — Photograph, crop, shrink, and combine document photos into one PDF an application form will accept. Steps, size limits, and mistakes to avoid.</li>
+    <li><a href="/guides/pdf-to-jpg-in-browser.html">How to turn PDF pages into JPG or PNG</a> — Rasterize pages for a form that wants images. No OCR.</li>
+    <li><a href="/guides/organize-pdf-pages-in-browser.html">How to reorder, rotate, and delete PDF pages</a> — Move pages, drop blanks, download a new file.</li>
+    <li><a href="/guides/page-numbers-pdf.html">How to add page numbers to a PDF</a> — Stamp a simple page label after you merge, not before.</li>
+    <li><a href="/guides/page-numbers-for-thesis.html">How to add page numbers to a thesis or project report PDF</a> <strong>(new)</strong> — Number the chapters of a thesis while leaving the title page and front matter unnumbered, using split, page numbers, and merge in this tab.</li>
+    <li><a href="/guides/password-protect-pdf-in-browser.html">How to password-protect a PDF in the browser</a> — What an open password does here, and why you must test it in another reader.</li>
+    <li><a href="/guides/watermark-versus-password.html">Watermark, password, and redaction are different</a> — A stamp is not a lock, and this site does not redact.</li>
     <li><a href="/guides/when-browser-pdf-tools-fail.html">When browser PDF tools fail</a> — Encryption, memory, signatures, scans, and when to stop.</li>
-    <li><a href="/guides/jpg-png-webp-which-to-send.html">JPG, PNG, or WebP</a> — Which file to send for email, WhatsApp, and upload forms.</li>
-    <li><a href="/guides/watermark-versus-password.html">Watermark vs password vs redaction</a> — A stamp is not a lock, and this site does not redact.</li>
+  </ul>
+  <h2 id="images">Images and graphics</h2>
+  <ul>
+    <li><a href="/guides/webp-images-for-websites.html">Compress images for a website: WebP explained</a> <strong>(new)</strong> — What WebP is, when to use it over JPEG or PNG, how large a web image should be, and how to resize and convert images in your browser.</li>
+    <li><a href="/guides/compress-images-in-browser.html">How to compress images in the browser</a> — Scale and re-save. No guaranteed percent.</li>
+    <li><a href="/guides/convert-images-png-jpg-webp.html">How to convert PNG, JPG, and WebP</a> — Canvas re-encode in the tab. HEIC and AVIF are not a pipeline.</li>
+    <li><a href="/guides/jpg-png-webp-which-to-send.html">JPG, PNG, or WebP — which file to send</a> — Which file to send for email, WhatsApp, and upload forms.</li>
+    <li><a href="/guides/svg-vs-png.html">SVG vs PNG: which image format to use</a> <strong>(new)</strong> — Vector versus raster, when an SVG is the right file, when a PNG is safer, and how to turn an SVG icon into a PNG in your browser.</li>
+    <li><a href="/guides/create-qr-code.html">How to create a QR code and export PNG or SVG</a> — PNG or SVG in the tab. No short link and no scan analytics.</li>
+    <li><a href="/guides/wifi-qr-code.html">How to make a Wi-Fi QR code guests can scan</a> <strong>(new)</strong> — Create a QR code that joins a Wi-Fi network without typing the password. Security type, special characters, print size, and privacy.</li>
+  </ul>
+  <h2 id="resume">Resumes and job applications</h2>
+  <ul>
+    <li><a href="/guides/ats-friendly-resume-for-freshers.html">Resume format for freshers: an ATS-friendly one-page PDF</a> <strong>(new)</strong> — What a fresher resume should contain, how applicant tracking systems read a PDF, and how to build one in Resume Builder without padding.</li>
+    <li><a href="/guides/build-resume-pdf.html">Build a resume PDF in your browser</a> — Form, layouts, and a local keyword overlap that is not an employer ATS.</li>
+    <li><a href="/guides/resume-pdf-checklist.html">Resume PDF checklist before you send</a> — Pre-send checks: selectable text, no sample copy, filename, packet order.</li>
+  </ul>
+  <h2 id="text-data">Text, code, and data</h2>
+  <ul>
+    <li><a href="/guides/markdown-basics.html">Markdown basics: headings, lists, links, and tables</a> <strong>(new)</strong> — The Markdown you need for READMEs and notes, with a live preview in your browser, and the limits of a simple preview.</li>
+    <li><a href="/guides/compare-two-text-versions.html">How to compare two versions of a text and see what changed</a> <strong>(new)</strong> — Paste two drafts or config files and see every added and removed line. Ignore case or spacing, and export a patch file. Runs in your browser.</li>
+    <li><a href="/guides/json-formatting-explained.html">JSON formatting explained: validate, pretty-print, and minify</a> <strong>(new)</strong> — What valid JSON looks like, the mistakes that break it, and how to format or minify JSON in your browser without sending it to a server.</li>
+    <li><a href="/guides/csv-to-json.html">How to convert CSV to JSON and back</a> <strong>(new)</strong> — Turn a spreadsheet export into JSON, or flat JSON into CSV, in your browser. The limits of a simple converter and how to avoid broken rows.</li>
+    <li><a href="/guides/base64-explained.html">Base64 explained: what it is and what it is not</a> <strong>(new)</strong> — Why Base64 exists, why it makes data about a third larger, why it is not encryption, and how to encode or decode UTF-8 text in your browser.</li>
+    <li><a href="/guides/hash-text-sha256.html">How to hash text with SHA-256 in the browser</a> — Web Crypto in the tab. A hash is not encryption.</li>
+  </ul>
+  <h2 id="calculators">Everyday calculators</h2>
+  <ul>
+    <li><a href="/guides/bmi-what-it-means.html">BMI explained: how it is calculated and what it does not tell you</a> <strong>(new)</strong> — The BMI formula, WHO adult categories, the lower cut-offs used for South Asian adults, and the limits of the number. Not medical advice.</li>
+    <li><a href="/guides/currency-conversion-basics.html">Currency conversion basics: rates, spreads, and fees</a> <strong>(new)</strong> — How exchange rates work, what the mid-market rate is, how spreads and transfer fees change what arrives, and how to check a quote yourself.</li>
+  </ul>
+  <h2 id="site">Privacy and how this site works</h2>
+  <ul>
+    <li><a href="/guides/what-stays-in-the-tab.html">What “files stay in this tab” means</a> — What is processed locally, what the host can still see, what ads do not receive.</li>
   </ul>
   <h2>About these pages</h2>
-  <p>Each guide states the library in use (pdf-lib, canvas, or Web Crypto), the steps, and the limits: no OCR, no guaranteed compress percent, no employer ATS, no redaction. Each guide shows the date of its last edit. Corrections: support@filetoolskit.com.</p>
+  <p>Each guide states the library in use (pdf-lib, canvas, or Web Crypto), the steps, and the limits: no OCR, no guaranteed compress percent, no employer ATS, no redaction. Each guide shows the date of its last edit. Steps use the button names you see on the tool page, and are checked against the tool before a guide is published. Corrections: support@filetoolskit.com.</p>
   <nav class="static-nav" aria-label="Site">
     <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
-    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/how-we-test.html">How we test</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
     <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
   </nav>
 </main>

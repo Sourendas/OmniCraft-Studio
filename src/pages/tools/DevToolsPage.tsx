@@ -52,6 +52,18 @@ export const DevToolsPage: React.FC = () => {
     }
   };
 
+  // Pretty-print or minify the JSON box. JSON.parse reports where the
+  // syntax breaks, so the error names the position instead of a generic fail.
+  const reformatJson = (indent: number) => {
+    try {
+      setJsonCsvError(null);
+      const parsed = JSON.parse(jsonInput);
+      setJsonInput(indent > 0 ? JSON.stringify(parsed, null, indent) : JSON.stringify(parsed));
+    } catch (e: any) {
+      setJsonCsvError(`Invalid JSON: ${e.message || 'could not parse'}`);
+    }
+  };
+
   const convertCsvToJson = () => {
     try {
       setJsonCsvError(null);
@@ -106,6 +118,9 @@ export const DevToolsPage: React.FC = () => {
       if (regexFlags.includes('g')) {
         while ((match = re.exec(regexTestString)) !== null) {
           matches.push({ full: match[0], index: match.index, groups: match.slice(1) });
+          // A pattern that can match an empty string (such as a*) would loop forever.
+          if (match[0] === '') re.lastIndex += 1;
+          if (matches.length >= 1000) break;
         }
       } else {
         const single = re.exec(regexTestString);
@@ -185,7 +200,7 @@ export const DevToolsPage: React.FC = () => {
             Developer Powerstation
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-1">
-            JSON/CSV (flat objects), SQL keyword line-breaks, regex tester, Base64, SHA hashes.
+            JSON format and minify, JSON/CSV (flat objects), SQL keyword line-breaks, regex tester, Base64, SHA hashes.
           </p>
         </div>
       </div>
@@ -227,7 +242,11 @@ export const DevToolsPage: React.FC = () => {
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs text-slate-700">
                 <label htmlFor="dev-json" className="font-bold">JSON Input / Output</label>
-                <button onClick={convertJsonToCsv} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Convert JSON to CSV</button>
+                <div className="flex flex-wrap gap-1.5 justify-end">
+                  <button onClick={() => reformatJson(2)} className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200">Format JSON</button>
+                  <button onClick={() => reformatJson(0)} className="px-3 py-1 rounded-lg bg-white hover:bg-slate-50 text-[#0A2540] font-bold text-xs border border-slate-200">Minify JSON</button>
+                  <button onClick={convertJsonToCsv} className="px-3 py-1 rounded-lg bg-[#EA580C] hover:bg-[#F97316] text-white font-bold text-xs">Convert JSON to CSV</button>
+                </div>
               </div>
               <textarea id="dev-json" rows={12} value={jsonInput} onChange={(e) => setJsonInput(e.target.value)} className="w-full p-4 rounded-2xl bg-[#FFF7ED] border border-slate-200 text-xs text-[#0A2540] font-mono focus:border-[#EA580C] focus:outline-none" />
             </div>

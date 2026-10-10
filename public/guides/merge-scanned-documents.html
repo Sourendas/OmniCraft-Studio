@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to merge scanned documents into one PDF | FileTools Kit</title>
+  <meta name="description" content="Combine scanned pages from a phone, a scanner, and older PDFs into one file in the right order, with sideways pages fixed. Runs in your browser." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/merge-scanned-documents.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › PDF documents</p>
+  <h1>How to merge scanned documents into one PDF</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>Scanned paperwork rarely arrives as one tidy file. You might have a PDF the office emailed last year, a few pages your scanner saved as separate files, and two pages you photographed on your phone this morning. This guide shows how to turn that mix into one PDF in the right order, with sideways pages fixed and blank pages removed, without uploading the documents anywhere.</p>
+
+<h2>Why combine scans at all</h2>
+<p>Reviewers, landlords, HR teams, and visa offices often ask for "one PDF" because it is easier to file and harder to lose a page. A single file in the order the checklist asks for also makes your application look careful. Merge only what belongs together, though. If a portal has a separate upload field for each document, keep them separate.</p>
+
+<h2>What you need</h2>
+<ul>
+<li>Any PDFs you already have.</li>
+<li>Any photos or scanner images as JPEG or PNG.</li>
+<li>A browser on a computer or phone. A computer is easier for long documents.</li>
+</ul>
+<p>The tools used are <a href="/jpg-to-pdf">JPG to PDF</a>, <a href="/merge-pdf">Merge PDF</a>, and <a href="/organize-pdf">Organize PDF</a>. All three run in the same tab.</p>
+
+<h2>Step 1: turn photos into a PDF</h2>
+<p>Merge PDF only accepts PDFs, so loose images go through JPG to PDF first.</p>
+<ol>
+<li>If the photos are large (most phone photos are), shrink them in <a href="/image-optimizer">Image Optimizer</a> with <strong>Output Format</strong> set to <strong>JPEG</strong> and <strong>Dimensions Scaling</strong> around 40 percent. This keeps the merged file small enough to email.</li>
+<li>Open JPG to PDF and press <strong>Choose JPEG or PNG files</strong>. Select the images. Name them 01, 02, 03 beforehand so they are placed in that order.</li>
+<li>images.pdf downloads. Rename it to something like photos-part.pdf so you can tell it apart from the others.</li>
+</ol>
+
+<h2>Step 2: merge the PDFs in order</h2>
+<ol>
+<li>Open <a href="/merge-pdf">Merge PDF</a>. This is PDF Suite set up for merging.</li>
+<li>Add the PDFs in the order you want them to appear. Drop them in or click to browse. Each file shows as a card with its first page and page count.</li>
+<li>If a whole file is sideways, press its <strong>Rotate +90°</strong> button until it is upright. Rotation applies to every page of that file.</li>
+<li>If a file is in the wrong position, remove it with the trash icon and add it again at the end. There is no drag-to-reorder in this list.</li>
+<li>Press <strong>Merge PDFs</strong>. The result downloads as merged.pdf.</li>
+</ol>
+<p>Pages are copied, not redrawn, so the merge does not reduce quality. Text in digital PDFs stays selectable.</p>
+
+<h2>Step 3: tidy individual pages</h2>
+<p>Merging works on whole files. To fix single pages, open merged.pdf in <a href="/organize-pdf">Organize PDF</a>:</p>
+<ul>
+<li><strong>Delete blank pages.</strong> Double-sided scanning of single-sided paper leaves blank backs. Select them and press <strong>Delete selected</strong>.</li>
+<li><strong>Rotate single pages.</strong> A page fed upside down can be turned 90 degrees at a time with its own rotate button.</li>
+<li><strong>Move pages.</strong> Use the move buttons on a thumbnail to place a signature page or an annexure where it belongs.</li>
+</ul>
+<p>Press <strong>Export organized PDF</strong>. The new file is named after the original with -organized added. The file you opened is not changed.</p>
+
+<h2>Step 4: number and check</h2>
+<p>For a long packet, page numbers help the reader refer to a page. Run the file through <a href="/page-numbers">Add page numbers</a> as the last step, because numbers are drawn on the page and move with it if you reorder later. Then open the final file and check the first page, the last page, and any page you rotated.</p>
+
+<h2>Keeping the size down</h2>
+<p>A merged file is roughly the sum of its parts. If one scan is 8 MB, the merged file will be at least 8 MB. Find the heavy file first by looking at the sizes in your file manager, and shrink that one. For scanned PDFs, the reliable method is to turn the pages into images with <a href="/pdf-to-jpg">PDF to JPG</a> at <strong>Screen (108 DPI)</strong>, shrink the images, and rebuild with JPG to PDF. The <a href="/guides/reduce-pdf-size-for-upload-portals.html">upload portal guide</a> explains this in detail. The light re-save in Compress PDF rarely helps scans, because it does not recompress images.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Adding files in the wrong order.</strong> The merge follows the list from top to bottom. Plan the order before you add files, or fix it afterwards in Organize PDF.</li>
+<li><strong>Merging a password-protected PDF.</strong> Encrypted files usually fail. Open the file with its password in your reader, save or print an unprotected copy, and use that.</li>
+<li><strong>Expecting bookmarks to survive.</strong> Bookmarks, outlines, and form fields from the source files may not carry over.</li>
+<li><strong>Mixed page sizes.</strong> A4 scans and Letter-size PDFs stay their own size. This looks odd when scrolling but does not affect reading or printing with "Fit to page".</li>
+<li><strong>Running out of memory on a phone.</strong> Very large scans can stall a mobile browser. Merge in smaller groups, or use a computer.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>Scanned documents often carry ID numbers, addresses, and signatures. Merge PDF, Organize PDF, and JPG to PDF read and write the files inside your browser with pdf-lib. FileTools Kit does not run an upload API for them, and nothing is stored after you close the tab. The website itself is still served by its host, and ads may load on the page; see the <a href="/privacy.html">privacy policy</a> for what that means.</p>
+
+<h2>FAQ</h2>
+<h3>Is there a limit on how many files I can merge?</h3>
+<p>There is no fixed limit. The practical limit is your device's memory. On a phone, merge in batches of a few files.</p>
+<h3>Can I merge images and PDFs in one step?</h3>
+<p>No. Turn the images into a PDF first with JPG to PDF, then merge.</p>
+<h3>Will merging make the scans clearer?</h3>
+<p>No. Merging copies pages exactly. It cannot sharpen a blurry scan.</p>
+<h3>Can I undo a merge?</h3>
+<p>Your original files are unchanged. To pull pages back out of the merged file, use <a href="/split-pdf">Split PDF</a> with a page range.</p>
+<p>Related guides: <a href="/guides/jpg-to-pdf-for-online-forms.html">phone photos to a PDF for a form</a>, <a href="/guides/merge-pdf-in-browser.html">how to merge PDF files</a>, <a href="/guides/organize-pdf-pages-in-browser.html">reorder, rotate, and delete pages</a>, <a href="/guides/split-pdf-pages.html">split a PDF by page range</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to convert CSV to JSON and back | FileTools Kit</title>
+  <meta name="description" content="Turn a spreadsheet export into JSON, or flat JSON into CSV, in your browser. The limits of a simple converter and how to avoid broken rows." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/csv-to-json.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Text, code, and data</p>
+  <h1>How to convert CSV to JSON and back</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>CSV and JSON are the two formats people most often need to move between. A spreadsheet exports CSV; a web app or script wants JSON. Or an API returns JSON and a colleague wants it in Excel. This guide explains how each format represents data, how to convert in both directions with <a href="/dev-tools">Dev Tools</a>, and where a simple converter breaks so you can avoid broken rows.</p>
+
+<h2>How the two formats differ</h2>
+<p>CSV (comma-separated values) is a table. The first line usually holds column names, and every following line is one row with values separated by commas:</p>
+<pre><code>id,name,city
+1,Asha,Pune
+2,Ravi,Chennai</code></pre>
+<p>JSON can describe a table too, as an array of objects where each object is a row and each key is a column:</p>
+<pre><code>[
+  { "id": 1, "name": "Asha", "city": "Pune" },
+  { "id": 2, "name": "Ravi", "city": "Chennai" }
+]</code></pre>
+<p>The difference is that JSON can also nest: a row can contain a list or another object. CSV cannot. So any JSON with nested values has to be flattened before it fits in a spreadsheet, and CSV values carry no types, so everything is text until a program decides otherwise.</p>
+
+<h2>CSV to JSON, step by step</h2>
+<ol>
+<li>Export your sheet as CSV. In Excel, use File &gt; Save As &gt; CSV UTF-8. In Google Sheets, File &gt; Download &gt; Comma-separated values.</li>
+<li>Open the file in a text editor and copy its contents.</li>
+<li>Open <a href="/dev-tools">Dev Tools</a> on the <strong>JSON / CSV</strong> tab.</li>
+<li>Paste into the <strong>CSV Input / Output</strong> box.</li>
+<li>Press <strong>Convert CSV to JSON</strong>. The JSON appears in the JSON box above, pretty-printed. Each row becomes an object, with the header line as keys.</li>
+<li>Check a few rows against the spreadsheet, especially any with commas or quotes in their values.</li>
+</ol>
+<p>The converter needs a header line and at least one data row. If there are fewer, it shows "CSV must have at least a header and 1 row".</p>
+
+<h2>JSON to CSV, step by step</h2>
+<ol>
+<li>Paste your JSON into the <strong>JSON Input / Output</strong> box. It must be an array of objects, starting with [ and containing { } rows.</li>
+<li>Press <strong>Format JSON</strong> first if you want to check it is valid.</li>
+<li>Press <strong>Convert JSON to CSV</strong>. The CSV appears in the CSV box.</li>
+<li>Copy it into a text editor and save it with a .csv extension, then open it in your spreadsheet program.</li>
+</ol>
+<p>If the input is not an array, or the array is empty, the page shows "Input must be a non-empty array of objects".</p>
+
+<h2>Where a simple converter breaks</h2>
+<p>This converter is deliberately simple. Knowing its limits avoids silently broken data.</p>
+<h3>CSV to JSON</h3>
+<ul>
+<li><strong>Commas inside values.</strong> Each line is split at every comma. A value like "Bengaluru, Karnataka", even in quotes, is split into two cells and every column after it shifts. Replace those commas, or use a spreadsheet's own export to JSON if it has one.</li>
+<li><strong>Line breaks inside values.</strong> A cell with a line break becomes two rows.</li>
+<li><strong>Types.</strong> Every value comes out as a string, so 42 becomes "42" and TRUE becomes "TRUE". Convert types in your code if they matter.</li>
+<li><strong>Quotes.</strong> Quotes at the start and end of a value are removed. Escaped double quotes inside a value ("") are not unescaped.</li>
+</ul>
+<h3>JSON to CSV</h3>
+<ul>
+<li><strong>Columns come from the first object.</strong> Keys that only appear in later objects are dropped. Put the most complete row first, or add missing keys with empty values.</li>
+<li><strong>Text values are written in double quotes.</strong> Numbers, true, and false are written bare. Spreadsheets read this correctly.</li>
+<li><strong>Nested objects and arrays</strong> are written as JSON text inside the cell. Because that text contains its own quotes, spreadsheets may not read the cell cleanly. Flatten nested data before converting.</li>
+</ul>
+<p>For anything more complex, such as large exports, quoted commas, or nested data, a spreadsheet's import wizard or a short script with a proper CSV library is the right tool.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Semicolon CSV.</strong> In some regions Excel saves CSV with semicolons. The converter only splits on commas. Change the separator in your spreadsheet's export settings.</li>
+<li><strong>Garbled Indian-language text in Excel.</strong> Open the CSV with Data &gt; From Text/CSV and choose UTF-8, or save as CSV UTF-8 in the first place.</li>
+<li><strong>Leading zeros vanish.</strong> Excel turns 007 into 7 and long numbers such as phone numbers into scientific notation when it opens a CSV. Import the column as text.</li>
+<li><strong>Header typos.</strong> The header line becomes your JSON keys. "Name " with a trailing space is trimmed, but "First name" with a space stays as is, which may not match what your code expects.</li>
+</ul>
+
+<h2>A worked example of a broken row</h2>
+<p>Take this CSV, where one address contains a comma inside quotes:</p>
+<pre><code>name,city,pin
+Asha,"Bengaluru, Karnataka",560001</code></pre>
+<p>A full CSV parser would read the three values correctly. This converter splits at every comma, so the row becomes four values: Asha, Bengaluru, Karnataka, and 560001. With three headers, the result is {"name": "Asha", "city": "Bengaluru", "pin": "Karnataka"} and the real PIN code is lost. The fix is to replace the comma inside the value, for example with a hyphen, before converting, or to split city and state into their own columns in the spreadsheet. Check one or two rows that contain commas every time.</p>
+
+<h2>Privacy</h2>
+<p>Customer lists and exports are personal data. The conversion runs in your browser tab; nothing is sent to FileTools Kit. Delete the files from your downloads when you are done if they hold personal details.</p>
+
+<h2>FAQ</h2>
+<h3>Can I upload a .csv file directly?</h3>
+<p>No. Open it in a text editor and paste the contents.</p>
+<h3>Is there a row limit?</h3>
+<p>No fixed limit, but very large pastes can make the browser slow. Split huge files.</p>
+<h3>Can it handle tab-separated files?</h3>
+<p>No. Replace tabs with commas first, provided no values contain commas.</p>
+<h3>Will the JSON keys keep my column order?</h3>
+<p>Yes. Keys are added in header order.</p>
+<p>Related guides: <a href="/guides/json-formatting-explained.html">JSON formatting explained</a>, <a href="/guides/base64-explained.html">Base64 explained</a>, <a href="/guides/compare-two-text-versions.html">compare two versions of a text</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>

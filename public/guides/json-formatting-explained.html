@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JSON formatting explained: validate, pretty-print, and minify | FileTools Kit</title>
+  <meta name="description" content="What valid JSON looks like, the mistakes that break it, and how to format or minify JSON in your browser without sending it to a server." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.filetoolskit.com/guides/json-formatting-explained.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4409273905876536" crossorigin="anonymous"></script>
+  <style>body{font-family:system-ui,sans-serif;color:#0A2540;background:#FFF4E8;margin:0;line-height:1.65}main{max-width:44rem;margin:2rem auto;padding:1.5rem 1.25rem;background:#fff;border:1px solid #e2e8f0;border-radius:24px}a{color:#C2410C}h2{margin-top:1.5rem}.static-nav{margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.85rem}pre{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;overflow-x:auto;font-size:.85rem}.crumbs{font-size:.85rem}</style>
+</head>
+<body>
+<main>
+  <p class="crumbs"><a href="/guides.html">Guides</a> › Text, code, and data</p>
+  <h1>JSON formatting explained: validate, pretty-print, and minify</h1>
+  <p><em>Last updated 10 October 2026 · Written by Souren Das</em></p>
+<p>JSON is the format most web APIs, config files, and apps use to pass data around. When it arrives as one long line, it is unreadable. When one comma is out of place, the whole thing fails to load, often with an error that only says "Unexpected token". This guide explains what valid JSON looks like, the mistakes that break it, and how to validate, pretty-print, and minify JSON in your browser with <a href="/dev-tools">Dev Tools</a>.</p>
+
+<h2>What JSON is</h2>
+<p>JSON (JavaScript Object Notation) is plain text that describes data using a few building blocks:</p>
+<ul>
+<li><strong>Objects</strong> in curly braces, holding "name": value pairs separated by commas: {"city": "Bengaluru", "pin": 560001}</li>
+<li><strong>Arrays</strong> in square brackets, holding values separated by commas: ["pdf", "png", "jpg"]</li>
+<li><strong>Strings</strong> in double quotes: "hello"</li>
+<li><strong>Numbers</strong> without quotes: 42, 3.14, -7</li>
+<li><strong>true</strong>, <strong>false</strong>, and <strong>null</strong>, written in lower case without quotes.</li>
+</ul>
+<p>Objects and arrays can be nested inside each other to any depth. That is the whole language. It is defined in a short standard (RFC 8259), which is why nearly every programming language can read it.</p>
+
+<h2>Pretty-printed versus minified</h2>
+<p>The same data can be written two ways. Pretty-printed JSON puts each value on its own line with indentation, so a person can read it:</p>
+<pre><code>{
+  "name": "FileTools Kit",
+  "tools": [
+    "merge-pdf",
+    "text-diff"
+  ]
+}</code></pre>
+<p>Minified JSON removes every unnecessary space and line break:</p>
+<pre><code>{"name":"FileTools Kit","tools":["merge-pdf","text-diff"]}</code></pre>
+<p>Both are identical to a program. Pretty-print to read, debug, or review. Minify to save space when storing JSON, sending it in a request, or pasting it into a field with a length limit.</p>
+
+<h2>Format, minify, and validate in Dev Tools</h2>
+<ol>
+<li>Open <a href="/dev-tools">Dev Tools</a> and stay on the <strong>JSON / CSV</strong> tab.</li>
+<li>Paste your JSON into the <strong>JSON Input / Output</strong> box, replacing the sample.</li>
+<li>Press <strong>Format JSON</strong> to pretty-print it with two-space indentation, or <strong>Minify JSON</strong> to put it on one line.</li>
+<li>If the JSON is invalid, the box is left as it is and an error appears, starting with "Invalid JSON:" followed by your browser's parser message. Most browsers include a position, such as "at position 57" or "line 3 column 5", which points you to the problem.</li>
+<li>Fix the error, press Format JSON again, and copy the result.</li>
+</ol>
+<p>Formatting checks validity at the same time. If Format JSON succeeds, the text is valid JSON.</p>
+
+<h2>The mistakes that break JSON</h2>
+<p>Almost every invalid JSON file has one of these problems:</p>
+<ul>
+<li><strong>Trailing commas.</strong> {"a": 1, "b": 2,} fails because of the comma before the closing brace. JavaScript allows it; JSON does not.</li>
+<li><strong>Single quotes.</strong> {'name': 'Asha'} fails. Strings and keys must use double quotes.</li>
+<li><strong>Unquoted keys.</strong> {name: "Asha"} fails. Keys are always quoted strings.</li>
+<li><strong>Comments.</strong> // and /* */ are not allowed in standard JSON. Some config formats such as JSONC allow them, but a strict parser will not.</li>
+<li><strong>Special values.</strong> undefined, NaN, and Infinity are not valid. Use null.</li>
+<li><strong>Unescaped characters in strings.</strong> A double quote inside a string must be written \" and a backslash as \\. Windows paths are a common culprit: "C:\Users" should be "C:\\Users".</li>
+<li><strong>Smart quotes.</strong> Copying JSON from a word processor or chat app can turn " into curly quotes, which are not valid. Retype them or paste through a plain text editor.</li>
+<li><strong>Missing commas between items</strong> after editing by hand.</li>
+</ul>
+<p>When the error points to a position, look just before it. The parser usually notices a problem one character after the real mistake.</p>
+
+<h2>Reading API responses</h2>
+<p>When you copy a response from your browser's network tab, a log file, or a support ticket, it is usually minified. Paste it into Dev Tools and press Format JSON to see its structure. Look for the field you need by its key, and check whether a value is a string ("42") or a number (42), because code often treats those differently.</p>
+
+<h2>Converting JSON to a spreadsheet</h2>
+<p>If the JSON is an array of flat objects, such as a list of users with the same fields, <strong>Convert JSON to CSV</strong> on the same tab turns it into rows you can open in Excel or Google Sheets. The <a href="/guides/csv-to-json.html">CSV and JSON guide</a> explains the limits.</p>
+
+<h2>A worked example</h2>
+<p>Say a colleague sends this and your app refuses to load it:</p>
+<pre><code>{"user": "asha", "roles": ['admin', 'editor'], "active": true,}</code></pre>
+<p>Paste it into Dev Tools and press Format JSON. The error points near the first single quote. Replace the single quotes with double quotes and press Format JSON again. Now the error points at the closing brace, because of the trailing comma after true. Remove that comma and the JSON formats cleanly into eight readable lines. Fixing errors one at a time like this, letting the parser point at each, is faster than reading the whole file by eye.</p>
+
+<h2>Privacy</h2>
+<p>API responses often contain email addresses, tokens, and internal IDs. Dev Tools parses and formats JSON in your browser tab with the built-in JSON parser. Nothing is sent to FileTools Kit. Even so, remove access tokens and API keys before you paste JSON anywhere, including tools you trust, and never share them in screenshots.</p>
+
+<h2>FAQ</h2>
+<h3>Can I choose four-space indentation?</h3>
+<p>No. Format JSON uses two spaces, which is the most common convention.</p>
+<h3>Does formatting change my data?</h3>
+<p>No. Only spacing changes. One subtle exception: if an object has the same key twice, the parser keeps the last value, so the formatted output will contain only one.</p>
+<h3>Why does my number look different after formatting?</h3>
+<p>Very large integers beyond about 9 quadrillion lose precision in JavaScript. APIs that use such IDs usually send them as strings for this reason.</p>
+<h3>Is JSON the same as a JavaScript object?</h3>
+<p>Similar, but stricter: double quotes only, no trailing commas, no comments, no functions.</p>
+<p>Related guides: <a href="/guides/csv-to-json.html">convert CSV to JSON and back</a>, <a href="/guides/base64-explained.html">Base64 explained</a>, <a href="/guides/compare-two-text-versions.html">compare two versions of a text</a>.</p>
+
+  <p>Written by Souren Das, FileTools Kit, Bengaluru. Last updated 10 October 2026. Spotted a mistake or a step that does not match the tool? Email <a href="mailto:support@filetoolskit.com">support@filetoolskit.com</a> and I will fix it. See <a href="/how-we-test.html">how tools and guides are tested</a>.</p>
+  <nav class="static-nav" aria-label="Site">
+    <p><strong>Tools:</strong> <a href="/">All tools</a> · <a href="/merge-pdf">Merge PDF</a> · <a href="/split-pdf">Split PDF</a> · <a href="/compress-pdf">Compress PDF</a> · <a href="/jpg-to-pdf">JPG to PDF</a> · <a href="/pdf-to-jpg">PDF to JPG</a> · <a href="/image-optimizer">Compress images</a> · <a href="/resume-builder">Resume Builder</a> · <a href="/qr-generator">QR Generator</a></p>
+    <p><strong>Site:</strong> <a href="/guides.html">Guides</a> · <a href="/whats-new.html">What's new</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy</a> · <a href="/cookie-policy.html">Cookies</a> · <a href="/terms.html">Terms</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+    <p>© 2026 FileTools Kit · Souren Das · Bengaluru, India</p>
+  </nav>
+</main>
+</body>
+</html>

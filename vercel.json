@@ -27,7 +27,24 @@
     {"source": "/guides/page-numbers-pdf", "destination": "/guides/page-numbers-pdf.html", "permanent": true},
     {"source": "/guides/resume-pdf-checklist", "destination": "/guides/resume-pdf-checklist.html", "permanent": true},
     {"source": "/guides/watermark-versus-password", "destination": "/guides/watermark-versus-password.html", "permanent": true},
-    {"source": "/guides/when-browser-pdf-tools-fail", "destination": "/guides/when-browser-pdf-tools-fail.html", "permanent": true}
+    {"source": "/guides/when-browser-pdf-tools-fail", "destination": "/guides/when-browser-pdf-tools-fail.html", "permanent": true},
+    {"source": "/whats-new", "destination": "/whats-new.html", "permanent": true},
+    {"source": "/how-we-test", "destination": "/how-we-test.html", "permanent": true},
+    {"source": "/guides/merge-scanned-documents", "destination": "/guides/merge-scanned-documents.html", "permanent": true},
+    {"source": "/guides/reduce-pdf-size-for-upload-portals", "destination": "/guides/reduce-pdf-size-for-upload-portals.html", "permanent": true},
+    {"source": "/guides/jpg-to-pdf-for-online-forms", "destination": "/guides/jpg-to-pdf-for-online-forms.html", "permanent": true},
+    {"source": "/guides/page-numbers-for-thesis", "destination": "/guides/page-numbers-for-thesis.html", "permanent": true},
+    {"source": "/guides/webp-images-for-websites", "destination": "/guides/webp-images-for-websites.html", "permanent": true},
+    {"source": "/guides/svg-vs-png", "destination": "/guides/svg-vs-png.html", "permanent": true},
+    {"source": "/guides/wifi-qr-code", "destination": "/guides/wifi-qr-code.html", "permanent": true},
+    {"source": "/guides/ats-friendly-resume-for-freshers", "destination": "/guides/ats-friendly-resume-for-freshers.html", "permanent": true},
+    {"source": "/guides/markdown-basics", "destination": "/guides/markdown-basics.html", "permanent": true},
+    {"source": "/guides/compare-two-text-versions", "destination": "/guides/compare-two-text-versions.html", "permanent": true},
+    {"source": "/guides/json-formatting-explained", "destination": "/guides/json-formatting-explained.html", "permanent": true},
+    {"source": "/guides/csv-to-json", "destination": "/guides/csv-to-json.html", "permanent": true},
+    {"source": "/guides/base64-explained", "destination": "/guides/base64-explained.html", "permanent": true},
+    {"source": "/guides/bmi-what-it-means", "destination": "/guides/bmi-what-it-means.html", "permanent": true},
+    {"source": "/guides/currency-conversion-basics", "destination": "/guides/currency-conversion-basics.html", "permanent": true}
   ],
   "headers": [
     {"source": "/tools/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]}
