@@ -110,10 +110,10 @@ function textOf(value) {
 
 function decode(value) {
   return value
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
     .replace(/&#39;/g, "'");
 }
 
@@ -178,6 +178,51 @@ function walk(dir) {
   }
 }
 
+function escAttr(value) {
+  return value.replace(/&/g, '&').replace(/"/g, '"').replace(/</g, '<');
+}
+
+function injectSocialTags(file) {
+  const html = fs.readFileSync(file, 'utf8');
+  if (!html.includes('</head>')) return;
+  const title = decode(textOf(matchOne(html, /<title>([\s\S]*?)<\/title>/i)));
+  if (!title) return;
+  const description = decode(matchOne(html, /<meta\s+name="description"\s+content="([^"]*)"/i));
+  const canonical = matchOne(html, /<link\s+rel="canonical"\s+href="([^"]*)"/i);
+  if (!canonical) return;
+  const isHome = canonical.replace(/\/+$/, '') === SITE;
+  const image = SITE + '/logo.jpg';
+  const tags = [
+    ['property', 'og:title', title],
+    ['property', 'og:description', description],
+    ['property', 'og:type', isHome ? 'website' : 'article'],
+    ['property', 'og:url', canonical],
+    ['property', 'og:image', image],
+    ['property', 'og:site_name', 'FileTools Kit'],
+    ['name', 'twitter:card', 'summary'],
+    ['name', 'twitter:title', title],
+    ['name', 'twitter:description', description],
+    ['name', 'twitter:image', image],
+  ];
+  let extra = '';
+  for (const [attr, key, value] of tags) {
+    if (!value) continue;
+    const present = new RegExp('<meta\\s+(?:property|name)="' + key + '"', 'i').test(html);
+    if (present) continue;
+    extra += '<meta ' + attr + '="' + key + '" content="' + escAttr(value) + '" />\n    ';
+  }
+  if (!extra) return;
+  fs.writeFileSync(file, html.replace('</head>', '    ' + extra.trimEnd() + '\n  </head>'));
+}
+
+function walkSocial(dir) {
+  for (const ent of fs.readdirSync(dir, {withFileTypes: true})) {
+    const full = path.join(dir, ent.name);
+    if (ent.isDirectory()) walkSocial(full);
+    else if (ent.name.endsWith('.html')) injectSocialTags(full);
+  }
+}
+
 const homePath = path.join(dist, 'index.html');
 const home = fs.readFileSync(homePath, 'utf8');
 
@@ -204,3 +249,5 @@ for (const [route, page] of Object.entries(extraShells)) {
 }
 
 walk(dist);
+
+walkSocial(dist);
