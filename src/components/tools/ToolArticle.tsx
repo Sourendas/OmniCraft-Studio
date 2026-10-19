@@ -1,22 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getToolArticle } from '../../data/toolArticles';
-import { PDF_TOOL_ARTICLES, type ToolArticleWithGuides } from '../../data/toolArticlesPdf';
-import { TOOL_ARTICLE_EXTRAS } from '../../data/toolArticlesExtra';
+import { buildToolArticle } from '../../data/toolArticleModel';
 
 export const ToolArticle: React.FC<{ slug: string }> = ({ slug }) => {
-  const base: ToolArticleWithGuides | undefined = getToolArticle(slug) ?? PDF_TOOL_ARTICLES[slug];
-  if (!base) return null;
-  const extra = TOOL_ARTICLE_EXTRAS[slug];
-  const seen = new Set<string>();
-  const guides = [...(base.guides ?? []), ...(extra?.guides ?? [])].filter((g) => !seen.has(g.slug) && seen.add(g.slug));
-  const article = {
-    ...base,
-    steps: extra?.steps ?? base.steps,
-    limits: extra?.limits ?? base.limits,
-    faq: [...base.faq, ...(extra?.faq ?? [])],
-    guides,
-  };
+  const article = buildToolArticle(slug);
+  if (!article) return null;
+  const extra = article.extra;
 
   return (
     <article className="max-w-3xl mx-auto mt-12 mb-16 px-4 sm:px-6 text-[#0A2540]">
