@@ -64,7 +64,14 @@ for (const [route, slug] of routes) {
   const m = /(<div id="boot">[\s\S]*?)(<\/div>\s*<noscript>)/.exec(html);
   if (!m) { console.warn(`prerender-articles: boot block not found in ${route}`); continue; }
   html = html.slice(0, m.index) + m[1] + articleHtml(article) + m[2] + html.slice(m.index + m[0].length);
-  html = html.replace('</head>', '    ' + STYLE + '\n  </head>');
+  // FAQPage JSON-LD built from the same FAQ list that is visible on the page.
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: article.faq.map((f) => ({'@type': 'Question', name: f.q, acceptedAnswer: {'@type': 'Answer', text: f.a}})),
+  };
+  const faqTag = html.includes('id="ftk-faq"') ? '' : '<script type="application/ld+json" id="ftk-faq">' + JSON.stringify(faqLd).replace(/</g, '\\u003c') + '</script>\n    ';
+  html = html.replace('</head>', '    ' + faqTag + STYLE + '\n  </head>');
   fs.writeFileSync(file, html);
   done++;
 }

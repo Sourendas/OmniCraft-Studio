@@ -66,18 +66,18 @@ export const SEO_PAGES: Record<string, SeoPage> = {
     title: 'Contact | FileTools Kit',
     description: 'Email support@filetoolskit.com for bugs, questions, guide corrections, and privacy requests. Operator: Souren Das, Bengaluru, India.'
   },
-  '/resume-builder': tool('/resume-builder', 'Build a job-ready resume PDF in your browser', 'Turn your experience into a clean resume PDF with local keyword checks and browser export. Free to use.'),
+  '/resume-builder': tool('/resume-builder', 'Free resume builder — download a PDF, no signup', 'Turn your experience into a clean resume PDF with local keyword checks and browser export. Free to use.'),
   '/pdf-suite': tool('/pdf-suite', 'PDF Suite — merge, split, rotate, and watermark in your browser', 'Merge, split, rotate, and watermark PDFs in this tab with pdf-lib. Files stay on your device. Encrypted PDFs often fail.'),
-  '/merge-pdf': tool('/merge-pdf', 'Merge PDF files into one in your browser', 'Combine PDFs in the order you add them and rotate sideways pages with pdf-lib in this tab. No upload API. Encrypted PDFs may fail.'),
-  '/split-pdf': tool('/split-pdf', 'Split a PDF and extract pages in your browser', 'Type a page range such as 1-3,5 and download just those pages as a new PDF. Runs in this tab; no upload API.'),
-  '/jpg-to-pdf': tool('/jpg-to-pdf', 'Convert JPG and PNG images to PDF in your browser', 'Turn JPEG or PNG images into a PDF with one page per image, built in this tab. Your photos are not uploaded.'),
+  '/merge-pdf': tool('/merge-pdf', 'Merge PDF online free — no upload, in your browser', 'Combine PDFs in the order you add them and rotate sideways pages with pdf-lib in this tab. No upload API. Encrypted PDFs may fail.'),
+  '/split-pdf': tool('/split-pdf', 'Split PDF online free — extract pages, no upload', 'Type a page range such as 1-3,5 and download just those pages as a new PDF. Runs in this tab; no upload API.'),
+  '/jpg-to-pdf': tool('/jpg-to-pdf', 'JPG to PDF free — convert images in your browser', 'Turn JPEG or PNG images into a PDF with one page per image, built in this tab. Your photos are not uploaded.'),
   '/page-numbers': tool('/page-numbers', 'Add page numbers to a PDF in your browser', 'Number every page from a starting number you choose, at the bottom or top, as 1, 1 / N, or Page 1 of N. Runs in this tab with pdf-lib; no upload API.'),
-  '/pdf-to-jpg': tool('/pdf-to-jpg', 'Convert PDF pages to JPG or PNG in your browser', 'Render PDF pages as JPG or PNG images and download one image or a ZIP. Runs in this tab with PDF.js; no upload API.'),
+  '/pdf-to-jpg': tool('/pdf-to-jpg', 'PDF to JPG free — convert pages in your browser', 'Render PDF pages as JPG or PNG images and download one image or a ZIP. Runs in this tab with PDF.js; no upload API.'),
   '/organize-pdf': tool('/organize-pdf', 'Reorder, rotate, and delete PDF pages in your browser', 'See page thumbnails, drag to reorder, rotate or delete pages, and export a new PDF. Runs in this tab; no upload API.'),
-  '/password-protect-pdf': tool('/password-protect-pdf', 'Password protect a PDF with AES-256 in your browser', 'Encrypt a PDF with AES-256 so it opens only with your password. Runs in this tab; the file and password are not uploaded.'),
+  '/password-protect-pdf': tool('/password-protect-pdf', 'Password protect PDF free — AES-256, no upload', 'Encrypt a PDF with AES-256 so it opens only with your password. Runs in this tab; the file and password are not uploaded.'),
   '/compress-pdf': tool(
     '/compress-pdf',
-    'Compress PDF in your browser',
+    'Compress PDF without uploading — free, in your browser',
     'Rewrite a PDF in this browser tab to trim wasted structure and compare before-and-after sizes. No upload API. Image-heavy or already-compressed PDFs may not shrink.'
   ),
   '/guides/compress-pdf-in-browser': {
@@ -87,8 +87,8 @@ export const SEO_PAGES: Record<string, SeoPage> = {
       'Rewrite a PDF in this tab and compare size before and after. Not a server optimizer. Scans that are already JPEG often do not shrink.'
   },
   '/file-converter': tool('/file-converter', 'Convert images, audio, and DOCX files in your browser', 'Convert PNG, JPEG, and WebP images, decode audio to WAV, and turn a DOCX into plain text or a simple text PDF in this tab. No upload API.'),
-  '/image-optimizer': tool('/image-optimizer', 'Compress images in your browser', 'Reduce image size with quality and scale controls, compare before and after, and download WebP, JPEG, or PNG.'),
-  '/qr-generator': tool('/qr-generator', 'Create a QR code for a URL, Wi-Fi, or vCard', 'Make a QR code for a URL, Wi-Fi network, or vCard and export PNG or SVG in this tab.'),
+  '/image-optimizer': tool('/image-optimizer', 'Compress images online free — JPG, PNG, WebP, no upload', 'Reduce image size with quality and scale controls, compare before and after, and download WebP, JPEG, or PNG.'),
+  '/qr-generator': tool('/qr-generator', 'Free QR code generator — URL, Wi-Fi, vCard, no signup', 'Make a QR code for a URL, Wi-Fi network, or vCard and export PNG or SVG in this tab.'),
   '/dev-tools': tool('/dev-tools', 'Convert JSON and CSV, test regex, and hash text in your browser', 'Convert flat JSON to CSV and back, format SQL, test JavaScript regex, encode Base64, and make SHA hashes in this tab. No MD5.'),
   '/markdown-editor': tool('/markdown-editor', 'Write and preview Markdown in your browser', 'Write Markdown with a live preview, download a .md file, or copy the HTML. Runs in this tab. Refreshing can clear unsaved text.'),
   '/svg-editor': tool('/svg-editor', 'Edit SVG colors and export PNG or JSX', 'Paste SVG markup, change stroke and fill, then download SVG or PNG, or copy minified SVG and a React JSX component. Runs in this tab.'),
