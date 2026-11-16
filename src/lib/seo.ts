@@ -90,6 +90,16 @@ export const SEO_PAGES: Record<string, SeoPage> = {
     'Compress PDF to 100KB online free — in your browser',
     'Shrink PDF size to under 100KB for passport, visa, and institutional upload portals with strict size limits. Fast & private.'
   ),
+  '/rotate-pdf': tool(
+    '/rotate-pdf',
+    'Rotate PDF online free — turn sideways pages in your browser',
+    'Rotate PDF pages 90, 180, or 270 degrees clockwise. Preview thumbnails and save instantly in this tab with no server upload.'
+  ),
+  '/docx-to-pdf': tool(
+    '/docx-to-pdf',
+    'Convert DOCX to PDF in your browser free — no upload',
+    'Convert Word DOCX documents to clean text PDF directly in your browser. Fast, private, and runs 100% on your device.'
+  ),
   '/guides/compress-pdf-in-browser': {
     path: '/guides/compress-pdf-in-browser.html',
     title: 'How to compress a PDF in the browser | FileTools Kit',

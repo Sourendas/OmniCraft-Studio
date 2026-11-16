@@ -78,5 +78,25 @@
       "All compression and structural cleanup is executed directly on your device with client-side JavaScript. Sensitive documents never leave your machine.",
       "For image-heavy scans, converting pages to JPG and downscaling quality before export produces the cleanest result under 100 KB."
     ]
+  },
+  "/rotate-pdf": {
+    "title": "Rotate PDF online free — turn sideways pages in your browser | FileTools Kit",
+    "description": "Rotate PDF pages 90, 180, or 270 degrees clockwise. Preview thumbnails and save instantly in this tab with no server upload.",
+    "h1": "Rotate PDF pages in your browser",
+    "paragraphs": [
+      "Rotate PDF lets you fix upside-down or sideways pages in scanned documents, receipts, or contracts.",
+      "See live visual thumbnails of every page. Rotate single pages or all pages at once with 90-degree clicks, then export a clean new PDF.",
+      "Files are processed in your browser tab using pdf-lib. No documents are uploaded to any server."
+    ]
+  },
+  "/docx-to-pdf": {
+    "title": "Convert DOCX to PDF in your browser free — no upload | FileTools Kit",
+    "description": "Convert Word DOCX documents to clean text PDF directly in your browser. Fast, private, and runs 100% on your device.",
+    "h1": "Convert Word DOCX to PDF in your browser",
+    "paragraphs": [
+      "Convert Word (.docx) files into clean text PDFs directly in your browser tab without sending sensitive files across the internet.",
+      "Uses mammoth and client-side PDF generation to extract document text and build downloadable PDFs locally.",
+      "Ideal for quick resume, essay, or letter exports when you don't have Microsoft Office installed."
+    ]
   }
 }

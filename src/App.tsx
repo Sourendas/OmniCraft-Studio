@@ -76,8 +76,10 @@ export default function App() {
                 <Route path="/page-numbers" element={<WithArticle slug="page-numbers"><InTabPdfJobs job="numbers" /></WithArticle>} />
                 <Route path="/pdf-to-jpg" element={<WithArticle slug="pdf-to-jpg"><PdfToImagesPage /></WithArticle>} />
                 <Route path="/organize-pdf" element={<WithArticle slug="organize-pdf"><OrganizePdfPage /></WithArticle>} />
+                <Route path="/rotate-pdf" element={<WithArticle slug="organize-pdf"><OrganizePdfPage /></WithArticle>} />
                 <Route path="/password-protect-pdf" element={<WithArticle slug="password-protect-pdf"><ProtectPdfPage /></WithArticle>} />
                 <Route path="/file-converter" element={<WithArticle slug="file-converter"><FileConverterPage /></WithArticle>} />
+                <Route path="/docx-to-pdf" element={<WithArticle slug="file-converter"><FileConverterPage /></WithArticle>} />
                 <Route path="/image-optimizer" element={<WithArticle slug="image-optimizer"><ImageOptimizerPage /></WithArticle>} />
                 <Route path="/currency-crypto" element={<WithArticle slug="currency-crypto"><CurrencyCryptoPage /></WithArticle>} />
                 <Route path="/dev-tools" element={<WithArticle slug="dev-tools"><DevToolsPage /></WithArticle>} />
