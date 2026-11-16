@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SubscriptionProvider } from './context/SubscriptionContext';
 import { AmbientBackground } from './components/layout/AmbientBackground';
 import { Navbar } from './components/layout/Navbar';
@@ -9,6 +10,7 @@ import { AbDebugPanel } from './experiments';
 import { Seo } from './components/Seo';
 import { HomePage } from './pages/HomePage';
 import { ToolArticle } from './components/tools/ToolArticle';
+import { RelatedTools } from './components/tools/RelatedTools';
 
 const ResumeBuilderPage = lazy(() => import('./pages/tools/ResumeBuilderPage').then((m) => ({ default: m.ResumeBuilderPage })));
 const PdfSuitePage = lazy(() => import('./pages/tools/PdfSuitePage').then((m) => ({ default: m.PdfSuitePage })));
@@ -37,6 +39,7 @@ const RouteFallback = () => (
 const WithArticle = ({ slug, children }: { slug: string; children: React.ReactNode }) => (
   <>
     {children}
+    <RelatedTools currentSlug={slug} />
     <ToolArticle slug={slug} />
   </>
 );
@@ -101,6 +104,7 @@ export default function App() {
           <Footer />
           <AbDebugPanel />
           <Analytics />
+          <SpeedInsights />
         </div>
       </BrowserRouter>
     </SubscriptionProvider>

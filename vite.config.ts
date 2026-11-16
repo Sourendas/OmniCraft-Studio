@@ -205,6 +205,26 @@ function routeShells(): Plugin {
           .replace(
             /<link rel="canonical" href="[^"]*"\s*\/?>/,
             `<link rel="canonical" href="${SITE}${route}" />`,
+          )
+          .replace(
+            /<meta property="og:title" content="[^"]*"\s*\/?>/,
+            `<meta property="og:title" content="${esc(page.title)}" />`,
+          )
+          .replace(
+            /<meta property="og:description" content="[^"]*"\s*\/?>/,
+            `<meta property="og:description" content="${esc(page.description)}" />`,
+          )
+          .replace(
+            /<meta property="og:url" content="[^"]*"\s*\/?>/,
+            `<meta property="og:url" content="${SITE}${route}" />`,
+          )
+          .replace(
+            /<meta name="twitter:title" content="[^"]*"\s*\/?>/,
+            `<meta name="twitter:title" content="${esc(page.title)}" />`,
+          )
+          .replace(
+            /<meta name="twitter:description" content="[^"]*"\s*\/?>/,
+            `<meta name="twitter:description" content="${esc(page.description)}" />`,
           );
         out = out.replace(BOOT_RE, `<div id="boot">${bootHtml(route, page)}</div>\n    `);
         const dir = path.join(dist, route.slice(1));
@@ -218,7 +238,11 @@ function routeShells(): Plugin {
           indexPath,
           html
             .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(home.title)}</title>`)
-            .replace(/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${esc(home.description)}" />`),
+            .replace(/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${esc(home.description)}" />`)
+            .replace(/<meta property="og:title" content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${esc(home.title)}" />`)
+            .replace(/<meta property="og:description" content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${esc(home.description)}" />`)
+            .replace(/<meta name="twitter:title" content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${esc(home.title)}" />`)
+            .replace(/<meta name="twitter:description" content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${esc(home.description)}" />`),
         );
       }
       // Vercel serves dist/404.html with a real 404 status for unknown paths.

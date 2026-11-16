@@ -56,11 +56,11 @@ export const Seo: React.FC = () => {
     upsertMeta('property', 'og:description', page.description);
     upsertMeta('property', 'og:url', `${SITE}${page.path}`);
     upsertMeta('property', 'og:type', pathname === '/' ? 'website' : 'article');
-    upsertMeta('property', 'og:image', `${SITE}/og.svg`);
+    upsertMeta('property', 'og:image', `${SITE}/og.png`);
     upsertMeta('name', 'twitter:card', 'summary_large_image');
     upsertMeta('name', 'twitter:title', page.title);
     upsertMeta('name', 'twitter:description', page.description);
-    upsertMeta('name', 'twitter:image', `${SITE}/og.svg`);
+    upsertMeta('name', 'twitter:image', `${SITE}/og.png`);
 
     let link = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!link) {
