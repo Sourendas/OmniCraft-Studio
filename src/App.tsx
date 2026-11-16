@@ -70,6 +70,8 @@ export default function App() {
                 <Route path="/merge-pdf" element={<WithArticle slug="merge-pdf"><PdfSuitePage /></WithArticle>} />
                 <Route path="/split-pdf" element={<WithArticle slug="split-pdf"><PdfSuitePage /></WithArticle>} />
                 <Route path="/compress-pdf" element={<WithArticle slug="compress-pdf"><InTabPdfJobs job="compress" /></WithArticle>} />
+                <Route path="/compress-pdf-to-200kb" element={<WithArticle slug="compress-pdf"><InTabPdfJobs job="compress" targetKb={200} /></WithArticle>} />
+                <Route path="/compress-pdf-to-100kb" element={<WithArticle slug="compress-pdf"><InTabPdfJobs job="compress" targetKb={100} /></WithArticle>} />
                 <Route path="/jpg-to-pdf" element={<WithArticle slug="jpg-to-pdf"><InTabPdfJobs job="jpg" /></WithArticle>} />
                 <Route path="/page-numbers" element={<WithArticle slug="page-numbers"><InTabPdfJobs job="numbers" /></WithArticle>} />
                 <Route path="/pdf-to-jpg" element={<WithArticle slug="pdf-to-jpg"><PdfToImagesPage /></WithArticle>} />

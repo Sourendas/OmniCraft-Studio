@@ -58,5 +58,25 @@
       "Use it to rough out a comparison before you ask your bank or a licensed remittance service for the real quote. Do not use it for trading, tax filings, or payroll.",
       "Crypto rows are examples too. Nothing on this page is investment advice, and a screenshot of it is not a quote."
     ]
+  },
+  "/compress-pdf-to-200kb": {
+    "title": "Compress PDF to 200KB online free — in your browser | FileTools Kit",
+    "description": "Reduce PDF file size to under 200KB for government forms, job portals, and online applications. 100% in-browser, no upload.",
+    "h1": "Compress PDF to under 200KB in your browser",
+    "paragraphs": [
+      "Compress PDF to 200KB helps you shrink document size to meet strict 200 KB upload limits required by government job portals, university admissions, and visa applications.",
+      "The tool operates entirely inside this browser tab with pdf-lib. Your private documents, ID cards, and certificates are never uploaded to any remote server or processing API.",
+      "If your PDF contains heavy high-resolution photos, resize them in our Image Optimizer before combining to guarantee you stay well under the 200 KB ceiling."
+    ]
+  },
+  "/compress-pdf-to-100kb": {
+    "title": "Compress PDF to 100KB online free — in your browser | FileTools Kit",
+    "description": "Shrink PDF size to under 100KB for passport, visa, and institutional upload portals with strict size limits. Fast & private.",
+    "h1": "Compress PDF to under 100KB in your browser",
+    "paragraphs": [
+      "Compress PDF to 100KB is tailored for strict portal upload caps (such as passport, exam registration, and scholarship forms) that reject any file exceeding 100 KB.",
+      "All compression and structural cleanup is executed directly on your device with client-side JavaScript. Sensitive documents never leave your machine.",
+      "For image-heavy scans, converting pages to JPG and downscaling quality before export produces the cleanest result under 100 KB."
+    ]
   }
 }

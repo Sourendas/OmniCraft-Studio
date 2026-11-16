@@ -43,7 +43,7 @@ const TITLES: Record<Job, { h1: string; lead: string }> = {
   },
 };
 
-export const InTabPdfJobs: React.FC<{ job: Job }> = ({ job }) => {
+export const InTabPdfJobs: React.FC<{ job: Job; targetKb?: number }> = ({ job, targetKb }) => {
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [startAt, setStartAt] = useState(1);
@@ -66,7 +66,17 @@ export const InTabPdfJobs: React.FC<{ job: Job }> = ({ job }) => {
       pages.forEach((p) => out.addPage(p));
       const bytes = await out.save({ useObjectStreams: true });
       downloadBlob(new Blob([bytes.buffer as ArrayBuffer], { type: 'application/pdf' }), 'compressed.pdf');
-      setStatus(file.name + ': ' + (file.size / 1024).toFixed(0) + ' KB -> ' + (bytes.byteLength / 1024).toFixed(0) + ' KB. Light rewrite only.');
+      const origKb = Number((file.size / 1024).toFixed(0));
+      const newKb = Number((bytes.byteLength / 1024).toFixed(0));
+      if (targetKb) {
+        if (newKb <= targetKb) {
+          setStatus(`Success! ${file.name}: ${origKb} KB -> ${newKb} KB. Target achieved (Under ${targetKb} KB for portals).`);
+        } else {
+          setStatus(`${file.name}: ${origKb} KB -> ${newKb} KB. Still above ${targetKb} KB. If your PDF contains large scanned photos, resize them in Image Optimizer first.`);
+        }
+      } else {
+        setStatus(file.name + ': ' + origKb + ' KB -> ' + newKb + ' KB. Light rewrite only.');
+      }
     } catch {
       setStatus('Could not compress that file. Encrypted PDFs often fail.');
     } finally {
@@ -149,8 +159,20 @@ export const InTabPdfJobs: React.FC<{ job: Job }> = ({ job }) => {
       <Link to="/" className="inline-flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-[#EA580C] mb-4">
         <ArrowLeft className="w-3.5 h-3.5" /> All tools
       </Link>
-      <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">{copy.h1}</h1>
-      <p className="mt-2 text-sm text-slate-600 font-medium">{copy.lead}</p>
+      <h1 className="text-2xl sm:text-3xl font-black text-[#0A2540]">
+        {targetKb ? `Compress PDF to ${targetKb}KB` : copy.h1}
+      </h1>
+      <p className="mt-2 text-sm text-slate-600 font-medium">
+        {targetKb
+          ? `Target under ${targetKb}KB for portal uploads and applications. In-tab structural rewrite with pdf-lib. No file upload.`
+          : copy.lead}
+      </p>
+      {targetKb && (
+        <div className="mt-3 p-3 rounded-2xl bg-orange-50 border border-orange-200 text-xs font-semibold text-orange-950 flex flex-wrap items-center justify-between gap-2">
+          <span>🎯 Target limit: &lt; {targetKb} KB for government, job, or university portals</span>
+          <Link to="/image-optimizer" className="text-[#EA580C] underline font-bold">Need smaller scans? Use Image Optimizer →</Link>
+        </div>
+      )}
       <p className="mt-2 text-xs text-slate-500">
         Related: <Link className="text-[#C2410C] font-bold underline" to="/pdf-suite">PDF Suite</Link>
         {' · '}

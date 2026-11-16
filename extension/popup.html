@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FileTools Kit</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 16px;
+      width: 320px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #FFF4E8;
+      color: #0A2540;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #FED7AA;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+    .header img {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 800;
+      color: #0A2540;
+    }
+    .header span {
+      font-size: 10px;
+      color: #EA580C;
+      font-weight: 700;
+      background: #FFEDD5;
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid #FDBA74;
+    }
+    .tools-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .tool-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: #FFFFFF;
+      border: 1px solid #FFEDD5;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #1E293B;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+    .tool-link:hover {
+      background: #FFF7ED;
+      border-color: #FDBA74;
+      color: #EA580C;
+      transform: translateX(2px);
+    }
+    .badge {
+      font-size: 10px;
+      color: #9A3412;
+      background: #FFEDD5;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .footer {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid #FED7AA;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #64748B;
+    }
+    .footer a {
+      color: #EA580C;
+      text-decoration: none;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="icon48.png" alt="Logo">
+    <div>
+      <h1>FileTools Kit</h1>
+      <span>100% Client-Side Privacy</span>
+    </div>
+  </div>
+
+  <div class="tools-grid">
+    <a href="https://www.filetoolskit.com/merge-pdf" target="_blank" class="tool-link">
+      <span>📑 Merge PDF</span>
+      <span class="badge">In-Tab</span>
+    </a>
+    <a href="https://www.filetoolskit.com/compress-pdf" target="_blank" class="tool-link">
+      <span>🗜️ Compress PDF</span>
+      <span class="badge">In-Tab</span>
+    </a>
+    <a href="https://www.filetoolskit.com/compress-pdf-to-200kb" target="_blank" class="tool-link">
+      <span>🎯 Compress to 200KB</span>
+      <span class="badge">Portals</span>
+    </a>
+    <a href="https://www.filetoolskit.com/image-optimizer" target="_blank" class="tool-link">
+      <span>🖼️ Image Optimizer</span>
+      <span class="badge">WebP/JPG</span>
+    </a>
+    <a href="https://www.filetoolskit.com/resume-builder" target="_blank" class="tool-link">
+      <span>📝 Resume Builder</span>
+      <span class="badge">ATS Score</span>
+    </a>
+    <a href="https://www.filetoolskit.com/qr-generator" target="_blank" class="tool-link">
+      <span>📱 QR Generator</span>
+      <span class="badge">Vector</span>
+    </a>
+    <a href="https://www.filetoolskit.com/dev-tools" target="_blank" class="tool-link">
+      <span>🛠️ Developer Tools</span>
+      <span class="badge">JSON/Hash</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    <span>Zero file uploads</span>
+    <a href="https://www.filetoolskit.com" target="_blank">All 12+ Tools →</a>
+  </div>
+</body>
+</html>

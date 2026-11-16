@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "FileTools Kit - In-Browser PDF & Media Tools",
+  "version": "1.0.0",
+  "description": "Merge, split, and compress PDFs, optimize images, build resumes, and generate QR codes in your browser tab. 100% private.",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "permissions": []
+}

@@ -80,6 +80,16 @@ export const SEO_PAGES: Record<string, SeoPage> = {
     'Compress PDF without uploading — free, in your browser',
     'Rewrite a PDF in this browser tab to trim wasted structure and compare before-and-after sizes. No upload API. Image-heavy or already-compressed PDFs may not shrink.'
   ),
+  '/compress-pdf-to-200kb': tool(
+    '/compress-pdf-to-200kb',
+    'Compress PDF to 200KB online free — in your browser',
+    'Reduce PDF file size to under 200KB for government forms, job portals, and online applications. 100% in-browser, no upload.'
+  ),
+  '/compress-pdf-to-100kb': tool(
+    '/compress-pdf-to-100kb',
+    'Compress PDF to 100KB online free — in your browser',
+    'Shrink PDF size to under 100KB for passport, visa, and institutional upload portals with strict size limits. Fast & private.'
+  ),
   '/guides/compress-pdf-in-browser': {
     path: '/guides/compress-pdf-in-browser.html',
     title: 'How to compress a PDF in the browser | FileTools Kit',
